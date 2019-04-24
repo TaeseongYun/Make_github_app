@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Github_Management</string>
+
+    <string name="github_user">Users</string>
+
+    <string name="many_stars">Star</string>
+
+    <string name="github_me">Me</string>
+</resources>

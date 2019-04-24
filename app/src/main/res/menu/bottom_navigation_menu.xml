@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_users"
+            android:icon="@drawable/vd_users_outline"
+            android:title="@string/github_user"/>
+
+    <item
+            android:id="@+id/navigation_star"
+            android:icon="@drawable/vd_star_outline"
+            android:title="@string/many_stars"/>
+
+    <item
+            android:id="@+id/navigation_me"
+            android:icon="@drawable/vd_user_outline"
+            android:title="@string/github_me"/>
+</menu>

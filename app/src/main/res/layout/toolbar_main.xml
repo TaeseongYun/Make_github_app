@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <tech.tsdev.github_management.view.main.custom.GlideImageView
+            android:id="@+id/user_search_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_search_white_24dp"/>
+
+</android.support.v7.widget.Toolbar>
