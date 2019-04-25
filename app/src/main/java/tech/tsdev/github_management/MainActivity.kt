@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.myfragment.MyFragment
+import tech.tsdev.github_management.view.main.starfragment.StarFragment
 import tech.tsdev.github_management.view.main.userlistfragment.GithubFragment
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private val starFragment: StarFragment by lazy {
+        StarFragment().apply {
+            arguments = Bundle().apply {
+                putInt(StarFragment.KEY_TITLE, R.string.many_stars)
+            }
+        }
+    }
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
             R.id.navigation_users -> {
@@ -28,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_star -> {
+                replace(R.id.frame_layout, starFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_me -> {
