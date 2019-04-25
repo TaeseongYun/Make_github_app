@@ -8,4 +8,10 @@
     <string name="github_me">Me</string>
 
     <string name="user_search">Searching here</string>
+
+    <string name="star_boundary_repo">-</string>
+
+    <string name="repository_name">REPOSITORY</string>
+
+    <string name="follows_many">Follows :</string>
 </resources>
