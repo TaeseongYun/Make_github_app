@@ -1,11 +1,14 @@
 package tech.tsdev.github_management
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar_main.*
 import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.myfragment.MyFragment
+import tech.tsdev.github_management.view.main.searchactiviry.SearchActivity
 import tech.tsdev.github_management.view.main.starfragment.StarFragment
 import tech.tsdev.github_management.view.main.userlistfragment.GithubFragment
 
@@ -56,6 +59,10 @@ class MainActivity : AppCompatActivity() {
         replace(R.id.frame_layout, githubFragment)
         navigation.apply {
             setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        }
+
+        user_search_img.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
         }
     }
 }
