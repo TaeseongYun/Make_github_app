@@ -60,7 +60,7 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
 
         et_search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                searchRecyclerAdapter.clearItem()
+
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -70,20 +70,29 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.isNullOrEmpty()) {
                     btn_clear.visibility = View.GONE
-                    searchRecyclerAdapter.clearItem()
+                    btn_back.visibility = View.VISIBLE
+
                 } else {
                     btn_clear.visibility = View.VISIBLE
-                    searchPresenter.searchLoadUsers(et_search.text.toString())
+                    btn_back.visibility = View.GONE
                 }
 
             }
 
         })
 
+
         search_recycler_view.run {
             layoutManager = GridLayoutManager(this@SearchActivity, 1)
             adapter = searchRecyclerAdapter
             addOnScrollListener(recyclerViewonScrollManager)
+        }
+        btn_search.setOnClickListener {
+            linear_layout_github.visibility = View.GONE
+            search_recycler_view.visibility = View.VISIBLE
+
+            searchRecyclerAdapter.clearItem()
+            searchPresenter.searchLoadUsers(et_search.text.toString())
         }
         btn_clear.setOnClickListener {
             et_search.setText("")

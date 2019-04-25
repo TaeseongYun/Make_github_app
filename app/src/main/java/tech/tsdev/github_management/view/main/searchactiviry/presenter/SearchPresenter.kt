@@ -3,7 +3,6 @@ package tech.tsdev.github_management.view.main.searchactiviry.presenter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tech.tsdev.github_management.model.Item
 import tech.tsdev.github_management.model.SearchUserData
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.searchactiviry.adapter.model.SearchRecyclerModel

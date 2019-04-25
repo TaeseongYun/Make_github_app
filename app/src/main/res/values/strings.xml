@@ -14,4 +14,6 @@
     <string name="repository_name">REPOSITORY</string>
 
     <string name="follows_many">Follows :</string>
+
+    <string name="powered_by_github">powered by Github</string>
 </resources>
