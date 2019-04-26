@@ -27,23 +27,23 @@
                             android:layout_alignParentBottom="true"
                             android:layout_marginBottom="8dp">
                 <tech.tsdev.github_management.view.main.custom.GlideImageView
-                        android:id="@+id/img_unsplash_user"
+                        android:id="@+id/img_github_user"
                         android:layout_width="35dp" android:layout_height="35dp"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         android:src="@drawable/sample_02"/>
                 <TextView
-                        android:text="TextView"
+                        android:text="@string/github_user"
                         android:textColor="#dcdbdc"
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         android:layout_width="match_parent"
                         android:layout_height="24dp"
                         android:id="@+id/iv_user_name"
                         android:background="?android:attr/selectableItemBackgroundBorderless"
-                        android:layout_toRightOf="@id/img_unsplash_user"/>
+                        android:layout_toEndOf="@id/img_github_user"/>
             </RelativeLayout>
         </RelativeLayout>
 

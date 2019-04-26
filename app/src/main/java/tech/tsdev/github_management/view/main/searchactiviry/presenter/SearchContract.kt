@@ -5,6 +5,8 @@ interface SearchContract {
         fun loadErrorMessage()
 
         fun loadErrorMessage(message: String)
+
+        fun loadDetailActivity(userName: String)
     }
 
     interface Presenter {

@@ -9,15 +9,20 @@ import kotlinx.android.synthetic.main.item_image_view.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.UserListData
 
-class UserRecyclerHolder(context: Context, parent: ViewGroup) :
+class UserRecyclerHolder(onClick: (Int) -> Unit, context: Context, parent: ViewGroup) :
     RecyclerView.ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_image_view, parent, false)) {
 
+    init {
+        itemView.setOnClickListener {
+            onClick(adapterPosition)
+        }
+    }
     fun onBind(item: UserListData) {
         itemView.onBind(item)
     }
 
-    fun View.onBind(item: UserListData) {
-        img_unsplash_user.proflieImageLoad(item.avatar_url)
+    private fun View.onBind(item: UserListData) {
+        img_github_user.proflieImageLoad(item.avatarUrl)
         iv_user_name.text = item.login
     }
 }

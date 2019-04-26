@@ -10,4 +10,6 @@ interface UserRecyclerModel {
     fun getItem(position: Int): UserListData
 
     fun notifyDataItem()
+
+    var onClick: (Int) -> Unit
 }

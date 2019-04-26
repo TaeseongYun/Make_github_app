@@ -9,6 +9,8 @@ interface GithubContract {
         fun loadFailMessage()
 
         fun loadFailMessage(message: String)
+
+        fun loadDetailUser(userName: String)
     }
     interface Presenter {
         fun loadGithubUser()

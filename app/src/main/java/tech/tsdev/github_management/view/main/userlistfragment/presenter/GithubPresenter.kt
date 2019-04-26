@@ -17,6 +17,12 @@ class GithubPresenter(
     var isLoading = true
     var since = 30
 
+    init{
+        userRecyclerModel.onClick = { position ->
+            view.loadDetailUser(userRecyclerModel.getItem(position).login)
+        }
+    }
+
     override fun loadGithubUser() {
         isLoading = true
 

@@ -11,8 +11,10 @@ class UserListRecyclerAdapter(private val context: Context?) : RecyclerView.Adap
 
     val list = mutableListOf<UserListData>()
 
+    override lateinit var onClick: (Int) -> Unit
+
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder {
-        return UserRecyclerHolder(context!!, parent)
+        return UserRecyclerHolder(onClick, context!!, parent)
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as? UserRecyclerHolder)?.onBind(list[position])

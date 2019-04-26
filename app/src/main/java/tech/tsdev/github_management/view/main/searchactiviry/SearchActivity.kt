@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.view.main.searchactiviry
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -11,11 +12,20 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_search.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.ui.modules.detail.DetailActivity
 import tech.tsdev.github_management.view.main.searchactiviry.adapter.SearchRecyclerAdapter
 import tech.tsdev.github_management.view.main.searchactiviry.presenter.SearchContract
 import tech.tsdev.github_management.view.main.searchactiviry.presenter.SearchPresenter
 
 class SearchActivity : AppCompatActivity(), SearchContract.View {
+
+    override fun loadDetailActivity(userName: String) {
+        Intent(this, DetailActivity::class.java).apply {
+            putExtra("userName", userName)
+            startActivity(this)
+        }
+    }
+
     override fun loadErrorMessage() {
         Toast.makeText(this, "로드 실패", Toast.LENGTH_SHORT).show()
     }
@@ -101,5 +111,6 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
         btn_back.setOnClickListener {
             finish()
         }
+
     }
 }

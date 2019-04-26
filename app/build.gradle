@@ -11,7 +11,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "tech.tsdev.github_management"
-        minSdkVersion 28
+        minSdkVersion 26
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -58,4 +58,10 @@ dependencies {
     //    MetrialIO Use
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    //BottomSheet apply
+    implementation 'com.flipboard:bottomsheet-core:1.5.3'
+
+    //scrollable apply
+    implementation 'ru.noties:scrollable:1.3.0'
 }

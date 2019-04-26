@@ -13,13 +13,15 @@ class SearchRecyclerAdapter(val context: Context) : RecyclerView.Adapter<Recycle
 
     private val list = mutableListOf<Item>()
 
+    override lateinit var onClick: (Int) -> Unit
+
 
     override fun clearItem() = list.clear()
 
     override fun getItemCount(): Int = list.size
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder {
-        return SearchRecyclerHolder(context, parent)
+        return SearchRecyclerHolder(onClick, context, parent)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

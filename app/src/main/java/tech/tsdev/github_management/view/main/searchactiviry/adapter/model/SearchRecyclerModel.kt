@@ -12,4 +12,6 @@ interface SearchRecyclerModel {
     fun addItem(itemData: Item)
 
     fun clearItem()
+
+    var onClick: (Int) -> Unit
 }

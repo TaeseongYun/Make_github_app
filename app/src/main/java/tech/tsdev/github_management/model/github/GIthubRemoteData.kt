@@ -1,7 +1,9 @@
 package tech.tsdev.github_management.model.github
 
 import retrofit2.Call
+import tech.tsdev.github_management.model.Repository
 import tech.tsdev.github_management.model.SearchUserData
+import tech.tsdev.github_management.model.SingleUser
 import tech.tsdev.github_management.network.GithubInterface
 import tech.tsdev.github_management.network.createRetrofit
 
@@ -19,5 +21,9 @@ class GIthubRemoteData : GIthubDataSource {
 
     override fun searchUserList(userName: String): Call<SearchUserData> = githubUserList.searchUsers(userName)
 
+    override fun getFollowers(username: String): Call<List<SearchUserData>> = githubUserList.getFollowers(username)
 
+    override fun getUsersRepo(username: String): Call<List<Repository>> = githubUserList.getRepo(username)
+
+    override fun getSingleUser(userName: String): Call<SingleUser> = githubUserList.getSingleUser(userName)
 }

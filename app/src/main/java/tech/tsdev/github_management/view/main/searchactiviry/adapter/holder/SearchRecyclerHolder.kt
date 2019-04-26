@@ -11,22 +11,22 @@ import tech.tsdev.github_management.model.Item
 
 
 
-class SearchRecyclerHolder(context: Context, parent: ViewGroup) : RecyclerView.ViewHolder(
+class SearchRecyclerHolder(onClick:(Int) -> Unit, context: Context, parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(context).inflate(R.layout.user_search_item, parent, false)
 ) {
 
+    init {
+        itemView.setOnClickListener {
+            onClick(adapterPosition)
+        }
+    }
 
     fun onBind(itemData: Item) {
         itemView.onBind(itemData)
     }
 
-    fun View.onBind(itemData: Item) {
-
-        img_user.proflieImageLoad(itemData.avatar_url)
-        tv_user_name.text = itemData.login
-        tv_repo_many.text = itemData.repos_url
-        tv_star_many.text = itemData.starred_url
-        user_follows.text = itemData.followers_url
-
+    private fun View.onBind(itemData: Item) {
+        img_github_search_user.proflieImageLoad(itemData.avatarUrl)
+        tv_github_user_name.text = itemData.login
     }
 }

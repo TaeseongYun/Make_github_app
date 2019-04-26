@@ -1,7 +1,9 @@
 package tech.tsdev.github_management.model.github
 
 import retrofit2.Call
+import tech.tsdev.github_management.model.Repository
 import tech.tsdev.github_management.model.SearchUserData
+import tech.tsdev.github_management.model.SingleUser
 import tech.tsdev.github_management.model.UserListData
 
 interface GIthubDataSource {
@@ -14,5 +16,9 @@ interface GIthubDataSource {
 
 
     //유저 검색, 유저목록의 팔로우 수 함수
+    fun getFollowers(username: String): Call<List<SearchUserData>>
 
+    fun getUsersRepo(username: String): Call<List<Repository>>
+
+    fun getSingleUser(userName: String): Call<SingleUser>
 }

@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.view.main.userlistfragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -10,12 +11,21 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.userlist_fragment.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.ui.modules.detail.DetailActivity
 import tech.tsdev.github_management.view.main.userlistfragment.adapter.UserListRecyclerAdapter
 import tech.tsdev.github_management.view.main.userlistfragment.presenter.GithubContract
 import tech.tsdev.github_management.view.main.userlistfragment.presenter.GithubPresenter
 
 
 class GithubFragment : Fragment(), GithubContract.View {
+    override fun loadDetailUser(userName: String) {
+        Intent(context, DetailActivity::class.java).apply {
+            putExtra("userName", userName)
+            startActivity(this)
+        }
+    }
+
+
     override fun showProgressbar() {
 
     }

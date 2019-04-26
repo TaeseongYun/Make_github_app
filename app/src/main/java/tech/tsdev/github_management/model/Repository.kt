@@ -2,8 +2,13 @@ package tech.tsdev.github_management.model
 
 import com.google.gson.annotations.SerializedName
 
-data class UserListData(
-    @SerializedName("avatar_url") val avatarUrl: String,
+data class Repository(
+    val owner: Owner,
+    @SerializedName("stargazers_count") val numberStars: Int
+)
+
+data class Owner(
+    val avatar_url: String,
     val events_url: String,
     val followers_url: String,
     val following_url: String,
@@ -21,4 +26,10 @@ data class UserListData(
     val subscriptions_url: String,
     val type: String,
     val url: String
+)
+
+data class Permissions(
+    val admin: Boolean,
+    val pull: Boolean,
+    val push: Boolean
 )
