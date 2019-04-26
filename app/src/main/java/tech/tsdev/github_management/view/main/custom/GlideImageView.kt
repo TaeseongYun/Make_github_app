@@ -15,7 +15,7 @@ class GlideImageView @JvmOverloads constructor(context: Context, attrs: Attribut
         Glide.with(this)
             .load(url)
             .placeholder(loadingImagRes)
-            .apply( RequestOptions.circleCropTransform() )
+            .apply( RequestOptions.circleCropTransform())
             .into(this)
     }
 }

@@ -8,8 +8,9 @@ import tech.tsdev.github_management.network.createRetrofit
 class GIthubRemoteData : GIthubDataSource {
 
 
+
     companion object {
-        val GITHUB_URL = "https://api.github.com"
+        const val GITHUB_URL = "https://api.github.com"
     }
 
     private val githubUserList = createRetrofit(GithubInterface::class.java, GITHUB_URL)
@@ -17,5 +18,6 @@ class GIthubRemoteData : GIthubDataSource {
     override fun loadUserList(since: Int) = githubUserList.userList(since)
 
     override fun searchUserList(userName: String): Call<SearchUserData> = githubUserList.searchUsers(userName)
+
 
 }

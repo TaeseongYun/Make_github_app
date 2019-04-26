@@ -3,6 +3,7 @@ package tech.tsdev.github_management.network
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Path
 import retrofit2.http.Query
 import tech.tsdev.github_management.BuildConfig
 import tech.tsdev.github_management.model.SearchUserData
@@ -21,4 +22,8 @@ interface GithubInterface {
     fun searchUsers(
         @Query("q") userName: String
     ): Call<SearchUserData>
+
+    //깃허브 팔로우수 보이게 하는 retrofit 함수
+
+
 }
