@@ -23,4 +23,8 @@
     <string name="repository">REPOSITORY</string>
     <string name="followers">FOLLOWERS</string>
     <string name="following">FOLLOWING</string>
+
+
+    <!--User OverView-->
+    <string name="email">E-MAIL</string>
 </resources>

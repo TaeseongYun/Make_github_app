@@ -17,9 +17,14 @@ class DetailUserOverviewPresenter(val view: DetailUserOverviewContract.View,
 
             override fun onResponse(call: Call<SingleUser>, response: Response<SingleUser>) {
                 if(response.isSuccessful) {
-                    response.body()?.let {
-
-                    }
+                    response.body()?.let { singleUser ->
+                        view.loadUserDetailView(
+                            singleUser.login,
+                            singleUser.name,
+                            singleUser.avatarUrl,
+                            singleUser.email
+                        )
+                    } ?: let { view.showFailMessage(response.errorBody().toString()) }
                 }
             }
 

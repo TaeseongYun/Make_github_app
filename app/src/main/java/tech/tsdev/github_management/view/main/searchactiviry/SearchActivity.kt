@@ -3,6 +3,7 @@ package tech.tsdev.github_management.view.main.searchactiviry
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
@@ -13,19 +14,20 @@ import kotlinx.android.synthetic.main.activity_search.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.DetailActivity
+import tech.tsdev.github_management.ui.modules.detail.overview.DetailUserOverviewFragment
 import tech.tsdev.github_management.view.main.searchactiviry.adapter.SearchRecyclerAdapter
 import tech.tsdev.github_management.view.main.searchactiviry.presenter.SearchContract
 import tech.tsdev.github_management.view.main.searchactiviry.presenter.SearchPresenter
 
 class SearchActivity : AppCompatActivity(), SearchContract.View {
 
+    companion object {
+        const val USER_NAME = "userName"
+    }
     override fun loadDetailActivity(userName: String) {
 
-        //프래그 먼트에 넘겨줄 값
-        Bundle().putString("userName",userName)
-
         Intent(this, DetailActivity::class.java).apply {
-            putExtra("userName", userName)
+            putExtra(USER_NAME, userName)
             startActivity(this)
         }
     }

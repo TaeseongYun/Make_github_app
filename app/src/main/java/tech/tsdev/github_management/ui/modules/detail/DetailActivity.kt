@@ -7,26 +7,17 @@ import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.toolbar_user_info.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.ui.modules.detail.adapter.DetailViewPagerAdapter
-import tech.tsdev.github_management.ui.modules.detail.overview.presenter.DetailUserOverviewContract
+import tech.tsdev.github_management.view.main.searchactiviry.SearchActivity
 
-class DetailActivity : AppCompatActivity(), DetailUserOverviewContract.View {
+class DetailActivity : AppCompatActivity() {
+
+
 
     private val viewAdapter: DetailViewPagerAdapter by lazy {
         DetailViewPagerAdapter(supportFragmentManager)
     }
-    override fun showFailMessage() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-    override fun showFailMessage(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun loadUserDetailView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun addTablayoutItem() {
+    private fun addTabLayoutItem() {
         tab_layout.addTab(tab_layout.newTab().setText(R.string.overview))
         tab_layout.addTab(tab_layout.newTab().setText(R.string.repository))
         tab_layout.addTab(tab_layout.newTab().setText(R.string.followers))
@@ -38,13 +29,17 @@ class DetailActivity : AppCompatActivity(), DetailUserOverviewContract.View {
         setContentView(R.layout.activity_detail)
 
 
-        tv_user_name.text = intent.getStringExtra("userName")
+        tv_user_name.text = intent.getStringExtra( SearchActivity.USER_NAME )
 
-        addTablayoutItem()
+
+
+        println("userName -> ${intent.getStringExtra( SearchActivity.USER_NAME )}")
+        addTabLayoutItem()
 
         img_close_btn.setOnClickListener {
             finish()
         }
+
 
 
         // 뷰페이저에서 어뎁터 붙혀주고 addOnPageChangeListener 는 페이지가 변경 될때 Tab도 같이 변하게 묶어주는 리스너
