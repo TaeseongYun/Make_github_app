@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.userlist_fragment.*
+import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.DetailActivity
@@ -27,19 +28,21 @@ class GithubFragment : Fragment(), GithubContract.View {
 
 
     override fun showProgressbar() {
-
+        progress_layout.visibility = View.VISIBLE
+        user_recycler_view.visibility = View.GONE
     }
 
     override fun dissmissProgressbar() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progress_layout.visibility = View.GONE
+        user_recycler_view.visibility = View.VISIBLE
     }
 
     override fun loadFailMessage() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        toast("로드에 실패 하였습니다.")
     }
 
     override fun loadFailMessage(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        toast(message)
     }
 
     private val userRecyclerAdapter: UserListRecyclerAdapter by lazy {
@@ -70,6 +73,11 @@ class GithubFragment : Fragment(), GithubContract.View {
         user_recycler_view.removeOnScrollListener(onScrollListener)
     }
 
+    override fun onPause() {
+        super.onPause()
+
+        showProgressbar()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.userlist_fragment, container, false)

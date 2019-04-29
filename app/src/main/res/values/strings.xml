@@ -16,4 +16,11 @@
     <string name="follows_many">Follows :</string>
 
     <string name="powered_by_github">powered by Github</string>
+
+
+    <!--tablayout-->
+    <string name="overview">OVERVIEW</string>
+    <string name="repository">REPOSITORY</string>
+    <string name="followers">FOLLOWERS</string>
+    <string name="following">FOLLOWING</string>
 </resources>
