@@ -73,12 +73,11 @@ class GithubFragment : Fragment(), GithubContract.View {
         user_recycler_view.removeOnScrollListener(onScrollListener)
     }
 
-    override fun onPause() {
-        super.onPause()
 
-        showProgressbar()
+    override fun onResume() {
+        super.onResume()
+        dissmissProgressbar()
     }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.userlist_fragment, container, false)
 

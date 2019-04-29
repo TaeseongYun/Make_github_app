@@ -20,6 +20,10 @@ import tech.tsdev.github_management.view.main.searchactiviry.presenter.SearchPre
 class SearchActivity : AppCompatActivity(), SearchContract.View {
 
     override fun loadDetailActivity(userName: String) {
+
+        //프래그 먼트에 넘겨줄 값
+        Bundle().putString("userName",userName)
+
         Intent(this, DetailActivity::class.java).apply {
             putExtra("userName", userName)
             startActivity(this)
