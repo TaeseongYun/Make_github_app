@@ -8,10 +8,13 @@ interface DetailUserOverviewContract {
         fun showFailMessage(message: String)
 
         fun loadUserDetailView(
-            userLogin: String,
-            userName: String,
-            userAvatar: String,
-            userEmail: String
+            userLogin: String?,
+            userName: String? = "Empty User Name",
+            userAvatar: String?,
+            userEmail: String? = "Empty Email",
+            userDescription: String?,
+            userFollowers: Int,
+            userFollowings: Int
         )
     }
 

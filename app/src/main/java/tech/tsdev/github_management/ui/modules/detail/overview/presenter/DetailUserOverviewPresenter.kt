@@ -22,7 +22,10 @@ class DetailUserOverviewPresenter(val view: DetailUserOverviewContract.View,
                             singleUser.login,
                             singleUser.name,
                             singleUser.avatarUrl,
-                            singleUser.email
+                            singleUser.email,
+                            singleUser.bio,
+                            singleUser.followers,
+                            singleUser.following
                         )
                     } ?: let { view.showFailMessage(response.errorBody().toString()) }
                 }

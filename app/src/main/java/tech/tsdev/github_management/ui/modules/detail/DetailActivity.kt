@@ -1,12 +1,20 @@
 package tech.tsdev.github_management.ui.modules.detail
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentStatePagerAdapter
+import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.toolbar_user_info.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.ui.modules.detail.adapter.DetailViewPagerAdapter
+import tech.tsdev.github_management.ui.modules.detail.followers.DetailUserFollwersFragment
+import tech.tsdev.github_management.ui.modules.detail.following.DetailUserFollwingFragment
+import tech.tsdev.github_management.ui.modules.detail.overview.DetailUserOverviewFragment
+import tech.tsdev.github_management.ui.modules.detail.repo.DetailUserRepoFragment
 import tech.tsdev.github_management.view.main.searchactiviry.SearchActivity
 
 class DetailActivity : AppCompatActivity() {
@@ -14,7 +22,7 @@ class DetailActivity : AppCompatActivity() {
 
 
     private val viewAdapter: DetailViewPagerAdapter by lazy {
-        DetailViewPagerAdapter(supportFragmentManager)
+        DetailViewPagerAdapter(supportFragmentManager, this)
     }
 
     private fun addTabLayoutItem() {
@@ -34,6 +42,7 @@ class DetailActivity : AppCompatActivity() {
 
 
         println("userName -> ${intent.getStringExtra( SearchActivity.USER_NAME )}")
+
         addTabLayoutItem()
 
         img_close_btn.setOnClickListener {
@@ -63,5 +72,34 @@ class DetailActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    inner class DetailViewPagerAdapter(fm: FragmentManager, val context: Context) : FragmentStatePagerAdapter(fm) {
+
+
+        override fun getItem(position: Int): Fragment? =
+            when (position) {
+                0 -> {
+                    DetailUserOverviewFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("fragmentUserName", intent.getStringExtra("userName"))
+                        }
+                    }
+                }
+                1 -> DetailUserRepoFragment()
+                2 -> DetailUserFollwersFragment()
+                3 -> DetailUserFollwingFragment()
+                else -> null
+            }
+
+
+
+
+        override fun getCount(): Int = 4
+
+        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+            super.destroyItem(container, position, `object`)
+        }
+
     }
 }

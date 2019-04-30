@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.view.main.searchactiviry
 
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -22,14 +23,18 @@ import tech.tsdev.github_management.view.main.searchactiviry.presenter.SearchPre
 class SearchActivity : AppCompatActivity(), SearchContract.View {
 
     companion object {
-        const val USER_NAME = "userName"
+        val USER_NAME = "userName"
+
+        fun getIntent(context: Context, userName: String): Intent {
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra(USER_NAME, userName)
+            return intent
+        }
     }
     override fun loadDetailActivity(userName: String) {
 
-        Intent(this, DetailActivity::class.java).apply {
-            putExtra(USER_NAME, userName)
-            startActivity(this)
-        }
+        startActivity(getIntent(this, userName))
+
     }
 
     override fun loadErrorMessage() {
@@ -119,4 +124,5 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
         }
 
     }
+
 }

@@ -1,6 +1,6 @@
 package tech.tsdev.github_management.ui.modules.detail.overview
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.overview.presenter.DetailUserOverviewContract
 import tech.tsdev.github_management.ui.modules.detail.overview.presenter.DetailUserOverviewPresenter
+import tech.tsdev.github_management.view.main.searchactiviry.SearchActivity
 
 class DetailUserOverviewFragment : Fragment(), DetailUserOverviewContract.View {
 
@@ -30,22 +31,36 @@ class DetailUserOverviewFragment : Fragment(), DetailUserOverviewContract.View {
         toast(message)
     }
 
-    override fun loadUserDetailView(userLogin: String, userName: String, userAvatar: String, userEmail: String) {
+    override fun loadUserDetailView(
+        userLogin: String?, userName: String?,
+        userAvatar: String?, userEmail: String?, userDescription: String?,
+        userFollowers: Int, userFollowings: Int
+    ) {
         detail_user_email.text = userEmail
-        detail_user_img.proflieImageLoad(userAvatar)
+        userAvatar?.let { detail_user_img.proflieImageLoad(it) }
         detail_user_name.text = userName
         detail_user_login_name.text = userLogin
+        detail_user_description.text = userDescription
+        detail_user_followersN.text = userFollowers.toString()
+        detail_user_followingN.text = userFollowings.toString()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         println("get String value1 -> ${arguments?.getString("fragmentUserName")}")
+        println("get String value3 -> ${arguments?.getString("fragmentUserName")}")
         return inflater.inflate(R.layout.detail_user_overview, container, false)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.getString(SearchActivity.USER_NAME)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        println("get String 값2 -> ${arguments?.getString("fragmentUserName") }")
-//        detailUserOverviewPresneter.loadUserOverView(arguments?.getString("fragmentUserName")!!)
+        println("get String 값2 -> ${arguments?.getString("fragmentUserName")}")
+        arguments?.getString("fragmentUserName")?.let { detailUserOverviewPresneter.loadUserOverView(it) }
     }
 }

@@ -1,4 +1,4 @@
-package tech.tsdev.github_management
+package tech.tsdev.github_management.view.main
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
+import tech.tsdev.github_management.R
 import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.myfragment.MyFragment
 import tech.tsdev.github_management.view.main.searchactiviry.SearchActivity
