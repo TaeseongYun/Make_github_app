@@ -56,7 +56,7 @@
                   app:layout_constraintEnd_toEndOf="parent"
                   android:id="@+id/linearLayout" android:layout_marginTop="116dp"
                   app:layout_constraintTop_toBottomOf="@+id/detail_user_description"
-                  app:layout_constraintHorizontal_bias="0.0">
+                  android:background="@drawable/bg_topline_black">
         <tech.tsdev.github_management.view.main.custom.GlideImageView
                 android:layout_gravity="center"
                 android:layout_width="40dp"

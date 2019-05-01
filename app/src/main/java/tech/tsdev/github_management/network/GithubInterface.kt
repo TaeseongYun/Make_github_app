@@ -1,10 +1,7 @@
 package tech.tsdev.github_management.network
 
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 import tech.tsdev.github_management.BuildConfig
 import tech.tsdev.github_management.model.Repository
 import tech.tsdev.github_management.model.SearchUserData
@@ -48,4 +45,5 @@ interface GithubInterface {
     fun getSingleUser(
         @Path("username") username: String
     ): Call<SingleUser>
+
 }

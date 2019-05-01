@@ -10,7 +10,8 @@ object GithubRepository : GIthubDataSource{
 
     private val githubRemotedata = GIthubRemoteData()
 
-    override fun loadUserList(since: Int): Call<List<UserListData>> = githubRemotedata.loadUserList(since)
+    override fun loadUserList( since: Int): Call<List<UserListData>>
+            = githubRemotedata.loadUserList( since)
 
     override fun searchUserList(userName: String): Call<SearchUserData> = githubRemotedata.searchUserList(userName)
 

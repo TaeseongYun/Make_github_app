@@ -31,4 +31,12 @@
     <string name="followingsN">N</string>
     <string name="followerN">N</string>
     <string name="location">Location</string>
+
+
+    <!--MyFragment-->
+    <string name="whatsName">What`s ur Name?</string>
+    <string name="alertDialogTitle">Input Ur Name</string>
+    <string name="user_input_name">유저 이름을 입력하세요</string>
+    <string name="dialog_ok">확인</string>
+    <string name="dialog_cancel">취소</string>
 </resources>

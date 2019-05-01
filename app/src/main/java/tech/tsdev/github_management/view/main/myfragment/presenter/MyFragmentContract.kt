@@ -13,6 +13,6 @@ interface MyFragmentContract {
     }
 
     interface Presneter{
-        fun githubLoginWithCridential(auth: FirebaseAuth, credential: AuthCredential)
+
     }
 }

@@ -1,22 +1,23 @@
 package tech.tsdev.github_management.view.main.myfragment
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GithubAuthProvider
 import kotlinx.android.synthetic.main.my_info_fragment.*
 import tech.tsdev.github_management.BuildConfig
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.ui.modules.detail.dialog.CustomDialog
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentContract
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentPresenter
 
 class MyFragment : Fragment(), MyFragmentContract.View {
 
-    private lateinit var auth: FirebaseAuth
+
 
 
     override fun loadViewToastMessage() {
@@ -40,32 +41,12 @@ class MyFragment : Fragment(), MyFragmentContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.my_info_fragment, container, false).apply {
-            auth = FirebaseAuth.getInstance()
-        }
+        inflater.inflate(R.layout.my_info_fragment, container, false)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-        textView.setText(arguments?.getInt(KEY_TITLE) ?: 0)
-
-        btn_git_sign_in.setOnClickListener {
-            myFragmentPresenter.githubLoginWithCridential(auth, GithubAuthProvider.getCredential(GITHUB_TOKEN))
-        }
-
-        btn_git_sign_out.setOnClickListener {
-            auth.signOut()
-        }
-
+        name_input.setOnClickListener { CustomDialog(this@MyFragment.context!!).show() }
     }
-
-    override fun onStart() {
-        super.onStart()
-
-        auth.addAuthStateListener {  }
-    }
-
 }

@@ -17,7 +17,7 @@ class GIthubRemoteData : GIthubDataSource {
 
     private val githubUserList = createRetrofit(GithubInterface::class.java, GITHUB_URL)
 
-    override fun loadUserList(since: Int) = githubUserList.userList(since)
+    override fun loadUserList( since: Int) = githubUserList.userList( since)
 
     override fun searchUserList(userName: String): Call<SearchUserData> = githubUserList.searchUsers(userName)
 

@@ -77,6 +77,7 @@ class DetailActivity : AppCompatActivity() {
     inner class DetailViewPagerAdapter(fm: FragmentManager, val context: Context) : FragmentStatePagerAdapter(fm) {
 
 
+
         override fun getItem(position: Int): Fragment? =
             when (position) {
                 0 -> {

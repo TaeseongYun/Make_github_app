@@ -11,16 +11,7 @@ class MyFragmentPresenter(
 ) : MyFragmentContract.Presneter {
 
 
-    override fun githubLoginWithCridential(auth: FirebaseAuth, credential: AuthCredential) {
-        auth.signInWithCredential(credential).addOnCompleteListener {
 
-            view.loadViewToastMessage()
-
-        }.addOnFailureListener {
-
-            view.loadFailToastMessage()
-        }
-    }
 
 
 }
