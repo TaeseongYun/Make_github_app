@@ -11,13 +11,15 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".view.main.activity.NameInputActivity">
+        </activity>
         <activity android:name=".ui.modules.detail.DetailActivity">
         </activity>
         <activity android:name=".ui.modules.search.SearchActivity">
         </activity>
         <activity android:name=".view.main.searchactiviry.SearchActivity">
         </activity>
-        <activity android:name=".view.main.MainActivity">
+        <activity android:name=".view.main.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

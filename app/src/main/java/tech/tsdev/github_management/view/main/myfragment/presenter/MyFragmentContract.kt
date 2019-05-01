@@ -9,10 +9,15 @@ interface MyFragmentContract {
     interface View{
         fun loadViewToastMessage()
 
-        fun loadFailToastMessage()
+        fun loadFailToastMessage(message: String)
+
+        fun updateUserInfo()
+
+        fun dismissORshowInputUserLayout()
+
     }
 
     interface Presneter{
-
+        fun inputUserNameLoad(userName: String?)
     }
 }

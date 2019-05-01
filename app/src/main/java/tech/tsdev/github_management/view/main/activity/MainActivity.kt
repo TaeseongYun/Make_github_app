@@ -1,12 +1,14 @@
-package tech.tsdev.github_management.view.main
+package tech.tsdev.github_management.view.main.activity
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.ui.modules.detail.dialog.CustomDialog
 import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.myfragment.MyFragment
 import tech.tsdev.github_management.view.main.searchactiviry.SearchActivity
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private val myGithubFragment : MyFragment by lazy {
         MyFragment().apply {
             arguments = Bundle().apply {
-                putInt(MyFragment.KEY_TITLE, R.string.github_me)
+                putString("userName", CustomDialog(this@MainActivity).inputUserName)
             }
         }
     }
@@ -39,14 +41,17 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId) {
             R.id.navigation_users -> {
                 replace(R.id.frame_layout, githubFragment)
+                app_bar.visibility = View.VISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_star -> {
                 replace(R.id.frame_layout, starFragment)
+                app_bar.visibility = View.VISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_me -> {
                 replace(R.id.frame_layout, myGithubFragment)
+                app_bar.visibility = View.GONE
                 return@OnNavigationItemSelectedListener true
             }
         }
