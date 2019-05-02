@@ -61,7 +61,7 @@ class MyFragment : Fragment(), MyFragmentContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        println("argument -> ${arguments?.getString("userName")}")
 
         name_input.setOnClickListener { customDialog.show() }
 

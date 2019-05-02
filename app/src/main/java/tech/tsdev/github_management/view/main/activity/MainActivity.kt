@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private val myGithubFragment : MyFragment by lazy {
         MyFragment().apply {
             arguments = Bundle().apply {
-                putString("userName", CustomDialog(this@MainActivity).inputUserName)
+                putString("userName", intent.getStringExtra("inputUserName"))
             }
         }
     }
