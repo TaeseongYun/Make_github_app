@@ -7,6 +7,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+
+        <!--TextInputEditText-->
+        <item name="colorControlNormal">#2196F3</item>
+        <item name="colorControlActivated">#ffffff</item>
     </style>
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
@@ -24,4 +29,6 @@
     </style>
 
     <style name="AppbarThemeDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+
 </resources>

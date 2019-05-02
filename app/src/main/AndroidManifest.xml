@@ -12,19 +12,22 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".view.main.activity.NameInputActivity">
-        </activity>
-        <activity android:name=".ui.modules.detail.DetailActivity">
-        </activity>
-        <activity android:name=".ui.modules.search.SearchActivity">
-        </activity>
-        <activity android:name=".view.main.searchactiviry.SearchActivity">
-        </activity>
-        <activity android:name=".view.main.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.modules.detail.DetailActivity">
+        </activity>
+        <activity android:name=".view.main.searchactiviry.SearchActivity">
+        </activity>
+        <activity android:name=".view.main.activity.MainActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
         </activity>
     </application>
 
