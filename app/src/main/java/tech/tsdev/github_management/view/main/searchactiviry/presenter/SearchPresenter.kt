@@ -28,15 +28,21 @@ class SearchPresenter(
         userSearchRepository.searchUserList(userName).enqueue(object : Callback<SearchUserData> {
             override fun onFailure(call: Call<SearchUserData>, t: Throwable) {
                 view.loadErrorMessage()
+
             }
 
             override fun onResponse(call: Call<SearchUserData>, response: Response<SearchUserData>) {
                 if (response.isSuccessful) {
                     response.body()?.let { searchUserData ->
-                        searchUserData.items.forEach { userData ->
-                            userSearchRecyclerView.addItem(userData)
+                        if (searchUserData.items.isNotEmpty()) {
+                            view.showSuccessLayout()
+                            searchUserData.items.forEach { userData ->
+                                userSearchRecyclerView.addItem(userData)
+                            }
+                        } else {
+                            view.showFailLayout()
                         }
-                    }
+                    } ?: let { view.showFailLayout() }
                     userSearchRecyclerView.notifyDataChanged()
                 } else {
                     view.loadErrorMessage(response.errorBody().toString())

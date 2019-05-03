@@ -58,4 +58,6 @@
 
     <!--BottomNavigation-->
     <string name="bbn_phone_view_behavior" ns1:ignore="UnusedResources" translatable="false">it.sephiroth.android.library.bottomnavigation.BottomBehavior</string>
+
+    <string name="query_is_nothing">Query is Nothing</string>
 </resources>

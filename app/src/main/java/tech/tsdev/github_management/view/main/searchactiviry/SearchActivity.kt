@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
@@ -12,15 +11,26 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.toolbar_search.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.DetailActivity
-import tech.tsdev.github_management.ui.modules.detail.overview.DetailUserOverviewFragment
 import tech.tsdev.github_management.view.main.searchactiviry.adapter.SearchRecyclerAdapter
 import tech.tsdev.github_management.view.main.searchactiviry.presenter.SearchContract
 import tech.tsdev.github_management.view.main.searchactiviry.presenter.SearchPresenter
 
 class SearchActivity : AppCompatActivity(), SearchContract.View {
+    override fun showSuccessLayout() {
+        linear_layout_github.visibility = View.GONE
+        search_recycler_view.visibility = View.VISIBLE
+        error_layout.visibility = View.GONE
+    }
+
+    override fun showFailLayout() {
+        error_layout.visibility = View.VISIBLE
+        search_recycler_view.visibility = View.GONE
+        linear_layout_github.visibility = View.GONE
+    }
 
     companion object {
         val USER_NAME = "userName"
@@ -109,8 +119,7 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
             addOnScrollListener(recyclerViewonScrollManager)
         }
         btn_search.setOnClickListener {
-            linear_layout_github.visibility = View.GONE
-            search_recycler_view.visibility = View.VISIBLE
+
 
             searchRecyclerAdapter.clearItem()
             searchPresenter.searchLoadUsers(et_search.text.toString())

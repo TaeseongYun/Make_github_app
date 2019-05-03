@@ -7,6 +7,10 @@ interface SearchContract {
         fun loadErrorMessage(message: String)
 
         fun loadDetailActivity(userName: String)
+
+        fun showFailLayout()
+
+        fun showSuccessLayout()
     }
 
     interface Presenter {
