@@ -31,4 +31,5 @@
     <dimen name="card_view_vertical_margin">4dp</dimen>
     <dimen name="card_view_corner_radius">2dp</dimen>
 
+    <integer name="anim_duration_long">500</integer>
 </resources>

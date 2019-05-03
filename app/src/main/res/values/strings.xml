@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:ns1="http://schemas.android.com/apk/res-auto">
     <string name="app_name">Github_Management</string>
 
     <string name="github_user">Users</string>
@@ -42,9 +42,20 @@
     <string name="joinDate">가입날짜</string>
 
 
+    <!--BottomNavigationLayout-->
+    <string name="bbn_fab_default_behavior" translatable="false">tech.tsdev.github_management.util.BottomNavigationBehavior</string>
+
+
     <string name="start">
         Start by name
     </string>
 
     <string name="require">Required</string>
+
+    <!--MainInputActivity-->
+    <string name="inputName">Powered by Github/Design by OpenHub</string>
+    <string name="copyRight">©CopyRight 2019 TS</string>
+
+    <!--BottomNavigation-->
+    <string name="bbn_phone_view_behavior" ns1:ignore="UnusedResources" translatable="false">it.sephiroth.android.library.bottomnavigation.BottomBehavior</string>
 </resources>

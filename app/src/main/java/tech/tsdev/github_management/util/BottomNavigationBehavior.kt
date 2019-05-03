@@ -9,7 +9,7 @@ import java.lang.Math.max
 import java.lang.Math.min
 
 
-class BottomNavigationBehaviour<V : View>(context: Context, attrs: AttributeSet) :
+class BottomNavigationBehavior<V : View>(context: Context, attrs: AttributeSet) :
     CoordinatorLayout.Behavior<V>(context, attrs) {
 
     override fun onStartNestedScroll(

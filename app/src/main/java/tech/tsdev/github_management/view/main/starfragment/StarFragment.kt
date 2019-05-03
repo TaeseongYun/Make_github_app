@@ -20,6 +20,6 @@ class StarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        name_input.setText(arguments?.getInt(KEY_TITLE) ?: 0)
+
     }
 }

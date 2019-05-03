@@ -26,7 +26,7 @@ class GithubPresenter(
 
     override fun loadGithubUser() {
         isLoading = true
-        view.dissmissProgressbar()
+//        view.dissmissProgressbar()
         githubRepository.loadUserList(since).enqueue(object : Callback<List<UserListData>> {
             override fun onFailure(call: Call<List<UserListData>>, t: Throwable) {
                 isLoading = false
@@ -48,9 +48,10 @@ class GithubPresenter(
                     }
                     since += 10
                 } else {
-                    view.dissmissProgressbar()
+                    view.loadFailMessage()
 
                 }
+                view.dissmissProgressbar()
                 isLoading = false
             }
 

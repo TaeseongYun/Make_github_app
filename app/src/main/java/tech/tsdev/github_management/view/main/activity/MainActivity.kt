@@ -5,10 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.view.View
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_bottom_navigation.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.ui.modules.detail.dialog.CustomDialog
 import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.myfragment.MyFragment
 import tech.tsdev.github_management.view.main.searchactiviry.SearchActivity
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.navigation_star -> {
                 replace(R.id.frame_layout, starFragment)
-                app_bar.visibility = View.VISIBLE
+                app_bar.visibility = View.GONE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_me -> {

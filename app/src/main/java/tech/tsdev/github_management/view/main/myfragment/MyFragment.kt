@@ -25,10 +25,10 @@ class MyFragment : Fragment(), MyFragmentContract.View {
 
     override fun dismissORshowInputUserLayout() {
         if ( arguments == null ) {
-            name_input.visibility = View.VISIBLE
+
             user_detail_view.visibility = View.GONE
         } else {
-            name_input.visibility = View.GONE
+
             user_detail_view.visibility = View.VISIBLE
         }
     }
@@ -63,7 +63,7 @@ class MyFragment : Fragment(), MyFragmentContract.View {
 
         println("argument -> ${arguments?.getString("userName")}")
 
-        name_input.setOnClickListener { customDialog.show() }
+//        name_input.setOnClickListener { customDialog.show() }
 
         customDialog.setOnDismissListener {
             myFragmentPresenter.inputUserNameLoad(customDialog.inputUserName)
