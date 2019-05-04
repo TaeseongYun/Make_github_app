@@ -2,7 +2,8 @@
 
 <android.support.design.widget.AppBarLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior=".util.ToolbarBehaviour" android:background="@drawable/bg_round_appbar">
 
@@ -52,4 +53,14 @@
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
+    <android.support.design.widget.TabLayout android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                             android:background="?colorPrimary"
+                                             app:tabGravity="fill"
+                                             app:tabMode="scrollable"
+                                             app:tabSelectedTextColor="?colorAccent"
+                                             app:tabTextColor="?colorPrimaryDark"
+                                             android:id="@+id/search_tab_layout"
+                                             android:paddingStart="@dimen/key_line_1"
+                                             android:clipToPadding="false" tools:ignore="RtlSymmetry"/>
 </android.support.design.widget.AppBarLayout>

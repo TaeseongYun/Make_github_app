@@ -32,4 +32,6 @@
     <dimen name="card_view_corner_radius">2dp</dimen>
 
     <integer name="anim_duration_long">500</integer>
+
+    <dimen name="key_line_1">72dp</dimen>
 </resources>

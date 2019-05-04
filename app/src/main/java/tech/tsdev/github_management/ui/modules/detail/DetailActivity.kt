@@ -11,11 +11,11 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.toolbar_user_info.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.ui.modules.detail.followers.DetailUserFollwersFragment
-import tech.tsdev.github_management.ui.modules.detail.following.DetailUserFollwingFragment
-import tech.tsdev.github_management.ui.modules.detail.overview.DetailUserOverviewFragment
-import tech.tsdev.github_management.ui.modules.detail.repo.DetailUserRepoFragment
-import tech.tsdev.github_management.view.main.searchactiviry.SearchActivity
+import tech.tsdev.github_management.ui.modules.detail.user.followers.DetailUserFollwersFragment
+import tech.tsdev.github_management.ui.modules.detail.user.following.DetailUserFollwingFragment
+import tech.tsdev.github_management.ui.modules.detail.user.overview.DetailUserOverviewFragment
+import tech.tsdev.github_management.ui.modules.detail.user.repo.DetailUserRepoFragment
+import tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.SearchActivity
 
 class DetailActivity : AppCompatActivity() {
 

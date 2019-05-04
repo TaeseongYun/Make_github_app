@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".ui.modules.detail.DetailActivity">
         </activity>
-        <activity android:name=".view.main.searchactiviry.SearchActivity">
+        <activity android:name="tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.SearchActivity">
         </activity>
         <activity android:name=".view.main.activity.MainActivity">
             <!--<intent-filter>-->

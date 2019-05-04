@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.my_info_fragment.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
-import tech.tsdev.github_management.ui.modules.detail.dialog.CustomDialog
+import tech.tsdev.github_management.ui.modules.detail.user.dialog.CustomDialog
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentContract
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentPresenter
 

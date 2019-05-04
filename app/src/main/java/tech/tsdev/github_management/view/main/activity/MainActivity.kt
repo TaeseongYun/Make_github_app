@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.toolbar_main.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.myfragment.MyFragment
-import tech.tsdev.github_management.view.main.searchactiviry.SearchActivity
+import tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.SearchActivity
 import tech.tsdev.github_management.view.main.starfragment.StarFragment
 import tech.tsdev.github_management.view.main.userlistfragment.GithubFragment
 
