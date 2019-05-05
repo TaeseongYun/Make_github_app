@@ -6,6 +6,6 @@ interface SearchUserContract {
     }
 
     interface Presenter {
-
+        fun getSearchUserForQuery(userName: String)
     }
 }
