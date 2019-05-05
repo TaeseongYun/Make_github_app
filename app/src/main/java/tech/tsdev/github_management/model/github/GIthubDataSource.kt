@@ -1,10 +1,7 @@
 package tech.tsdev.github_management.model.github
 
 import retrofit2.Call
-import tech.tsdev.github_management.model.Repository
-import tech.tsdev.github_management.model.SearchUserData
-import tech.tsdev.github_management.model.SingleUser
-import tech.tsdev.github_management.model.UserListData
+import tech.tsdev.github_management.model.*
 
 interface GIthubDataSource {
 
@@ -21,4 +18,6 @@ interface GIthubDataSource {
     fun getUsersRepo(username: String): Call<List<Repository>>
 
     fun getSingleUser(userName: String): Call<SingleUser>
+
+    fun getSearchRepo(searchQuery: String): Call<SearchRepoData>
 }

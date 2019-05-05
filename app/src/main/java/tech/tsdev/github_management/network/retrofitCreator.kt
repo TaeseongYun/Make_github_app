@@ -14,6 +14,8 @@ fun <T>createRetrofit(cls: Class<T>, url: String): T {
         .create(cls)
 }
 
+
+//Json 받아온 결과를 콘솔창에다 찍어줌
 fun clientOkHttp(): OkHttpClient {
     val builder = OkHttpClient.Builder()
     builder.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))

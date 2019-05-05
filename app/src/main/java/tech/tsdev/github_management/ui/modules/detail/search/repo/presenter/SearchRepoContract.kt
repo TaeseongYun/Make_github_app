@@ -6,6 +6,6 @@ interface SearchRepoContract {
     }
 
     interface Presenter {
-
+        fun loadRepoBasedSearchSentense(repoName: String)
     }
 }

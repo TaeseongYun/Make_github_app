@@ -3,10 +3,7 @@ package tech.tsdev.github_management.network
 import retrofit2.Call
 import retrofit2.http.*
 import tech.tsdev.github_management.BuildConfig
-import tech.tsdev.github_management.model.Repository
-import tech.tsdev.github_management.model.SearchUserData
-import tech.tsdev.github_management.model.SingleUser
-import tech.tsdev.github_management.model.UserListData
+import tech.tsdev.github_management.model.*
 
 interface GithubInterface {
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
@@ -45,5 +42,13 @@ interface GithubInterface {
     fun getSingleUser(
         @Path("username") username: String
     ): Call<SingleUser>
+
+
+    //레파지토리 검색 함수
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET("/search/repositories")
+    fun getSearchRepoResult(
+        @Query("q") searchRepo: String
+    ): Call<SearchRepoData>
 
 }
