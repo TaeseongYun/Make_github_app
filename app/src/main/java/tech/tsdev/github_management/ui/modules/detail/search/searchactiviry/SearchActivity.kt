@@ -15,12 +15,9 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.toolbar_search.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.DetailActivity
 import tech.tsdev.github_management.ui.modules.detail.search.repo.SearchRepoFragment
-import tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.adapter.SearchRecyclerAdapter
 import tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.presenter.SearchContract
-import tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.presenter.SearchPresenter
 import tech.tsdev.github_management.ui.modules.detail.search.users.SearchUserFragment
 
 class SearchActivity : AppCompatActivity(), SearchContract.View {
@@ -146,7 +143,11 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
                     }
                 }
                 1 -> {
-                    SearchUserFragment()
+                    SearchUserFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("searchUserName", inputText)
+                        }
+                    }
                 }
                 else -> null
             }
