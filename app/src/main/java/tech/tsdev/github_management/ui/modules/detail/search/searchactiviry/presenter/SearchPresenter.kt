@@ -38,9 +38,9 @@ class SearchPresenter(
                                 userSearchRecyclerView.addItem(userData)
                             }
                         } else {
-                            view.showFailLayout()
+                            view.loadErrorMessage()
                         }
-                    } ?: let { view.showFailLayout() }
+                    } ?: let { view.loadErrorMessage(response.errorBody().toString()) }
                     userSearchRecyclerView.notifyDataChanged()
                 } else {
                     view.loadErrorMessage(response.errorBody().toString())

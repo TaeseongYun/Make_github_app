@@ -61,6 +61,6 @@
                                              app:tabSelectedTextColor="?colorAccent"
                                              app:tabTextColor="?colorPrimaryDark"
                                              android:id="@+id/search_tab_layout"
-                                             android:paddingStart="@dimen/key_line_1"
+                                             android:paddingStart="@dimen/key_line_1" android:visibility="gone"
                                              android:clipToPadding="false" tools:ignore="RtlSymmetry"/>
 </android.support.design.widget.AppBarLayout>

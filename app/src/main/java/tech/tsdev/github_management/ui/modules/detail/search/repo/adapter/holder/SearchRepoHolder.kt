@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.search_repo_item.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.RepoItem
 
@@ -17,6 +18,10 @@ class SearchRepoHolder(context: Context, parent: ViewGroup) :
     }
 
     private fun View.onBind(repoItem: RepoItem) {
-        onBind(repoItem)
+        repo_user_avatar.proflieImageLoad(repoItem.owner.avatarUrl)
+        search_repo_forked.text = repoItem.forks.toString()
+        search_repo_language.text = repoItem.language
+        search_repo_stared.text = repoItem.stargazersCount.toString()
+        repo_full_name.text = repoItem.fullName
     }
 }

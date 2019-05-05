@@ -8,8 +8,6 @@ interface SearchContract {
 
         fun loadDetailActivity(userName: String)
 
-        fun showFailLayout()
-
         fun showSuccessLayout()
     }
 

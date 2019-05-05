@@ -22,17 +22,9 @@
                     android:id="@+id/linear_layout_github"
                     android:layout_width="match_parent" android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:visibility="visible">
+                    android:visibility="visible" tools:ignore="UselessParent">
                 <TextView android:layout_width="match_parent" android:layout_height="match_parent"
                           android:text="@string/powered_by_github" android:textSize="22sp"
-                          android:gravity="center" android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <LinearLayout android:id="@+id/error_layout" android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:visibility="gone">
-                <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                          android:text="@string/query_is_nothing" android:textSize="22sp"
                           android:gravity="center" android:textColor="@color/black"/>
             </LinearLayout>
         </LinearLayout>

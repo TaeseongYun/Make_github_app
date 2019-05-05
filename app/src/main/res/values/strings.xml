@@ -29,6 +29,7 @@
     <!--RepoInfo-->
     <string name="fork">Forked</string>
     <string name="language">Language</string>
+    <string name="notResult">Nothing Result</string>
 
 
     <!--User OverView-->

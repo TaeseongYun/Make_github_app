@@ -24,15 +24,14 @@ import tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.pres
 import tech.tsdev.github_management.ui.modules.detail.search.users.SearchUserFragment
 
 class SearchActivity : AppCompatActivity(), SearchContract.View {
+
+    private var inputText = ""
+
     override fun showSuccessLayout() {
         linear_layout_github.visibility = View.GONE
-        error_layout.visibility = View.GONE
+        search_tab_layout.visibility = View.VISIBLE
     }
 
-    override fun showFailLayout() {
-        error_layout.visibility = View.VISIBLE
-        linear_layout_github.visibility = View.GONE
-    }
 
     companion object {
         val USER_NAME = "userName"
@@ -43,6 +42,7 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
             return intent
         }
     }
+
     override fun loadDetailActivity(userName: String) {
 
         startActivity(getIntent(this, userName))
@@ -57,23 +57,12 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    private val searchRecyclerAdapter: SearchRecyclerAdapter by lazy {
-        SearchRecyclerAdapter(this)
-    }
-    private val searchPresenter: SearchPresenter by lazy {
-        SearchPresenter(
-            this@SearchActivity,
-            GithubRepository,
-            searchRecyclerAdapter
-        )
-    }
-
-
 
     private fun addTabItems() {
         search_tab_layout.addTab(search_tab_layout.newTab().setText(R.string.repository))
         search_tab_layout.addTab(search_tab_layout.newTab().setText(R.string.users))
     }
+
     override fun onDestroy() {
         super.onDestroy()
 
@@ -86,11 +75,6 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
 
 
         addTabItems()
-
-        pager.run {
-            adapter = SearchViewPagerAdapter(supportFragmentManager)
-            addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(search_tab_layout){})
-        }
 
         search_tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(p0: TabLayout.Tab?) {
@@ -133,10 +117,13 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
 
 
         btn_search.setOnClickListener {
+            showSuccessLayout()
+            inputText = et_search.text.toString()
 
-
-            searchRecyclerAdapter.clearItem()
-            searchPresenter.searchLoadUsers(et_search.text.toString())
+            pager.run {
+                adapter = SearchViewPagerAdapter(supportFragmentManager)
+                addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(search_tab_layout) {})
+            }
         }
         btn_clear.setOnClickListener {
             et_search.setText("")
@@ -150,9 +137,13 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
 
     inner class SearchViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         override fun getItem(position: Int): Fragment? =
-            when(position) {
+            when (position) {
                 0 -> {
-                    SearchRepoFragment()
+                    SearchRepoFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("searchQuery", inputText)
+                        }
+                    }
                 }
                 1 -> {
                     SearchUserFragment()

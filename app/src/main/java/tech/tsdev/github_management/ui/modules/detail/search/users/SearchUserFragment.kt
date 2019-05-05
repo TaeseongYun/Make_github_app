@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.ui.modules.detail.search.repo.presenter.SearchRepoContract
+import tech.tsdev.github_management.ui.modules.detail.search.users.presenter.SearchUserContract
 
-class SearchUserFragment : Fragment(), SearchRepoContract.View {
+class SearchUserFragment : Fragment(), SearchUserContract.View {
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater.inflate(R.layout.pg_search_user_layout, container, false)
 
