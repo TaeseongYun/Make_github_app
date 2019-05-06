@@ -5,6 +5,8 @@ interface SearchUserContract {
         fun loadFailShowMessage()
 
         fun loadFailShowMessage(message: String)
+
+        fun loadSearchUserDetail(userLogin: String)
     }
 
     interface Presenter {

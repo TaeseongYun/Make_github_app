@@ -13,6 +13,15 @@ class SearchUserPresenter(
     private val githubRepository: GithubRepository,
     private val searchRecyclerAdapter: SearchUserModel
 ) : SearchUserContract.Presenter {
+
+
+    // 리사이클러 onClick 고차함수만들어서 람다로  전해줌
+    init {
+        searchRecyclerAdapter.onClick = { position ->
+            view.loadSearchUserDetail(searchRecyclerAdapter.getItemData(position).login)
+        }
+    }
+
     override fun getSearchUserForQuery(userName: String?) {
         userName?.let {
             githubRepository.searchUserList(it).enqueue(object : Callback<SearchUserData> {

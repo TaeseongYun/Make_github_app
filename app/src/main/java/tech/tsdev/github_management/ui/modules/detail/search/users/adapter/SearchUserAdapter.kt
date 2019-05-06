@@ -8,13 +8,15 @@ import tech.tsdev.github_management.model.SingleUser
 import tech.tsdev.github_management.ui.modules.detail.search.users.adapter.holder.SearchUserHolder
 import tech.tsdev.github_management.ui.modules.detail.search.users.adapter.model.SearchUserModel
 
-class SearchUserAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), SearchUserModel {
+class SearchUserAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), SearchUserModel {
 
     val list = mutableListOf<Item>()
 
 
+    override lateinit var onClick: (Int) -> Unit
+
     override fun onCreateViewHolder(parent: ViewGroup, ppsition: Int): RecyclerView.ViewHolder =
-        SearchUserHolder(context, parent)
+        SearchUserHolder(onClick, context!!, parent)
 
 
     override fun getItemCount(): Int = list.size

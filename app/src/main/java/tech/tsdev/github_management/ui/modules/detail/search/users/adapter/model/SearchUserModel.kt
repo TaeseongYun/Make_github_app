@@ -11,4 +11,6 @@ interface SearchUserModel {
     fun getItemCount(): Int
 
     fun notifyDataItem()
+
+    var onClick: (Int) -> Unit
 }
