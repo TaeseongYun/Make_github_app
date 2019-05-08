@@ -1,7 +1,6 @@
 package tech.tsdev.github_management.view.main.myfragment.presenter
 
 
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,10 +22,15 @@ class MyFragmentPresenter(
 
                 override fun onResponse(call: Call<SingleUser>, response: Response<SingleUser>) {
                     if (response.isSuccessful) {
-                        response.body()?.let {
-
-                        } ?:let {
-
+                        response.body()?.let { singUser ->
+                            view.loadUserDetailInfo(
+                                singUser.avatarUrl,
+                                singUser.login,
+                                singUser.location,
+                                singUser.createdAt
+                            )
+                        } ?: let {
+                            view.loadFailToastMessage(response.errorBody().toString())
                         }
                     }
                 }

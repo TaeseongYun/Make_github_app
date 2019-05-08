@@ -13,7 +13,11 @@ interface MyFragmentContract {
 
         fun updateUserInfo()
 
-        fun dismissORshowInputUserLayout()
+
+        fun loadUserDetailInfo(userAvatar: String,
+                               userLogin: String,
+                               userLocation: Any?,
+                               userJoinTime: String)
 
     }
 

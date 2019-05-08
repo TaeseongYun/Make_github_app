@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.app_bar_user_detail.*
 import kotlinx.android.synthetic.main.my_info_fragment.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
@@ -16,21 +17,14 @@ import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentCon
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentPresenter
 
 class MyFragment : Fragment(), MyFragmentContract.View {
-
-    lateinit var userName: String
-
-    private val customDialog: CustomDialog by lazy {
-        CustomDialog(this@MyFragment.context!!)
-    }
-
-    override fun dismissORshowInputUserLayout() {
-        if ( arguments == null ) {
-
-            user_detail_view.visibility = View.GONE
-        } else {
-
-            user_detail_view.visibility = View.VISIBLE
-        }
+    override fun loadUserDetailInfo(
+        userAvatar: String, userLogin: String,
+        userLocation: Any?, userJoinTime: String
+    ) {
+        user_avatar.proflieImageLoad(userAvatar)
+        user_login.text = userLogin
+        userLocation?.let { user_location.text = it.toString() } ?: let { user_location.visibility = View.INVISIBLE }
+        joined_time.text = userJoinTime
     }
 
     override fun updateUserInfo() {
@@ -57,19 +51,13 @@ class MyFragment : Fragment(), MyFragmentContract.View {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         println("argument -> ${arguments?.getString("userName")}")
 
-//        name_input.setOnClickListener { customDialog.show() }
+        myFragmentPresenter.inputUserNameLoad(arguments?.getString("userName"))
 
-        customDialog.setOnDismissListener {
-            myFragmentPresenter.inputUserNameLoad(customDialog.inputUserName)
-            userName = customDialog.inputUserName.toString()
-            dismissORshowInputUserLayout()
-        }
     }
 
     override fun onResume() {
