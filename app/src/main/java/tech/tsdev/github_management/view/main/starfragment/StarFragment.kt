@@ -10,10 +10,6 @@ import tech.tsdev.github_management.R
 
 class StarFragment : Fragment() {
 
-    companion object {
-        val KEY_TITLE = "key-title"
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.my_info_fragment, container, false)
 

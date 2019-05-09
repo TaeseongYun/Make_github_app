@@ -27,7 +27,7 @@ class MyFragmentPresenter(
                                 singUser.avatarUrl,
                                 singUser.login,
                                 singUser.location,
-                                singUser.createdAt
+                                singUser.joinToGithubDate(singUser.createdAt)
                             )
                         } ?: let {
                             view.loadFailToastMessage(response.errorBody().toString())

@@ -29,11 +29,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val starFragment: StarFragment by lazy {
-        StarFragment().apply {
-            arguments = Bundle().apply {
-                putInt(StarFragment.KEY_TITLE, R.string.many_stars)
-            }
-        }
+        StarFragment()
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -45,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.navigation_star -> {
                 replace(R.id.frame_layout, starFragment)
-                app_bar.visibility = View.GONE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_me -> {

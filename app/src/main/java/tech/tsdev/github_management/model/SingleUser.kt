@@ -41,7 +41,13 @@ data class SingleUser(
     val type: String,
     val updated_at: String,
     val url: String
-)
+) {
+    fun joinToGithubDate(createAtDate: String): String {
+        val substr = createAtDate.substringBefore("T")
+        return "가입 날짜 : $substr"
+    }
+}
+
 
 data class Plan(
     val collaborators: Int,

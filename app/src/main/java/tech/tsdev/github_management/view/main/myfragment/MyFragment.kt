@@ -27,11 +27,6 @@ class MyFragment : Fragment(), MyFragmentContract.View {
         joined_time.text = userJoinTime
     }
 
-    override fun updateUserInfo() {
-
-    }
-
-
     override fun loadViewToastMessage() {
         toast("로드 실패").show()
     }

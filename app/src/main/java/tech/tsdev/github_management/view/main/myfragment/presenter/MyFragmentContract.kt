@@ -11,9 +11,6 @@ interface MyFragmentContract {
 
         fun loadFailToastMessage(message: String)
 
-        fun updateUserInfo()
-
-
         fun loadUserDetailInfo(userAvatar: String,
                                userLogin: String,
                                userLocation: Any?,

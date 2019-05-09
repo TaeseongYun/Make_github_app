@@ -57,6 +57,8 @@
         Start by name
     </string>
 
+    <string name="user_star_repo">UserGiveStar</string>
+
     <string name="require">Required</string>
 
     <!--MainInputActivity-->
