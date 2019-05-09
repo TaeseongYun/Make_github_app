@@ -1,15 +1,11 @@
 package tech.tsdev.github_management.model.github
 
 import retrofit2.Call
-import tech.tsdev.github_management.model.Repository
-import tech.tsdev.github_management.model.SearchRepoData
-import tech.tsdev.github_management.model.SearchUserData
-import tech.tsdev.github_management.model.SingleUser
+import tech.tsdev.github_management.model.*
 import tech.tsdev.github_management.network.GithubInterface
 import tech.tsdev.github_management.network.createRetrofit
 
 class GIthubRemoteData : GIthubDataSource {
-
 
     companion object {
         const val GITHUB_URL = "https://api.github.com"
@@ -29,4 +25,7 @@ class GIthubRemoteData : GIthubDataSource {
 
     override fun getSearchRepo(searchQuery: String): Call<SearchRepoData> =
         githubUserList.getSearchRepoResult(searchQuery)
+
+    override fun getUserReceivedResult(userName: String): Call<List<ReceivedEvents>> =
+        githubUserList.getUserReceivedResult(userName)
 }

@@ -20,4 +20,6 @@ interface GIthubDataSource {
     fun getSingleUser(userName: String): Call<SingleUser>
 
     fun getSearchRepo(searchQuery: String): Call<SearchRepoData>
+
+    fun getUserReceivedResult(userName: String): Call<List<ReceivedEvents>>
 }

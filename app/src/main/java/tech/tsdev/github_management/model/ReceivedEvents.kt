@@ -11,7 +11,18 @@ data class ReceivedEvents(
     val `public`: Boolean,
     val repo: Repo,
     val type: String
-)
+) {
+    fun whichStarRepoORCreateRepo(type: String): String =
+        when (type) {
+            "WatchEvent" -> "${repo.id}d에 스타를 줌"
+            else -> "레포지토리 ${repo.id}를 생성"
+        }
+
+
+    fun currentTimeAtElapsedTime(date: String) {
+
+    }
+}
 
 data class Repo(
     val id: Int,

@@ -51,4 +51,11 @@ interface GithubInterface {
         @Query("q") searchRepo: String
     ): Call<SearchRepoData>
 
+
+    //유저이름에 따른 Received_Event 함수
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET("/users/{username}/received_events")
+    fun getUserReceivedResult(
+        @Path("username") userName: String
+    ): Call<List<ReceivedEvents>>
 }

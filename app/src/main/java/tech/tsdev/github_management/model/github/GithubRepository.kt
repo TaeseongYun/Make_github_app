@@ -18,4 +18,7 @@ object GithubRepository : GIthubDataSource {
     override fun getSingleUser(userName: String): Call<SingleUser> = githubRemotedata.getSingleUser(userName)
 
     override fun getSearchRepo(searchQuery: String): Call<SearchRepoData> = githubRemotedata.getSearchRepo(searchQuery)
+
+    override fun getUserReceivedResult(userName: String): Call<List<ReceivedEvents>> =
+        githubRemotedata.getUserReceivedResult(userName)
 }
