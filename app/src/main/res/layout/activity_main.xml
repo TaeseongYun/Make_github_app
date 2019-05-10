@@ -12,13 +12,14 @@
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
                   android:orientation="vertical">
         <android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
-                                                         android:layout_height="0dp"
-        android:layout_weight="1">
+                                                         android:layout_height="0dp" android:layout_weight="1">
 
 
             <include layout="@layout/toolbar_main"/>
 
+
             <include layout="@layout/fragment_contanior"/>
+
 
             <include layout="@layout/main_bottom_navigation"/>
 
@@ -26,8 +27,6 @@
 
         <include layout="@layout/add_banner_layout"/>
     </LinearLayout>
-
-
 
 
 </android.support.v4.widget.DrawerLayout>

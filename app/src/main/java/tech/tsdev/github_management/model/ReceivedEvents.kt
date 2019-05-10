@@ -14,8 +14,8 @@ data class ReceivedEvents(
 ) {
     fun whichStarRepoORCreateRepo(type: String): String =
         when (type) {
-            "WatchEvent" -> "${repo.id}d에 스타를 줌"
-            else -> "레포지토리 ${repo.id}를 생성"
+            "WatchEvent" -> "${repo.name}d에 스타를 줌"
+            else -> "레포지토리 ${repo.name}를 생성"
         }
 
 
