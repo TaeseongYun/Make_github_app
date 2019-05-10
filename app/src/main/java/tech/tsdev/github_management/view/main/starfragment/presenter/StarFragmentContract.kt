@@ -6,13 +6,6 @@ interface StarFragmentContract {
         fun loadFailedMessage()
 
         fun loadFailMessage(message: String)
-
-        fun loadNewsBaseOnUserName(
-            userAvatar: String,
-            userName: String,
-            userInfo: String,
-            userDate: String
-        )
     }
 
     interface Presenter {

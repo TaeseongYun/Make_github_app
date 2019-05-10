@@ -5,10 +5,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import tech.tsdev.github_management.model.ReceivedEvents
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.view.main.starfragment.adapter.model.StarRecyclerModel
 
 class StarFragmentPresenter(
     val view: StarFragmentContract.View,
-    private val githubRepository: GithubRepository
+    private val githubRepository: GithubRepository,
+    private val starRecyclerModel: StarRecyclerModel
 ) : StarFragmentContract.Presenter {
     override fun getResultReceivedBasedOnUserName(userName: String) {
         githubRepository.getUserReceivedResult(userName).enqueue(object : Callback<List<ReceivedEvents>> {
@@ -19,16 +21,11 @@ class StarFragmentPresenter(
             override fun onResponse(call: Call<List<ReceivedEvents>>, response: Response<List<ReceivedEvents>>) {
                 if (response.isSuccessful) {
                     response.body()?.let { listReceivedEvent ->
+                        starRecyclerModel.clearItemData()
                         listReceivedEvent.forEach { receivedEvent ->
-                            receivedEvent.let {
-                                view.loadNewsBaseOnUserName(
-                                    it.actor.avatarUrl,
-                                    it.actor.login,
-                                    it.whichStarRepoORCreateRepo(it.type),
-                                    it.createdAt
-                                )
-                            }
+                            starRecyclerModel.addItem(receivedEvent)
                         }
+                        starRecyclerModel.nofityedItemsData()
                     } ?: let {
                         view.loadFailMessage(response.errorBody().toString())
                     }
