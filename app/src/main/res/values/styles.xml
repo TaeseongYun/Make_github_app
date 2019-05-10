@@ -12,6 +12,8 @@
         <!--TextInputEditText-->
         <item name="colorControlNormal">#2196F3</item>
         <item name="colorControlActivated">#ffffff</item>
+
+
     </style>
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">

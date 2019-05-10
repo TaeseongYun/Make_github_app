@@ -12,6 +12,13 @@ class StarFragmentPresenter(
     private val githubRepository: GithubRepository,
     private val starRecyclerModel: StarRecyclerModel
 ) : StarFragmentContract.Presenter {
+
+    init {
+        starRecyclerModel.onClick = { position ->
+            view.getDetailRepository(starRecyclerModel.getItem(position).repo.name)
+        }
+    }
+
     override fun getResultReceivedBasedOnUserName(userName: String) {
         githubRepository.getUserReceivedResult(userName).enqueue(object : Callback<List<ReceivedEvents>> {
             override fun onFailure(call: Call<List<ReceivedEvents>>, t: Throwable) {

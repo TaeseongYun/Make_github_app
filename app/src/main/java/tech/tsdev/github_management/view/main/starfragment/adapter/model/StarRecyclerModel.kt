@@ -13,4 +13,6 @@ interface StarRecyclerModel {
     fun nofityedItemsData()
 
     fun clearItemData()
+
+    var onClick: (Int) -> Unit
 }

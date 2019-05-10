@@ -11,8 +11,10 @@ class StarRecyclerAdapter(val context: Context) : RecyclerView.Adapter<RecyclerV
 
     val list = mutableListOf<ReceivedEvents>()
 
+    override lateinit var onClick: (Int) -> Unit
+
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder =
-        StarRecyclerHolder(context, parent)
+        StarRecyclerHolder(onClick, context, parent)
 
 
     override fun getItemCount(): Int =

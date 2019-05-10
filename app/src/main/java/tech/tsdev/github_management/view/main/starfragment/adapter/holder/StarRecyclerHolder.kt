@@ -9,11 +9,16 @@ import kotlinx.android.synthetic.main.user_activities_fragment_items.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.ReceivedEvents
 
-class StarRecyclerHolder(context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
+class StarRecyclerHolder(onClick:(Int) -> Unit, context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(context).inflate(
         R.layout.user_activities_fragment_items, parent, false
     )
 ){
+    init {
+        itemView.setOnClickListener {
+            onClick(adapterPosition)
+        }
+    }
     fun onBind(items: ReceivedEvents) {
         itemView.onBind(items)
     }

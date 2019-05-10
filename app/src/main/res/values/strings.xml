@@ -50,7 +50,9 @@
 
 
     <!--BottomNavigationLayout-->
-    <string name="bbn_fab_default_behavior" translatable="false">tech.tsdev.github_management.util.BottomNavigationBehavior</string>
+    <string name="bbn_fab_default_behavior" translatable="false">
+        tech.tsdev.github_management.util.BottomNavigationBehavior
+    </string>
 
 
     <string name="start">
@@ -66,7 +68,9 @@
     <string name="copyRight">©CopyRight 2019 TS</string>
 
     <!--BottomNavigation-->
-    <string name="bbn_phone_view_behavior" ns1:ignore="UnusedResources" translatable="false">it.sephiroth.android.library.bottomnavigation.BottomBehavior</string>
+    <string name="bbn_phone_view_behavior" ns1:ignore="UnusedResources" translatable="false">
+        it.sephiroth.android.library.bottomnavigation.BottomBehavior
+    </string>
 
     <string name="query_is_nothing">Nothing Result</string>
 </resources>

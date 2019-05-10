@@ -10,10 +10,12 @@
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintEnd_toEndOf="parent">
         <android.support.design.card.MaterialCardView android:layout_width="match_parent"
+                                                      android:elevation="6dp"
+                                                      android:translationZ="6dp"
                                                       android:layout_height="match_parent"
                                                       style="@style/Widget.MaterialComponents.CardView"
                                                       android:layout_marginLeft="@dimen/spacing_small"
-                                                      android:background="@drawable/cardview_shadow"
+                                                      android:background="@drawable/card_view_shadow"
                                                       android:layout_marginTop="@dimen/spacing_small"
                                                       android:layout_marginRight="@dimen/spacing_small">
             <tech.tsdev.github_management.view.main.custom.GlideImageView

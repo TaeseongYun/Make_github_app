@@ -11,10 +11,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
-        <!--android:windowSoftInputMode="adjustPan" -> 이거는 edittext 에 focus 되었을때 위로 올라오게 하게끔 동작-->
-        <activity android:name=".view.main.activity.NameInputActivity"
-                  android:windowSoftInputMode="adjustPan">
+        <activity android:name=".view.main.activity.DetailRepoActivity">
+        </activity>
+        <!-- android:windowSoftInputMode="adjustPan" -> 이거는 edittext 에 focus 되었을때 위로 올라오게 하게끔 동작 -->
+        <activity
+                android:name=".view.main.activity.NameInputActivity"
+                android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -23,14 +25,16 @@
         </activity>
         <activity android:name=".ui.modules.detail.DetailActivity">
         </activity>
-        <activity android:name="tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.SearchActivity">
+        <activity android:name=".ui.modules.detail.search.searchactiviry.SearchActivity">
         </activity>
         <activity android:name=".view.main.activity.MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN"/> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
