@@ -17,7 +17,8 @@ class GIthubRemoteData : GIthubDataSource {
 
     override fun searchUserList(userName: String): Call<SearchUserData> = githubUserList.searchUsers(userName)
 
-    override fun getFollowers(username: String): Call<List<SearchUserData>> = githubUserList.getFollowers(username)
+    override fun getUserFollowers(username: String): Call<List<UserFollowersList>> =
+        githubUserList.getUserFollowers(username)
 
     override fun getUsersRepo(username: String): Call<List<Repository>> = githubUserList.getRepo(username)
 

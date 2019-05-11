@@ -24,9 +24,9 @@ interface GithubInterface {
     //깃허브 팔로우수 보이게 하는 retrofit 함수
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET("/users/{username}/followers")
-    fun getFollowers(
+    fun getUserFollowers(
         @Path("username") username: String
-    ): Call<List<SearchUserData>>
+    ): Call<List<UserFollowersList>>
 
 
     //해당 검색한 유저  레파지토리 검사하여 총 star 갯수가 몇개인지 검사하는 함수

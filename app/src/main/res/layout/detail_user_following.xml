@@ -5,11 +5,8 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent">
 
-    <TextView
-            android:text="@string/following"
-            android:layout_width="100dp"
-            android:layout_height="71dp"
-            android:id="@+id/textView4" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:gravity="center"/>
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/user_following_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 </android.support.constraint.ConstraintLayout>

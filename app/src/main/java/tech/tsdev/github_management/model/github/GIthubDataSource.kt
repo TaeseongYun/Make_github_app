@@ -13,7 +13,7 @@ interface GIthubDataSource {
 
 
     //유저 검색, 유저목록의 팔로우 수 함수
-    fun getFollowers(username: String): Call<List<SearchUserData>>
+    fun getUserFollowers(username: String): Call<List<UserFollowersList>>
 
     fun getUsersRepo(username: String): Call<List<Repository>>
 

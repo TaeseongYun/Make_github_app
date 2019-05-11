@@ -1,4 +1,4 @@
-package tech.tsdev.github_management.ui.modules.detail.user.following
+package tech.tsdev.github_management.ui.modules.detail.user.followers
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import tech.tsdev.github_management.R
 
-class DetailUserFollwingFragment : Fragment() {
+class DetailUserFollowersFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.detail_user_following, container, false)
+            inflater.inflate(R.layout.detail_user_followers, container, false)
 }
