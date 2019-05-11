@@ -92,7 +92,11 @@ class DetailActivity : AppCompatActivity() {
                         putString("fragmentUserName", intent.getStringExtra("userName"))
                     }
                 }
-                3 -> DetailUserFollowingFragment()
+                3 -> DetailUserFollowingFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("fragmentUserName", intent.getStringExtra("userName"))
+                    }
+                }
                 else -> null
             }
 

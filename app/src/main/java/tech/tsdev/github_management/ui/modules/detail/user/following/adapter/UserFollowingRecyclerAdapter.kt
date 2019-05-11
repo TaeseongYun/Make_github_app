@@ -12,8 +12,8 @@ class UserFollowingRecyclerAdapter(val context: Context?) : RecyclerView.Adapter
 
     private val userFollowingList = mutableListOf<UserFollowersFollowingList>()
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RecyclerView.ViewHolder =
-        UserFollowingRecyclerHolder(context)
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder =
+        UserFollowingRecyclerHolder(context, parent)
 
     override fun getItemCount(): Int = userFollowingList.size
 
