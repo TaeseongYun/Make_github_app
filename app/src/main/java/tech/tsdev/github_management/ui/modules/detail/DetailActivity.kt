@@ -87,7 +87,11 @@ class DetailActivity : AppCompatActivity() {
                     }
                 }
                 1 -> DetailUserRepoFragment()
-                2 -> DetailUserFollowersFragment()
+                2 -> DetailUserFollowersFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("fragmentUserName", intent.getStringExtra("userName"))
+                    }
+                }
                 3 -> DetailUserFollowingFragment()
                 else -> null
             }

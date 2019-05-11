@@ -1,6 +1,6 @@
 package tech.tsdev.github_management.ui.modules.detail.user.followers.presenter
 
-interface DetailUserFollwersConstract {
+interface DetailUserFollowersContract {
     interface View{
         fun loadFailUserFollowersMessage()
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="60dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <android.support.design.card.MaterialCardView android:layout_width="match_parent"
+                                                      android:layout_height="match_parent"
+                                                      android:layout_marginStart="@dimen/spacing_small"
+                                                      android:layout_marginTop="@dimen/spacing_small"
+                                                      android:layout_marginEnd="@dimen/spacing_small"
+                                                      android:translationZ="6dp"
+                                                      android:elevation="6dp"
+                                                      android:background="@drawable/card_view_shadow">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                          android:orientation="horizontal">
+                <tech.tsdev.github_management.view.main.custom.GlideImageView
+                        android:id="@+id/user_followers_img"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/spacing_small"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical" android:id="@+id/tv_user_followers_name"
+                          tools:text="@string/users" android:layout_marginStart="@dimen/spacing_large"/>
+            </LinearLayout>
+        </android.support.design.card.MaterialCardView>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
