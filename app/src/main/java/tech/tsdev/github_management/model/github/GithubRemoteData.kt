@@ -5,7 +5,8 @@ import tech.tsdev.github_management.model.*
 import tech.tsdev.github_management.network.GithubInterface
 import tech.tsdev.github_management.network.createRetrofit
 
-class GIthubRemoteData : GIthubDataSource {
+class GithubRemoteData : GithubDataSource {
+
 
     companion object {
         const val GITHUB_URL = "https://api.github.com"
@@ -17,7 +18,7 @@ class GIthubRemoteData : GIthubDataSource {
 
     override fun searchUserList(userName: String): Call<SearchUserData> = githubUserList.searchUsers(userName)
 
-    override fun getUserFollowers(username: String): Call<List<UserFollowersList>> =
+    override fun getUserFollowers(username: String): Call<List<UserFollowersFollowingList>> =
         githubUserList.getUserFollowers(username)
 
     override fun getUsersRepo(username: String): Call<List<Repository>> = githubUserList.getRepo(username)
@@ -29,4 +30,7 @@ class GIthubRemoteData : GIthubDataSource {
 
     override fun getUserReceivedResult(userName: String): Call<List<ReceivedEvents>> =
         githubUserList.getUserReceivedResult(userName)
+
+    override fun getUserFollowing(userName: String): Call<List<UserFollowersFollowingList>> =
+        githubUserList.getFollowingBasedOnUserName(userName)
 }

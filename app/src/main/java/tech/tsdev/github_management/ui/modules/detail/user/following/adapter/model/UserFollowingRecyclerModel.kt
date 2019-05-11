@@ -1,15 +1,15 @@
-package tech.tsdev.github_management.ui.modules.detail.user.followers.adapter.model
+package tech.tsdev.github_management.ui.modules.detail.user.following.adapter.model
 
 import tech.tsdev.github_management.model.UserFollowersFollowingList
 
-interface FollowersRecyclerModel {
+interface UserFollowingRecyclerModel {
     fun addItem(items: UserFollowersFollowingList)
 
     fun getItemCount(): Int
 
     fun getItems(position: Int): UserFollowersFollowingList
 
-    fun notifyItemData()
+    fun notifyItemsDate()
 
-    fun deleteItemData()
+    fun deleteItemDate()
 }

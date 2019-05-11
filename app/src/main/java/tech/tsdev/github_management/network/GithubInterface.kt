@@ -26,7 +26,7 @@ interface GithubInterface {
     @GET("/users/{username}/followers")
     fun getUserFollowers(
         @Path("username") username: String
-    ): Call<List<UserFollowersList>>
+    ): Call<List<UserFollowersFollowingList>>
 
 
     //해당 검색한 유저  레파지토리 검사하여 총 star 갯수가 몇개인지 검사하는 함수
@@ -58,4 +58,10 @@ interface GithubInterface {
     fun getUserReceivedResult(
         @Path("username") userName: String
     ): Call<List<ReceivedEvents>>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET("/users/{username}/following")
+    fun getFollowingBasedOnUserName(
+        @Path("username") userName: String
+    ): Call<List<UserFollowersFollowingList>>
 }

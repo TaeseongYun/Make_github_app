@@ -11,10 +11,10 @@ import tech.tsdev.github_management.R
 class GlideImageView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : ImageView( context, attrs, defStyleAttr ) {
 
-    fun proflieImageLoad(url: String, @DrawableRes loadingImagRes: Int = R.drawable.bg_gradation) {
+    fun proflieImageLoad(url: String, @DrawableRes loadingImgRes: Int = R.drawable.bg_gradation) {
         Glide.with(this)
             .load(url)
-            .placeholder(loadingImagRes)
+            .placeholder(loadingImgRes)
             .apply( RequestOptions.circleCropTransform())
             .into(this)
     }

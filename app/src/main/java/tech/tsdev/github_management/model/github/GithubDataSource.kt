@@ -3,7 +3,7 @@ package tech.tsdev.github_management.model.github
 import retrofit2.Call
 import tech.tsdev.github_management.model.*
 
-interface GIthubDataSource {
+interface GithubDataSource {
 
     //바텀 nav 첫번째 유저 목록 보이게 하는 함수
     fun loadUserList(since: Int ): Call<List<UserListData>>
@@ -13,7 +13,7 @@ interface GIthubDataSource {
 
 
     //유저 검색, 유저목록의 팔로우 수 함수
-    fun getUserFollowers(username: String): Call<List<UserFollowersList>>
+    fun getUserFollowers(username: String): Call<List<UserFollowersFollowingList>>
 
     fun getUsersRepo(username: String): Call<List<Repository>>
 
@@ -22,4 +22,6 @@ interface GIthubDataSource {
     fun getSearchRepo(searchQuery: String): Call<SearchRepoData>
 
     fun getUserReceivedResult(userName: String): Call<List<ReceivedEvents>>
+
+    fun getUserFollowing(userName: String): Call<List<UserFollowersFollowingList>>
 }
