@@ -14,8 +14,6 @@ object GithubRepository : GithubDataSource {
     override fun getUserFollowers(username: String): Call<List<UserFollowersFollowingList>> =
         githubRemotedata.getUserFollowers(username)
 
-    override fun getUsersRepo(username: String): Call<List<Repository>> = githubRemotedata.getUsersRepo(username)
-
     override fun getSingleUser(userName: String): Call<SingleUser> = githubRemotedata.getSingleUser(userName)
 
     override fun getSearchRepo(searchQuery: String): Call<SearchRepoData> = githubRemotedata.getSearchRepo(searchQuery)
@@ -25,4 +23,7 @@ object GithubRepository : GithubDataSource {
 
     override fun getUserFollowing(userName: String): Call<List<UserFollowersFollowingList>> =
         githubRemotedata.getUserFollowing(userName)
+
+    override fun getUserRepoList(userName: String): Call<List<UserRepoList>> =
+        githubRemotedata.getUserRepoList(userName)
 }

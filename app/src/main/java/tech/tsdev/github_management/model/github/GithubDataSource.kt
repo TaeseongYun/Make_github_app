@@ -15,8 +15,6 @@ interface GithubDataSource {
     //유저 검색, 유저목록의 팔로우 수 함수
     fun getUserFollowers(username: String): Call<List<UserFollowersFollowingList>>
 
-    fun getUsersRepo(username: String): Call<List<Repository>>
-
     fun getSingleUser(userName: String): Call<SingleUser>
 
     fun getSearchRepo(searchQuery: String): Call<SearchRepoData>
@@ -24,4 +22,6 @@ interface GithubDataSource {
     fun getUserReceivedResult(userName: String): Call<List<ReceivedEvents>>
 
     fun getUserFollowing(userName: String): Call<List<UserFollowersFollowingList>>
+
+    fun getUserRepoList(userName: String): Call<List<UserRepoList>>
 }

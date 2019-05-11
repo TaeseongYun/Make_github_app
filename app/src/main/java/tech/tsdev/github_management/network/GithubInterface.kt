@@ -64,4 +64,10 @@ interface GithubInterface {
     fun getFollowingBasedOnUserName(
         @Path("username") userName: String
     ): Call<List<UserFollowersFollowingList>>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET("/users/{username}/repos")
+    fun getRepoListBasedOnUserName (
+        @Path("username") userName: String
+    ): Call<List<UserRepoList>>
 }
