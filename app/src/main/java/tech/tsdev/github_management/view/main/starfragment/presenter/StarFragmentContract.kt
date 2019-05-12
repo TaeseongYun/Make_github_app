@@ -2,7 +2,7 @@ package tech.tsdev.github_management.view.main.starfragment.presenter
 
 interface StarFragmentContract {
     interface View {
-        fun getDetailRepository(ownerName: String, repoName: String)
+        fun getDetailRepository(repoUrl: String)
 
         fun loadFailedMessage()
 

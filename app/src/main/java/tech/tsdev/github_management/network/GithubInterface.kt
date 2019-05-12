@@ -68,9 +68,8 @@ interface GithubInterface {
 
     //유저Name과 repo 이름으로 해당 레파지토리 가져옴
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
-    @GET("/repos/{owner}/{repo}")
+    @GET
     fun getRepoBasedOnOwnerName(
-        @Path("owner") ownerName: String,
-        @Path("repo") repoName: String
+        @Url repoUrl: String
     ): Call<GetSingleRepo>
 }

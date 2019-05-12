@@ -16,8 +16,7 @@ class StarFragmentPresenter(
     init {
         starRecyclerModel.onClick = { position ->
             view.getDetailRepository(
-                starRecyclerModel.getItem(position).actor.login,
-                starRecyclerModel.getItem(position).repo.name
+                starRecyclerModel.getItem(position).repo.url
             )
         }
     }

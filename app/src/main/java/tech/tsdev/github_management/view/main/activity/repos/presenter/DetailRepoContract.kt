@@ -8,11 +8,12 @@ interface DetailRepoContract {
 
         fun updateToolbarImg(
             ownerAvatarImg: String,
-
+            repoName: String,
+            repoDescription: String?
         )
     }
 
     interface Presneter {
-        fun getLoadRepoInfo(ownerName: String, repoName: String)
+        fun getLoadRepoInfo(repoUrl: String)
     }
 }

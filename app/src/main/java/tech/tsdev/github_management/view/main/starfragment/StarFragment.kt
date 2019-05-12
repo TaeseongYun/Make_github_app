@@ -17,10 +17,9 @@ import tech.tsdev.github_management.view.main.starfragment.presenter.StarFragmen
 import tech.tsdev.github_management.view.main.starfragment.presenter.StarFragmentPresenter
 
 class StarFragment : Fragment(), StarFragmentContract.View {
-    override fun getDetailRepository(ownerName: String, repoName: String) {
+    override fun getDetailRepository(repoUrl: String) {
         Intent(activity, DetailRepoActivity::class.java).apply {
-            putExtra("ownerName", ownerName)
-            putExtra("repoName", repoName)
+            putExtra("repoUrl", repoUrl)
             startActivity(this)
         }
     }

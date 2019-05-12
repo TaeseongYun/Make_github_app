@@ -27,6 +27,6 @@ object GithubRepository : GithubDataSource {
     override fun getUserRepoList(userName: String): Call<List<UserRepoList>> =
         githubRemotedata.getUserRepoList(userName)
 
-    override fun getRepoInfoBasedOnOwnerNameRepoName(ownerName: String, repoName: String): Call<GetSingleRepo> =
-            githubRemotedata.getRepoInfoBasedOnOwnerNameRepoName(ownerName, repoName)
+    override fun getRepoInfoBasedOnOwnerNameRepoName(repoUrl: String): Call<GetSingleRepo> =
+            githubRemotedata.getRepoInfoBasedOnOwnerNameRepoName(repoUrl)
 }
