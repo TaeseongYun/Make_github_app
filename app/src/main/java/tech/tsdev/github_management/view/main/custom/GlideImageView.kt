@@ -18,4 +18,12 @@ class GlideImageView @JvmOverloads constructor(context: Context, attrs: Attribut
             .apply( RequestOptions.circleCropTransform())
             .into(this)
     }
+
+    fun getProfileImgRepo(url: String, @DrawableRes loadingImgRes: Int = R.drawable.bg_gradation) {
+        Glide.with(this)
+            .load(url)
+            .placeholder(loadingImgRes)
+            .apply( RequestOptions.centerCropTransform() )
+            .into(this)
+    }
 }

@@ -24,4 +24,6 @@ interface GithubDataSource {
     fun getUserFollowing(userName: String): Call<List<UserFollowersFollowingList>>
 
     fun getUserRepoList(userName: String): Call<List<UserRepoList>>
+
+    fun getRepoInfoBasedOnOwnerNameRepoName(ownerName: String, repoName: String): Call<GetSingleRepo>
 }

@@ -1,4 +1,4 @@
-package tech.tsdev.github_management.view.main.activity
+package tech.tsdev.github_management.view.main.activity.repos
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +11,6 @@ class DetailRepoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_repo)
 
-        repo_name.text = intent.getStringExtra("repoName")
+
     }
 }

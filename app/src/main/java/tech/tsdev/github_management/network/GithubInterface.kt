@@ -52,15 +52,25 @@ interface GithubInterface {
         @Path("username") userName: String
     ): Call<List<ReceivedEvents>>
 
+    //유저이름에 따른 Following
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET("/users/{username}/following")
     fun getFollowingBasedOnUserName(
         @Path("username") userName: String
     ): Call<List<UserFollowersFollowingList>>
 
+    //유저의 레파지토리
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET("/users/{username}/repos")
     fun getRepoListBasedOnUserName (
         @Path("username") userName: String
     ): Call<List<UserRepoList>>
+
+    //유저Name과 repo 이름으로 해당 레파지토리 가져옴
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET("/repos/{owner}/{repo}")
+    fun getRepoBasedOnOwnerName(
+        @Path("owner") ownerName: String,
+        @Path("repo") repoName: String
+    ): Call<GetSingleRepo>
 }

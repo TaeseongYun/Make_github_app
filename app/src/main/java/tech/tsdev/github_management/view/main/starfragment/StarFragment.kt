@@ -11,14 +11,15 @@ import kotlinx.android.synthetic.main.user_activities_fragment.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
-import tech.tsdev.github_management.view.main.activity.DetailRepoActivity
+import tech.tsdev.github_management.view.main.activity.repos.DetailRepoActivity
 import tech.tsdev.github_management.view.main.starfragment.adapter.StarRecyclerAdapter
 import tech.tsdev.github_management.view.main.starfragment.presenter.StarFragmentContract
 import tech.tsdev.github_management.view.main.starfragment.presenter.StarFragmentPresenter
 
 class StarFragment : Fragment(), StarFragmentContract.View {
-    override fun getDetailRepository(repoName: String) {
+    override fun getDetailRepository(ownerName: String, repoName: String) {
         Intent(activity, DetailRepoActivity::class.java).apply {
+            putExtra("ownerName", ownerName)
             putExtra("repoName", repoName)
             startActivity(this)
         }
