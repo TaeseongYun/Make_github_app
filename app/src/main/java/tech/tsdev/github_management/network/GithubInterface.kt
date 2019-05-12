@@ -29,13 +29,6 @@ interface GithubInterface {
     ): Call<List<UserFollowersFollowingList>>
 
 
-    //해당 검색한 유저  레파지토리 검사하여 총 star 갯수가 몇개인지 검사하는 함수
-    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
-    @GET("/users/{username}/repos")
-    fun getRepo(
-        @Path("username") username: String
-    ): Call<List<Repository>>
-
     //리사이클러 뷰 선택하면 해당 유저 Info 보여지게 하는 함수
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET("/users/{username}")

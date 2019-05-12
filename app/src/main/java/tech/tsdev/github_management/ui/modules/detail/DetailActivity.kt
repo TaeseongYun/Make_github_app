@@ -41,8 +41,6 @@ class DetailActivity : AppCompatActivity() {
 
 
 
-        println("userName -> ${intent.getStringExtra( SearchActivity.USER_NAME )}")
-
         addTabLayoutItem()
 
         img_close_btn.setOnClickListener {
