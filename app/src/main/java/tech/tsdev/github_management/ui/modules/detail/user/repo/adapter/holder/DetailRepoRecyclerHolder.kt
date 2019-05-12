@@ -25,6 +25,7 @@ class DetailRepoRecyclerHolder(context: Context?, parent: ViewGroup) : RecyclerV
         tv_user_repo_star.text = items.stargazersCount.toString()
         tv_user_fork.text = items.forksCount.toString()
         tv_user_login.text = items.owner.login
+        tv_user_repo_language.text = items.language
         if(items.fork)
             tv_fork_repo.visibility = View.VISIBLE
     }

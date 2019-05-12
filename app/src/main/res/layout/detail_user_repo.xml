@@ -5,11 +5,8 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent">
 
-    <TextView
-            android:text="@string/repository"
-            android:layout_width="93dp"
-            android:layout_height="58dp"
-            android:id="@+id/textView2" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:gravity="center"/>
+    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:id="@+id/user_repo_recycler_view"
+                                            android:scrollbars="vertical"/>
 </android.support.constraint.ConstraintLayout>

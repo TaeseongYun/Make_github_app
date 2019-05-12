@@ -2,13 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="100dp">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent">
+              android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
         <android.support.design.card.MaterialCardView android:layout_width="match_parent"
-                                                      android:layout_height="match_parent"
-                                                      android:layout_marginEnd="@dimen/spacing_small"
-                                                      android:layout_marginTop="@dimen/spacing_small"
-                                                      android:layout_marginStart="@dimen/spacing_small">
+                                                      android:layout_height="wrap_content"
+                                                      android:id="@+id/material_card_view"
+                                                      android:layout_marginEnd="@dimen/material_card_view_margin"
+                                                      android:layout_marginTop="@dimen/material_card_view_margin"
+                                                      android:layout_marginBottom="@dimen/material_card_view_margin"
+                                                      android:background="@drawable/card_view_shadow"
+                                                      android:elevation="@dimen/material_card_view_margin_micro"
+                                                      android:translationZ="@dimen/material_card_view_margin_micro"
+                                                      android:layout_marginStart="@dimen/material_card_view_margin">
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -19,7 +24,7 @@
                         android:layout_marginTop="@dimen/spacing_small"
                         android:layout_marginStart="@dimen/spacing_normal"/>
                 <RelativeLayout android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                               tools:text="@string/repository"
                               android:layout_marginStart="@dimen/spacing_small"
@@ -32,49 +37,54 @@
                               android:layout_marginTop="@dimen/spacing_small"/>
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                              tools:text="@string/language"
+                              tools:text="@string/language" android:id="@+id/tv_user_repo_language"
                               android:layout_alignParentEnd="true" android:layout_marginEnd="@dimen/spacing_small"
                               android:layout_marginTop="@dimen/spacing_small" tools:ignore="RelativeOverlap"/>
 
                     <tech.tsdev.github_management.view.main.custom.GlideImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
                             android:layout_below="@+id/tv_user_description"
+                            android:layout_marginBottom="@dimen/spacing_small"
                             android:layout_marginStart="@dimen/spacing_small"
                             android:id="@+id/custom_view_star"
                             android:src="@drawable/ic_star_gray_24dp"
-                            android:layout_marginTop="@dimen/spacing_small"/>
+                            android:layout_marginTop="@dimen/spacing_normal"/>
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                               android:layout_toEndOf="@+id/custom_view_star"
+                              android:layout_marginBottom="@dimen/spacing_small"
                               android:layout_below="@+id/tv_user_description"
                               tools:text="@string/followingsN" android:id="@+id/tv_user_repo_star"
                               android:layout_marginTop="@dimen/spacing_small"
                               android:layout_marginStart="@dimen/spacing_small"/>
 
                     <tech.tsdev.github_management.view.main.custom.GlideImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginBottom="@dimen/spacing_small"
                             android:src="@drawable/ic_share_gray_24dp"
                             android:id="@+id/img_user_repo_fork"
                             android:layout_toEndOf="@+id/tv_user_repo_star"
                             android:layout_below="@+id/tv_user_description"
-                            android:layout_marginTop="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_normal"
                             android:layout_marginStart="@dimen/spacing_xxx_large"/>
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                               tools:text="@string/followingsN" android:layout_below="@+id/tv_user_description"
                               android:layout_marginStart="@dimen/spacing_small" android:id="@+id/tv_user_fork"
+                              android:layout_marginBottom="@dimen/spacing_small"
                               android:layout_toEndOf="@+id/img_user_repo_fork"
                               android:layout_marginTop="@dimen/spacing_small"/>
 
                     <tech.tsdev.github_management.view.main.custom.GlideImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
                             android:src="@drawable/ic_account_circle_black_24dp"
+                            android:layout_marginBottom="@dimen/spacing_small"
                             android:layout_below="@+id/tv_user_description"
                             android:layout_toEndOf="@+id/tv_user_fork"
-                            android:layout_marginTop="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_normal"
                             android:id="@+id/img_user_fork"
                             android:layout_marginStart="@dimen/spacing_xxx_large"/>
 
@@ -82,15 +92,21 @@
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                               tools:text="@string/users" android:layout_toEndOf="@+id/img_user_fork"
                               android:layout_below="@+id/tv_user_description"
+                              android:layout_marginBottom="@dimen/spacing_small"
                               android:id="@+id/tv_user_login"
+                              android:textSize="@dimen/text_small"
                               android:layout_marginStart="@dimen/spacing_small"
                               android:layout_marginTop="@dimen/spacing_small"/>
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                              android:text="@string/fork" android:layout_alignParentBottom="true"
+                              android:text="@string/fork"
                               android:textStyle="bold" android:textColor="@color/black"
-                              android:id="@+id/tv_fork_repo" android:visibility="gone"
-                              android:layout_alignParentEnd="true" android:layout_marginBottom="@dimen/spacing_normal"/>
+                              android:layout_marginEnd="@dimen/spacing_small"
+                              android:layout_below="@+id/tv_user_description"
+                              android:layout_alignParentEnd="true"
+                              android:visibility="gone"
+                              android:layout_marginTop="@dimen/spacing_small"
+                              android:id="@+id/tv_fork_repo"/>
                 </RelativeLayout>
             </LinearLayout>
         </android.support.design.card.MaterialCardView>

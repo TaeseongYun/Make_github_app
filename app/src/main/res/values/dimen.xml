@@ -12,6 +12,7 @@
 
 
     <dimen name="material_card_view_margin">6dp</dimen>
+    <dimen name="material_card_view_margin_micro">4dp</dimen>
 
 
     <dimen name="spacing_micro">2dp</dimen>
