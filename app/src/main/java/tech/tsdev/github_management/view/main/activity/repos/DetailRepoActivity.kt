@@ -18,12 +18,14 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
         toast(message)
     }
 
-    override fun updateToolbarImg(ownerAvatarImg: String, repoName: String, repoDescription: String?) {
+    override fun updateToolbarImg(ownerAvatarImg: String, repoName: String, repoDescription: String?,
+                                  repoToolbarTitle: String) {
         user_repo_avatar_bg.getProfileImgRepo(ownerAvatarImg)
         desc.text = repoName
         repoDescription?.let { user_repo_description.setText(it) } ?: let {
             user_repo_description.text = "No Description"
         }
+        toolbar_repo.title = repoToolbarTitle
     }
 
     private val detailRepoPresenter: DetailRepoPresenter by lazy {
@@ -40,5 +42,7 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
         detailRepoPresenter.getLoadRepoInfo(
             intent.getStringExtra("repoUrl")
         )
+
+        btn_detail_repo_close.setOnClickListener { finish() }
     }
 }

@@ -23,7 +23,8 @@ class DetailRepoPresenter(
                             view.updateToolbarImg(
                                 getSingleRepo.owner.avatarUrl,
                                 getSingleRepo.name,
-                                getSingleRepo.description
+                                getSingleRepo.description,
+                                getSingleRepo.owner.login
                             )
                         } ?: let {
                             view.loadFailedMessage(response.errorBody().toString())

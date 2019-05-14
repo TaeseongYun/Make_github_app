@@ -8,6 +8,10 @@
     <color name="black">#000000</color>
     <color name="white">#FFF</color>
 
+    <!--ToolbarBackground-->
+    <color name="toolbarBackground">#7337474f</color>
+
+
     <color name="blackTransparent65">#A6000000</color>
 
     <color name="bottom_navi_select">#fff176</color>

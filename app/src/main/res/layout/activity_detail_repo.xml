@@ -11,7 +11,8 @@
     <android.support.design.widget.AppBarLayout
             android:id="@+id/app_repo_bar" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:fitsSystemWindows="true"
-            android:theme="?appbar_theme">
+
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
                 android:layout_width="match_parent"
@@ -19,19 +20,15 @@
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:collapsedTitleGravity="start"
                 app:expandedTitleGravity="top"
                 app:expandedTitleMarginStart="@dimen/spacing_x_large"
                 app:expandedTitleMarginTop="60dp"
-                app:expandedTitleTextAppearance="@style/Toolbar.Expand.TitleText"
+                app:expandedTitleTextAppearance="@android:color/transparent"
                 android:paddingTop="0dp">
 
-            <tech.tsdev.github_management.view.main.custom.GlideImageView
-                    android:layout_marginTop="@dimen/spacing_small" android:layout_width="40dp"
-                    android:layout_height="40dp" android:id="@+id/btn_detail_repo_close"
-                    android:src="@drawable/ic_chevron_left_white_24dp"
-                    android:layout_marginStart="@dimen/spacing_small"/>
+
 
             <tech.tsdev.github_management.view.main.custom.GlideImageView android:layout_width="match_parent"
                                                                           android:layout_height="match_parent"
@@ -39,12 +36,12 @@
                                                                           app:layout_collapseMode="parallax"
                                                                           app:layout_collapseParallaxMultiplier="0.5"
                                                                           android:fitsSystemWindows="true"/>
-
-            <tech.tsdev.github_management.view.main.custom.GlideImageView android:layout_width="match_parent"
-                                                                          android:layout_height="match_parent"
-                                                                          app:layout_collapseMode="parallax"
-                                                                          android:fitsSystemWindows="true"/>
-
+            <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_collapseMode="parallax"
+                    android:background="@color/toolbarBackground"
+                    android:fitsSystemWindows="true"/>
 
             <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                             android:layout_gravity="start|top"
@@ -57,18 +54,24 @@
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:maxLines="4" android:id="@+id/desc" tools:text="@string/users"
                           android:ellipsize="end" android:layout_marginStart="@dimen/spacing_normal"
-                          android:layout_marginTop="@dimen/spacing_x_large" android:textSize="@dimen/text_large"
+                          android:layout_marginTop="@dimen/spacing_xx_large" android:textSize="@dimen/text_large"
                           android:textStyle="bold"/>
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_below="@+id/desc" android:layout_marginStart="@dimen/spacing_normal"
-                          tools:text="@string/description"
+                          tools:text="@string/description" android:layout_marginTop="@dimen/spacing_small"
                           android:id="@+id/user_repo_description"/>
             </RelativeLayout>
 
             <android.support.v7.widget.Toolbar android:layout_width="match_parent"
                                                android:id="@+id/toolbar_repo"
                                                android:layout_height="?attr/actionBarSize"
-                                               app:layout_collapseMode="pin"/>
+                                               app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                               app:layout_collapseMode="pin">
+                <tech.tsdev.github_management.view.main.custom.GlideImageView
+                        android:layout_marginTop="@dimen/spacing_small" android:layout_width="40dp"
+                        android:layout_height="40dp" android:id="@+id/btn_detail_repo_close"
+                        android:src="@drawable/ic_chevron_left_white_24dp"/>
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
 
         <android.support.design.widget.TabLayout android:layout_width="match_parent"

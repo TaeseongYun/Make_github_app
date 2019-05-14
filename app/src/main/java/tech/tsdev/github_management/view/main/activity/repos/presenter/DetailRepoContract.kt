@@ -9,7 +9,8 @@ interface DetailRepoContract {
         fun updateToolbarImg(
             ownerAvatarImg: String,
             repoName: String,
-            repoDescription: String?
+            repoDescription: String?,
+            repoToolbarTitle: String
         )
     }
 
