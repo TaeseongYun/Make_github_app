@@ -9,8 +9,9 @@ import tech.tsdev.github_management.model.github.GithubRepository
 class DetailRepoPresenter(
     val view: DetailRepoContract.View,
     private val githubRepository: GithubRepository
-) : DetailRepoContract.Presneter {
+) : DetailRepoContract.Presenter {
     override fun getLoadRepoInfo(repoUrl: String) {
+
         githubRepository.getRepoInfoBasedOnOwnerNameRepoName(repoUrl)
             .enqueue(object : Callback<GetSingleRepo> {
                 override fun onFailure(call: Call<GetSingleRepo>, t: Throwable) {
@@ -29,6 +30,7 @@ class DetailRepoPresenter(
                         } ?: let {
                             view.loadFailedMessage(response.errorBody().toString())
                         }
+                        view.dismissProgressBar()
                     }
                 }
 

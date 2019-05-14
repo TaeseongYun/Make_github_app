@@ -1,10 +1,5 @@
 package tech.tsdev.github_management.view.main.myfragment.presenter
 
-import com.google.firebase.auth.AuthCredential
-import com.google.firebase.auth.FirebaseAuth
-
-
-
 interface MyFragmentContract {
     interface View{
         fun loadViewToastMessage()
@@ -12,9 +7,14 @@ interface MyFragmentContract {
         fun loadFailToastMessage(message: String)
 
         fun loadUserDetailInfo(userAvatar: String,
+                               userBackground: String,
                                userLogin: String,
                                userLocation: Any?,
                                userJoinTime: String)
+
+        fun showProgressBar()
+
+        fun dismissProgressBar()
 
     }
 

@@ -2,6 +2,7 @@ package tech.tsdev.github_management.view.main.activity.repos
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import kotlinx.android.synthetic.main.activity_detail_repo.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
@@ -10,6 +11,12 @@ import tech.tsdev.github_management.view.main.activity.repos.presenter.DetailRep
 import tech.tsdev.github_management.view.main.activity.repos.presenter.DetailRepoPresenter
 
 class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
+
+
+    override fun dismissProgressBar() {
+        loader.visibility = View.GONE
+    }
+
     override fun loadFailedMessage() {
         toast("로드 실패")
     }

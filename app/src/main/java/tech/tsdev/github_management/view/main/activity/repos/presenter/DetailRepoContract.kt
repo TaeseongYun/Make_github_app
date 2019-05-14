@@ -12,9 +12,11 @@ interface DetailRepoContract {
             repoDescription: String?,
             repoToolbarTitle: String
         )
+
+        fun dismissProgressBar()
     }
 
-    interface Presneter {
+    interface Presenter {
         fun getLoadRepoInfo(repoUrl: String)
     }
 }

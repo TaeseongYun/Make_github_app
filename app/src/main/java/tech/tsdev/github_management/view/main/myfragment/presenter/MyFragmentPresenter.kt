@@ -13,17 +13,18 @@ class MyFragmentPresenter(
     private val githubRepository: GithubRepository
 ) : MyFragmentContract.Presneter {
     override fun inputUserNameLoad(userName: String?) {
-
         userName?.let { name ->
             githubRepository.getSingleUser(name).enqueue(object : Callback<SingleUser> {
                 override fun onFailure(call: Call<SingleUser>, t: Throwable) {
                     view.loadViewToastMessage()
+                    view.dismissProgressBar()
                 }
 
                 override fun onResponse(call: Call<SingleUser>, response: Response<SingleUser>) {
                     if (response.isSuccessful) {
                         response.body()?.let { singUser ->
                             view.loadUserDetailInfo(
+                                singUser.avatarUrl,
                                 singUser.avatarUrl,
                                 singUser.login,
                                 singUser.location,
@@ -32,6 +33,7 @@ class MyFragmentPresenter(
                         } ?: let {
                             view.loadFailToastMessage(response.errorBody().toString())
                         }
+                        view.dismissProgressBar()
                     }
                 }
 

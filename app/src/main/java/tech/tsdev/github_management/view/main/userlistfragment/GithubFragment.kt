@@ -28,12 +28,10 @@ class GithubFragment : Fragment(), GithubContract.View {
 
 
     override fun showProgressbar() {
-        progress_layout.visibility = View.VISIBLE
         user_recycler_view.visibility = View.GONE
     }
 
     override fun dissmissProgressbar() {
-        progress_layout.visibility = View.GONE
         user_recycler_view.visibility = View.VISIBLE
     }
 
@@ -76,7 +74,7 @@ class GithubFragment : Fragment(), GithubContract.View {
 
     override fun onResume() {
         super.onResume()
-        dissmissProgressbar()
+//        dissmissProgressbar()
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.userlist_fragment, container, false)

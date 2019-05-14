@@ -17,11 +17,20 @@ import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentCon
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentPresenter
 
 class MyFragment : Fragment(), MyFragmentContract.View {
+    override fun showProgressBar() {
+        loader_my_fragment.visibility = View.VISIBLE
+    }
+
+    override fun dismissProgressBar() {
+        loader_my_fragment.visibility = View.GONE
+    }
+
     override fun loadUserDetailInfo(
-        userAvatar: String, userLogin: String,
+        userAvatar: String, userBackground: String, userLogin: String,
         userLocation: Any?, userJoinTime: String
     ) {
         user_avatar.proflieImageLoad(userAvatar)
+        user_avatar_bg.getProfileImgRepo(userBackground)
         user_login.text = userLogin
         userLocation?.let { user_location.text = it.toString() } ?: let { user_location.visibility = View.INVISIBLE }
         joined_time.text = userJoinTime
@@ -52,6 +61,7 @@ class MyFragment : Fragment(), MyFragmentContract.View {
         println("argument -> ${arguments?.getString("userName")}")
 
         myFragmentPresenter.inputUserNameLoad(arguments?.getString("userName"))
+
 
     }
 
