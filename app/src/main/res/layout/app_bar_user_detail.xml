@@ -94,6 +94,7 @@
                                                  android:visibility="visible"
                                                  app:tabGravity="fill"
                                                  app:tabMode="fixed"
+                                                 android:id="@+id/user_info_tab_layout"
                                                  app:tabTextAppearance="@style/TextAppearance.Design.Tab"
                                                  app:tabSelectedTextColor="@color/white">
             <android.support.design.widget.TabItem android:layout_width="wrap_content"
@@ -111,8 +112,10 @@
     <android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
                                                      android:layout_height="match_parent"
                                                      app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <android.support.v4.view.ViewPager android:layout_width="match_parent"
-                                           android:layout_height="match_parent"/>
+        <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         <ProgressBar
                 android:id="@+id/loader_my_fragment"
                 android:layout_width="match_parent" android:layout_height="wrap_content"

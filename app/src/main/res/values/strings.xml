@@ -18,6 +18,11 @@
     <string name="powered_by_github">powered by Github</string>
 
 
+
+    <!--UserInfo-->
+    <string name="bio">User_BIO</string>
+
+
     <!--tablayout-->
     <string name="overview">OVERVIEW</string>
     <string name="repository">REPOSITORY</string>

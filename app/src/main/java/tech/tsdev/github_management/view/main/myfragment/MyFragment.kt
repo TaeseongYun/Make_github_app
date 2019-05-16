@@ -2,21 +2,28 @@ package tech.tsdev.github_management.view.main.myfragment
 
 
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentStatePagerAdapter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.app_bar_user_detail.*
-import kotlinx.android.synthetic.main.my_info_fragment.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
-import tech.tsdev.github_management.ui.modules.detail.user.dialog.CustomDialog
+import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.MyInfoFragment
+import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.MyUserActivityFragment
+import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.MyUserStarFragment
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentContract
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentPresenter
 
 class MyFragment : Fragment(), MyFragmentContract.View {
+
+    private  var userInfoName: String? = ""
+
     override fun showProgressBar() {
         loader_my_fragment.visibility = View.VISIBLE
     }
@@ -62,7 +69,26 @@ class MyFragment : Fragment(), MyFragmentContract.View {
 
         myFragmentPresenter.inputUserNameLoad(arguments?.getString("userName"))
 
+        userInfoName = arguments?.getString("userName")!!
 
+        user_info_tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(p0: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                viewPager.currentItem = tab.position
+            }
+
+        })
+        viewPager.run {
+            adapter = fragmentManager?.let { MyFragmentViewpageAdapter(it) }
+            addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(user_info_tab_layout){})
+        }
     }
 
     override fun onResume() {
@@ -92,5 +118,28 @@ class MyFragment : Fragment(), MyFragmentContract.View {
         super.onViewStateRestored(savedInstanceState)
 
         Log.d("onRestart", "Restart")
+    }
+
+    inner class MyFragmentViewpageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+        override fun getItem(position: Int): Fragment? =
+            when(position) {
+                0 -> {
+                    MyInfoFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("userInfoName", userInfoName)
+                        }
+                    }
+                }
+                1 -> {
+                    MyUserActivityFragment()
+                }
+                2 -> {
+                    MyUserStarFragment()
+                }
+                else -> null
+            }
+
+
+        override fun getCount(): Int = 3
     }
 }
