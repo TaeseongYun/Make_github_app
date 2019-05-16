@@ -25,8 +25,15 @@
                           android:padding="@dimen/spacing_small"/>
 
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                tools:text="@string/bio" android:id="@+id/user_bio"
-                android:padding="@dimen/spacing_small"/>
+                          tools:text="@string/bio" android:id="@+id/user_bio"
+                          android:padding="@dimen/spacing_small"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          tools:text="@string/email" android:padding="@dimen/spacing_small"
+                          android:id="@+id/user_email"
+                          android:drawableStart="@drawable/ic_email_black_24dp"
+                          android:autoLink="email"
+                          android:drawablePadding="@dimen/spacing_normal"/>
 
             </LinearLayout>
 

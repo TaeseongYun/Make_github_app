@@ -4,7 +4,8 @@ interface MyInfoContract {
     interface View {
         fun showGetSingleUserDetailInfo(
             userName: String?,
-            userBio: String?
+            userBio: String?,
+            userEmail: String?
         )
 
         fun showLoadFailMessage()

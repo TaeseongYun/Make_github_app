@@ -22,7 +22,8 @@ class MyInfoPresenter(
                         response.body()?.let { singleUser ->
                             view.showGetSingleUserDetailInfo(
                                 singleUser.name,
-                                singleUser.bio
+                                singleUser.bio,
+                                singleUser.email
                             )
                         } ?: let { view.showLoadFailMessage(response.errorBody().toString()) }
                     }
