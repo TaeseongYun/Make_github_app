@@ -2,15 +2,15 @@
 <resources>
     <color name="colorPrimary">#37474f</color>
     <color name="colorPrimaryDark">#102027</color>
-    <color name="colorAccent">#ffff76</color>
+    <color name="colorAccent">#000000</color>
 
 
     <color name="black">#000000</color>
     <color name="white">#FFF</color>
 
     <!--ToolbarBackground-->
-    <color name="toolbarBackground">#7337474f</color>
-
+    <color name="toolbarBackground">#BF37474f</color>
+    <color name="progressBarTint">#F1D130</color>
 
     <color name="blackTransparent65">#A6000000</color>
 

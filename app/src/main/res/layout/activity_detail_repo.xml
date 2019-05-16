@@ -121,7 +121,7 @@
                 android:paddingEnd="@dimen/spacing_large"
                 android:paddingStart="@dimen/spacing_large"
                 android:indeterminateTintMode="src_atop"
-                android:indeterminateTint="@color/colorAccent"
+                android:indeterminateTint="@color/progressBarTint"
                 />
 
     </android.support.design.widget.CoordinatorLayout>
