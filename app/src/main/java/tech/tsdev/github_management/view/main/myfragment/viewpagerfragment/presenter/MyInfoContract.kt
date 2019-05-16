@@ -2,7 +2,14 @@ package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.pres
 
 interface MyInfoContract {
     interface View {
+        fun showGetSingleUserDetailInfo(
+            userName: String?,
+            userBio: String?
+        )
 
+        fun showLoadFailMessage()
+
+        fun showLoadFailMessage(message: String)
     }
 
     interface Presenter {
