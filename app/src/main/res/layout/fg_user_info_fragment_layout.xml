@@ -35,6 +35,12 @@
                           android:autoLink="email"
                           android:drawablePadding="@dimen/spacing_normal"/>
 
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          tools:text="@string/email" android:padding="@dimen/spacing_small"
+                          android:drawableStart="@drawable/ic_cloud_queue_black_24dp"
+                          android:drawablePadding="@dimen/spacing_normal" android:id="@+id/user_web"
+                          android:autoLink="web"/>
+
             </LinearLayout>
 
         </android.support.design.card.MaterialCardView>

@@ -5,7 +5,8 @@ interface MyInfoContract {
         fun showGetSingleUserDetailInfo(
             userName: String?,
             userBio: String?,
-            userEmail: String?
+            userEmail: String?,
+            userWeb: String?
         )
 
         fun showLoadFailMessage()
