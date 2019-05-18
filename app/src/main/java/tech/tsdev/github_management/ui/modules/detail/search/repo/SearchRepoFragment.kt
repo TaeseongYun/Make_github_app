@@ -20,6 +20,8 @@ class SearchRepoFragment : Fragment(), SearchRepoContract.View{
     }
 
     override fun failLoadView() {
+        recycler_view_search_repo.visibility = View.GONE
+        search_lottie_images.visibility = View.VISIBLE
         tv_nothing_result.visibility = View.VISIBLE
     }
 

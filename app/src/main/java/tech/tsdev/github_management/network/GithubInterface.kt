@@ -72,4 +72,10 @@ interface GithubInterface {
     fun getRepoBasedOnOwnerName(
         @Url repoUrl: String
     ): Call<GetSingleRepo>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET
+    fun getStarBasedonUserName(
+        @Path("username") userName: String
+    ):Call<List<GetUserStarred>>
 }

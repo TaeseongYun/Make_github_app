@@ -25,11 +25,13 @@ class SearchRepoPresenter(
                     if(response.isSuccessful) {
                         view.successLoadView()
                         response.body()?.let { searchRepoData ->
+                            if (searchRepoData.items.isEmpty())
+                                view.failLoadView()
                             searchRepoData.items.forEach { repoItems ->
                                 githubRecyclerView.addItem(repoItems)
                             }
                             githubRecyclerView.notifyDataItems()
-                        }
+                        } ?: let { view.failLoadView() }
                     }
                 }
             })

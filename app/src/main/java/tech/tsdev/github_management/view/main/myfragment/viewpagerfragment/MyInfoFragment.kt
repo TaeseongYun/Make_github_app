@@ -13,11 +13,26 @@ import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.prese
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoPresenter
 
 class MyInfoFragment : Fragment(), MyInfoContract.View {
-    override fun showGetSingleUserDetailInfo(userName: String?, userBio: String?, userEmail: String?, userWeb: String?) {
+    override fun dismissLottieView() {
+        user_lottie_view.visibility = View.GONE
+        user_info_card_view.visibility = View.VISIBLE
+    }
+
+    override fun getReposPreview(userName: String?) {
+        userName?.let { user_repos.text = it } ?: let { user_repos.visibility = View.GONE }
+    }
+
+    override fun showGetSingleUserDetailInfo(
+        userName: String?, userBio: String?,
+        userEmail: String?,
+        userWeb: String?
+    ) {
         userName?.let { user_id.text = it } ?: let { user_id.visibility = View.GONE }
         userBio?.let { user_bio.text = it } ?: let { user_bio.visibility = View.GONE }
         userEmail?.let { user_email.text = it } ?: let { user_email.visibility = View.GONE }
         userWeb?.let { user_web.text = it } ?: let { user_web.visibility = View.GONE }
+        if(userWeb.isNullOrBlank())
+            user_web.visibility = View.GONE
     }
 
     override fun showLoadFailMessage() {
@@ -34,7 +49,7 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.fg_user_info_fragment_layout, container, false)
+        inflater.inflate(R.layout.fg_user_info_fragment_layout, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

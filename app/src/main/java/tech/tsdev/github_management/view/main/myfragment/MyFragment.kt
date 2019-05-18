@@ -56,10 +56,9 @@ class MyFragment : Fragment(), MyFragmentContract.View {
         MyFragmentPresenter(this@MyFragment, GithubRepository)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+            = inflater.inflate(R.layout.my_info_fragment, container, false)
 
-        return inflater.inflate(R.layout.my_info_fragment, container, false)
-    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,11 +68,11 @@ class MyFragment : Fragment(), MyFragmentContract.View {
 
         myFragmentPresenter.inputUserNameLoad(arguments?.getString("userName"))
 
-        userInfoName = arguments?.getString("userName")!!
+        userInfoName = arguments?.getString("userName")
 
         user_info_tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(p0: TabLayout.Tab?) {
-
+            override fun onTabReselected(tab: TabLayout.Tab) {
+                viewPager.currentItem = tab.position
             }
 
             override fun onTabUnselected(p0: TabLayout.Tab?) {

@@ -9,6 +9,10 @@ interface MyInfoContract {
             userWeb: String?
         )
 
+        fun dismissLottieView()
+
+        fun getReposPreview(userName: String?)
+
         fun showLoadFailMessage()
 
         fun showLoadFailMessage(message: String)

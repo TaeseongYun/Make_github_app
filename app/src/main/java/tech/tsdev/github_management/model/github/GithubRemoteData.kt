@@ -7,6 +7,7 @@ import tech.tsdev.github_management.network.createRetrofit
 
 class GithubRemoteData : GithubDataSource {
 
+
     companion object {
         const val GITHUB_URL = "https://api.github.com"
     }
@@ -36,4 +37,7 @@ class GithubRemoteData : GithubDataSource {
 
     override fun getRepoInfoBasedOnOwnerNameRepoName(repoUrl: String): Call<GetSingleRepo> =
             githubUserList.getRepoBasedOnOwnerName(repoUrl)
+
+    override fun getStarBasedonUserName(userName: String): Call<List<GetUserStarred>> =
+            githubUserList.getStarBasedonUserName(userName)
 }

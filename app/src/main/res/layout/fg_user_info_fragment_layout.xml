@@ -4,17 +4,27 @@
                                             xmlns:tools="http://schemas.android.com/tools"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent">
+
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:orientation="vertical">
-        <android.support.design.card.MaterialCardView android:layout_width="match_parent"
-                                                      android:layout_height="wrap_content"
-                                                      android:elevation="@dimen/material_card_view_margin"
-                                                      android:translationZ="@dimen/material_card_view_margin"
-                                                      android:layout_marginTop="@dimen/spacing_small"
-                                                      android:layout_marginStart="@dimen/spacing_small"
-                                                      android:layout_marginEnd="@dimen/spacing_small"
-                                                      android:layout_marginBottom="@dimen/spacing_small"
-                                                      android:background="@drawable/card_view_shadow">
+        <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:id="@+id/user_lottie_view"
+                app:lottie_autoPlay="true" android:layout_gravity="center"
+                app:lottie_fileName="loading_animation.json"
+                app:lottie_loop="true"/>
+        <android.support.design.card.MaterialCardView
+                android:id="@+id/user_info_card_view"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/material_card_view_margin"
+                android:translationZ="@dimen/material_card_view_margin"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:background="@drawable/card_view_shadow">
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:orientation="vertical">
@@ -40,6 +50,13 @@
                           android:drawableStart="@drawable/ic_cloud_queue_black_24dp"
                           android:drawablePadding="@dimen/spacing_normal" android:id="@+id/user_web"
                           android:autoLink="web"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          tools:text="@string/repository" android:padding="@dimen/spacing_small"
+                          android:drawableStart="@drawable/ic_library_repos_black_24dp"
+                          android:drawablePadding="@dimen/spacing_normal" android:id="@+id/user_repos"
+                          android:background="?attr/selectableItemBackground"
+                          android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"/>
 
             </LinearLayout>
 

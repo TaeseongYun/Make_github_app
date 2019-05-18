@@ -8,9 +8,11 @@ import android.view.View
 import kotlinx.android.synthetic.main.main_bottom_navigation.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.myfragment.MyFragment
 import tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.SearchActivity
+import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoPresenter
 import tech.tsdev.github_management.view.main.starfragment.StarFragment
 import tech.tsdev.github_management.view.main.userlistfragment.GithubFragment
 
