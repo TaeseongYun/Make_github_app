@@ -1,6 +1,7 @@
 package tech.tsdev.github_management.view.main.myfragment
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
@@ -15,7 +16,6 @@ import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.MyInfoFragment
-import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.MyUserActivityFragment
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.MyUserStarFragment
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentContract
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentPresenter
@@ -61,6 +61,7 @@ class MyFragment : Fragment(), MyFragmentContract.View {
 
 
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -69,6 +70,7 @@ class MyFragment : Fragment(), MyFragmentContract.View {
         myFragmentPresenter.inputUserNameLoad(arguments?.getString("userName"))
 
         userInfoName = arguments?.getString("userName")
+
 
         user_info_tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab) {
@@ -94,29 +96,10 @@ class MyFragment : Fragment(), MyFragmentContract.View {
         super.onResume()
 
         Log.d("onResume", "Resume")
-    }
-
-    override fun onStop() {
-        super.onStop()
-
-        Log.d("onStop", "Stop")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Log.d("onDetach", "Detach")
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        Log.d("onPause", "Pause")
-    }
-
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
-        Log.d("onRestart", "Restart")
+        viewPager.run {
+            adapter = fragmentManager?.let { MyFragmentViewpageAdapter(it) }
+            addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(user_info_tab_layout){})
+        }
     }
 
     inner class MyFragmentViewpageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
@@ -130,15 +113,16 @@ class MyFragment : Fragment(), MyFragmentContract.View {
                     }
                 }
                 1 -> {
-                    MyUserActivityFragment()
-                }
-                2 -> {
-                    MyUserStarFragment()
+                    MyUserStarFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("userInfoName", userInfoName)
+                        }
+                    }
                 }
                 else -> null
             }
 
 
-        override fun getCount(): Int = 3
+        override fun getCount(): Int = 2
     }
 }

@@ -5,9 +5,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import tech.tsdev.github_management.model.GetUserStarred
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.adapter.model.MyUserStarModel
 
 class MyUserStarPresenter(private val view: MyUserStarContract.View,
-                          private val githubRepository: GithubRepository): MyUserStarContract.Presenter {
+                          private val githubRepository: GithubRepository,
+                          private val userStarRecyclerModel: MyUserStarModel): MyUserStarContract.Presenter {
     override fun getUserGiveStarBasedOnUserName(userName: String) {
         githubRepository.getStarBasedonUserName(userName).enqueue(object : Callback<List<GetUserStarred>>{
             override fun onFailure(call: Call<List<GetUserStarred>>, t: Throwable) {
@@ -15,7 +17,14 @@ class MyUserStarPresenter(private val view: MyUserStarContract.View,
             }
 
             override fun onResponse(call: Call<List<GetUserStarred>>, response: Response<List<GetUserStarred>>) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                if(response.isSuccessful) {
+                    response.body()?.let { userStarredList ->
+                        userStarredList.forEach { userStarred ->
+                            userStarRecyclerModel.additem(userStarred)
+                        }
+                        userStarRecyclerModel.notifyItemData()
+                    }
+                }
             }
 
         })

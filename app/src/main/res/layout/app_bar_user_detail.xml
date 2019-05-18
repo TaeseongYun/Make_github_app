@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.design.widget.AppBarLayout android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
@@ -86,7 +86,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
-                    app:popupTheme="?popup_theme"/>
+                    app:popupTheme="?popup_theme">
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
 
         <android.support.design.widget.TabLayout android:layout_width="match_parent"
@@ -97,9 +98,6 @@
                                                  android:id="@+id/user_info_tab_layout"
                                                  app:tabTextAppearance="@style/TextAppearance.Design.Tab"
                                                  app:tabSelectedTextColor="@color/white">
-            <android.support.design.widget.TabItem android:layout_width="wrap_content"
-                                                   android:layout_height="wrap_content"
-                                                   android:text="Test"/>
             <android.support.design.widget.TabItem android:layout_width="wrap_content"
                                                    android:layout_height="wrap_content"
                                                    android:text="Test"/>

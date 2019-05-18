@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent" android:layout_height="match_parent">
+              android:layout_width="match_parent" android:layout_height="wrap_content">
     <android.support.design.card.MaterialCardView android:layout_width="match_parent"
                                                   android:layout_height="wrap_content"
                                                   android:layout_margin="@dimen/spacing_small"
@@ -34,8 +34,8 @@
                 </LinearLayout>
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                          tools:text="@string/description"
-                          android:layout_margin="@dimen/spacing_small" android:id="@+id/repo_owner_description"/>
+                          tools:text="@string/description" android:layout_marginStart="@dimen/spacing_small"
+                          android:id="@+id/repo_owner_description"/>
 
                 <RelativeLayout android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
@@ -75,7 +75,7 @@
                             android:layout_toEndOf="@+id/repo_owner_fork_tv"
                             android:layout_marginEnd="@dimen/spacing_small"
                             android:id="@+id/repo_owner_name_img"
-                            android:layout_marginStart="@dimen/spacing_xxx_large"/>
+                            android:layout_marginStart="@dimen/spacing_xx_large"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                     tools:text="@string/users"
                     android:layout_marginTop="@dimen/spacing_small" android:id="@+id/repo_owner_name_tv"

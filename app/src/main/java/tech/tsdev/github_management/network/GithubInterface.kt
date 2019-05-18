@@ -74,7 +74,7 @@ interface GithubInterface {
     ): Call<GetSingleRepo>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
-    @GET
+    @GET("users/{username}/starred")
     fun getStarBasedonUserName(
         @Path("username") userName: String
     ):Call<List<GetUserStarred>>
