@@ -14,6 +14,7 @@ class MyInfoPresenter(
 
     private var userRepos = 0
 
+
     override fun getUserInfoBasedOnUserName(userName: String?) {
         userName?.let {
             githubRepository.getSingleUser(it).enqueue(object : Callback<SingleUser> {
@@ -29,6 +30,10 @@ class MyInfoPresenter(
                                 singleUser.bio,
                                 singleUser.email,
                                 singleUser.blog
+                            )
+                            view.getUserManyFollowerFollowing(
+                                singleUser.followers,
+                                singleUser.following
                             )
                         } ?: let { view.showLoadFailMessage(response.errorBody().toString()) }
                     }

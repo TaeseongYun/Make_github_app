@@ -13,6 +13,8 @@ interface MyInfoContract {
 
         fun getReposPreview(userName: String?)
 
+        fun getUserManyFollowerFollowing(userFollowers: Int?, userFollowings: Int?)
+
         fun showLoadFailMessage()
 
         fun showLoadFailMessage(message: String)

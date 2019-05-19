@@ -10,4 +10,6 @@ interface MyUserStarModel {
     fun getItem(position: Int): GetUserStarred
 
     fun notifyItemData()
+
+    var onClick: (Int) -> Unit
 }

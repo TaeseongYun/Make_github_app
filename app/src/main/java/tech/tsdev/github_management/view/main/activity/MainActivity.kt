@@ -55,8 +55,6 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_me -> {
-
-
                 replace(R.id.frame_layout, myGithubFragment)
                 return@OnNavigationItemSelectedListener true
             }

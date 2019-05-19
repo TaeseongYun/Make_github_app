@@ -12,9 +12,10 @@ class MyUserStarRecyclerAdapter(val context: Context?) : RecyclerView.Adapter<Re
 
     private val userStarList = mutableListOf<GetUserStarred>()
 
+    override lateinit var onClick: (Int) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder =
-        MyUserStarRecyclerHolder(context, parent)
+        MyUserStarRecyclerHolder(onClick, context, parent)
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

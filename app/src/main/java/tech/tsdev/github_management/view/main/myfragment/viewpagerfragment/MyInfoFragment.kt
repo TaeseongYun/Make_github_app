@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,18 @@ import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.prese
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoPresenter
 
 class MyInfoFragment : Fragment(), MyInfoContract.View {
+    @SuppressLint("SetTextI18n")
+    override fun getUserManyFollowerFollowing(userFollowers: Int?, userFollowings: Int?) {
+        if(userFollowers?.minus(1) != 0 || userFollowings?.minus(1) != 0) {
+            user_followers.text = "Followed by $userFollowers users"
+            user_followings.text = "Following by $userFollowings users"
+        }
+        else {
+            user_followers.text = "Followed by $userFollowers user"
+            user_followings.text = "Following by $userFollowings user"
+        }
+    }
+
     override fun dismissLottieView() {
         user_lottie_view.visibility = View.GONE
         user_info_card_view.visibility = View.VISIBLE
@@ -58,5 +71,10 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
         println("MyInfoFragmentUserName -> ${arguments?.getString("userInfoName")}")
 
         myInfoPresenter.getUserInfoBasedOnUserName(arguments?.getString("userInfoName"))
+        user_repos.setOnClickListener { println("repository Click") }
+
+        user_followers.setOnClickListener { println("Followers Click") }
+
+        user_followings.setOnClickListener { println("Followings Click") }
     }
 }

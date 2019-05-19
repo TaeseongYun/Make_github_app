@@ -9,12 +9,20 @@ import kotlinx.android.synthetic.main.user_starred_repo_items.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.GetUserStarred
 
-class MyUserStarRecyclerHolder(context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
+class MyUserStarRecyclerHolder(onClick: (Int) -> Unit, context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(context).inflate(R.layout.user_starred_repo_items, parent, false)
 ) {
+
+    init {
+        itemView.setOnClickListener {
+            onClick(adapterPosition)
+        }
+    }
+
     fun onBind(items: GetUserStarred) {
         itemView.onBind(items)
     }
+
 
     fun View.onBind(items: GetUserStarred) {
         user_starred_owner_img.proflieImageLoad(items.owner.avatarUrl)

@@ -7,6 +7,8 @@ interface StarFragmentContract {
         fun loadFailedMessage()
 
         fun loadFailMessage(message: String)
+
+        fun dismissLottieProgressbar()
     }
 
     interface Presenter {

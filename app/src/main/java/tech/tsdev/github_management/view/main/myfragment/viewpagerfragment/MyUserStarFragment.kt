@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -10,11 +11,19 @@ import kotlinx.android.synthetic.main.user_starred_repo.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.view.main.activity.repos.DetailRepoActivity
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.adapter.MyUserStarRecyclerAdapter
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyUserStarContract
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyUserStarPresenter
 
 class MyUserStarFragment : Fragment(), MyUserStarContract.View {
+    override fun getDetailRepoBasedUserGivedStar(repoUrl: String) {
+        Intent(activity, DetailRepoActivity::class.java).apply {
+            putExtra("repoUrl", repoUrl)
+            startActivity(this)
+        }
+    }
+
     override fun loadFailRepoMessage() {
         toast("로드 실패")
     }

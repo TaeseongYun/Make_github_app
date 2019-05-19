@@ -18,7 +18,6 @@
     <string name="powered_by_github">powered by Github</string>
 
 
-
     <!--UserInfo-->
     <string name="bio">User_BIO</string>
 
@@ -70,6 +69,10 @@
         tech.tsdev.github_management.util.BottomNavigationBehavior
     </string>
 
+
+    <!--toolbar Title-->
+    <string name="toolbar_title_Followers">Followers</string>
+    <string name="toolbar_title_Following">Following</string>
 
     <string name="start">
         Start by name

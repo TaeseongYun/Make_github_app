@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.main.activity.MyFollowersUserActivity">
+    <android.support.v7.widget.Toolbar android:layout_width="match_parent"
+                                       android:layout_height="?attr/actionBarSize"
+                                       android:background="@drawable/bg_round_appbar"
+                                       app:layout_constraintTop_toTopOf="parent"
+                                       app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <tech.tsdev.github_management.view.main.custom.GlideImageView
+                    android:id="@+id/img_followers_close"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_chevron_left_white_24dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                          android:orientation="vertical">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:id="@+id/user_followers_title"
+                          android:text="@string/toolbar_title_Followers" android:textSize="@dimen/text_large"
+                          android:textStyle="bold" android:paddingTop="@dimen/spacing_small"
+                          android:paddingStart="@dimen/spacing_small" android:paddingEnd="@dimen/spacing_small"
+                          android:textColor="@color/white"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          tools:text="@string/users" android:paddingEnd="@dimen/spacing_small"
+                          android:paddingStart="@dimen/spacing_small" android:textColor="@color/white"
+                          android:id="@+id/user_followers_name"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+</android.support.constraint.ConstraintLayout>

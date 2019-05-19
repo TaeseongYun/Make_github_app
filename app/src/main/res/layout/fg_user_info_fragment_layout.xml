@@ -16,7 +16,7 @@
                 app:lottie_loop="true"/>
         <android.support.design.card.MaterialCardView
                 android:id="@+id/user_info_card_view"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="@dimen/material_card_view_margin"
@@ -51,6 +51,19 @@
                           android:drawableStart="@drawable/ic_cloud_queue_black_24dp"
                           android:drawablePadding="@dimen/spacing_normal" android:id="@+id/user_web"
                           android:autoLink="web"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          tools:text="@string/following" android:padding="@dimen/spacing_small"
+                          android:drawableStart="@drawable/ic_group_black_24dp"
+                          android:drawablePadding="@dimen/spacing_normal" android:id="@+id/user_followings"
+                          android:background="?attr/selectableItemBackground"
+                          android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                tools:text="@string/followers" android:padding="@dimen/spacing_small"
+                android:drawableStart="@drawable/ic_group_black_24dp" android:drawablePadding="@dimen/spacing_normal"
+                android:background="?attr/selectableItemBackground" android:id="@+id/user_followers"
+                android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"/>
 
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                           tools:text="@string/repository" android:padding="@dimen/spacing_small"

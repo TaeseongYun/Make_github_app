@@ -98,16 +98,14 @@ class MyFragment : Fragment(), MyFragmentContract.View {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
 
-        Log.d("onResume", "Resume")
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
         viewPager.run {
             adapter = fragmentManager?.let { MyFragmentViewpageAdapter(it) }
             addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(user_info_tab_layout){})
         }
     }
-
     inner class MyFragmentViewpageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         override fun getItem(position: Int): Fragment? =
             when(position) {

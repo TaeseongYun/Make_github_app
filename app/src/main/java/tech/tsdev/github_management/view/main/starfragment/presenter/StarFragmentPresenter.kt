@@ -24,6 +24,8 @@ class StarFragmentPresenter(
     override fun getResultReceivedBasedOnUserName(userName: String) {
         githubRepository.getUserReceivedResult(userName).enqueue(object : Callback<List<ReceivedEvents>> {
             override fun onFailure(call: Call<List<ReceivedEvents>>, t: Throwable) {
+                view.dismissLottieProgressbar()
+
                 view.loadFailedMessage()
             }
 
@@ -40,9 +42,7 @@ class StarFragmentPresenter(
                     }
                 }
             }
-
         })
+        view.dismissLottieProgressbar()
     }
-
-
 }
