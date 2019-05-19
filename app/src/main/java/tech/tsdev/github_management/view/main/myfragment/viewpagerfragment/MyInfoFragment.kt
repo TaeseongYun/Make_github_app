@@ -16,6 +16,7 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
     override fun dismissLottieView() {
         user_lottie_view.visibility = View.GONE
         user_info_card_view.visibility = View.VISIBLE
+        user_repo_card_view.visibility = View.VISIBLE
     }
 
     override fun getReposPreview(userName: String?) {

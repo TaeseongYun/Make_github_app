@@ -23,6 +23,17 @@
     <string name="bio">User_BIO</string>
 
 
+    <!--UserInfo-->
+    <string name="userInfo">Info</string>
+    <string name="userStar">Star</string>
+
+
+    <!--DetailRepo-->
+    <string name="repoAbout">About</string>
+    <string name="repoFile">files</string>
+    <string name="repoCommits">commits</string>
+    <string name="repoactirivy">activity</string>
+
     <!--tablayout-->
     <string name="overview">OVERVIEW</string>
     <string name="repository">REPOSITORY</string>

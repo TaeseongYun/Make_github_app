@@ -14,7 +14,7 @@
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed|snap"
                 app:collapsedTitleGravity="start"
                 app:expandedTitleGravity="top"
                 app:expandedTitleMarginStart="@dimen/spacing_x_large"
@@ -81,13 +81,6 @@
 
             </RelativeLayout>
 
-            <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin"
-                    app:popupTheme="?popup_theme">
-            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
 
         <android.support.design.widget.TabLayout android:layout_width="match_parent"
@@ -98,12 +91,6 @@
                                                  android:id="@+id/user_info_tab_layout"
                                                  app:tabTextAppearance="@style/TextAppearance.Design.Tab"
                                                  app:tabSelectedTextColor="@color/white">
-            <android.support.design.widget.TabItem android:layout_width="wrap_content"
-                                                   android:layout_height="wrap_content"
-                                                   android:text="Test"/>
-            <android.support.design.widget.TabItem android:layout_width="wrap_content"
-                                                   android:layout_height="wrap_content"
-                                                   android:text="Test"/>
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
 

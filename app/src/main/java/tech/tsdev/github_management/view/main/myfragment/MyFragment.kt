@@ -55,6 +55,10 @@ class MyFragment : Fragment(), MyFragmentContract.View {
     private val myFragmentPresenter: MyFragmentPresenter by lazy {
         MyFragmentPresenter(this@MyFragment, GithubRepository)
     }
+    private fun addTabLayoutItem() {
+        user_info_tab_layout.addTab(user_info_tab_layout.newTab().setText(R.string.userInfo))
+        user_info_tab_layout.addTab(user_info_tab_layout.newTab().setText(R.string.userStar))
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
             = inflater.inflate(R.layout.my_info_fragment, container, false)
@@ -71,6 +75,8 @@ class MyFragment : Fragment(), MyFragmentContract.View {
 
         userInfoName = arguments?.getString("userName")
 
+
+        addTabLayoutItem()
 
         user_info_tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab) {

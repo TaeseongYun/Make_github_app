@@ -35,6 +35,13 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
         toolbar_repo.title = repoToolbarTitle
     }
 
+    private fun addTabLayoutItem() {
+        detail_repo_tab_layout.addTab(detail_repo_tab_layout.newTab().setText(R.string.repoAbout))
+        detail_repo_tab_layout.addTab(detail_repo_tab_layout.newTab().setText(R.string.repoFile))
+        detail_repo_tab_layout.addTab(detail_repo_tab_layout.newTab().setText(R.string.repoCommits))
+        detail_repo_tab_layout.addTab(detail_repo_tab_layout.newTab().setText(R.string.repoactirivy))
+    }
+
     private val detailRepoPresenter: DetailRepoPresenter by lazy {
         DetailRepoPresenter(this@DetailRepoActivity, GithubRepository)
     }
@@ -51,5 +58,7 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
         )
 
         btn_detail_repo_close.setOnClickListener { finish() }
+
+        addTabLayoutItem()
     }
 }

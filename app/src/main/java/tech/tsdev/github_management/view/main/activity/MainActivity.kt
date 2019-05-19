@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.view.View
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_user_detail.*
 import kotlinx.android.synthetic.main.main_bottom_navigation.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import tech.tsdev.github_management.R
@@ -38,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
             R.id.navigation_users -> {
@@ -51,8 +55,9 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_me -> {
+
+
                 replace(R.id.frame_layout, myGithubFragment)
-                app_bar.visibility = View.GONE
                 return@OnNavigationItemSelectedListener true
             }
         }

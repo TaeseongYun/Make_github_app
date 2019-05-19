@@ -3,11 +3,13 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior=".util.ToolbarBehaviour"
-        android:background="@drawable/bg_round_appbar" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:stateListAnimator="@null"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 <android.support.v7.widget.Toolbar android:layout_width="match_parent"
                                    android:layout_height="wrap_content"
+                                   android:background="@drawable/bg_round_appbar"
+                                   app:layout_scrollFlags="scroll|enterAlways"
                                    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <tech.tsdev.github_management.view.main.custom.GlideImageView

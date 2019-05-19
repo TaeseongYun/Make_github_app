@@ -9,14 +9,16 @@
         android:layout_height="match_parent"
         tools:context=".view.main.activity.MainActivity">
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
                   android:orientation="vertical">
-        <android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
-                                                         android:layout_height="0dp" android:layout_weight="1">
+        <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
 
             <include layout="@layout/toolbar_main"/>
-
 
 
             <include layout="@layout/fragment_contanior"/>
