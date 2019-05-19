@@ -1,6 +1,7 @@
 package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -10,17 +11,17 @@ import kotlinx.android.synthetic.main.fg_user_info_fragment_layout.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.view.main.activity.MyFollowersUserActivity
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoContract
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoPresenter
 
 class MyInfoFragment : Fragment(), MyInfoContract.View {
     @SuppressLint("SetTextI18n")
     override fun getUserManyFollowerFollowing(userFollowers: Int?, userFollowings: Int?) {
-        if(userFollowers?.minus(1) != 0 || userFollowings?.minus(1) != 0) {
+        if (userFollowers?.minus(1) != 0 || userFollowings?.minus(1) != 0) {
             user_followers.text = "Followed by $userFollowers users"
             user_followings.text = "Following by $userFollowings users"
-        }
-        else {
+        } else {
             user_followers.text = "Followed by $userFollowers user"
             user_followings.text = "Following by $userFollowings user"
         }
@@ -45,7 +46,7 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
         userBio?.let { user_bio.text = it } ?: let { user_bio.visibility = View.GONE }
         userEmail?.let { user_email.text = it } ?: let { user_email.visibility = View.GONE }
         userWeb?.let { user_web.text = it } ?: let { user_web.visibility = View.GONE }
-        if(userWeb.isNullOrBlank())
+        if (userWeb.isNullOrBlank())
             user_web.visibility = View.GONE
     }
 
@@ -73,7 +74,12 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
         myInfoPresenter.getUserInfoBasedOnUserName(arguments?.getString("userInfoName"))
         user_repos.setOnClickListener { println("repository Click") }
 
-        user_followers.setOnClickListener { println("Followers Click") }
+        user_followers.setOnClickListener {
+            Intent(activity, MyFollowersUserActivity::class.java).apply {
+                putExtra("userFollowersBasedUserName", arguments?.getString("userInfoName"))
+                startActivity(this)
+            }
+        }
 
         user_followings.setOnClickListener { println("Followings Click") }
     }

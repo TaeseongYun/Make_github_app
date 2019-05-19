@@ -2,12 +2,55 @@ package tech.tsdev.github_management.view.main.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
+import android.view.View
+import kotlinx.android.synthetic.main.activity_my_follwers_user.*
+import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.view.main.activity.adapter.MyFollowersRecyclerAdapter
+import tech.tsdev.github_management.view.main.activity.presenter.MyFollowersContract
+import tech.tsdev.github_management.view.main.activity.presenter.MyFollowersPresenter
 
-class MyFollowersUserActivity : AppCompatActivity() {
+class MyFollowersUserActivity : AppCompatActivity(), MyFollowersContract.View {
+    override fun dismissLottieProgressBar() {
+        user_followers_recycler.visibility = View.VISIBLE
+        lottie_progress_bar.visibility = View.GONE
+    }
+
+    override fun loadFailedMessage() {
+        toast("로드 실패")
+    }
+
+    override fun loadFailedMessage(message: String) {
+        toast(message)
+    }
+
+
+    private val myFollowersRecyclerAdapter: MyFollowersRecyclerAdapter by lazy {
+        MyFollowersRecyclerAdapter(this)
+    }
+
+    private val myFollowersPresenter: MyFollowersPresenter by lazy {
+        MyFollowersPresenter(this, GithubRepository, myFollowersRecyclerAdapter)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_follwers_user)
+
+        println("userFollowersBasedUserName -> ${intent.getStringExtra("userFollowersBasedUserName")}")
+
+        user_followers_recycler.run {
+            adapter = myFollowersRecyclerAdapter
+            layoutManager = GridLayoutManager(this@MyFollowersUserActivity, 1)
+        }
+
+        myFollowersPresenter.loadUserFollowersBasedUserName(intent.getStringExtra("userFollowersBasedUserName"))
+
+
+
+        user_followers_name.text = intent.getStringExtra("userFollowersBasedUserName")
+        img_followers_close.setOnClickListener { finish() }
     }
 }

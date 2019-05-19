@@ -10,13 +10,14 @@
                                        android:layout_height="?attr/actionBarSize"
                                        android:background="@drawable/bg_round_appbar"
                                        app:layout_constraintTop_toTopOf="parent"
-                                       app:layout_constraintEnd_toEndOf="parent">
+                                       app:layout_constraintEnd_toEndOf="parent" android:id="@+id/toolbar">
         <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent">
             <tech.tsdev.github_management.view.main.custom.GlideImageView
                     android:id="@+id/img_followers_close"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackground"
                     android:src="@drawable/ic_chevron_left_white_24dp"/>
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
@@ -35,4 +36,24 @@
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/lottie_progress_bar"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="pre_loader.json"
+            app:lottie_loop="true"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:visibility="gone"
+                                            android:id="@+id/user_followers_recycler"
+                                            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"/>
 </android.support.constraint.ConstraintLayout>

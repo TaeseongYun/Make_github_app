@@ -18,7 +18,7 @@ class GithubPresenter(
     var isLoading = true
     var since = 30
 
-    init{
+    init {
         userRecyclerModel.onClick = { position ->
             view.loadDetailUser(userRecyclerModel.getItem(position).login)
         }
@@ -37,7 +37,6 @@ class GithubPresenter(
 
             override fun onResponse(call: Call<List<UserListData>>, response: Response<List<UserListData>>) {
                 if (response.isSuccessful) {
-
                     response.body()?.let { userList ->
                         userList.forEach {
                             userRecyclerModel.addItem(it)
@@ -54,7 +53,6 @@ class GithubPresenter(
 
                 isLoading = false
             }
-
         })
         view.dissmissProgressbar()
     }

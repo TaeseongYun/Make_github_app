@@ -1,4 +1,4 @@
-package tech.tsdev.github_management.ui.modules.detail.user.followers.adapter.holder
+package tech.tsdev.github_management.view.main.activity.adapter.holder
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.user_followers_item_detail.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.UserFollowersFollowingList
 
-class FollowersRecyclerHolder(context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
+class MyFollowersRecyclerHolder(context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(context).inflate(R.layout.user_followers_item_detail, parent, false)
 ) {
     fun onBind(items: UserFollowersFollowingList) {
