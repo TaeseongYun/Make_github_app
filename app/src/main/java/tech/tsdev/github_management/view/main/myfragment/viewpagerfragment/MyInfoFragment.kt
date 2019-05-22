@@ -13,6 +13,7 @@ import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.MyFollowersUserActivity
 import tech.tsdev.github_management.view.main.activity.MyFollowingUserActivity
+import tech.tsdev.github_management.view.main.activity.MyRepositoryListActivity
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoContract
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoPresenter
 
@@ -73,7 +74,13 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
         println("MyInfoFragmentUserName -> ${arguments?.getString("userInfoName")}")
 
         myInfoPresenter.getUserInfoBasedOnUserName(arguments?.getString("userInfoName"))
-        user_repos.setOnClickListener { println("repository Click") }
+
+        user_repos.setOnClickListener {
+            Intent(activity, MyRepositoryListActivity::class.java).apply {
+                putExtra("userRepoListBasedOnUserName", arguments?.getString("userInfoName"))
+                startActivity(this)
+            }
+        }
 
         user_followers.setOnClickListener {
             Intent(activity, MyFollowersUserActivity::class.java).apply {

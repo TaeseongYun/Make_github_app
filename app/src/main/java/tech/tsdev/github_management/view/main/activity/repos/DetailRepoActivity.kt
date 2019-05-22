@@ -12,7 +12,7 @@ import tech.tsdev.github_management.view.main.activity.repos.presenter.DetailRep
 
 class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
 
-
+ // 레포지토리 디테일한 내용을 보기 위한 액티비티
     override fun dismissProgressBar() {
         loader.visibility = View.GONE
     }
