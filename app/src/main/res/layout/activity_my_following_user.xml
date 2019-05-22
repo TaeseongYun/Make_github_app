@@ -7,4 +7,54 @@
         android:layout_height="match_parent"
         tools:context=".view.main.activity.MyFollowingUserActivity">
 
+    <android.support.v7.widget.Toolbar android:layout_width="match_parent"
+                                       android:layout_height="?attr/actionBarSize"
+                                       android:background="@drawable/bg_round_appbar"
+                                       app:layout_constraintTop_toTopOf="parent"
+                                       app:layout_constraintStart_toStartOf="parent"
+                                       app:layout_constraintEnd_toEndOf="parent" android:id="@+id/toolbar2">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <tech.tsdev.github_management.view.main.custom.GlideImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_chevron_left_white_24dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/img_close_user_following"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                          android:orientation="vertical">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="@string/following" android:textColor="@color/white"
+                          android:textSize="@dimen/text_large"
+                          android:textStyle="bold"
+                          android:paddingTop="@dimen/spacing_small" android:paddingStart="@dimen/spacing_small"
+                          android:paddingEnd="@dimen/spacing_small"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:id="@+id/user_following_toolbar_name"
+                          tools:text="@string/users" android:textColor="@color/white"
+                          android:paddingStart="@dimen/spacing_small" android:paddingEnd="@dimen/spacing_small"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/following_lottie_progress_bar"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="pre_loader.json"
+            app:lottie_loop="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                            android:layout_height="0dp"
+                                            android:id="@+id/user_following_view"
+                                            app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            android:visibility="gone"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintBottom_toBottomOf="parent"/>
 </android.support.constraint.ConstraintLayout>

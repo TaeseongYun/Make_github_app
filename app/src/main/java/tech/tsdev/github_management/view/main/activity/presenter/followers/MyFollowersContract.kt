@@ -1,4 +1,4 @@
-package tech.tsdev.github_management.view.main.activity.presenter
+package tech.tsdev.github_management.view.main.activity.presenter.followers
 
 interface MyFollowersContract {
     interface View {

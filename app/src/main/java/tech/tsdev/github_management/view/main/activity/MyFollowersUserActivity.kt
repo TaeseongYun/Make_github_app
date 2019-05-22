@@ -9,8 +9,8 @@ import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.followers.MyFollowersRecyclerAdapter
-import tech.tsdev.github_management.view.main.activity.presenter.MyFollowersContract
-import tech.tsdev.github_management.view.main.activity.presenter.MyFollowersPresenter
+import tech.tsdev.github_management.view.main.activity.presenter.followers.MyFollowersContract
+import tech.tsdev.github_management.view.main.activity.presenter.followers.MyFollowersPresenter
 
 class MyFollowersUserActivity : AppCompatActivity(), MyFollowersContract.View {
     override fun dismissLottieProgressBar() {
@@ -32,7 +32,11 @@ class MyFollowersUserActivity : AppCompatActivity(), MyFollowersContract.View {
     }
 
     private val myFollowersPresenter: MyFollowersPresenter by lazy {
-        MyFollowersPresenter(this, GithubRepository, myFollowersRecyclerAdapter)
+        MyFollowersPresenter(
+            this,
+            GithubRepository,
+            myFollowersRecyclerAdapter
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

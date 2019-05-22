@@ -12,6 +12,7 @@ import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.MyFollowersUserActivity
+import tech.tsdev.github_management.view.main.activity.MyFollowingUserActivity
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoContract
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoPresenter
 
@@ -81,6 +82,11 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
             }
         }
 
-        user_followings.setOnClickListener { println("Followings Click") }
+        user_followings.setOnClickListener {
+            Intent(activity, MyFollowingUserActivity::class.java).apply {
+                putExtra("userFollowingBasedUserName", arguments?.getString("userInfoName"))
+                startActivity(this)
+            }
+        }
     }
 }

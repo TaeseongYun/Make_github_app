@@ -4,15 +4,15 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent">
 
-    <LinearLayout
-            android:id="@+id/progress_layout"
-            android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent">
-        <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                app:lottie_autoPlay="true" android:layout_gravity="center"
-                app:lottie_fileName="loading_animation.json"
-                app:lottie_loop="true"/>
-    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/user_list_progress_layout"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            app:lottie_autoPlay="true" android:layout_gravity="center"
+            app:lottie_fileName="loading_animation.json"
+            app:lottie_loop="true" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
     <android.support.v7.widget.RecyclerView
             android:visibility="gone"
             android:layout_width="0dp"

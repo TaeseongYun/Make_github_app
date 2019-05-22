@@ -1,13 +1,12 @@
 package tech.tsdev.github_management.view.main.myfragment
 
 
-import android.annotation.SuppressLint
+
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

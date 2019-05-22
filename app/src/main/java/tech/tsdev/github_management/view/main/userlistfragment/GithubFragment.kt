@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,10 +30,13 @@ class GithubFragment : Fragment(), GithubContract.View {
 
     override fun showProgressbar() {
         user_recycler_view.visibility = View.GONE
+        user_list_progress_layout.visibility = View.VISIBLE
+
     }
 
     override fun dissmissProgressbar() {
         user_recycler_view.visibility = View.VISIBLE
+        user_list_progress_layout.visibility = View.GONE
     }
 
     override fun loadFailMessage() {
@@ -69,13 +73,11 @@ class GithubFragment : Fragment(), GithubContract.View {
         super.onDestroyView()
 
         user_recycler_view.removeOnScrollListener(onScrollListener)
+        Log.d("onDestroyView", "프래그먼트 화면 사라짐")
+//        gitPresenter.loadGithubUser()
     }
 
 
-    override fun onResume() {
-        super.onResume()
-//        dissmissProgressbar()
-    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.userlist_fragment, container, false)
 
