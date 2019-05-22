@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_my_follwers_user.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
-import tech.tsdev.github_management.view.main.activity.adapter.MyFollowersRecyclerAdapter
+import tech.tsdev.github_management.view.main.activity.adapter.followers.MyFollowersRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.MyFollowersContract
 import tech.tsdev.github_management.view.main.activity.presenter.MyFollowersPresenter
 

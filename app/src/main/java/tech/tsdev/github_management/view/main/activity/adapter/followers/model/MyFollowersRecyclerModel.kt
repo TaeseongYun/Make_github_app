@@ -1,4 +1,4 @@
-package tech.tsdev.github_management.view.main.activity.adapter.model
+package tech.tsdev.github_management.view.main.activity.adapter.followers.model
 
 import tech.tsdev.github_management.model.UserFollowersFollowingList
 

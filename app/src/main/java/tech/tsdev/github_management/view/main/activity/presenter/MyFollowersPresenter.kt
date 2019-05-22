@@ -5,7 +5,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import tech.tsdev.github_management.model.UserFollowersFollowingList
 import tech.tsdev.github_management.model.github.GithubRepository
-import tech.tsdev.github_management.view.main.activity.adapter.model.MyFollowersRecyclerModel
+import tech.tsdev.github_management.view.main.activity.adapter.followers.model.MyFollowersRecyclerModel
 
 class MyFollowersPresenter(
     private val view: MyFollowersContract.View,

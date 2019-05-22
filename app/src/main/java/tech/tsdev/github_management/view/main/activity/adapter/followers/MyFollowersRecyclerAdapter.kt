@@ -1,11 +1,11 @@
-package tech.tsdev.github_management.view.main.activity.adapter
+package tech.tsdev.github_management.view.main.activity.adapter.followers
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import tech.tsdev.github_management.model.UserFollowersFollowingList
-import tech.tsdev.github_management.view.main.activity.adapter.holder.MyFollowersRecyclerHolder
-import tech.tsdev.github_management.view.main.activity.adapter.model.MyFollowersRecyclerModel
+import tech.tsdev.github_management.view.main.activity.adapter.followers.holder.MyFollowersRecyclerHolder
+import tech.tsdev.github_management.view.main.activity.adapter.followers.model.MyFollowersRecyclerModel
 
 class MyFollowersRecyclerAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     MyFollowersRecyclerModel {
@@ -14,7 +14,10 @@ class MyFollowersRecyclerAdapter(val context: Context?) : RecyclerView.Adapter<R
 
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): RecyclerView.ViewHolder =
-        MyFollowersRecyclerHolder(context, parent)
+        MyFollowersRecyclerHolder(
+            context,
+            parent
+        )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as MyFollowersRecyclerHolder).onBind(followersUser[position])
