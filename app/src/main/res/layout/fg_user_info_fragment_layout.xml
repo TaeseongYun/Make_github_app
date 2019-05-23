@@ -31,7 +31,7 @@
                           android:orientation="vertical">
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                           tools:text="@string/users" android:id="@+id/user_id"
-                          android:textSize="@dimen/text_large" android:textColor="@color/black"
+                          android:textSize="@dimen/text_large" android:textColor="@color/colorPrimary"
                           android:lines="1"
                           android:padding="@dimen/spacing_small"/>
 
@@ -60,10 +60,11 @@
                           android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"/>
 
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                tools:text="@string/followers" android:padding="@dimen/spacing_small"
-                android:drawableStart="@drawable/ic_group_black_24dp" android:drawablePadding="@dimen/spacing_normal"
-                android:background="?attr/selectableItemBackground" android:id="@+id/user_followers"
-                android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                          tools:text="@string/followers" android:padding="@dimen/spacing_small"
+                          android:drawableStart="@drawable/ic_group_black_24dp"
+                          android:drawablePadding="@dimen/spacing_normal"
+                          android:background="?attr/selectableItemBackground" android:id="@+id/user_followers"
+                          android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"/>
 
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                           tools:text="@string/repository" android:padding="@dimen/spacing_small"
@@ -72,31 +73,6 @@
                           android:background="?attr/selectableItemBackground"
                           android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"/>
 
-            </LinearLayout>
-
-        </android.support.design.card.MaterialCardView>
-
-        <android.support.design.card.MaterialCardView
-                android:id="@+id/user_repo_card_view"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="@dimen/material_card_view_margin"
-                android:translationZ="@dimen/material_card_view_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginStart="@dimen/spacing_small"
-                android:layout_marginEnd="@dimen/spacing_small"
-                android:layout_marginBottom="@dimen/spacing_small"
-                android:background="@drawable/card_view_shadow">
-
-            <LinearLayout
-                    android:orientation="vertical" android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:text="@string/repository"
-                          android:textSize="@dimen/text_large"
-                          android:textColor="@color/black"
-                          android:padding="@dimen/spacing_small"/>
             </LinearLayout>
 
         </android.support.design.card.MaterialCardView>

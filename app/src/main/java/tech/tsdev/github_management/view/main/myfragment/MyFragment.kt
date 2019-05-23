@@ -38,7 +38,7 @@ class MyFragment : Fragment(), MyFragmentContract.View {
         user_avatar?.proflieImageLoad(userAvatar)
         user_avatar_bg?.getProfileImgRepo(userBackground)
         user_login?.text = userLogin
-        userLocation?.let { user_location.text = it.toString() } ?: let { user_location?.visibility = View.INVISIBLE }
+        userLocation?.let { user_location?.text = it.toString() } ?: let { user_location?.visibility = View.INVISIBLE }
         joined_time?.text = userJoinTime
     }
 

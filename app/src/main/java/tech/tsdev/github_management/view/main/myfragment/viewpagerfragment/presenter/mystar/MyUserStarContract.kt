@@ -1,4 +1,4 @@
-package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter
+package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.mystar
 
 interface MyUserStarContract {
     interface View {

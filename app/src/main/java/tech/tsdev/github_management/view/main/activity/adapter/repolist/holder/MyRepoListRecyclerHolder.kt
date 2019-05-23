@@ -9,9 +9,15 @@ import kotlinx.android.synthetic.main.user_repo_detail_items.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.UserRepoList
 
-class MyRepoListRecyclerHolder(context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
+class MyRepoListRecyclerHolder(onClick:(Int) -> Unit, context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(context).inflate(R.layout.user_repo_detail_items, parent, false)
 ) {
+    init {
+        itemView.setOnClickListener {
+            onClick(adapterPosition)
+        }
+    }
+
     fun onBind(items: UserRepoList) {
         itemView.onBind(items)
     }

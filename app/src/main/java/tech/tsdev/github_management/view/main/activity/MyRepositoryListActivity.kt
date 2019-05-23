@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.view.main.activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -10,8 +11,16 @@ import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.repolist.MyRepoListRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.repolist.MyRepoListContract
 import tech.tsdev.github_management.view.main.activity.presenter.repolist.MyRepoListPresenter
+import tech.tsdev.github_management.view.main.activity.repos.DetailRepoActivity
 
 class MyRepositoryListActivity : AppCompatActivity(), MyRepoListContract.View{
+    override fun getRepoDetailView(repoName: String?) {
+        Intent(this, DetailRepoActivity::class.java).apply {
+            putExtra("repoUrl", repoName)
+            startActivity(this)
+        }
+    }
+
     override fun showLoadFailToastMessage(message: String) {
         toast(message)
     }

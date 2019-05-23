@@ -1,4 +1,6 @@
-package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter
+package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.myinfo
+
+import android.view.View
 
 interface MyInfoContract {
     interface View {
@@ -22,5 +24,6 @@ interface MyInfoContract {
 
     interface Presenter {
         fun getUserInfoBasedOnUserName(userName: String?)
+
     }
 }

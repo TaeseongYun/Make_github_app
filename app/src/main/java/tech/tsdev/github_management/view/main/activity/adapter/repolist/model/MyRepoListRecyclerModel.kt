@@ -11,4 +11,5 @@ interface MyRepoListRecyclerModel {
 
     fun notifyItemData()
 
+    var onClick: (Int) -> Unit
 }

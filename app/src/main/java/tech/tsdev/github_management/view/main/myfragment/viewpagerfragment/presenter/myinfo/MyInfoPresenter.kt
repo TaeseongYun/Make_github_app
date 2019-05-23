@@ -1,4 +1,4 @@
-package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter
+package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.myinfo
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -64,5 +64,4 @@ class MyInfoPresenter(
         }
         view.dismissLottieView()
     }
-
 }

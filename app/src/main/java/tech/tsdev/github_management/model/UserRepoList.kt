@@ -10,10 +10,12 @@ data class UserRepoList(
     val language: String,
     val name: String,
     val owner: UserRepoOwner,
-    @SerializedName("stargazers_count")  val stargazersCount: Int
+    @SerializedName("stargazers_count")  val stargazersCount: Int,
+    val url: String
 )
 
 data class UserRepoOwner(
     @SerializedName("avatar_url") val avatarUrl: String,
-    val login: String
+    val login: String,
+    @SerializedName("repos_url") val reposUrl: String
 )

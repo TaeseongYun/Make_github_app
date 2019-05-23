@@ -7,8 +7,8 @@
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
                android:shape="rectangle">
             <corners
-                    android:bottomLeftRadius="16dp"
-                    android:bottomRightRadius="16dp" />
+                    android:bottomLeftRadius="@dimen/spacing_large"
+                    android:bottomRightRadius="@dimen/spacing_large"/>
             <stroke
                     android:width="1dp"
                     android:color="@color/white" />

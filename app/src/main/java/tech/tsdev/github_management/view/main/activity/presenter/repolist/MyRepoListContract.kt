@@ -5,6 +5,8 @@ interface MyRepoListContract {
         fun showLoadFailToastMessage()
 
         fun showLoadFailToastMessage(message: String)
+
+        fun getRepoDetailView(repoName: String?)
     }
 
     interface Presenter {

@@ -12,6 +12,12 @@ class MyRepoListPresenter(
     private val githubRepository: GithubRepository,
     private val myRepoListRecyclerModel: MyRepoListRecyclerModel
 ) : MyRepoListContract.Presenter {
+
+    init {
+        myRepoListRecyclerModel.onClick = { position ->
+            view.getRepoDetailView(myRepoListRecyclerModel.getItem(position).url)
+        }
+    }
     override fun getUserRepoListBasedUserName(userName: String?) {
         userName?.let {
             githubRepository.getUserRepoList(it).enqueue(object : Callback<List<UserRepoList>> {

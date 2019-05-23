@@ -4,17 +4,12 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.view.View
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_user_detail.*
 import kotlinx.android.synthetic.main.main_bottom_navigation.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.myfragment.MyFragment
 import tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.SearchActivity
-import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoPresenter
 import tech.tsdev.github_management.view.main.starfragment.StarFragment
 import tech.tsdev.github_management.view.main.userlistfragment.GithubFragment
 
@@ -46,12 +41,10 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId) {
             R.id.navigation_users -> {
                 replace(R.id.frame_layout, githubFragment)
-                app_bar.visibility = View.VISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_star -> {
                 replace(R.id.frame_layout, starFragment)
-                app_bar.visibility = View.VISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_me -> {

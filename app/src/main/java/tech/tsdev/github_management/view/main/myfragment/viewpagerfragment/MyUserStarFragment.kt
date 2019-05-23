@@ -13,10 +13,11 @@ import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.repos.DetailRepoActivity
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.adapter.MyUserStarRecyclerAdapter
-import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyUserStarContract
-import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyUserStarPresenter
+import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.mystar.MyUserStarContract
+import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.mystar.MyUserStarPresenter
 
 class MyUserStarFragment : Fragment(), MyUserStarContract.View {
+
     override fun getDetailRepoBasedUserGivedStar(repoUrl: String) {
         Intent(activity, DetailRepoActivity::class.java).apply {
             putExtra("repoUrl", repoUrl)
@@ -33,7 +34,11 @@ class MyUserStarFragment : Fragment(), MyUserStarContract.View {
     }
 
     private val myUserStarPresenter: MyUserStarPresenter by lazy {
-        MyUserStarPresenter(this@MyUserStarFragment, GithubRepository, userRecyclerViewAdapter)
+        MyUserStarPresenter(
+            this@MyUserStarFragment,
+            GithubRepository,
+            userRecyclerViewAdapter
+        )
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

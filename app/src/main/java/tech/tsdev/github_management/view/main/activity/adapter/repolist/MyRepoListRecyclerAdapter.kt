@@ -12,8 +12,10 @@ class MyRepoListRecyclerAdapter(val context: Context?) : RecyclerView.Adapter<Re
 
     private val myRepoList = mutableListOf<UserRepoList>()
 
+    override lateinit var onClick: (Int) -> Unit
+
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder =
-        MyRepoListRecyclerHolder(context, parent)
+        MyRepoListRecyclerHolder(onClick, context, parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as MyRepoListRecyclerHolder).onBind(myRepoList[position])

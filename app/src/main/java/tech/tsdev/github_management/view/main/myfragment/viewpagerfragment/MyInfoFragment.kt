@@ -14,10 +14,12 @@ import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.MyFollowersUserActivity
 import tech.tsdev.github_management.view.main.activity.MyFollowingUserActivity
 import tech.tsdev.github_management.view.main.activity.MyRepositoryListActivity
-import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoContract
-import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.MyInfoPresenter
+import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.myinfo.MyInfoContract
+import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.myinfo.MyInfoPresenter
 
 class MyInfoFragment : Fragment(), MyInfoContract.View {
+
+
     @SuppressLint("SetTextI18n")
     override fun getUserManyFollowerFollowing(userFollowers: Int?, userFollowings: Int?) {
         if (userFollowers?.minus(1) != 0 || userFollowings?.minus(1) != 0) {
@@ -32,7 +34,6 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
     override fun dismissLottieView() {
         user_lottie_view.visibility = View.GONE
         user_info_card_view.visibility = View.VISIBLE
-        user_repo_card_view.visibility = View.VISIBLE
     }
 
     override fun getReposPreview(userName: String?) {
@@ -62,7 +63,10 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
 
 
     private val myInfoPresenter: MyInfoPresenter by lazy {
-        MyInfoPresenter(this@MyInfoFragment, GithubRepository)
+        MyInfoPresenter(
+            this@MyInfoFragment,
+            GithubRepository
+        )
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -74,6 +78,8 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
         println("MyInfoFragmentUserName -> ${arguments?.getString("userInfoName")}")
 
         myInfoPresenter.getUserInfoBasedOnUserName(arguments?.getString("userInfoName"))
+
+
 
         user_repos.setOnClickListener {
             Intent(activity, MyRepositoryListActivity::class.java).apply {
