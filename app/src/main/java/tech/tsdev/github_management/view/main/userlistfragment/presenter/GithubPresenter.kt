@@ -45,12 +45,13 @@ class GithubPresenter(
                     } ?: let {
                         view.loadFailMessage(response.errorBody().toString())
                     }
+                    view.dissmissProgressbar()
                     since += 10
                 } else {
                     view.loadFailMessage()
 
                 }
-                view.dissmissProgressbar()
+
                 isLoading = false
             }
         })

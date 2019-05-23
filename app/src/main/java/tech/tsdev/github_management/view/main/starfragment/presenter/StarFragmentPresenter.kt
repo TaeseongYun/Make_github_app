@@ -40,9 +40,10 @@ class StarFragmentPresenter(
                     } ?: let {
                         view.loadFailMessage(response.errorBody().toString())
                     }
+                    view.dismissLottieProgressbar()
                 }
             }
         })
-        view.dismissLottieProgressbar()
+
     }
 }

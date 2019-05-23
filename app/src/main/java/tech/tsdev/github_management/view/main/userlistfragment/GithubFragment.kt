@@ -29,14 +29,14 @@ class GithubFragment : Fragment(), GithubContract.View {
 
 
     override fun showProgressbar() {
-        user_recycler_view.visibility = View.GONE
-        user_list_progress_layout.visibility = View.VISIBLE
+        user_recycler_view?.visibility = View.GONE
+        user_list_progress_layout?.visibility = View.VISIBLE
 
     }
 
     override fun dissmissProgressbar() {
-        user_recycler_view.visibility = View.VISIBLE
-        user_list_progress_layout.visibility = View.GONE
+        user_recycler_view?.visibility = View.VISIBLE
+        user_list_progress_layout?.visibility = View.GONE
     }
 
     override fun loadFailMessage() {

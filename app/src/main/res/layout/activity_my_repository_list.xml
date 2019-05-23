@@ -46,6 +46,7 @@
                                             android:scrollbars="vertical"
                                             app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
                                             app:layout_constraintEnd_toEndOf="parent"
+                                            android:id="@+id/user_repo_activity_recycler_view"
                                             android:layout_height="0dp"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintBottom_toBottomOf="parent"/>

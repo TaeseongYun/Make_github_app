@@ -24,22 +24,22 @@ class MyFragment : Fragment(), MyFragmentContract.View {
     private  var userInfoName: String? = ""
 
     override fun showProgressBar() {
-        loader_my_fragment.visibility = View.VISIBLE
+        loader_my_fragment?.visibility = View.VISIBLE
     }
 
     override fun dismissProgressBar() {
-        loader_my_fragment.visibility = View.GONE
+        loader_my_fragment?.visibility = View.GONE
     }
 
     override fun loadUserDetailInfo(
         userAvatar: String, userBackground: String, userLogin: String,
         userLocation: Any?, userJoinTime: String
     ) {
-        user_avatar.proflieImageLoad(userAvatar)
-        user_avatar_bg.getProfileImgRepo(userBackground)
-        user_login.text = userLogin
-        userLocation?.let { user_location.text = it.toString() } ?: let { user_location.visibility = View.INVISIBLE }
-        joined_time.text = userJoinTime
+        user_avatar?.proflieImageLoad(userAvatar)
+        user_avatar_bg?.getProfileImgRepo(userBackground)
+        user_login?.text = userLogin
+        userLocation?.let { user_location.text = it.toString() } ?: let { user_location?.visibility = View.INVISIBLE }
+        joined_time?.text = userJoinTime
     }
 
     override fun loadViewToastMessage() {
