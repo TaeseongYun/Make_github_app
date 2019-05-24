@@ -9,10 +9,16 @@ import tech.tsdev.github_management.ui.modules.detail.user.repo.adapter.model.De
 
 class DetailRepoRecyclerAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), DetailRepoRecyclerModel {
 
+    override lateinit var onClick: (Int) -> Unit
+
+    override fun notifiedItemData() {
+        notifyDataSetChanged()
+    }
+
     private val userRepoList = mutableListOf<UserRepoList>()
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): RecyclerView.ViewHolder =
-        DetailRepoRecyclerHolder(context, parent)
+        DetailRepoRecyclerHolder(onClick, context, parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as DetailRepoRecyclerHolder).onBind(userRepoList[position])
@@ -28,10 +34,6 @@ class DetailRepoRecyclerAdapter(val context: Context?) : RecyclerView.Adapter<Re
 
     override fun deleteItemsData() {
         userRepoList.clear()
-    }
-
-    override fun nofityedItemData() {
-        notifyDataSetChanged()
     }
 
 }

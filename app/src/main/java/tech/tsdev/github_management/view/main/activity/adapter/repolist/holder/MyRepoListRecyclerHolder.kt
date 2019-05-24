@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.user_repo_detail_items.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.UserRepoList
 
-class MyRepoListRecyclerHolder(onClick:(Int) -> Unit, context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
+class MyRepoListRecyclerHolder(onClick: (Int) -> Unit, context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(context).inflate(R.layout.user_repo_detail_items, parent, false)
 ) {
     init {
@@ -25,10 +25,13 @@ class MyRepoListRecyclerHolder(onClick:(Int) -> Unit, context: Context?, parent:
     private fun View.onBind(items: UserRepoList) {
         user_repo_avatar.proflieImageLoad(items.owner.avatarUrl)
         tv_user_repo_name.text = items.name
-        tv_user_description.text = items.description
+        items.description?.let { tv_user_description.text = it } ?: let {
+            tv_user_description.visibility = View.GONE
+        }
         tv_user_repo_language.text = items.language
         tv_user_repo_star.text = items.stargazersCount.toString()
         tv_user_fork.text = items.forksCount.toString()
         tv_user_login.text = items.owner.login
+        items.showForkedRepo(tv_fork_repo, items.fork)
     }
 }

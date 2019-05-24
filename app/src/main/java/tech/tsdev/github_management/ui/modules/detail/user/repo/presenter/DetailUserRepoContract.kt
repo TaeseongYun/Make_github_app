@@ -5,6 +5,8 @@ interface DetailUserRepoContract {
         fun loadFailMessage()
 
         fun loadFailMessage(message: String)
+
+        fun getLoadDetailMyRepository(repoUrl: String)
     }
 
     interface Presenter {

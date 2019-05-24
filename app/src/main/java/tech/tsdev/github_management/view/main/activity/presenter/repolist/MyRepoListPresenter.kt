@@ -13,6 +13,8 @@ class MyRepoListPresenter(
     private val myRepoListRecyclerModel: MyRepoListRecyclerModel
 ) : MyRepoListContract.Presenter {
 
+    var isLoading = true
+
     init {
         myRepoListRecyclerModel.onClick = { position ->
             view.getRepoDetailView(myRepoListRecyclerModel.getItem(position).url)
@@ -37,6 +39,7 @@ class MyRepoListPresenter(
                 }
 
             })
+            isLoading = false
         }
     }
 }

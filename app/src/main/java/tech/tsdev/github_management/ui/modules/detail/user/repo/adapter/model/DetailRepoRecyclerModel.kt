@@ -11,5 +11,7 @@ interface DetailRepoRecyclerModel {
 
     fun deleteItemsData()
 
-    fun nofityedItemData()
+    fun notifiedItemData()
+
+    var onClick:(Int) -> Unit
 }

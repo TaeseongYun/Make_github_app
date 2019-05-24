@@ -12,6 +12,13 @@ class DetailUserRepoPresenter(
     private val githubRepository: GithubRepository,
     private val detailRepoRecyclerAdapter: DetailRepoRecyclerModel
 ) : DetailUserRepoContract.Presenter {
+
+    init {
+        detailRepoRecyclerAdapter.onClick = { position ->
+            view.getLoadDetailMyRepository(detailRepoRecyclerAdapter.getItem(position).url)
+        }
+    }
+
     override fun getUserRepoBaseUserName(userName: String) {
         githubRepository.getUserRepoList(userName).enqueue(object : Callback<List<UserRepoList>> {
             override fun onFailure(call: Call<List<UserRepoList>>, t: Throwable) {
@@ -25,7 +32,7 @@ class DetailUserRepoPresenter(
                         userRepoList.forEach { userRepo ->
                             detailRepoRecyclerAdapter.addItem(userRepo)
                         }
-                        detailRepoRecyclerAdapter.nofityedItemData()
+                        detailRepoRecyclerAdapter.notifiedItemData()
                     }
                 }
             }

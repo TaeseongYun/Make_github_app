@@ -1,5 +1,7 @@
 package tech.tsdev.github_management.model
 
+import android.view.View
+import android.widget.TextView
 import com.google.gson.annotations.SerializedName
 
 data class UserRepoList(
@@ -12,7 +14,14 @@ data class UserRepoList(
     val owner: UserRepoOwner,
     @SerializedName("stargazers_count")  val stargazersCount: Int,
     val url: String
-)
+) {
+    fun showForkedRepo(views: TextView, repoForked: Boolean) {
+        if(repoForked)
+            views.visibility = View.VISIBLE
+        else
+            views.visibility = View.GONE
+    }
+}
 
 data class UserRepoOwner(
     @SerializedName("avatar_url") val avatarUrl: String,

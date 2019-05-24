@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.ui.modules.detail.user.repo
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -14,8 +15,16 @@ import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.user.repo.adapter.DetailRepoRecyclerAdapter
 import tech.tsdev.github_management.ui.modules.detail.user.repo.presenter.DetailUserRepoContract
 import tech.tsdev.github_management.ui.modules.detail.user.repo.presenter.DetailUserRepoPresenter
+import tech.tsdev.github_management.view.main.activity.repos.DetailRepoActivity
 
 class DetailUserRepoFragment : Fragment(), DetailUserRepoContract.View {
+    override fun getLoadDetailMyRepository(repoUrl: String) {
+        Intent(activity, DetailRepoActivity::class.java).apply {
+            putExtra("repoUrl", repoUrl)
+            startActivity(this)
+        }
+    }
+
     override fun loadFailMessage() {
         toast("로드 실패")
     }

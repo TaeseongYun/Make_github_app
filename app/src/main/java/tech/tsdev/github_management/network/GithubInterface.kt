@@ -73,6 +73,7 @@ interface GithubInterface {
         @Url repoUrl: String
     ): Call<GetSingleRepo>
 
+//    해당 유저 스타 준 레파지토리 목록
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET("users/{username}/starred")
     fun getStarBasedonUserName(

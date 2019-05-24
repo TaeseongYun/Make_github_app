@@ -4,7 +4,9 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_my_repository_list.*
+import kotlinx.android.synthetic.main.userlist_fragment.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
@@ -13,7 +15,7 @@ import tech.tsdev.github_management.view.main.activity.presenter.repolist.MyRepo
 import tech.tsdev.github_management.view.main.activity.presenter.repolist.MyRepoListPresenter
 import tech.tsdev.github_management.view.main.activity.repos.DetailRepoActivity
 
-class MyRepositoryListActivity : AppCompatActivity(), MyRepoListContract.View{
+class MyRepositoryListActivity : AppCompatActivity(), MyRepoListContract.View {
     override fun getRepoDetailView(repoName: String?) {
         Intent(this, DetailRepoActivity::class.java).apply {
             putExtra("repoUrl", repoName)
@@ -36,6 +38,14 @@ class MyRepositoryListActivity : AppCompatActivity(), MyRepoListContract.View{
     private val myRepoListRecyclerAdapter: MyRepoListRecyclerAdapter by lazy {
         MyRepoListRecyclerAdapter(this)
     }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_repository_list)
@@ -49,6 +59,7 @@ class MyRepositoryListActivity : AppCompatActivity(), MyRepoListContract.View{
         user_repo_activity_recycler_view.run {
             adapter = myRepoListRecyclerAdapter
             layoutManager = GridLayoutManager(this.context, 1)
+
         }
     }
 }
