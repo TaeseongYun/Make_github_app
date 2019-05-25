@@ -1,6 +1,9 @@
 package tech.tsdev.github_management.model
 
+import android.annotation.SuppressLint
 import com.google.gson.annotations.SerializedName
+import java.text.SimpleDateFormat
+import java.util.*
 
 data class GetSingleRepo(
     @SerializedName("created_at")  val createdAt: String,
@@ -25,7 +28,20 @@ data class GetSingleRepo(
     val updated_at: String,
     val watchers: Int,
     @SerializedName("watchers_count")  val watchersCount: Int
-)
+) {
+
+    fun simpleDateCreateAt(createWhen: String): String {
+        val date = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+            .parse(createWhen.substringBefore("T"))
+
+        val dateFormat = SimpleDateFormat("MMM dd yyyy", Locale.ENGLISH)
+
+
+        return "Create At ${dateFormat.format(date)}"
+    }
+
+    fun testCreateAt(createWhen: String): String = createWhen.substringBefore("T")
+}
 
 data class Owner(
     @SerializedName("avatar_url")  val avatarUrl: String,

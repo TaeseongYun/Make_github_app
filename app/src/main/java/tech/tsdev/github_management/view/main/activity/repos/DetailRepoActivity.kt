@@ -40,8 +40,8 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
     ) {
         user_repo_avatar_bg.getProfileImgRepo(ownerAvatarImg)
         desc.text = repoName
-        repoDescription?.let { user_repo_description.setText(it) } ?: let {
-            user_repo_description.text = "No Description"
+        repoDescription?.let { user_repo_description.text = it } ?: let {
+            user_repo_description.visibility = View.GONE
         }
         toolbar_repo.title = repoToolbarTitle
     }
@@ -97,7 +97,11 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
         override fun getItem(position: Int): Fragment? =
             when (position) {
                 0 -> {
-                    DetailRepoInfoFragment()
+                    DetailRepoInfoFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("detailRepoInfoUrl", intent.getStringExtra("repoUrl"))
+                        }
+                    }
                 }
                 1 -> {
                     DetailRepoFilesFragment()
