@@ -28,4 +28,6 @@ interface GithubDataSource {
     fun getRepoInfoBasedOnOwnerNameRepoName(repoUrl: String): Call<GetSingleRepo>
 
     fun getStarBasedonUserName(userName: String): Call<List<GetUserStarred>>
+
+    fun getRepoReadme(repoUrl: String): Call<GetRepoReadme>
 }

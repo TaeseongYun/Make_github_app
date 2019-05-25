@@ -5,6 +5,7 @@ import tech.tsdev.github_management.model.*
 
 object GithubRepository : GithubDataSource {
 
+
     private val githubRemotedata: GithubRemoteData by lazy {
         GithubRemoteData()
     }
@@ -34,4 +35,7 @@ object GithubRepository : GithubDataSource {
 
     override fun getStarBasedonUserName(userName: String): Call<List<GetUserStarred>> =
             githubRemotedata.getStarBasedonUserName(userName)
+
+    override fun getRepoReadme(repoUrl: String): Call<GetRepoReadme> =
+            githubRemotedata.getRepoReadme(repoUrl)
 }

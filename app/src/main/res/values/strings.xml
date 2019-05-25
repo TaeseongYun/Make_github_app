@@ -22,6 +22,7 @@
     <string name="createRepo">Create Repo When</string>
     <string name="updateRepo">Update Repo When</string>
     <string name="repoForks">Forks</string>
+    <string name="repoStargazers">Stargazers</string>
     <string name="repoWatcher">Watchers</string>
     <string name="repoIssues">Issues</string>
     <string name="readME">READ ME</string>

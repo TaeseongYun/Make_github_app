@@ -14,6 +14,10 @@ import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.pr
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoPresenter
 
 class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
+    override fun getOwnerRepoReadme(repoReadMeUrl: String?) {
+        repoReadMeUrl?.let { owner_repo_readme.loadUrl(it) } ?: let { owner_repo_readme?.visibility = View.GONE }
+    }
+
     override fun loadFailMessage() {
         toast("API 로드 실패")
     }
@@ -32,6 +36,10 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
     ) {
         repoName?.let { owner_repo_name.text = it } ?: let { owner_repo_name.textVisibleGone() }
         repoCreateAt?.let { owner_repo_create_At.text = it } ?: let { owner_repo_create_At.textVisibleGone() }
+        repoWatchers?.let { owner_repo_watcher.text = it } ?: let { owner_repo_watcher.textVisibleGone() }
+        repoForks?.let { owner_repo_forked.text = it } ?: let { owner_repo_forked.textVisibleGone() }
+        repoStargazers?.let { owner_repo_stargazer.text = it } ?: let { owner_repo_stargazer.textVisibleGone() }
+        repoIssues?.let { owner_repo_issue.text = it } ?: let { owner_repo_issue.textVisibleGone() }
     }
 
     private val detailRepoInfoPresenter: DetailRepoInfoPresenter by lazy {
@@ -44,6 +52,13 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.getString("detailRepoInfoUrl")?.let { detailRepoInfoPresenter.getLoadRepoInfoBasedRepoUrl(it) }
+        arguments?.getString("detailRepoInfoUrl")
+            ?.let { detailRepoInfoPresenter.getLoadRepoInfoBasedRepoUrl(it) }
+
+        val readMe = arguments?.getString("detailRepoInfoUrl") + "/readme"
+
+        detailRepoInfoPresenter.getLoadRepoReadmeBasedRepoUrl(readMe)
+
+        owner_repo_issue_layout.setOnClickListener { println("issue Click") }
     }
 }

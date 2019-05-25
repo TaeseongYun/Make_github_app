@@ -79,4 +79,10 @@ interface GithubInterface {
     fun getStarBasedonUserName(
         @Path("username") userName: String
     ):Call<List<GetUserStarred>>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET
+    fun getRepoReadMeBasedOnRepoUrl(
+        @Url repoUrl: String
+    ): Call<GetRepoReadme>
 }

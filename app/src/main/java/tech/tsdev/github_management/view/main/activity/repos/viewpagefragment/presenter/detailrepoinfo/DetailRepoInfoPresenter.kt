@@ -3,11 +3,13 @@ package tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.p
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tech.tsdev.github_management.model.GetRepoReadme
 import tech.tsdev.github_management.model.GetSingleRepo
 import tech.tsdev.github_management.model.github.GithubRepository
 
 class DetailRepoInfoPresenter(private val view: DetailRepoInfoContract.View,
                               private val githubRepository: GithubRepository) : DetailRepoInfoContract.Presenter {
+
     override fun getLoadRepoInfoBasedRepoUrl(repoUrl: String) {
         githubRepository.getRepoInfoBasedOnOwnerNameRepoName(repoUrl).enqueue(object : Callback<GetSingleRepo>{
             override fun onFailure(call: Call<GetSingleRepo>, t: Throwable) {
@@ -32,4 +34,20 @@ class DetailRepoInfoPresenter(private val view: DetailRepoInfoContract.View,
         })
     }
 
+    override fun getLoadRepoReadmeBasedRepoUrl(repoUrl: String) {
+        githubRepository.getRepoReadme(repoUrl).enqueue(object : Callback<GetRepoReadme>{
+            override fun onFailure(call: Call<GetRepoReadme>, t: Throwable) {
+                view.loadFailMessage()
+            }
+
+            override fun onResponse(call: Call<GetRepoReadme>, response: Response<GetRepoReadme>) {
+                if(response.isSuccessful) {
+                    response.body()?.let { repoReadme ->
+                        view.getOwnerRepoReadme(repoReadme.htmlUrl)
+                    }
+                }
+            }
+
+        })
+    }
 }

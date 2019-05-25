@@ -12,9 +12,15 @@ interface DetailRepoInfoContract {
                                repoStargazers: String?,
                                repoForks: String?,
                                repoWatchers: String?)
+
+        fun getOwnerRepoReadme(
+            repoReadMeUrl: String?
+        )
     }
 
     interface Presenter {
         fun getLoadRepoInfoBasedRepoUrl(repoUrl: String)
+
+        fun getLoadRepoReadmeBasedRepoUrl(repoUrl: String)
     }
 }
