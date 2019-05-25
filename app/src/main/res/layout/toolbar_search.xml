@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.design.widget.AppBarLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior=".util.ToolbarBehaviour" android:background="@drawable/bg_round_appbar">
+        android:background="@drawable/bg_round_appbar">
 
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
@@ -62,6 +61,7 @@
                                              android:layout_height="wrap_content"
                                              android:background="?colorPrimary"
                                              app:tabGravity="fill"
+                                             app:expandedTitleGravity="top"
                                              app:tabMode="scrollable"
                                              app:tabSelectedTextColor="?colorAccent"
                                              app:tabTextColor="?colorPrimaryDark"
@@ -70,3 +70,6 @@
                                              android:clipToPadding="false" tools:ignore="RtlSymmetry"/>
     <include layout="@layout/add_banner_layout"/>
 </android.support.design.widget.AppBarLayout>
+
+
+

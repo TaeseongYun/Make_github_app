@@ -5,23 +5,24 @@
         android:layout_width="match_parent" android:layout_height="match_parent"
         tools:context=".ui.modules.detail.search.searchactiviry.SearchActivity" android:id="@+id/drawerLayout">
 
-        <include layout="@layout/toolbar_search"/>
 
-        <LinearLayout
-                android:id="@+id/linear_layout_github"
-                android:layout_width="match_parent" android:layout_height="match_parent"
-                android:orientation="vertical">
-            <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                      android:text="@string/powered_by_github" android:textSize="22sp"
-                      android:gravity="center" android:textColor="@color/black"/>
+    <include layout="@layout/toolbar_search" android:id="@+id/include"/>
 
 
-        </LinearLayout>
+    <LinearLayout
+            android:id="@+id/linear_layout_github"
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:orientation="vertical">
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:text="@string/powered_by_github" android:textSize="22sp"
+                  android:gravity="center" android:textColor="@color/black"/>
+
+
+    </LinearLayout>
 
     <android.support.v4.view.ViewPager android:layout_width="match_parent"
                                        android:id="@+id/pager"
-                                       android:layout_height="match_parent"
-                                       app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+                                       android:layout_height="match_parent"/>
 
     <include layout="@layout/add_banner_layout"/>
 
