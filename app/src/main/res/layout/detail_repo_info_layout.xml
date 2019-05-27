@@ -79,14 +79,14 @@
 
         <android.support.design.card.MaterialCardView android:layout_width="match_parent"
                                                       android:layout_height="wrap_content">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
                           android:orientation="vertical">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                           android:text="@string/readME" android:padding="@dimen/spacing_large"
                 android:textSize="@dimen/text_large"/>
 
                 <WebView android:layout_width="match_parent" android:layout_height="match_parent"
-                         tools:ignore="WebViewLayout" android:id="@+id/owner_repo_readme"/>
+                         android:id="@+id/owner_repo_readme"/>
 
             </LinearLayout>
         </android.support.design.card.MaterialCardView>
