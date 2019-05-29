@@ -30,4 +30,6 @@ interface GithubDataSource {
     fun getStarBasedonUserName(userName: String): Call<List<GetUserStarred>>
 
     fun getRepoReadme(repoUrl: String): Call<GetRepoReadme>
+
+    fun getRepoCommitList(repoCommitUrl: String): Call<List<GetRepoCommitList>>
 }

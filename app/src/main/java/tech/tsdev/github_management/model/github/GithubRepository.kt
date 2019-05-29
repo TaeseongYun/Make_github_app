@@ -5,7 +5,6 @@ import tech.tsdev.github_management.model.*
 
 object GithubRepository : GithubDataSource {
 
-
     private val githubRemotedata: GithubRemoteData by lazy {
         GithubRemoteData()
     }
@@ -38,4 +37,7 @@ object GithubRepository : GithubDataSource {
 
     override fun getRepoReadme(repoUrl: String): Call<GetRepoReadme> =
             githubRemotedata.getRepoReadme(repoUrl)
+
+    override fun getRepoCommitList(repoCommitUrl: String): Call<List<GetRepoCommitList>> =
+            githubRemotedata.getRepoCommitList(repoCommitUrl)
 }

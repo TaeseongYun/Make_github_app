@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent" android:layout_height="wrap_content">
+    <android.support.design.card.MaterialCardView android:layout_width="match_parent"
+                                                  android:layout_height="wrap_content"
+                                                  android:layout_margin="@dimen/spacing_small"
+                                                  android:elevation="@dimen/material_card_view_margin"
+                                                  android:translationZ="@dimen/material_card_view_margin"
+                                                  android:background="@drawable/card_view_shadow">
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent" android:layout_height="wrap_content">
+            <tech.tsdev.github_management.view.main.custom.GlideImageView
+                    android:id="@+id/user_commit_owner_img"
+                    android:layout_width="40dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    tools:src="@drawable/sample_02"
+                    android:layout_height="40dp"/>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                          android:orientation="vertical" android:layout_weight="3">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              tools:text="@string/users" android:textSize="@dimen/text_normal"
+                              android:id="@+id/repo_committer_name"
+                              android:layout_margin="@dimen/spacing_small"/>
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:id="@+id/repo_owner_when_commit" android:gravity="end"
+                              android:layout_margin="@dimen/spacing_small"
+                              android:drawablePadding="@dimen/spacing_mini"
+                              tools:text="@string/repoWhenCommit"/>
+                </LinearLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          tools:text="@string/description" android:layout_marginStart="@dimen/spacing_small"
+                          android:textColor="@color/black"
+                          android:id="@+id/repo_committer_message"/>
+
+                <RelativeLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              tools:text="@string/followingsN"
+                              android:id="@+id/repo_committer_hash_code"
+                              android:layout_margin="@dimen/spacing_small"/>
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:layout_margin="@dimen/spacing_small"
+                              android:id="@+id/repo_committer_issue"
+                              android:text="@string/repoCommitterIssue" android:gravity="end"
+                              android:drawableEnd="@drawable/ic_chat_black_24dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.design.card.MaterialCardView>
+</LinearLayout>

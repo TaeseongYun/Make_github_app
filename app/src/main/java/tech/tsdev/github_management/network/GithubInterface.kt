@@ -85,4 +85,10 @@ interface GithubInterface {
     fun getRepoReadMeBasedOnRepoUrl(
         @Url repoUrl: String
     ): Call<GetRepoReadme>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET
+    fun getRepoCommitsBasedOnRepoUrl(
+        @Url repoCommitUrl: String
+    ): Call<List<GetRepoCommitList>>
 }
