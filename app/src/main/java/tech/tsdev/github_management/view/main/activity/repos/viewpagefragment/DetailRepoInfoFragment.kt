@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.view.main.activity.repos.viewpagefragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.util.textVisibleGone
+import tech.tsdev.github_management.view.main.activity.IssuesActivity
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoContract
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoPresenter
 
@@ -61,6 +63,6 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
         detailRepoInfoPresenter.getLoadRepoReadmeBasedRepoUrl(arguments?.
             getString("detailRepoInfoUrl") + "/readme")
 
-        owner_repo_issue_layout.setOnClickListener { println("issue Click") }
+        owner_repo_issue_layout.setOnClickListener { startActivity(Intent(activity, IssuesActivity::class.java)) }
     }
 }
