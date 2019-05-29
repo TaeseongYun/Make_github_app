@@ -52,12 +52,14 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //레포지토리 결과 값 불러오기 위한 것
         arguments?.getString("detailRepoInfoUrl")
             ?.let { detailRepoInfoPresenter.getLoadRepoInfoBasedRepoUrl(it) }
 
-        val readMe = arguments?.getString("detailRepoInfoUrl") + "/readme"
 
-        detailRepoInfoPresenter.getLoadRepoReadmeBasedRepoUrl(readMe)
+        //레포지토리 README 불러오기 위한 코드
+        detailRepoInfoPresenter.getLoadRepoReadmeBasedRepoUrl(arguments?.
+            getString("detailRepoInfoUrl") + "/readme")
 
         owner_repo_issue_layout.setOnClickListener { println("issue Click") }
     }

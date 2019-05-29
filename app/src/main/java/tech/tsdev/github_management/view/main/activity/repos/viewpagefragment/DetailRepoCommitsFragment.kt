@@ -2,9 +2,11 @@ package tech.tsdev.github_management.view.main.activity.repos.viewpagefragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.detail_repo_commit_layout.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
@@ -34,5 +36,14 @@ class DetailRepoCommitsFragment : Fragment(), DetailRepoCommitContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        detailRepoCommitPresenter.loadRepoCommitListBaseRepoName(
+            arguments?.getString("detailRepoCommitsUrl") + "/commits"
+        )
+
+        repo_owner_commit_recycler_view.run {
+            adapter = detailRepoCommitRecyclerAdapter
+            layoutManager = GridLayoutManager(this@DetailRepoCommitsFragment.context, 1)
+        }
     }
 }

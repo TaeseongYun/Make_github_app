@@ -4,8 +4,8 @@
     <android.support.design.card.MaterialCardView android:layout_width="match_parent"
                                                   android:layout_height="wrap_content"
                                                   android:layout_margin="@dimen/spacing_small"
-                                                  android:elevation="@dimen/material_card_view_margin"
-                                                  android:translationZ="@dimen/material_card_view_margin"
+                                                  android:elevation="@dimen/material_card_view_margin_micro"
+                                                  android:translationZ="@dimen/material_card_view_margin_micro"
                                                   android:background="@drawable/card_view_shadow">
 
         <LinearLayout
@@ -46,8 +46,9 @@
 
                     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                               android:layout_margin="@dimen/spacing_small"
+                              android:drawablePadding="@dimen/spacing_small"
                               android:id="@+id/repo_committer_issue"
-                              android:text="@string/repoCommitterIssue" android:gravity="end"
+                              tools:text="@string/repoCommitterIssue" android:gravity="end"
                               android:drawableEnd="@drawable/ic_chat_black_24dp"/>
                 </RelativeLayout>
 

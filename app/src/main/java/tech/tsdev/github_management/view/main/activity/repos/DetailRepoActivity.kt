@@ -72,7 +72,7 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
 
         addTabLayoutItem()
 
-        detail_repo_tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+        detail_repo_tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
 
             }
@@ -89,7 +89,7 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
 
         view_pager.run {
             adapter = DetailTabLayoutAdapter(supportFragmentManager)
-            addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(detail_repo_tab_layout){ })
+            addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(detail_repo_tab_layout) {})
         }
     }
 
@@ -107,7 +107,11 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
                     DetailRepoFilesFragment()
                 }
                 2 -> {
-                    DetailRepoCommitsFragment()
+                    DetailRepoCommitsFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("detailRepoCommitsUrl", intent.getStringExtra("repoUrl"))
+                        }
+                    }
                 }
                 3 -> {
                     DetailRepoActivityFragment()

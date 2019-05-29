@@ -7,6 +7,6 @@ interface DetailRepoCommitContract {
         fun loadFailCommitMessage(message: String?)
     }
     interface Presenter {
-        fun loadRepoCommitListBaseRepoName(repoUrl: String?)
+        fun loadRepoCommitListBaseRepoName(repoUrl: String?, commitUrl: String = "commits")
     }
 }

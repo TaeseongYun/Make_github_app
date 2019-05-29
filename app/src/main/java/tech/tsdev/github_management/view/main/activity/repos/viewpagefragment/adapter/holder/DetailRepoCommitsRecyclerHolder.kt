@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.repo_commit_detail_items.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.GetRepoCommitList
 
@@ -16,6 +17,10 @@ class DetailRepoCommitsRecyclerHolder(context: Context?, parent: ViewGroup) : Re
     }
 
     private fun View.onBind(items: GetRepoCommitList){
-
+        user_commit_owner_img.proflieImageLoad(items.committer.avatarUrl)
+        repo_committer_name.text = items.committer.login
+        repo_committer_message.text = items.commit.message
+        repo_committer_hash_code.text = items.sha.substring(0..6)
+        repo_committer_issue.text = items.commit.commentCount.toString()
     }
 }

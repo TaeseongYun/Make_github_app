@@ -1,5 +1,7 @@
 package tech.tsdev.github_management.model
 
+import com.google.gson.annotations.SerializedName
+
 data class GetRepoCommitList(
     val author: Author,
     val comments_url: String,
@@ -14,7 +16,7 @@ data class GetRepoCommitList(
 
 data class Commit(
     val author: Author,
-    val comment_count: Int,
+    @SerializedName("comment_count")  val commentCount: Int,
     val committer: Committer,
     val message: String,
     val tree: Tree,
@@ -32,22 +34,8 @@ data class Verification(
 data class Committer(
     val date: String,
     val email: String,
-    val name: String
-)
-
-data class Author(
-    val date: String,
-    val email: String,
-    val name: String
-)
-
-data class Tree(
-    val sha: String,
-    val url: String
-)
-
-data class CommitterX(
-    val avatar_url: String,
+    val name: String,
+    @SerializedName("avatar_url")  val avatarUrl: String,
     val events_url: String,
     val followers_url: String,
     val following_url: String,
@@ -64,6 +52,17 @@ data class CommitterX(
     val starred_url: String,
     val subscriptions_url: String,
     val type: String,
+    val url: String
+)
+
+data class Author(
+    val date: String,
+    val email: String,
+    val name: String
+)
+
+data class Tree(
+    val sha: String,
     val url: String
 )
 

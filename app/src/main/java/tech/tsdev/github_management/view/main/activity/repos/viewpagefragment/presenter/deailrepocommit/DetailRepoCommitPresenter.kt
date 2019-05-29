@@ -12,7 +12,7 @@ class DetailRepoCommitPresenter(
     private val githubRepository: GithubRepository,
     private val repoCommitRecyclerModel: DetailRepoCommitRecyclerModel
 ) : DetailRepoCommitContract.Presenter {
-    override fun loadRepoCommitListBaseRepoName(repoUrl: String?) {
+    override fun loadRepoCommitListBaseRepoName(repoUrl: String?, commitUrl: String) {
         repoUrl?.let {
             githubRepository.getRepoCommitList(it).enqueue(object : Callback<List<GetRepoCommitList>> {
                 override fun onFailure(call: Call<List<GetRepoCommitList>>, t: Throwable) {
