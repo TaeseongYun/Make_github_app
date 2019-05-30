@@ -68,7 +68,6 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
             intent.getStringExtra("repoUrl")
         )
 
-        btn_detail_repo_close.setOnClickListener { finish() }
 
         addTabLayoutItem()
 

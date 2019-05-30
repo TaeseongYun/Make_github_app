@@ -60,9 +60,15 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
 
 
         //레포지토리 README 불러오기 위한 코드
-        detailRepoInfoPresenter.getLoadRepoReadmeBasedRepoUrl(arguments?.
-            getString("detailRepoInfoUrl") + "/readme")
+        detailRepoInfoPresenter.getLoadRepoReadmeBasedRepoUrl(
+            arguments?.getString("detailRepoInfoUrl") + "/readme"
+        )
 
-        owner_repo_issue_layout.setOnClickListener { startActivity(Intent(activity, IssuesActivity::class.java)) }
+        owner_repo_issue_layout.setOnClickListener {
+            Intent(activity, IssuesActivity::class.java).apply {
+                putExtra("repoIssuesUrl", arguments?.getString("detailRepoInfoUrl"))
+                startActivity(this)
+            }
+        }
     }
 }

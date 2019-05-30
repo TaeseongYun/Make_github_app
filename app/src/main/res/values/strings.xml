@@ -31,6 +31,8 @@
     <string name="repoWhenCommit">When Commit</string>
     <string name="repoCommitterIssue">Commit Issue</string>
 
+    <string name="repoIssueMessage">Message</string>
+
     <!--UserInfo-->
     <string name="bio">User_BIO</string>
     <string name="view_more">VIEW MORE....</string>

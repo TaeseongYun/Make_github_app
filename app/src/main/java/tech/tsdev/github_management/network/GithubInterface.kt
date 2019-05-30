@@ -91,4 +91,10 @@ interface GithubInterface {
     fun getRepoCommitsBasedOnRepoUrl(
         @Url repoCommitUrl: String
     ): Call<List<GetRepoCommitList>>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET
+    fun getRepoIssuesDetailBasedOnIssuesUrl(
+        @Url repoIssueUrl: String
+    ): Call<List<GetRepoIssuesList>>
 }

@@ -31,5 +31,8 @@ interface GithubDataSource {
 
     fun getRepoReadme(repoUrl: String): Call<GetRepoReadme>
 
+    // 레파지토리 커밋 내역 보는 함수
     fun getRepoCommitList(repoCommitUrl: String): Call<List<GetRepoCommitList>>
+
+    fun getRepoIssuesList(repoIssuesUrl: String): Call<List<GetRepoIssuesList>>
 }
