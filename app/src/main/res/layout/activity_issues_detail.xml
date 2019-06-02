@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.main.activity.IssuesDetailActivity">
+
+    <android.support.design.widget.AppBarLayout android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fitsSystemWindows="true">
+        <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed|snap"
+                app:collapsedTitleGravity="start"
+                app:expandedTitleGravity="top"
+                app:expandedTitleMarginStart="@dimen/spacing_x_large"
+                app:expandedTitleMarginTop="60dp"
+                app:expandedTitleTextAppearance="@style/Toolbar.Expand.TitleText"
+                android:paddingTop="0dp">
+
+            <tech.tsdev.github_management.view.main.custom.GlideImageView
+                    android:layout_width="50dp"
+                    android:id="@+id/detail_issues_back_img"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:src="@drawable/ic_chevron_left_white_24dp"/>
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:paddingStart="@dimen/spacing_normal"
+                    android:paddingEnd="@dimen/spacing_normal"
+                    android:paddingBottom="@dimen/spacing_normal"
+                    android:layout_marginTop="86dp">
+
+                <tech.tsdev.github_management.view.main.custom.GlideImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:id="@+id/detail_issues_owner_avatar"
+                        android:src="@mipmap/ic_launcher"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_toEndOf="@+id/detail_issues_owner_avatar"
+                          tools:text="@string/repoIssuesMany"
+                          android:layout_marginTop="@dimen/spacing_mini"
+                          android:textColor="@color/white"
+                          android:textSize="@dimen/text_large"
+                          android:textStyle="bold"
+                          android:id="@+id/owner_issues_N"
+                          android:layout_marginStart="@dimen/spacing_normal"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_toEndOf="@+id/detail_issues_owner_avatar"
+                          tools:text="@string/issuesCommentsMany"
+                          android:layout_below="@+id/owner_issues_N"
+                          android:layout_marginTop="@dimen/spacing_mini"
+                          android:textColor="@color/white"
+                          android:id="@+id/owner_comments_N"
+                          android:layout_marginStart="@dimen/spacing_normal"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_toEndOf="@+id/detail_issues_owner_avatar"
+                          tools:text="@string/ownerComment"
+                          android:id="@+id/owner_issues"
+                          android:layout_below="@+id/owner_comments_N"
+                          android:layout_marginTop="@dimen/spacing_mini"
+                          android:textColor="@color/white"
+                          android:layout_marginStart="@dimen/spacing_normal"/>
+            </RelativeLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+</android.support.design.widget.CoordinatorLayout>

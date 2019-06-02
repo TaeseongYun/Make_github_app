@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent" android:layout_height="wrap_content">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+
+
 
     <android.support.design.card.MaterialCardView android:layout_width="match_parent"
-                                                  android:layout_height="wrap_content">
+                                                  android:layout_height="wrap_content"
+                                                  android:layout_margin="@dimen/material_card_view_margin"
+                                                  android:elevation="@dimen/material_card_view_margin_micro"
+                                                  android:background="@drawable/card_view_shadow"
+                                                  android:id="@+id/repo_owner_issue_card_view"
+                                                  android:translationZ="@dimen/material_card_view_margin_micro">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
             <tech.tsdev.github_management.view.main.custom.GlideImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_margin="@dimen/spacing_small"
                     android:id="@+id/repo_issue_writer_owner_avatar"/>
             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
                           android:orientation="vertical" android:layout_weight="3">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                              tools:text="@string/users"
+                              tools:text="@string/users" android:id="@+id/repo_issue_writer_owner_login"
                               android:layout_margin="@dimen/spacing_small"/>
 
                     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -25,19 +34,21 @@
 
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                              tools:text="@string/repoIssueMessage"
+                              tools:text="@string/repoIssueMessage" android:id="@+id/repo_issue_writer_owner_message"
                               android:layout_margin="@dimen/spacing_small"/>
                 </LinearLayout>
 
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                              tools:text="@string/followerN" android:layout_margin="@dimen/spacing_small"/>
+                              tools:text="@string/followerN" android:layout_margin="@dimen/spacing_small"
+                              android:id="@+id/repo_owner_writerN"/>
 
                     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                               tools:text="@string/followerN" android:layout_margin="@dimen/spacing_small"
                               android:gravity="end"
                               android:drawableEnd="@drawable/ic_chat_black_24dp"
+                              android:id="@+id/repo_owner_issue_commentN"
                               android:drawablePadding="@dimen/spacing_small"/>
                 </LinearLayout>
             </LinearLayout>

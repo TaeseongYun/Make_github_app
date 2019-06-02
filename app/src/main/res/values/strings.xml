@@ -26,6 +26,14 @@
     <string name="repoWatcher">Watchers</string>
     <string name="repoIssues">Issues</string>
     <string name="readME">READ ME</string>
+    <string name="repoEmptyIssues">Empty Issue</string>
+
+
+    <!--DetailIssues-->
+    <string name="repoIssuesMany">Issues #N</string>
+    <string name="issuesCommentsMany">N comments</string>
+    <string name="ownerComment">Owner Comments</string>
+
 
     <!--RepoCommit-->
     <string name="repoWhenCommit">When Commit</string>

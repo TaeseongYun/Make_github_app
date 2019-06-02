@@ -5,6 +5,10 @@ interface DetailRepoIssuesContract {
         fun issuesLoadFailMessage()
 
         fun issuesLoadFailMessage(message: String)
+
+        fun showEmptyIssuesAnimation()
+
+        fun dismissEmptyIssuesAnimation()
     }
 
     interface Presenter {

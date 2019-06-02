@@ -3,6 +3,7 @@ package tech.tsdev.github_management.view.main.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
 import kotlinx.android.synthetic.main.activity_issues.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
@@ -12,6 +13,16 @@ import tech.tsdev.github_management.view.main.activity.presenter.issues.DetailRe
 import tech.tsdev.github_management.view.main.activity.presenter.issues.DetailRepoIssuesPresenter
 
 class IssuesActivity : AppCompatActivity(), DetailRepoIssuesContract.View {
+    override fun dismissEmptyIssuesAnimation() {
+        repo_owner_issue_empty?.visibility = View.GONE
+        issue_recycler_view?.visibility = View.VISIBLE
+    }
+
+    override fun showEmptyIssuesAnimation() {
+        repo_owner_issue_empty?.visibility = View.VISIBLE
+        issue_recycler_view?.visibility = View.GONE
+    }
+
     override fun issuesLoadFailMessage() {
         toast("API 문서 호출 오류")
     }

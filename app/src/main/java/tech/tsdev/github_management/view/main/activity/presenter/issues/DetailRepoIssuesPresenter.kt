@@ -21,6 +21,8 @@ class DetailRepoIssuesPresenter(
 
                 override fun onResponse(call: Call<List<GetRepoIssuesList>>, response: Response<List<GetRepoIssuesList>>) {
                     if (response.isSuccessful) {
+                        if(response.body().isNullOrEmpty())
+                            view.showEmptyIssuesAnimation()
                         response.body()?.let { getRepoIssuesList ->
                             getRepoIssuesList.forEach { getRepoIssues ->
                                 detailIRepoIssuesListRecyclerModel.addItems(getRepoIssues)

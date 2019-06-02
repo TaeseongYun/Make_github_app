@@ -8,11 +8,17 @@
         tools:context=".view.main.activity.IssuesActivity">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical">
-        <android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
-                                                         android:layout_height="0dp"
-        android:layout_weight="1">
-            <include layout="@layout/toolbar_issue"/>
+                  android:id="@+id/repo_owner_issue_empty"
+                  android:visibility="gone"
+                  android:orientation="vertical">
+        <com.airbnb.lottie.LottieAnimationView android:layout_width="match_parent" android:layout_height="360dp"
+                                               android:layout_gravity="center"
+                                               app:lottie_fileName="empty_box.json"
+                                               app:lottie_loop="true"
+                                               app:lottie_autoPlay="true"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:gravity="center" android:text="@string/repoEmptyIssues"/>
+    </LinearLayout>
 
 
             <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
@@ -35,12 +41,5 @@
                                                                 app:srcCompat="@drawable/ic_reply_white_24dp"
                                                                 android:id="@+id/fab"
                                                                 app:layout_anchor="@id/bar"/>
-        </android.support.design.widget.CoordinatorLayout>
-    </LinearLayout>
-
-
-
-
-
 
 </android.support.design.widget.CoordinatorLayout>

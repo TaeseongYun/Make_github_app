@@ -12,6 +12,7 @@ class DetailRepoIssuesListRecyclerAdapter(val context: Context?) : RecyclerView.
 
     private val userRepoIssueList = mutableListOf<GetRepoIssuesList>()
 
+    override lateinit var onClick: (Int) -> Unit
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): RecyclerView.ViewHolder =
         DetailRepoIssuesListRecyclerHolder(context, parent)
 

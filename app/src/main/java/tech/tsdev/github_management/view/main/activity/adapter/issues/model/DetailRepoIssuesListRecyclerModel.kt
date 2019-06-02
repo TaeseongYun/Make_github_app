@@ -10,4 +10,6 @@ interface DetailRepoIssuesListRecyclerModel{
     fun getItems(position: Int): GetRepoIssuesList
 
     fun notifiedItemData()
+
+    var onClick: (Int) -> Unit
 }
