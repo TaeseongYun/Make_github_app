@@ -17,5 +17,7 @@ interface DetailIssuesSingleContract {
 
     interface Presenter {
         fun getSingleIssues(repoSingleIssuesUrl: String?)
+
+        fun getIssuesCommentsList(repoIssuesCommentsList: String?)
     }
 }

@@ -42,12 +42,6 @@
                               tools:text="@string/followerN" android:layout_margin="@dimen/spacing_small"
                               android:id="@+id/repo_owner_writerN"/>
 
-                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                              tools:text="@string/followerN" android:layout_margin="@dimen/spacing_small"
-                              android:gravity="end"
-                              android:drawableEnd="@drawable/ic_chat_black_24dp"
-                              android:id="@+id/repo_owner_issue_commentN"
-                              android:drawablePadding="@dimen/spacing_small"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

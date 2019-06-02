@@ -15,7 +15,10 @@ class DetailRepoIssuesPresenter(
 
     init {
         detailIRepoIssuesListRecyclerModel.onClick = { position ->
-            view.detailIssuesActivity(detailIRepoIssuesListRecyclerModel.getItems(position).url)
+            view.detailIssuesActivityIncludeComments(
+                detailIRepoIssuesListRecyclerModel.getItems(position).url,
+                detailIRepoIssuesListRecyclerModel.getItems(position).commentsUrl
+            )
         }
     }
 

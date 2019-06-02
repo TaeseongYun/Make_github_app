@@ -14,9 +14,10 @@ import tech.tsdev.github_management.view.main.activity.presenter.issues.DetailRe
 import tech.tsdev.github_management.view.main.activity.presenter.issues.DetailRepoIssuesPresenter
 
 class IssuesActivity : AppCompatActivity(), DetailRepoIssuesContract.View {
-    override fun detailIssuesActivity(detailIssuesUrl: String?) {
+    override fun detailIssuesActivityIncludeComments(detailIssuesUrl: String?, detailCommentsUrl: String?) {
         Intent(this, IssuesDetailActivity::class.java).apply {
             putExtra("issuesUrl", detailIssuesUrl)
+            putExtra("commentsUrl", detailCommentsUrl)
             startActivity(this)
         }
     }

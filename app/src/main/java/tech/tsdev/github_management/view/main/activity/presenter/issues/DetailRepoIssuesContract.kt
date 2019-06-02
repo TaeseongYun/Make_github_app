@@ -10,7 +10,7 @@ interface DetailRepoIssuesContract {
 
         fun dismissEmptyIssuesAnimation()
 
-        fun detailIssuesActivity(detailIssuesUrl: String?)
+        fun detailIssuesActivityIncludeComments(detailIssuesUrl: String?, detailCommentsUrl: String?)
     }
 
     interface Presenter {

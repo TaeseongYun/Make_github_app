@@ -9,7 +9,7 @@ data class GetRepoIssuesList(
     val body: String,
     val closed_at: Any,
     val comments: Int,
-    val comments_url: String,
+    @SerializedName("comments_url")  val commentsUrl: String,
     @SerializedName("created_at") val createdAt: String,
     val events_url: String,
     val html_url: String,
