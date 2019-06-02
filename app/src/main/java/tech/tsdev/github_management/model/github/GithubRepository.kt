@@ -43,4 +43,10 @@ object GithubRepository : GithubDataSource {
 
     override fun getRepoIssuesList(repoIssuesUrl: String): Call<List<GetRepoIssuesList>> =
             githubRemotedata.getRepoIssuesList(repoIssuesUrl)
+
+    override fun getSingleRepoIssues(repoSingleIssuesUrl: String): Call<GetRepoIssuesList> =
+            githubRemotedata.getSingleRepoIssues(repoSingleIssuesUrl)
+
+    override fun getIssuesCommentsList(repoCommentsUrl: String): Call<List<GetIssuesComments>> =
+            githubRemotedata.getIssuesCommentsList(repoCommentsUrl)
 }

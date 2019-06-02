@@ -7,6 +7,7 @@ import tech.tsdev.github_management.network.createRetrofit
 
 class GithubRemoteData : GithubDataSource {
 
+
     companion object {
         const val GITHUB_URL = "https://api.github.com"
     }
@@ -48,4 +49,10 @@ class GithubRemoteData : GithubDataSource {
 
     override fun getRepoIssuesList(repoIssuesUrl: String): Call<List<GetRepoIssuesList>> =
             githubUserList.getRepoIssuesDetailBasedOnIssuesUrl(repoIssuesUrl)
+
+    override fun getSingleRepoIssues(repoSingleIssuesUrl: String): Call<GetRepoIssuesList> =
+            githubUserList.getSingleRepoIssuesBasedOnIssuesUrl(repoSingleIssuesUrl)
+
+    override fun getIssuesCommentsList(repoCommentsUrl: String): Call<List<GetIssuesComments>> =
+            githubUserList.getIssuesCommentsListBasedOnCommentsUrl(repoCommentsUrl)
 }

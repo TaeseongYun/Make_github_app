@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.view.main.activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -13,6 +14,13 @@ import tech.tsdev.github_management.view.main.activity.presenter.issues.DetailRe
 import tech.tsdev.github_management.view.main.activity.presenter.issues.DetailRepoIssuesPresenter
 
 class IssuesActivity : AppCompatActivity(), DetailRepoIssuesContract.View {
+    override fun detailIssuesActivity(detailIssuesUrl: String?) {
+        Intent(this, IssuesDetailActivity::class.java).apply {
+            putExtra("issuesUrl", detailIssuesUrl)
+            startActivity(this)
+        }
+    }
+
     override fun dismissEmptyIssuesAnimation() {
         repo_owner_issue_empty?.visibility = View.GONE
         issue_recycler_view?.visibility = View.VISIBLE

@@ -97,4 +97,16 @@ interface GithubInterface {
     fun getRepoIssuesDetailBasedOnIssuesUrl(
         @Url repoIssueUrl: String
     ): Call<List<GetRepoIssuesList>>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET
+    fun getSingleRepoIssuesBasedOnIssuesUrl(
+        @Url repoSingleUrl: String
+    ): Call<GetRepoIssuesList>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET
+    fun getIssuesCommentsListBasedOnCommentsUrl(
+        @Url repoCommentsUrl: String
+    ): Call<List<GetIssuesComments>>
 }

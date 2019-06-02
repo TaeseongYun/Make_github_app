@@ -22,12 +22,7 @@
                 app:expandedTitleTextAppearance="@style/Toolbar.Expand.TitleText"
                 android:paddingTop="0dp">
 
-            <tech.tsdev.github_management.view.main.custom.GlideImageView
-                    android:layout_width="50dp"
-                    android:id="@+id/detail_issues_back_img"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="@dimen/spacing_small"
-                    android:src="@drawable/ic_chevron_left_white_24dp"/>
+
 
 
             <RelativeLayout
@@ -73,6 +68,24 @@
                           android:layout_marginStart="@dimen/spacing_normal"/>
             </RelativeLayout>
 
+            <android.support.v7.widget.Toolbar android:layout_width="match_parent"
+                                               android:id="@+id/toolbar_repo_issues"
+                                               android:layout_height="?attr/actionBarSize"
+                                               app:popupTheme="?popup_theme"
+                                               app:layout_collapseMode="pin">
+                <tech.tsdev.github_management.view.main.custom.GlideImageView
+                        android:layout_marginTop="@dimen/spacing_small" android:layout_width="40dp"
+                        android:layout_height="40dp" android:id="@+id/detail_issues_back_img"
+                        android:src="@drawable/ic_chevron_left_white_24dp"/>
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
+
     </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
+                                                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                                                     android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                                android:layout_height="match_parent"/>
+    </android.support.design.widget.CoordinatorLayout>
 </android.support.design.widget.CoordinatorLayout>

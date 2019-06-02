@@ -14,7 +14,7 @@ class DetailRepoIssuesListRecyclerAdapter(val context: Context?) : RecyclerView.
 
     override lateinit var onClick: (Int) -> Unit
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): RecyclerView.ViewHolder =
-        DetailRepoIssuesListRecyclerHolder(context, parent)
+        DetailRepoIssuesListRecyclerHolder(onClick, context, parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as DetailRepoIssuesListRecyclerHolder).onBind(userRepoIssueList[position])

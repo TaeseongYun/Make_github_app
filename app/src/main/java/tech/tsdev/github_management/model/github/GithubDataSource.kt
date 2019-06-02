@@ -35,4 +35,10 @@ interface GithubDataSource {
     fun getRepoCommitList(repoCommitUrl: String): Call<List<GetRepoCommitList>>
 
     fun getRepoIssuesList(repoIssuesUrl: String): Call<List<GetRepoIssuesList>>
+
+    //이슈 하나만 가져 오는 함수
+    fun getSingleRepoIssues(repoSingleIssuesUrl: String): Call<GetRepoIssuesList>
+
+    // 해당 이슈의 코멘트 가져오는 함수
+    fun getIssuesCommentsList(repoCommentsUrl: String): Call<List<GetIssuesComments>>
 }

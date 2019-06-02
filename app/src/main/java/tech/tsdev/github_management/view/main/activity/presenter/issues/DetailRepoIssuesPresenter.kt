@@ -12,6 +12,13 @@ class DetailRepoIssuesPresenter(
     private val githubRepository: GithubRepository,
     private val detailIRepoIssuesListRecyclerModel: DetailRepoIssuesListRecyclerModel
 ) : DetailRepoIssuesContract.Presenter {
+
+    init {
+        detailIRepoIssuesListRecyclerModel.onClick = { position ->
+            view.detailIssuesActivity(detailIRepoIssuesListRecyclerModel.getItems(position).url)
+        }
+    }
+
     override fun loadRepoIssuesDetailBasedIssuesUrl(repoIssuesUrl: String?) {
         repoIssuesUrl?.let {
             githubRepository.getRepoIssuesList(it).enqueue(object : Callback<List<GetRepoIssuesList>> {
@@ -19,9 +26,12 @@ class DetailRepoIssuesPresenter(
                     view.issuesLoadFailMessage()
                 }
 
-                override fun onResponse(call: Call<List<GetRepoIssuesList>>, response: Response<List<GetRepoIssuesList>>) {
+                override fun onResponse(
+                    call: Call<List<GetRepoIssuesList>>,
+                    response: Response<List<GetRepoIssuesList>>
+                ) {
                     if (response.isSuccessful) {
-                        if(response.body().isNullOrEmpty())
+                        if (response.body().isNullOrEmpty())
                             view.showEmptyIssuesAnimation()
                         response.body()?.let { getRepoIssuesList ->
                             getRepoIssuesList.forEach { getRepoIssues ->
