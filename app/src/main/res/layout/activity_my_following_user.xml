@@ -19,6 +19,7 @@
                     android:layout_height="40dp"
                     android:src="@drawable/ic_chevron_left_white_24dp"
                     android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:id="@+id/img_close_user_following"/>
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"

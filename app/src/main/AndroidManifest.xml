@@ -12,6 +12,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".view.main.activity.RepoStargazersActivity">
+        </activity>
         <activity android:name=".view.main.activity.IssuesDetailActivity">
         </activity>
         <activity android:name=".view.main.activity.IssuesActivity">

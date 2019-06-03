@@ -12,6 +12,7 @@ import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.util.textVisibleGone
 import tech.tsdev.github_management.view.main.activity.IssuesActivity
+import tech.tsdev.github_management.view.main.activity.RepoStargazersActivity
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoContract
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoPresenter
 
@@ -69,6 +70,10 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
                 putExtra("repoIssuesUrl", arguments?.getString("detailRepoInfoUrl"))
                 startActivity(this)
             }
+        }
+
+        owner_repo_stargazer_layout.setOnClickListener {
+            startActivity(Intent(activity, RepoStargazersActivity::class.java))
         }
     }
 }

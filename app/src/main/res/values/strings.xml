@@ -34,7 +34,7 @@
     <string name="issuesCommentsMany">N comments</string>
     <string name="ownerComment">Owner Comments</string>
 
-
+    <string name="repo_stargazers">Stargazers</string>
     <!--RepoCommit-->
     <string name="repoWhenCommit">When Commit</string>
     <string name="repoCommitterIssue">Commit Issue</string>
