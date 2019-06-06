@@ -3,7 +3,6 @@ package tech.tsdev.github_management.ui.modules.detail.user.repo
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,7 @@ import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.user.repo.adapter.DetailRepoRecyclerAdapter
 import tech.tsdev.github_management.ui.modules.detail.user.repo.presenter.DetailUserRepoContract
 import tech.tsdev.github_management.ui.modules.detail.user.repo.presenter.DetailUserRepoPresenter
-import tech.tsdev.github_management.view.main.activity.repos.DetailRepoActivity
+import tech.tsdev.github_management.view.main.activity.DetailRepoActivity
 
 class DetailUserRepoFragment : Fragment(), DetailUserRepoContract.View {
     override fun getLoadDetailMyRepository(repoUrl: String) {

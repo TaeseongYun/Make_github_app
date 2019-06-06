@@ -109,4 +109,10 @@ interface GithubInterface {
     fun getIssuesCommentsListBasedOnCommentsUrl(
         @Url repoCommentsUrl: String
     ): Call<List<GetIssuesComments>>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET
+    fun getRepoStargazerUserList(
+        @Url repoStarredUserListUrl: String
+    ): Call<List<GetRepoStarredUserList>>
 }

@@ -67,5 +67,6 @@ class IssuesActivity : AppCompatActivity(), DetailRepoIssuesContract.View {
             layoutManager = GridLayoutManager(this@IssuesActivity, 1)
         }
 
+        println("들어온 repoIssuesUrl 값 -> ${intent.getStringExtra("repoIssuesUrl")}")
     }
 }

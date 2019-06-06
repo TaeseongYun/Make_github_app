@@ -34,8 +34,14 @@
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                           android:layout_below="@+id/repo_stargazers_app_bar" android:textColor="@color/white"
                           tools:text="@string/users" android:layout_marginStart="@dimen/spacing_large"
-                          android:layout_toEndOf="@+id/repo_stargazers_back_img"/>
+                          android:layout_toEndOf="@+id/repo_stargazers_back_img"
+                          android:id="@+id/repo_name"/>
             </RelativeLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                            android:id="@+id/user_stargazer_recycler_view"
+                                            android:layout_height="match_parent"
+                                            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </android.support.design.widget.CoordinatorLayout>

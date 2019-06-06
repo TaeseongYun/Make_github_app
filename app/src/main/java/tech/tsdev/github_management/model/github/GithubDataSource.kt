@@ -41,4 +41,7 @@ interface GithubDataSource {
 
     // 해당 이슈의 코멘트 가져오는 함수
     fun getIssuesCommentsList(repoCommentsUrl: String): Call<List<GetIssuesComments>>
+
+    //해당 레포지토리  star준 유저 목록 보여주는 함수
+    fun getRepoStarredUserList(repoStarredUserList: String): Call<List<GetRepoStarredUserList>>
 }

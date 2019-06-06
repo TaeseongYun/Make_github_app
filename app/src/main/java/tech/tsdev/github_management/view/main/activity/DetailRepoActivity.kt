@@ -1,4 +1,4 @@
-package tech.tsdev.github_management.view.main.activity.repos
+package tech.tsdev.github_management.view.main.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.view.ViewPager
 import android.view.View
 import kotlinx.android.synthetic.main.activity_detail_repo.*
 import org.jetbrains.anko.toast
@@ -98,7 +97,7 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
                 0 -> {
                     DetailRepoInfoFragment().apply {
                         arguments = Bundle().apply {
-                            putString("detailRepoInfoUrl", intent.getStringExtra("repoUrl"))
+                            putString("detailRepoUrl", intent.getStringExtra("repoUrl"))
                         }
                     }
                 }

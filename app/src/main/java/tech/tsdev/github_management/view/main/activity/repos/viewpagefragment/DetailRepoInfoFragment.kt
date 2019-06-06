@@ -17,6 +17,18 @@ import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.pr
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoPresenter
 
 class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
+    override fun getSendRepoNameRepoUrl(repoName: String?, repoUrl: String?) {
+        repoName?.let { detailRepoName ->
+            repoUrl?.let { detailRepoUrl ->
+                arguments = Bundle().apply {
+                    putString("repoName", detailRepoName)
+                    putString("detailRepoUrl", detailRepoUrl)
+                }
+            }
+        }
+    }
+
+
     override fun getOwnerRepoReadme(repoReadMeUrl: String?) {
         repoReadMeUrl?.let { owner_repo_readme.loadUrl(it) } ?: let { owner_repo_readme?.visibility = View.GONE }
     }
@@ -55,25 +67,40 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val inputDetailRepoUrl = arguments?.getString("detailRepoUrl")
+        println("들어온 detailRepoUrl 값 -> ${arguments?.getString("detailRepoUrl")}")
+
+
         //레포지토리 결과 값 불러오기 위한 것
-        arguments?.getString("detailRepoInfoUrl")
+        arguments?.getString("detailRepoUrl")
             ?.let { detailRepoInfoPresenter.getLoadRepoInfoBasedRepoUrl(it) }
 
 
         //레포지토리 README 불러오기 위한 코드
         detailRepoInfoPresenter.getLoadRepoReadmeBasedRepoUrl(
-            arguments?.getString("detailRepoInfoUrl") + "/readme"
+            arguments?.getString("detailRepoUrl") + "/readme"
         )
 
+
         owner_repo_issue_layout.setOnClickListener {
-            Intent(activity, IssuesActivity::class.java).apply {
-                putExtra("repoIssuesUrl", arguments?.getString("detailRepoInfoUrl"))
+            Intent(context, IssuesActivity::class.java).apply {
+                putExtra("repoIssuesUrl",
+                    arguments?.getString("detailRepoUrl")
+                )
                 startActivity(this)
             }
         }
 
         owner_repo_stargazer_layout.setOnClickListener {
-            startActivity(Intent(activity, RepoStargazersActivity::class.java))
+            Intent(context, RepoStargazersActivity::class.java).apply {
+                putExtra(
+                    "repoStargazersUrl",
+                    arguments?.getString("detailRepoUrl")
+                )
+                putExtra("repoName", arguments?.getString("repoName"))
+                startActivity(this)
+            }
         }
     }
 }

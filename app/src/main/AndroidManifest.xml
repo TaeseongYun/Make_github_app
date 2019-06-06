@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".view.main.activity.MyFollowersUserActivity">
         </activity>
-        <activity android:name=".view.main.activity.repos.DetailRepoActivity">
+        <activity android:name=".view.main.activity.DetailRepoActivity">
         </activity> <!-- android:windowSoftInputMode="adjustPan" -> 이거는 edittext 에 focus 되었을때 위로 올라오게 하게끔 동작 -->
         <activity
                 android:name=".view.main.activity.NameInputActivity"

@@ -12,5 +12,8 @@ class RepoStargazersActivity : AppCompatActivity() {
         setContentView(R.layout.activity_repo_stargazers)
 
         repo_stargazers_back_img.setOnClickListener { finish() }
+        println("들어온 repoStargazersUrl 값 -> ${intent.getStringExtra("repoStargazersUrl")}")
+        println("들어온 repoName 값 -> ${intent.getStringExtra("repoName")}")
+        repo_name.text = intent.getStringExtra("repoName")
     }
 }

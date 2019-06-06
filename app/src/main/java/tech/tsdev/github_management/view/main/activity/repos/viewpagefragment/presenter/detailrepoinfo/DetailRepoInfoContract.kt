@@ -16,6 +16,12 @@ interface DetailRepoInfoContract {
         fun getOwnerRepoReadme(
             repoReadMeUrl: String?
         )
+
+        //repoName  을 넘겨주기 위해 만듦
+        fun getSendRepoNameRepoUrl(
+            repoName: String?,
+            repoUrl: String?
+        )
     }
 
     interface Presenter {

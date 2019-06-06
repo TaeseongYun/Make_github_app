@@ -4,16 +4,13 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_my_repository_list.*
-import kotlinx.android.synthetic.main.userlist_fragment.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.repolist.MyRepoListRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.repolist.MyRepoListContract
 import tech.tsdev.github_management.view.main.activity.presenter.repolist.MyRepoListPresenter
-import tech.tsdev.github_management.view.main.activity.repos.DetailRepoActivity
 
 class MyRepositoryListActivity : AppCompatActivity(), MyRepoListContract.View {
     override fun getRepoDetailView(repoName: String?) {

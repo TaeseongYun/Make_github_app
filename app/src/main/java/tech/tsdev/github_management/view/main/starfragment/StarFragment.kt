@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.user_activities_fragment.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
-import tech.tsdev.github_management.view.main.activity.repos.DetailRepoActivity
+import tech.tsdev.github_management.view.main.activity.DetailRepoActivity
 import tech.tsdev.github_management.view.main.starfragment.adapter.StarRecyclerAdapter
 import tech.tsdev.github_management.view.main.starfragment.presenter.StarFragmentContract
 import tech.tsdev.github_management.view.main.starfragment.presenter.StarFragmentPresenter

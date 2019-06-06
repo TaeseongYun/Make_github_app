@@ -49,4 +49,7 @@ object GithubRepository : GithubDataSource {
 
     override fun getIssuesCommentsList(repoCommentsUrl: String): Call<List<GetIssuesComments>> =
             githubRemotedata.getIssuesCommentsList(repoCommentsUrl)
+
+    override fun getRepoStarredUserList(repoStarredUserList: String): Call<List<GetRepoStarredUserList>> =
+            githubRemotedata.getRepoStarredUserList(repoStarredUserList)
 }

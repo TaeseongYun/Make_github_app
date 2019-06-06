@@ -27,7 +27,8 @@ data class GetSingleRepo(
     @SerializedName("subscribers_count") val subscribersCount: Int,
     val updated_at: String,
     val watchers: Int,
-    @SerializedName("watchers_count")  val watchersCount: Int
+    @SerializedName("watchers_count")  val watchersCount: Int,
+    val url: String
 ) {
 
     fun simpleDateCreateAt(createWhen: String): String {
