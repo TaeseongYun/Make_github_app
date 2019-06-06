@@ -5,43 +5,47 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.main.activity.RepoStargazersActivity">
+        tools:context=".view.main.activity.RepoForksActivity">
 
     <android.support.design.widget.AppBarLayout android:layout_width="match_parent"
                                                 android:layout_height="?attr/actionBarSize"
                                                 android:background="@drawable/bg_round_appbar">
         <android.support.design.widget.CollapsingToolbarLayout android:layout_width="match_parent"
                                                                android:layout_height="match_parent"
-                                                               app:layout_scrollFlags="snap|enterAlways|scroll">
-
-
-            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                                               app:layout_scrollFlags="scroll|enterAlways|snap">
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="match_parent">
                 <tech.tsdev.github_management.view.main.custom.GlideImageView
                         android:layout_width="40dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
                         android:layout_height="40dp"
+                        android:id="@+id/repo_fork_close_img"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/spacing_normal"
-                        android:src="@drawable/ic_chevron_left_white_24dp"
-                        android:id="@+id/repo_stargazers_back_img"/>
+                        android:src="@drawable/ic_chevron_left_white_24dp"/>
 
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:text="@string/repo_stargazers" android:textStyle="bold"
-                          android:textSize="@dimen/text_large" android:layout_marginStart="@dimen/spacing_large"
+                          android:layout_toEndOf="@+id/repo_fork_close_img"
                           android:layout_marginTop="@dimen/spacing_small"
-                          android:textColor="@color/white" android:id="@+id/repo_stargazers_app_bar"
-                          android:layout_toEndOf="@+id/repo_stargazers_back_img"/>
+                          android:text="@string/repo_forks_appbar_titleName"
+                          android:textColor="@color/white"
+                          android:id="@+id/repo_forks_title_name"
+                          android:textStyle="bold"
+                          android:textSize="@dimen/text_large"
+                          android:layout_marginStart="@dimen/spacing_normal"/>
+
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:layout_below="@+id/repo_stargazers_app_bar" android:textColor="@color/white"
-                          tools:text="@string/users" android:layout_marginStart="@dimen/spacing_large"
-                          android:layout_toEndOf="@+id/repo_stargazers_back_img"
-                          android:id="@+id/repo_name"/>
+                          android:layout_toEndOf="@+id/repo_fork_close_img"
+                          tools:text="@string/repository_name"
+                          android:layout_below="@+id/repo_forks_title_name"
+                          android:textColor="@color/white"
+                          android:id="@+id/full_name"
+                          android:layout_marginStart="@dimen/spacing_normal"/>
             </RelativeLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:id="@+id/repo_stargazers_empty_lottie_ani"
+                  android:id="@+id/repo_fork_empty_lottie_ani"
                   android:gravity="center" android:visibility="gone"
                   android:orientation="vertical">
         <com.airbnb.lottie.LottieAnimationView android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -54,11 +58,9 @@
                   android:textSize="@dimen/text_large"
                   android:text="@string/stargazers_noting_user"/>
     </LinearLayout>
-
-
     <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
-                                            android:id="@+id/user_stargazer_recycler_view"
                                             android:layout_height="match_parent"
-                                            android:scrollbars="vertical"
+                                            android:visibility="visible"
+                                            android:id="@+id/repo_fork_user_recycler_view"
                                             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </android.support.design.widget.CoordinatorLayout>

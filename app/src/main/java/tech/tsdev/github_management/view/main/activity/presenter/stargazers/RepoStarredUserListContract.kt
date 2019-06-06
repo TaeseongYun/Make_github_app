@@ -5,6 +5,8 @@ interface RepoStarredUserListContract {
         fun loadFailGithubApi()
 
         fun loadFailGithubApi(message: String)
+
+        fun emptyStargazerUserList()
     }
 
     interface Presenter{

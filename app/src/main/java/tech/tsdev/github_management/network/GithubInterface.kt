@@ -113,6 +113,13 @@ interface GithubInterface {
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
     fun getRepoStargazerUserList(
-        @Url repoStarredUserListUrl: String
+        @Url repoStarredUserListUrl: String,
+        @Query("page") page: Int
     ): Call<List<GetRepoStarredUserList>>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET
+    fun getRepoForkedUserList(
+        @Url repoforkedUserListUrl: String
+    ): Call<List<GetForkUserList>>
 }

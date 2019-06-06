@@ -50,6 +50,9 @@ object GithubRepository : GithubDataSource {
     override fun getIssuesCommentsList(repoCommentsUrl: String): Call<List<GetIssuesComments>> =
             githubRemotedata.getIssuesCommentsList(repoCommentsUrl)
 
-    override fun getRepoStarredUserList(repoStarredUserList: String): Call<List<GetRepoStarredUserList>> =
-            githubRemotedata.getRepoStarredUserList(repoStarredUserList)
+    override fun getRepoStarredUserList(repoStarredUserList: String, page: Int): Call<List<GetRepoStarredUserList>> =
+            githubRemotedata.getRepoStarredUserList(repoStarredUserList, page)
+
+    override fun getRepoForkedUserList(repoForkedUserList: String): Call<List<GetForkUserList>> =
+            githubRemotedata.getRepoForkedUserList(repoForkedUserList)
 }

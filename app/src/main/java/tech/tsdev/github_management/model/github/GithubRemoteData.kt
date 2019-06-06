@@ -55,6 +55,9 @@ class GithubRemoteData : GithubDataSource {
     override fun getIssuesCommentsList(repoCommentsUrl: String): Call<List<GetIssuesComments>> =
             githubUserList.getIssuesCommentsListBasedOnCommentsUrl(repoCommentsUrl)
 
-    override fun getRepoStarredUserList(repoStarredUserList: String): Call<List<GetRepoStarredUserList>> =
-            githubUserList.getRepoStargazerUserList(repoStarredUserList)
+    override fun getRepoStarredUserList(repoStarredUserList: String, page: Int): Call<List<GetRepoStarredUserList>> =
+            githubUserList.getRepoStargazerUserList(repoStarredUserList, page)
+
+    override fun getRepoForkedUserList(repoForkedUserList: String): Call<List<GetForkUserList>> =
+            githubUserList.getRepoForkedUserList(repoForkedUserList)
 }

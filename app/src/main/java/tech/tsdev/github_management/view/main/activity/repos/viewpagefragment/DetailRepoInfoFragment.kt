@@ -12,6 +12,7 @@ import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.util.textVisibleGone
 import tech.tsdev.github_management.view.main.activity.IssuesActivity
+import tech.tsdev.github_management.view.main.activity.RepoForksActivity
 import tech.tsdev.github_management.view.main.activity.RepoStargazersActivity
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoContract
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoPresenter
@@ -85,7 +86,8 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
 
         owner_repo_issue_layout.setOnClickListener {
             Intent(context, IssuesActivity::class.java).apply {
-                putExtra("repoIssuesUrl",
+                putExtra(
+                    "repoIssuesUrl",
                     arguments?.getString("detailRepoUrl")
                 )
                 startActivity(this)
@@ -99,6 +101,17 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
                     arguments?.getString("detailRepoUrl")
                 )
                 putExtra("repoName", arguments?.getString("repoName"))
+                startActivity(this)
+            }
+        }
+
+        owner_repo_fork_layout.setOnClickListener {
+            Intent(context, RepoForksActivity::class.java).apply {
+                putExtra("repoName", arguments?.getString("repoName"))
+                putExtra(
+                    "repoForkUrl",
+                    arguments?.getString("detailRepoUrl")
+                )
                 startActivity(this)
             }
         }

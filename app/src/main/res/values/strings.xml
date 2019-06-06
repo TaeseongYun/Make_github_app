@@ -34,7 +34,14 @@
     <string name="issuesCommentsMany">N comments</string>
     <string name="ownerComment">Owner Comments</string>
 
+
+    <!--Stargazers-->
     <string name="repo_stargazers">Stargazers</string>
+    <string name="stargazers_noting_user">Nothing User</string>
+
+    <!--Forks-->
+    <string name="repo_forks_appbar_titleName">Forks</string>
+    <string name="forks_nothis_user">Nothing User</string>
     <!--RepoCommit-->
     <string name="repoWhenCommit">When Commit</string>
     <string name="repoCommitterIssue">Commit Issue</string>
