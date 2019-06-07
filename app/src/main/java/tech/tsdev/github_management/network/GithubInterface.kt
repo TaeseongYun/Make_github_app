@@ -62,7 +62,7 @@ interface GithubInterface {
     //유저의 레파지토리
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET("/users/{username}/repos")
-    fun getRepoListBasedOnUserName (
+    fun getRepoListBasedOnUserName(
         @Path("username") userName: String
     ): Call<List<UserRepoList>>
 
@@ -73,12 +73,12 @@ interface GithubInterface {
         @Url repoUrl: String
     ): Call<GetSingleRepo>
 
-//    해당 유저 스타 준 레파지토리 목록
+    //    해당 유저 스타 준 레파지토리 목록
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET("users/{username}/starred")
     fun getStarBasedonUserName(
         @Path("username") userName: String
-    ):Call<List<GetUserStarred>>
+    ): Call<List<GetUserStarred>>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
@@ -96,7 +96,8 @@ interface GithubInterface {
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
     fun getRepoIssuesDetailBasedOnIssuesUrl(
-        @Url repoIssueUrl: String
+        @Url repoIssueUrl: String,
+        @Query("page") page: Int
     ): Call<List<GetRepoIssuesList>>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
@@ -121,6 +122,7 @@ interface GithubInterface {
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
     fun getRepoForkedUserList(
-        @Url repoforkedUserListUrl: String
+        @Url repoforkedUserListUrl: String,
+        @Query("page") page: Int
     ): Call<List<GetForkUserList>>
 }

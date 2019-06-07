@@ -47,7 +47,7 @@ class DetailRepoCommitsFragment : Fragment(), DetailRepoCommitContract.View {
             val visibleItemCount = recyclerView.childCount
 
             if (!detailRepoCommitPresenter.isLoading && detailRepoCommitPresenter.nextPage
-                && totalRecyclerViewItem - 10 < (firstItemView + visibleItemCount)
+                && totalRecyclerViewItem - 8 < (firstItemView + visibleItemCount)
             ) {
                 detailRepoCommitPresenter.loadRepoCommitListBaseRepoName(
                     arguments?.getString("detailRepoCommitsUrl") + "/commits"

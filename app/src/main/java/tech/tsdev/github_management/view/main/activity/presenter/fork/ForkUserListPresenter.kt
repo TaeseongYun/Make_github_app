@@ -12,29 +12,42 @@ class ForkUserListPresenter(
     private val githubRepository: GithubRepository,
     private val forkUserRecyclerModel: ForkUserListRecyclerModel
 ) : ForkUserListContract.Presenter {
+
+    var isLoading = false
+    var nextPage = true
+    var perPage = 0
+
     override fun getLoadForkUserListBasedForkUrl(repoForkUrl: String?) {
-        repoForkUrl?.let {
-            githubRepository.getRepoForkedUserList(it).enqueue(object : Callback<List<GetForkUserList>> {
-                override fun onFailure(call: Call<List<GetForkUserList>>, t: Throwable) {
-                    view.forkUserListLoadFailMessage()
-                }
+        isLoading = true
+        if(nextPage) {
+            repoForkUrl?.let {
+                githubRepository.getRepoForkedUserList(it, ++perPage).enqueue(object : Callback<List<GetForkUserList>> {
+                    override fun onFailure(call: Call<List<GetForkUserList>>, t: Throwable) {
+                        view.forkUserListLoadFailMessage()
 
-                override fun onResponse(call: Call<List<GetForkUserList>>, response: Response<List<GetForkUserList>>) {
-                    if(response.isSuccessful) {
-                        response.body()?.takeIf { body -> body.isNullOrEmpty() }?.run {
-                            println("사람이 없어요")
-                            view.showNothingUserLottieAni()
-                        }
-                        response.body()?.let { forkUserList ->
-                            forkUserList.forEach { forkUser ->
-                                forkUserRecyclerModel.addItems(forkUser)
-                            }
-                            forkUserRecyclerModel.notifiedDataItems()
-                        }
+                        isLoading = false
                     }
-                }
 
-            })
+                    override fun onResponse(
+                        call: Call<List<GetForkUserList>>,
+                        response: Response<List<GetForkUserList>>
+                    ) {
+                        if (response.isSuccessful) {
+                            response.body()?.takeIf { body -> body.isNullOrEmpty() }?.run {
+                                nextPage = false
+                                view.showNothingUserLottieAni()
+                            }
+                            response.body()?.let { forkUserList ->
+                                forkUserList.forEach { forkUser ->
+                                    forkUserRecyclerModel.addItems(forkUser)
+                                }
+                                forkUserRecyclerModel.notifiedDataItems()
+                            }
+                        }
+                        isLoading = false
+                    }
+                })
+            }
         }
     }
 

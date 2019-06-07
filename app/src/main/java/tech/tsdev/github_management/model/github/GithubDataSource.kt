@@ -34,7 +34,7 @@ interface GithubDataSource {
     // 레파지토리 커밋 내역 보는 함수
     fun getRepoCommitList(repoCommitUrl: String, page: Int): Call<List<GetRepoCommitList>>
 
-    fun getRepoIssuesList(repoIssuesUrl: String): Call<List<GetRepoIssuesList>>
+    fun getRepoIssuesList(repoIssuesUrl: String, page: Int): Call<List<GetRepoIssuesList>>
 
     //이슈 하나만 가져 오는 함수
     fun getSingleRepoIssues(repoSingleIssuesUrl: String): Call<GetRepoIssuesList>
@@ -45,5 +45,5 @@ interface GithubDataSource {
     //해당 레포지토리  star준 유저 목록 보여주는 함수
     fun getRepoStarredUserList(repoStarredUserList: String, page: Int): Call<List<GetRepoStarredUserList>>
 
-    fun getRepoForkedUserList(repoForkedUserList: String): Call<List<GetForkUserList>>
+    fun getRepoForkedUserList(repoForkedUserList: String, page: Int): Call<List<GetForkUserList>>
 }

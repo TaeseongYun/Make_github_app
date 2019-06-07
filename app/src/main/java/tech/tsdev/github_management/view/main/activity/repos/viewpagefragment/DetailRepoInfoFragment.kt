@@ -14,6 +14,7 @@ import tech.tsdev.github_management.util.textVisibleGone
 import tech.tsdev.github_management.view.main.activity.IssuesActivity
 import tech.tsdev.github_management.view.main.activity.RepoForksActivity
 import tech.tsdev.github_management.view.main.activity.RepoStargazersActivity
+import tech.tsdev.github_management.view.main.activity.RepoWatchersActivity
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoContract
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoPresenter
 
@@ -110,6 +111,17 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
                 putExtra("repoName", arguments?.getString("repoName"))
                 putExtra(
                     "repoForkUrl",
+                    arguments?.getString("detailRepoUrl")
+                )
+                startActivity(this)
+            }
+        }
+
+        owner_repo_watcher_layout.setOnClickListener {
+            Intent(context, RepoWatchersActivity::class.java).apply {
+                putExtra("repoName",arguments?.getString("repoName"))
+                putExtra(
+                    "repoWatcherUrl",
                     arguments?.getString("detailRepoUrl")
                 )
                 startActivity(this)

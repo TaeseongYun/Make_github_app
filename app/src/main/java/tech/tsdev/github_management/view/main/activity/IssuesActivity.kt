@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import kotlinx.android.synthetic.main.activity_issues.*
 import org.jetbrains.anko.toast
@@ -48,6 +49,31 @@ class IssuesActivity : AppCompatActivity(), DetailRepoIssuesContract.View {
         DetailRepoIssuesPresenter(this, GithubRepository, detailRepoIssuesListRecyclerAdapter)
     }
 
+    private val onScrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            val firstVisibleItemPosition =
+                (recyclerView.layoutManager as? GridLayoutManager)?.findFirstVisibleItemPosition() ?: 0
+            val totalItemCount = detailRepoIssuesListRecyclerAdapter.itemCount
+            val visibleItemsCount = recyclerView.childCount
+
+            if (!detailRepoIssuesPresenter.isLoading && detailRepoIssuesPresenter.nextPage &&
+                totalItemCount - 8 < (firstVisibleItemPosition + visibleItemsCount)
+            ) {
+                detailRepoIssuesPresenter.loadRepoIssuesDetailBasedIssuesUrl(
+                    intent.getStringExtra("repoIssuesUrl") + "/issues"
+                )
+            }
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        issue_recycler_view.removeOnScrollListener(onScrollListener)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_issues)
@@ -65,6 +91,7 @@ class IssuesActivity : AppCompatActivity(), DetailRepoIssuesContract.View {
         issue_recycler_view.run {
             adapter = detailRepoIssuesListRecyclerAdapter
             layoutManager = GridLayoutManager(this@IssuesActivity, 1)
+            addOnScrollListener(onScrollListener)
         }
 
         println("들어온 repoIssuesUrl 값 -> ${intent.getStringExtra("repoIssuesUrl")}")

@@ -42,6 +42,9 @@
     <!--Forks-->
     <string name="repo_forks_appbar_titleName">Forks</string>
     <string name="forks_nothis_user">Nothing User</string>
+
+    <!--Watchers-->
+    <string name="repo_watcher_title">Watchers</string>
     <!--RepoCommit-->
     <string name="repoWhenCommit">When Commit</string>
     <string name="repoCommitterIssue">Commit Issue</string>

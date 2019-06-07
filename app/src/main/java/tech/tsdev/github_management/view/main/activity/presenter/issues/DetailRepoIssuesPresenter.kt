@@ -13,6 +13,10 @@ class DetailRepoIssuesPresenter(
     private val detailIRepoIssuesListRecyclerModel: DetailRepoIssuesListRecyclerModel
 ) : DetailRepoIssuesContract.Presenter {
 
+    var perPage = 0
+    var isLoading = false
+    var nextPage = true
+
     init {
         detailIRepoIssuesListRecyclerModel.onClick = { position ->
             view.detailIssuesActivityIncludeComments(
@@ -23,29 +27,34 @@ class DetailRepoIssuesPresenter(
     }
 
     override fun loadRepoIssuesDetailBasedIssuesUrl(repoIssuesUrl: String?) {
-        repoIssuesUrl?.let {
-            githubRepository.getRepoIssuesList(it).enqueue(object : Callback<List<GetRepoIssuesList>> {
-                override fun onFailure(call: Call<List<GetRepoIssuesList>>, t: Throwable) {
-                    view.issuesLoadFailMessage()
-                }
+        isLoading = true
+        if(nextPage) {
+            repoIssuesUrl?.let {
+                githubRepository.getRepoIssuesList(it, ++perPage).enqueue(object : Callback<List<GetRepoIssuesList>> {
+                    override fun onFailure(call: Call<List<GetRepoIssuesList>>, t: Throwable) {
+                        view.issuesLoadFailMessage()
+                    }
 
-                override fun onResponse(
-                    call: Call<List<GetRepoIssuesList>>,
-                    response: Response<List<GetRepoIssuesList>>
-                ) {
-                    if (response.isSuccessful) {
-                        if (response.body().isNullOrEmpty())
-                            view.showEmptyIssuesAnimation()
-                        response.body()?.let { getRepoIssuesList ->
-                            getRepoIssuesList.forEach { getRepoIssues ->
-                                detailIRepoIssuesListRecyclerModel.addItems(getRepoIssues)
+                    override fun onResponse(
+                        call: Call<List<GetRepoIssuesList>>,
+                        response: Response<List<GetRepoIssuesList>>
+                    ) {
+                        if (response.isSuccessful) {
+                            response.body()?.takeIf { body -> body.isNullOrEmpty() }?.run {
+                                nextPage = false
+                                view.showEmptyIssuesAnimation()
                             }
-                            detailIRepoIssuesListRecyclerModel.notifiedItemData()
+                            response.body()?.let { getRepoIssuesList ->
+                                getRepoIssuesList.forEach { getRepoIssues ->
+                                    detailIRepoIssuesListRecyclerModel.addItems(getRepoIssues)
+                                }
+                                detailIRepoIssuesListRecyclerModel.notifiedItemData()
+                            }
                         }
                     }
-                }
 
-            })
+                })
+            }
         }
     }
 }

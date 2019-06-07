@@ -41,8 +41,8 @@ object GithubRepository : GithubDataSource {
     override fun getRepoCommitList(repoCommitUrl: String, page: Int): Call<List<GetRepoCommitList>> =
             githubRemotedata.getRepoCommitList(repoCommitUrl, page)
 
-    override fun getRepoIssuesList(repoIssuesUrl: String): Call<List<GetRepoIssuesList>> =
-            githubRemotedata.getRepoIssuesList(repoIssuesUrl)
+    override fun getRepoIssuesList(repoIssuesUrl: String, page: Int): Call<List<GetRepoIssuesList>> =
+            githubRemotedata.getRepoIssuesList(repoIssuesUrl, page)
 
     override fun getSingleRepoIssues(repoSingleIssuesUrl: String): Call<GetRepoIssuesList> =
             githubRemotedata.getSingleRepoIssues(repoSingleIssuesUrl)
@@ -53,6 +53,6 @@ object GithubRepository : GithubDataSource {
     override fun getRepoStarredUserList(repoStarredUserList: String, page: Int): Call<List<GetRepoStarredUserList>> =
             githubRemotedata.getRepoStarredUserList(repoStarredUserList, page)
 
-    override fun getRepoForkedUserList(repoForkedUserList: String): Call<List<GetForkUserList>> =
-            githubRemotedata.getRepoForkedUserList(repoForkedUserList)
+    override fun getRepoForkedUserList(repoForkedUserList: String, page: Int): Call<List<GetForkUserList>> =
+            githubRemotedata.getRepoForkedUserList(repoForkedUserList, page)
 }
