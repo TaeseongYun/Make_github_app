@@ -3,6 +3,7 @@ package tech.tsdev.github_management.view.main.activity.repos.viewpagefragment
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,31 @@ class DetailRepoCommitsFragment : Fragment(), DetailRepoCommitContract.View {
         DetailRepoCommitPresenter(this@DetailRepoCommitsFragment, GithubRepository, detailRepoCommitRecyclerAdapter)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        repo_owner_commit_recycler_view.removeOnScrollListener(onScrollListener)
+    }
+
+    private val onScrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            val firstItemView = (recyclerView.layoutManager as? GridLayoutManager)
+                ?.findFirstVisibleItemPosition() ?: 0
+            val totalRecyclerViewItem = detailRepoCommitRecyclerAdapter.itemCount
+            val visibleItemCount = recyclerView.childCount
+
+            if (!detailRepoCommitPresenter.isLoading && detailRepoCommitPresenter.nextPage
+                && totalRecyclerViewItem - 10 < (firstItemView + visibleItemCount)
+            ) {
+                detailRepoCommitPresenter.loadRepoCommitListBaseRepoName(
+                    arguments?.getString("detailRepoCommitsUrl") + "/commits"
+                )
+            }
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.detail_repo_commit_layout, container, false)
 
@@ -44,6 +70,7 @@ class DetailRepoCommitsFragment : Fragment(), DetailRepoCommitContract.View {
         repo_owner_commit_recycler_view.run {
             adapter = detailRepoCommitRecyclerAdapter
             layoutManager = GridLayoutManager(this@DetailRepoCommitsFragment.context, 1)
+            addOnScrollListener(onScrollListener)
         }
     }
 }

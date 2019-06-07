@@ -3,10 +3,10 @@ package tech.tsdev.github_management.model
 import com.google.gson.annotations.SerializedName
 
 data class GetRepoCommitList(
-    val author: Author,
+    val author: Author?,
     val comments_url: String,
     val commit: Commit,
-    val committer: Committer,
+    val committer: Committer?,
     val html_url: String,
     val node_id: String,
     val parents: List<Any>,
@@ -55,19 +55,13 @@ data class Committer(
     val url: String
 )
 
-data class Author(
-    val date: String,
-    val email: String,
-    val name: String
-)
-
 data class Tree(
     val sha: String,
     val url: String
 )
 
-data class AuthorX(
-    val avatar_url: String,
+data class Author(
+    @SerializedName("avatar_url")  val avatarUrl: String,
     val events_url: String,
     val followers_url: String,
     val following_url: String,

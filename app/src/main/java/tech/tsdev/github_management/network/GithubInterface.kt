@@ -89,7 +89,8 @@ interface GithubInterface {
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
     fun getRepoCommitsBasedOnRepoUrl(
-        @Url repoCommitUrl: String
+        @Url repoCommitUrl: String,
+        @Query("page") page: Int
     ): Call<List<GetRepoCommitList>>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")

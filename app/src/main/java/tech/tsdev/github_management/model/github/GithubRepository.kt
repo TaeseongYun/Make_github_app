@@ -38,8 +38,8 @@ object GithubRepository : GithubDataSource {
     override fun getRepoReadme(repoUrl: String): Call<GetRepoReadme> =
             githubRemotedata.getRepoReadme(repoUrl)
 
-    override fun getRepoCommitList(repoCommitUrl: String): Call<List<GetRepoCommitList>> =
-            githubRemotedata.getRepoCommitList(repoCommitUrl)
+    override fun getRepoCommitList(repoCommitUrl: String, page: Int): Call<List<GetRepoCommitList>> =
+            githubRemotedata.getRepoCommitList(repoCommitUrl, page)
 
     override fun getRepoIssuesList(repoIssuesUrl: String): Call<List<GetRepoIssuesList>> =
             githubRemotedata.getRepoIssuesList(repoIssuesUrl)

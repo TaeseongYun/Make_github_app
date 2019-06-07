@@ -43,8 +43,8 @@ class GithubRemoteData : GithubDataSource {
     override fun getRepoReadme(repoUrl: String): Call<GetRepoReadme> =
             githubUserList.getRepoReadMeBasedOnRepoUrl(repoUrl)
 
-    override fun getRepoCommitList(repoCommitUrl: String): Call<List<GetRepoCommitList>> =
-            githubUserList.getRepoCommitsBasedOnRepoUrl(repoCommitUrl)
+    override fun getRepoCommitList(repoCommitUrl: String, page: Int): Call<List<GetRepoCommitList>> =
+            githubUserList.getRepoCommitsBasedOnRepoUrl(repoCommitUrl, page)
 
     override fun getRepoIssuesList(repoIssuesUrl: String): Call<List<GetRepoIssuesList>> =
             githubUserList.getRepoIssuesDetailBasedOnIssuesUrl(repoIssuesUrl)

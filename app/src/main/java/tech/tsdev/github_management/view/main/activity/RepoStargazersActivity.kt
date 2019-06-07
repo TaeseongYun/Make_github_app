@@ -43,10 +43,13 @@ class RepoStargazersActivity : AppCompatActivity(), RepoStarredUserListContract.
             val visibleItemCount = recyclerView.childCount
             val totalItemsCount = starredUserListRecyclerAdapter.itemCount
 
-            if (!repoStarredUserListPresenter.isLoading && totalItemsCount - 1 < (firstItem + visibleItemCount))
+            if (!repoStarredUserListPresenter.isLoading && totalItemsCount - 1 < (firstItem + visibleItemCount)) {
+                println("스크롤 뷰 이벤트 들어옴")
                 repoStarredUserListPresenter.loadRepoStarredUserList(
                     intent.getStringExtra("repoStargazersUrl") + "/stargazers"
                 )
+            }
+
         }
     }
 

@@ -15,41 +15,49 @@ class RepoStarredUserListPresenter(
 
     var isLoading = false
 
-    private var per_page = 1
+    var nextPageSearch = true
+    private var perPage = 0
 
     override fun loadRepoStarredUserList(repoStarredUserList: String?) {
         isLoading = true
 
-        repoStarredUserList?.let {
-            githubRepository.getRepoStarredUserList(it, per_page++).enqueue(object :
-                Callback<List<GetRepoStarredUserList>> {
-                override fun onFailure(call: Call<List<GetRepoStarredUserList>>, t: Throwable) {
-                    view.loadFailGithubApi()
+        if(nextPageSearch) {
+            repoStarredUserList?.let {
+                githubRepository.getRepoStarredUserList(it, ++perPage).enqueue(object :
+                    Callback<List<GetRepoStarredUserList>> {
+                    override fun onFailure(call: Call<List<GetRepoStarredUserList>>, t: Throwable) {
+                        view.loadFailGithubApi()
 
-                    isLoading = false
-                }
-
-                override fun onResponse(
-                    call: Call<List<GetRepoStarredUserList>>,
-                    response: Response<List<GetRepoStarredUserList>>
-                ) {
-                    if (response.isSuccessful) {
-                        response.body()?.takeIf { body -> body.isNullOrEmpty() }?.run {
-                            view.emptyStargazerUserList()
-                        }
-                        response.body()?.let { starredUserList ->
-                            starredUserList.forEach { starredUser ->
-                                starredUserListRecyclerModel.addItems(starredUser)
-                            }
-                            starredUserListRecyclerModel.notifyedItemData()
-                        } ?: let {
-                            view.loadFailGithubApi(response.errorBody().toString())
-                        }
+                        isLoading = false
                     }
-                    isLoading = false
-                }
 
-            })
+                    override fun onResponse(
+                        call: Call<List<GetRepoStarredUserList>>,
+                        response: Response<List<GetRepoStarredUserList>>
+                    ) {
+                        if (response.isSuccessful) {
+                            if (perPage == 1) {
+                                response.body().takeIf { body -> body.isNullOrEmpty() }?.run {
+                                    view.emptyStargazerUserList()
+                                }
+                            }
+                            response.body().takeIf { body -> body.isNullOrEmpty() }?.run {
+                                nextPageSearch = false
+                            }
+                            response.body()?.let { starredUserList ->
+                                starredUserList.forEach { starredUser ->
+                                    starredUserListRecyclerModel.addItems(starredUser)
+                                }
+                                starredUserListRecyclerModel.notifyedItemData()
+                            } ?: let {
+                                view.loadFailGithubApi(response.errorBody().toString())
+                            }
+                        }
+                        isLoading = false
+                    }
+
+                })
+            }
         }
     }
 }
