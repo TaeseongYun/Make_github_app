@@ -25,7 +25,7 @@ class DetailRepoInfoPresenter(private val view: DetailRepoInfoContract.View,
                             singleRepo.openIssuesCount.toString(),
                             singleRepo.stargazersCount.toString(),
                             singleRepo.forksCount.toString(),
-                            singleRepo.watchersCount.toString()
+                            singleRepo.subscribersCount.toString()
                         )
                         view.getSendRepoNameRepoUrl(
                             singleRepo.fullName,

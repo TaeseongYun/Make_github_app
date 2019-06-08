@@ -7,6 +7,7 @@ import tech.tsdev.github_management.network.createRetrofit
 
 class GithubRemoteData : GithubDataSource {
 
+
     companion object {
         const val GITHUB_URL = "https://api.github.com"
     }
@@ -60,4 +61,7 @@ class GithubRemoteData : GithubDataSource {
 
     override fun getRepoForkedUserList(repoForkedUserList: String, page: Int): Call<List<GetForkUserList>> =
             githubUserList.getRepoForkedUserList(repoForkedUserList, page)
+
+    override fun getRepoSubscribeUserList(repoSubscriberUserList: String, page: Int): Call<List<GetRepoSubscribers>> =
+            githubUserList.getRepoSubscriberUserList(repoSubscriberUserList, page)
 }

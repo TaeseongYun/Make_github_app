@@ -55,4 +55,7 @@ object GithubRepository : GithubDataSource {
 
     override fun getRepoForkedUserList(repoForkedUserList: String, page: Int): Call<List<GetForkUserList>> =
             githubRemotedata.getRepoForkedUserList(repoForkedUserList, page)
+
+    override fun getRepoSubscribeUserList(repoSubscriberUserList: String, page: Int): Call<List<GetRepoSubscribers>> =
+            githubRemotedata.getRepoSubscribeUserList(repoSubscriberUserList, page)
 }

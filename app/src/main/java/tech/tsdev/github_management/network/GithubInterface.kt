@@ -125,4 +125,11 @@ interface GithubInterface {
         @Url repoforkedUserListUrl: String,
         @Query("page") page: Int
     ): Call<List<GetForkUserList>>
+
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @GET
+    fun getRepoSubscriberUserList(
+        @Url repoWatcherUserListUrl: String,
+        @Query("page") page: Int
+    ): Call<List<GetRepoSubscribers>>
 }

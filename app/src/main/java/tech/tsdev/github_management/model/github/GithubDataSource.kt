@@ -45,5 +45,8 @@ interface GithubDataSource {
     //해당 레포지토리  star준 유저 목록 보여주는 함수
     fun getRepoStarredUserList(repoStarredUserList: String, page: Int): Call<List<GetRepoStarredUserList>>
 
+    //해당 레포지토리 fork 유저목록 보여주는 함수
     fun getRepoForkedUserList(repoForkedUserList: String, page: Int): Call<List<GetForkUserList>>
+
+    fun getRepoSubscribeUserList(repoSubscriberUserList: String, page: Int): Call<List<GetRepoSubscribers>>
 }
