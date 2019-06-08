@@ -44,4 +44,24 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:id="@+id/repo_watcher_empty_lottie_ani"
+                  android:gravity="center" android:visibility="gone"
+                  android:orientation="vertical">
+        <com.airbnb.lottie.LottieAnimationView android:layout_width="match_parent" android:layout_height="wrap_content"
+                                               android:layout_gravity="center"
+                                               app:lottie_fileName="empty_box.json"
+                                               app:lottie_autoPlay="true"
+                                               app:lottie_loop="true"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:gravity="center" android:textColor="@color/colorPrimary"
+                  android:textSize="@dimen/text_large"
+                  android:text="@string/stargazers_noting_user"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                            android:id="@+id/repo_watcher_recycler_view"
+                                            android:layout_height="match_parent"
+                                            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </android.support.design.widget.CoordinatorLayout>
