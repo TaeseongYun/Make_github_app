@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.pg_search_user_detail.view.*
+import org.jetbrains.anko.backgroundResource
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.Item
 

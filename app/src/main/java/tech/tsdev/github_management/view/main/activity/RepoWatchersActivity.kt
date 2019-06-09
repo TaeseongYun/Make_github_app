@@ -3,6 +3,7 @@ package tech.tsdev.github_management.view.main.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import kotlinx.android.synthetic.main.activity_repo_watchers.*
 import org.jetbrains.anko.toast
@@ -34,6 +35,29 @@ class RepoWatchersActivity : AppCompatActivity(), RepoWatcherContract.View {
         RepoWatcherPresenter(this, GithubRepository, repoWatcherRecyclerAdapter)
     }
 
+    private val onScrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            val firstVisibleItems =
+                (recyclerView.layoutManager as? GridLayoutManager)?.findFirstVisibleItemPosition() ?: 0
+            val totalItemCount = repoWatcherRecyclerAdapter.itemCount
+            val visibleItemCount = recyclerView.childCount
+
+            if (!repoWatcherPresenter.isLoading && repoWatcherPresenter.nextPage
+                && totalItemCount - 5 < (firstVisibleItems + visibleItemCount)
+            )
+                repoWatcherPresenter.loadWatcherUserListBasedRepoUrl(
+                    intent.getStringExtra("repoWatcherUrl") + "/subscribers"
+                )
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        repo_watcher_recycler_view.removeOnScrollListener(onScrollListener)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_repo_watchers)
@@ -48,7 +72,7 @@ class RepoWatchersActivity : AppCompatActivity(), RepoWatcherContract.View {
         repo_watcher_recycler_view.run {
             adapter = repoWatcherRecyclerAdapter
             layoutManager = GridLayoutManager(this.context, 1)
-
+            addOnScrollListener(onScrollListener)
         }
     }
 }

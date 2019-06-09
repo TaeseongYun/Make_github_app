@@ -19,6 +19,7 @@ class RepoWatcherPresenter(
 
     override fun loadWatcherUserListBasedRepoUrl(repoUrl: String?) {
         isLoading = true
+
         if (nextPage) {
             repoUrl?.let {
                 githubRepository.getRepoSubscribeUserList(it, ++perPage).enqueue(object :
@@ -34,10 +35,13 @@ class RepoWatcherPresenter(
                         response: Response<List<GetRepoSubscribers>>
                     ) {
                         if (response.isSuccessful) {
+                            if (perPage == 1) {
+                                response.body().takeIf { body -> body.isNullOrEmpty() }?.run {
+                                    view.showRepoSubscribeEmptyUser()
+                                }
+                            }
                             response.body()?.takeIf { body -> body.isNullOrEmpty() }?.run {
                                 nextPage = false
-
-                                view.showRepoSubscribeEmptyUser()
                             }
 
                             response.body()?.let { repoSubscriberUserList ->
@@ -45,12 +49,15 @@ class RepoWatcherPresenter(
                                     repoWatcherRecyclerModel.addItems(repoSubscriberUser)
                                 }
                                 repoWatcherRecyclerModel.notifiedDataItems()
+                            } ?: let {
+                                view.loadWatcherUserErrorMessage(response.errorBody().toString())
                             }
                         }
                     }
 
 
                 })
+                isLoading = false
             }
         }
     }
