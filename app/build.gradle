@@ -67,4 +67,7 @@ dependencies {
 
 //    //Lottie
     implementation "com.airbnb.android:lottie:2.5.5"
+
+    //RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
 }
