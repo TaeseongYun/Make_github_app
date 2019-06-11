@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/user_info"
+          android:icon="@drawable/vd_user_outline"
+          android:title="@string/users"/>
+
+    <item
+        android:id="@+id/user_repository"
+        android:title="@string/repository_name"
+        android:icon="@drawable/ic_import_contacts_white_24dp"/>
+
+
+</menu>
