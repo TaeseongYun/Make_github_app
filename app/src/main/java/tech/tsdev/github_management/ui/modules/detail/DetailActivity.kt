@@ -36,12 +36,12 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-
+        detail_user_bar.replaceMenu(R.menu.bottom_app_bar)
 //        tv_user_name.text = intent.getStringExtra( SearchActivity.USER_NAME )
 
 
 
-        addTabLayoutItem()
+//        addTabLayoutItem()
 
         fab_home.setOnClickListener {
             finish()

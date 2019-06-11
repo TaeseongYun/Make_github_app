@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
             android:id="@+id/navigation_users"
             android:icon="@drawable/vd_users_outline"
-            android:title="@string/github_user"/>
+            android:title="@string/github_user"
+            app:showAsAction="ifRoom"/>
 
     <item
             android:id="@+id/navigation_star"
             android:icon="@drawable/vd_star_outline"
-            android:title="@string/many_stars"/>
+            android:title="@string/many_stars"
+            app:showAsAction="ifRoom"/>
 
     <item
             android:id="@+id/navigation_me"
             android:icon="@drawable/vd_user_outline"
-            android:title="@string/github_me"/>
+            android:title="@string/github_me"
+            app:showAsAction="ifRoom"/>
 </menu>
