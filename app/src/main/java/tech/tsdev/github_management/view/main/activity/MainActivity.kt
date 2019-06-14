@@ -4,6 +4,10 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.transition.Fade
+import android.transition.Slide
+import android.transition.TransitionInflater
+import android.view.Gravity
 import kotlinx.android.synthetic.main.main_bottom_navigation.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import tech.tsdev.github_management.R
@@ -55,11 +59,14 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         replace(R.id.frame_layout, githubFragment)
+
         navigation.apply {
             setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         }
@@ -67,5 +74,7 @@ class MainActivity : AppCompatActivity() {
         user_search_img.setOnClickListener {
             startActivity(Intent(this, SearchActivity::class.java))
         }
+
+        
     }
 }

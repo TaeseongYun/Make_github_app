@@ -5,6 +5,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.transition.Fade
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
@@ -66,11 +67,16 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
 
     }
 
+    private fun setupWindowAnimation() {
+        val fade = Fade()
+        fade.duration = 1000
+        window.enterTransition = fade
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-
+        setupWindowAnimation()
         addTabItems()
 
         search_tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -87,6 +93,7 @@ class SearchActivity : AppCompatActivity(), SearchContract.View {
             }
 
         })
+
 
         et_search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {

@@ -25,4 +25,9 @@
     <color name="green_textInput">#4CAF50</color>
 
     <color name="card_view_color">#BDBDBD</color>
+
+    <!--fab Color-->
+    <color name="fab_RESET_color">#ffc400</color>
+    <color name="fab_Light_color">#fff64f</color>
+    <color name="fab_Dark_color">#c79400</color>
 </resources>
