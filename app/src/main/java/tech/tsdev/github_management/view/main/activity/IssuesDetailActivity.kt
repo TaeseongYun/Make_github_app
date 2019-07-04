@@ -1,9 +1,9 @@
 package tech.tsdev.github_management.view.main.activity
 
 import android.annotation.SuppressLint
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_issues_detail.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R

@@ -1,12 +1,13 @@
 package tech.tsdev.github_management.view.main.activity
 
-import android.support.v7.app.AppCompatActivity
+
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_detail_repo.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R

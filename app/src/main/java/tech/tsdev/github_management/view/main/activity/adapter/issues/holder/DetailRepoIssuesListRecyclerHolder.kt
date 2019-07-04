@@ -2,10 +2,10 @@ package tech.tsdev.github_management.view.main.activity.adapter.issues.holder
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.detail_repo_issue_items.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.GetRepoIssuesList

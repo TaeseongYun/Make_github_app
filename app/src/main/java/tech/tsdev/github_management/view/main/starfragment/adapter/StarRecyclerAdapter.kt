@@ -1,8 +1,8 @@
 package tech.tsdev.github_management.view.main.starfragment.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import tech.tsdev.github_management.model.ReceivedEvents
 import tech.tsdev.github_management.view.main.starfragment.adapter.holder.StarRecyclerHolder
 import tech.tsdev.github_management.view.main.starfragment.adapter.model.StarRecyclerModel

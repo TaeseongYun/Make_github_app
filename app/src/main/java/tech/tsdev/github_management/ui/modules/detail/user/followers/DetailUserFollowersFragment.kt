@@ -1,11 +1,11 @@
 package tech.tsdev.github_management.ui.modules.detail.user.followers
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.detail_user_followers.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R

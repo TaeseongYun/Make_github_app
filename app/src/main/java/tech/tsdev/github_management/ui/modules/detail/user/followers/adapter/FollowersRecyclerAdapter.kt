@@ -1,8 +1,8 @@
 package tech.tsdev.github_management.ui.modules.detail.user.followers.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import tech.tsdev.github_management.model.UserFollowersFollowingList
 import tech.tsdev.github_management.ui.modules.detail.user.followers.adapter.holder.FollowersRecyclerHolder
 import tech.tsdev.github_management.ui.modules.detail.user.followers.adapter.model.FollowersRecyclerModel

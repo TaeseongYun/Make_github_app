@@ -1,8 +1,8 @@
 package tech.tsdev.github_management.view.main.activity.adapter.stargazers
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import tech.tsdev.github_management.model.GetRepoStarredUserList
 import tech.tsdev.github_management.view.main.activity.adapter.stargazers.holder.StarredUserListRecyclerHolder
 import tech.tsdev.github_management.view.main.activity.adapter.stargazers.model.StarredUserListRecyclerModel

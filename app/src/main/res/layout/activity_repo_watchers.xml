@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,10 +7,11 @@
         android:layout_height="match_parent"
         tools:context=".view.main.activity.RepoWatchersActivity">
 
-    <android.support.design.widget.AppBarLayout android:layout_width="match_parent"
-                                                android:layout_height="?attr/actionBarSize"
-                                                android:background="@drawable/bg_round_appbar">
-        <android.support.design.widget.CollapsingToolbarLayout android:layout_width="match_parent"
+    <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent"
+                                                     android:layout_height="?attr/actionBarSize"
+                                                     android:background="@drawable/bg_round_appbar"
+                                                     tools:ignore="MissingConstraints">
+        <com.google.android.material.appbar.CollapsingToolbarLayout android:layout_width="match_parent"
                                                                android:layout_height="match_parent"
                                                                app:layout_scrollFlags="snap|enterAlways|scroll">
             <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
@@ -42,8 +43,8 @@
                 />
             </RelativeLayout>
 
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
                   android:id="@+id/repo_watcher_empty_lottie_ani"
@@ -60,8 +61,8 @@
                   android:text="@string/stargazers_noting_user"/>
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+    <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
                                             android:id="@+id/repo_watcher_recycler_view"
                                             android:layout_height="match_parent"
                                             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-</android.support.design.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

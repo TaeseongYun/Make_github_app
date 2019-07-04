@@ -1,8 +1,8 @@
 package tech.tsdev.github_management.view.main.userlistfragment.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import tech.tsdev.github_management.model.UserListData
 import tech.tsdev.github_management.view.main.userlistfragment.adapter.holder.UserRecyclerHolder
 import tech.tsdev.github_management.view.main.userlistfragment.adapter.model.UserRecyclerModel

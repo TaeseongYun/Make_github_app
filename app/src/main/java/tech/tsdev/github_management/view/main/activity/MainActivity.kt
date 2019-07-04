@@ -1,13 +1,16 @@
 package tech.tsdev.github_management.view.main.activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
+
+
 import android.transition.Fade
 import android.transition.Slide
 import android.transition.TransitionInflater
 import android.view.Gravity
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.main_bottom_navigation.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import tech.tsdev.github_management.R

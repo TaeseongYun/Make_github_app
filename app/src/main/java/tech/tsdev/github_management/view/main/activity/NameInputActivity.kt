@@ -2,11 +2,10 @@ package tech.tsdev.github_management.view.main.activity
 
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_name_input.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.view.main.myfragment.MyFragment
 
 class NameInputActivity : AppCompatActivity() {
     private val HELPER_TEXT = "*Require"

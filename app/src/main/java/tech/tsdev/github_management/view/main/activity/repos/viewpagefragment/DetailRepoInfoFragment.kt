@@ -2,10 +2,10 @@ package tech.tsdev.github_management.view.main.activity.repos.viewpagefragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.detail_repo_info_layout.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
