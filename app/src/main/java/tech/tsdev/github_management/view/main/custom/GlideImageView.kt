@@ -1,9 +1,9 @@
 package tech.tsdev.github_management.view.main.custom
 
 import android.content.Context
-import android.support.annotation.DrawableRes
 import android.util.AttributeSet
 import android.widget.ImageView
+import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import tech.tsdev.github_management.R

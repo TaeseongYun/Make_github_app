@@ -1,8 +1,8 @@
 package tech.tsdev.github_management.ui.modules.detail.search.repo.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import tech.tsdev.github_management.model.RepoItem
 import tech.tsdev.github_management.ui.modules.detail.search.repo.adapter.holder.SearchRepoHolder
 import tech.tsdev.github_management.ui.modules.detail.search.repo.adapter.model.SearchRepoModel

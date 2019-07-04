@@ -1,11 +1,13 @@
 package tech.tsdev.github_management.ui.modules.detail.search.repo
 
+
+
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.pg_search_repo_layout.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
