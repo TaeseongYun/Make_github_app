@@ -1,10 +1,10 @@
 package tech.tsdev.github_management.view.main.activity.adapter.followers.holder
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.user_followers_item_detail.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.UserFollowersFollowingList

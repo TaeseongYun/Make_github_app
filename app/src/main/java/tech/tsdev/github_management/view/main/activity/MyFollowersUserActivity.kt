@@ -4,6 +4,7 @@ package tech.tsdev.github_management.view.main.activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_my_follwers_user.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R

@@ -1,10 +1,9 @@
 package tech.tsdev.github_management.ui.modules.detail.search.users.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import tech.tsdev.github_management.model.Item
-import tech.tsdev.github_management.model.SingleUser
 import tech.tsdev.github_management.ui.modules.detail.search.users.adapter.holder.SearchUserHolder
 import tech.tsdev.github_management.ui.modules.detail.search.users.adapter.model.SearchUserModel
 
