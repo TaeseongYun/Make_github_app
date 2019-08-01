@@ -70,4 +70,11 @@ dependencies {
 
     //RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+    //android-material-dialogs
+    implementation "com.afollestad.material-dialogs:core:$android_dialog_version"
+    implementation "com.afollestad.material-dialogs:input:$android_dialog_version"
+
+    //custom-content-android-menu
+    implementation "com.github.Yalantis:Context-Menu.Android:$android_content_menu"
 }

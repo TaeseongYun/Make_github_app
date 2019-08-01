@@ -17,6 +17,7 @@
 
     <string name="powered_by_github">powered by Github</string>
 
+    <string name="change_users">Change Users</string>
 
     <!--RepoINFO-->
     <string name="createRepo">Create Repo When</string>

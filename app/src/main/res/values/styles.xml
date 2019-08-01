@@ -30,6 +30,11 @@
         <item name="appbar_theme">@style/AppbarThemeDark</item>
     </style>
 
+    <style name="TextViewStyle" parent="TextView.DefaultStyle">
+        <item name="android:textStyle">italic|bold</item>
+        <item name="android:color">#26D0EB</item>
+    </style>
+
     <style name="AppbarThemeDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="CustomizingTextView" parent="android:Widget.TextView">
