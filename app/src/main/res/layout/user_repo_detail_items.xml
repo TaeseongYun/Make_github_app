@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" tools:ignore="UselessParent">
-        <android.support.design.card.MaterialCardView android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
                                                       android:layout_height="wrap_content"
                                                       android:id="@+id/material_card_view"
                                                       android:layout_marginEnd="@dimen/material_card_view_margin"
@@ -109,6 +109,6 @@
                               android:id="@+id/tv_fork_repo"/>
                 </RelativeLayout>
             </LinearLayout>
-        </android.support.design.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </LinearLayout>

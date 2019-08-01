@@ -5,7 +5,7 @@
               android:layout_height="wrap_content">
 
 
-    <android.support.design.card.MaterialCardView android:layout_width="match_parent"
+    <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
                                                   android:layout_height="wrap_content"
                                                   android:layout_margin="@dimen/material_card_view_margin"
                                                   android:elevation="@dimen/material_card_view_margin_micro"
@@ -51,5 +51,5 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </android.support.design.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

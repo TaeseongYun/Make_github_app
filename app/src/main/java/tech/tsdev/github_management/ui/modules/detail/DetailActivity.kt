@@ -19,7 +19,6 @@ import tech.tsdev.github_management.util.replace
 class DetailActivity : AppCompatActivity() {
 
 
-
     private val viewAdapter: DetailViewPagerAdapter by lazy {
         DetailViewPagerAdapter(supportFragmentManager, this)
     }
@@ -66,7 +65,6 @@ class DetailActivity : AppCompatActivity() {
 //        tv_user_name.text = intent.getStringExtra( SearchActivity.USER_NAME )
 
 
-
 //        addTabLayoutItem()
 
         fab_home.setOnClickListener {
@@ -77,7 +75,7 @@ class DetailActivity : AppCompatActivity() {
         replace(R.id.detail_user_frame_layout, detailUserOverviewFragment)
 
         detail_user_bar.setOnMenuItemClickListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.user_info -> replace(R.id.detail_user_frame_layout, detailUserOverviewFragment)
 
                 R.id.user_repository -> replace(R.id.detail_user_frame_layout, detailUserRepositoryFragment)
@@ -96,7 +94,6 @@ class DetailActivity : AppCompatActivity() {
     }
 
     inner class DetailViewPagerAdapter(fm: FragmentManager, val context: Context) : FragmentStatePagerAdapter(fm) {
-
 
         override fun getItem(position: Int): Fragment? =
             when (position) {
@@ -124,8 +121,6 @@ class DetailActivity : AppCompatActivity() {
                 }
                 else -> null
             }
-
-
 
 
         override fun getCount(): Int = 4

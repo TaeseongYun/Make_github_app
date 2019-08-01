@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.user_activities_fragment.*
 import org.jetbrains.anko.support.v4.toast
+
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.DetailRepoActivity
