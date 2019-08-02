@@ -10,10 +10,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import kotlinx.android.synthetic.main.activity_detail.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.ui.modules.detail.user.followers.DetailUserFollowersFragment
-import tech.tsdev.github_management.ui.modules.detail.user.following.DetailUserFollowingFragment
-import tech.tsdev.github_management.ui.modules.detail.user.overview.DetailUserOverviewFragment
-import tech.tsdev.github_management.ui.modules.detail.user.repo.DetailUserRepoFragment
+import tech.tsdev.github_management.ui.modules.detail.mine.followers.DetailUserFollowersFragment
+import tech.tsdev.github_management.ui.modules.detail.mine.following.DetailUserFollowingFragment
+import tech.tsdev.github_management.ui.modules.detail.mine.overview.DetailUserOverviewFragment
+import tech.tsdev.github_management.ui.modules.detail.mine.repo.DetailUserRepoFragment
 import tech.tsdev.github_management.util.replace
 
 class DetailActivity : AppCompatActivity() {

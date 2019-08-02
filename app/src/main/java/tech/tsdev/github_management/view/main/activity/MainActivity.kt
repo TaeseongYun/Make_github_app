@@ -1,22 +1,15 @@
 package tech.tsdev.github_management.view.main.activity
 
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 
 import android.os.Bundle
 
 
-import android.transition.Fade
-import android.transition.Slide
-import android.transition.TransitionInflater
-import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.load.engine.Resource
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment
 import com.yalantis.contextmenu.lib.MenuGravity
@@ -24,11 +17,9 @@ import com.yalantis.contextmenu.lib.MenuObject
 import com.yalantis.contextmenu.lib.MenuParams
 import kotlinx.android.synthetic.main.main_bottom_navigation.*
 import kotlinx.android.synthetic.main.toolbar_main.*
-import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.myfragment.MyFragment
-import tech.tsdev.github_management.ui.modules.detail.search.searchactiviry.SearchActivity
 import tech.tsdev.github_management.view.main.starfragment.StarFragment
 import tech.tsdev.github_management.view.main.userlistfragment.GithubFragment
 

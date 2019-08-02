@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.pg_search_user_detail.view.*
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.holder.BaseRecyclerViewHolder
 import tech.tsdev.github_management.model.Item
 
 
-class SearchUserHolder(onClick: (Int)-> Unit, context: Context, parent: ViewGroup) : RecyclerView.ViewHolder(
-    LayoutInflater.from(context).inflate(
-        R.layout.pg_search_user_detail, parent, false
-    )
+class SearchUserHolder(onClick: (Int)-> Unit, context: Context, parent: ViewGroup) : BaseRecyclerViewHolder(
+    R.layout.pg_search_user_detail, context, parent
 ) {
 
     init {

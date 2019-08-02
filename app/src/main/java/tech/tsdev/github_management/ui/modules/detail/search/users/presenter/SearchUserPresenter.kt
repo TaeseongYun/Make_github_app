@@ -3,15 +3,16 @@ package tech.tsdev.github_management.ui.modules.detail.search.users.presenter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tech.tsdev.github_management.base.recycler.model.BaseRecyclerModel
+import tech.tsdev.github_management.model.Item
 import tech.tsdev.github_management.model.SearchUserData
-import tech.tsdev.github_management.model.SingleUser
 import tech.tsdev.github_management.model.github.GithubRepository
-import tech.tsdev.github_management.ui.modules.detail.search.users.adapter.model.SearchUserModel
+
 
 class SearchUserPresenter(
     private val view: SearchUserContract.View,
     private val githubRepository: GithubRepository,
-    private val searchRecyclerAdapter: SearchUserModel
+    private val searchRecyclerAdapter: BaseRecyclerModel<Item>
 ) : SearchUserContract.Presenter {
 
 
@@ -38,7 +39,7 @@ class SearchUserPresenter(
                         } ?: let {
                             view.loadFailShowMessage(response.errorBody().toString())
                         }
-                        searchRecyclerAdapter.notifyDataItem()
+                        searchRecyclerAdapter.notifyDataItems()
                     }
                 }
             })

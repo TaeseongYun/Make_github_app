@@ -41,7 +41,7 @@
         </activity>
         <activity android:name=".ui.modules.detail.DetailActivity">
         </activity>
-        <activity android:name=".ui.modules.detail.search.searchactiviry.SearchActivity">
+        <activity android:name=".view.main.activity.SearchActivity">
         </activity>
         <activity android:name=".view.main.activity.MainActivity">
 

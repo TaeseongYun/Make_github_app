@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.pg_search_repo_layout.*
+import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.search.repo.adapter.SearchRepoRecyclerView
@@ -17,6 +18,10 @@ import tech.tsdev.github_management.ui.modules.detail.search.repo.presenter.Sear
 
 
 class SearchRepoFragment : Fragment(), SearchRepoContract.View{
+    override fun justLoadToast() {
+        toast("BaseRecyclerModel 실험중")
+    }
+
     override fun successLoadView() {
         recycler_view_search_repo.visibility = View.VISIBLE
     }

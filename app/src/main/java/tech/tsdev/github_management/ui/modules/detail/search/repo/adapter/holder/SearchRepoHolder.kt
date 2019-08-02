@@ -7,12 +7,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.search_repo_item.view.*
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.holder.BaseRecyclerViewHolder
 import tech.tsdev.github_management.model.RepoItem
 
-class SearchRepoHolder(context: Context, parent: ViewGroup) :
-    RecyclerView.ViewHolder(LayoutInflater.from(context).inflate(R.layout.search_repo_item, parent, false)) {
+class SearchRepoHolder(onClick:(Int) -> Unit, context: Context, parent: ViewGroup) :
+    BaseRecyclerViewHolder(R.layout.search_repo_item, context, parent) {
 
 
+    init {
+        itemView.setOnClickListener {
+            onClick(adapterPosition)
+        }
+    }
     fun onBind(repoItems: RepoItem) {
         itemView.onBind(repoItems)
     }

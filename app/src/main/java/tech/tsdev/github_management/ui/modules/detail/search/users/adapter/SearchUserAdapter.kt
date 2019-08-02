@@ -3,11 +3,19 @@ package tech.tsdev.github_management.ui.modules.detail.search.users.adapter
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import tech.tsdev.github_management.base.recycler.model.BaseRecyclerModel
 import tech.tsdev.github_management.model.Item
 import tech.tsdev.github_management.ui.modules.detail.search.users.adapter.holder.SearchUserHolder
-import tech.tsdev.github_management.ui.modules.detail.search.users.adapter.model.SearchUserModel
 
-class SearchUserAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), SearchUserModel {
+
+class SearchUserAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+    BaseRecyclerModel<Item> {
+    override fun notifyDataItems() {
+        notifyDataSetChanged()
+    }
+
+    override fun clearItem() = list.clear()
+
 
     val list = mutableListOf<Item>()
 
@@ -29,10 +37,4 @@ class SearchUserAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerVi
     }
 
     override fun getItemData(position: Int): Item = list[position]
-
-
-    override fun notifyDataItem() {
-        notifyDataSetChanged()
-    }
-
 }

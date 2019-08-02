@@ -5,6 +5,8 @@ interface SearchRepoContract {
         fun successLoadView()
 
         fun failLoadView()
+
+        fun justLoadToast()
     }
 
     interface Presenter {
