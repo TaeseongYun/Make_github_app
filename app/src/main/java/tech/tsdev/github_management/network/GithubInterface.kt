@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.network
 
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.*
 import tech.tsdev.github_management.BuildConfig
@@ -10,7 +11,7 @@ interface GithubInterface {
     @GET("/users")
     fun userList(
         @Query("since") since: Int
-    ): Call<List<UserListData>>
+    ): Single<List<UserListData>>
 
 
     //유저 검색하는 retrofit 함수
@@ -50,7 +51,7 @@ interface GithubInterface {
     @GET("/users/{username}/received_events")
     fun getUserReceivedResult(
         @Path("username") userName: String
-    ): Call<List<ReceivedEvents>>
+    ): Single<List<ReceivedEvents>>
 
     //유저이름에 따른 Following
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")

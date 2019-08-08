@@ -45,10 +45,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_users -> {
+
                 replace(R.id.frame_layout, githubFragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -110,6 +110,7 @@ class MainActivity : AppCompatActivity() {
         val menuObject = mutableListOf<MenuObject>().apply {
             add(close)
         }
+
         ContextMenuDialogFragment.newInstance(
             MenuParams(
                 resources.getDimension(R.dimen.text_large).toInt(),

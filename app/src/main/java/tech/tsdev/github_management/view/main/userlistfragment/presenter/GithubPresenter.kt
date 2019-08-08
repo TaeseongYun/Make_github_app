@@ -1,17 +1,23 @@
 package tech.tsdev.github_management.view.main.userlistfragment.presenter
 
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tech.tsdev.github_management.BuildConfig
 import tech.tsdev.github_management.model.UserListData
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.util.plusAssign
 import tech.tsdev.github_management.view.main.userlistfragment.adapter.model.UserRecyclerModel
 
 class GithubPresenter(
-    val view: GithubContract.View,
+    private val view: GithubContract.View,
     private val githubRepository: GithubRepository,
-    val userRecyclerModel: UserRecyclerModel
+    private val userRecyclerModel: UserRecyclerModel,
+    private val disposable: CompositeDisposable
 ) : GithubContract.Presenter {
 
 
@@ -27,35 +33,23 @@ class GithubPresenter(
     override fun loadGithubUser() {
         isLoading = true
         view.showProgressbar()
-        githubRepository.loadUserList(since).enqueue(object : Callback<List<UserListData>> {
-            override fun onFailure(call: Call<List<UserListData>>, t: Throwable) {
+
+        disposable += githubRepository.loadUserList(since).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread()).subscribe({ userList ->
+                userList.forEach {
+                    userRecyclerModel.addItem(it)
+                }
+                userRecyclerModel.notifyDataItem()
+
+                view.dissmissProgressbar()
+
+                since += 10
+                isLoading = false
+            }, {
                 isLoading = false
                 view.dissmissProgressbar()
 
                 view.loadFailMessage()
-            }
-
-            override fun onResponse(call: Call<List<UserListData>>, response: Response<List<UserListData>>) {
-                if (response.isSuccessful) {
-                    response.body()?.let { userList ->
-                        userList.forEach {
-                            userRecyclerModel.addItem(it)
-                        }
-                        userRecyclerModel.notifyDataItem()
-                    } ?: let {
-                        view.loadFailMessage(response.errorBody().toString())
-                    }
-                    view.dissmissProgressbar()
-                    since += 10
-                } else {
-                    view.loadFailMessage()
-
-                }
-
-                isLoading = false
-            }
-        })
-
+            })
     }
-
 }

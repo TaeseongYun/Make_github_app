@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.faltenreich.skeletonlayout.createSkeleton
 import kotlinx.android.synthetic.main.fg_user_info_fragment_layout.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
@@ -18,7 +19,6 @@ import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.prese
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.myinfo.MyInfoPresenter
 
 class MyInfoFragment : Fragment(), MyInfoContract.View {
-
 
     @SuppressLint("SetTextI18n")
     override fun getUserManyFollowerFollowing(userFollowers: Int?, userFollowings: Int?) {

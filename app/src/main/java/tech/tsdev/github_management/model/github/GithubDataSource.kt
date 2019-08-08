@@ -1,12 +1,13 @@
 package tech.tsdev.github_management.model.github
 
+import io.reactivex.Single
 import retrofit2.Call
 import tech.tsdev.github_management.model.*
 
 interface GithubDataSource {
 
     //바텀 nav 첫번째 유저 목록 보이게 하는 함수
-    fun loadUserList(since: Int ): Call<List<UserListData>>
+    fun loadUserList(since: Int ): Single<List<UserListData>>
 
     //유져 검색하는 함수
     fun searchUserList(userName: String): Call<SearchUserData>
@@ -19,7 +20,7 @@ interface GithubDataSource {
 
     fun getSearchRepo(searchQuery: String): Call<SearchRepoData>
 
-    fun getUserReceivedResult(userName: String): Call<List<ReceivedEvents>>
+    fun getUserReceivedResult(userName: String): Single<List<ReceivedEvents>>
 
     fun getUserFollowing(userName: String): Call<List<UserFollowersFollowingList>>
 

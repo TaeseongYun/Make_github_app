@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.model.github
 
+import io.reactivex.Single
 import retrofit2.Call
 import tech.tsdev.github_management.model.*
 
@@ -9,7 +10,7 @@ object GithubRepository : GithubDataSource {
         GithubRemoteData()
     }
 
-    override fun loadUserList(since: Int): Call<List<UserListData>> = githubRemotedata.loadUserList(since)
+    override fun loadUserList(since: Int): Single<List<UserListData>> = githubRemotedata.loadUserList(since)
 
     override fun searchUserList(userName: String): Call<SearchUserData> = githubRemotedata.searchUserList(userName)
 
@@ -20,7 +21,7 @@ object GithubRepository : GithubDataSource {
 
     override fun getSearchRepo(searchQuery: String): Call<SearchRepoData> = githubRemotedata.getSearchRepo(searchQuery)
 
-    override fun getUserReceivedResult(userName: String): Call<List<ReceivedEvents>> =
+    override fun getUserReceivedResult(userName: String): Single<List<ReceivedEvents>> =
         githubRemotedata.getUserReceivedResult(userName)
 
     override fun getUserFollowing(userName: String): Call<List<UserFollowersFollowingList>> =

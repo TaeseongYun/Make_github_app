@@ -9,9 +9,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.faltenreich.skeletonlayout.Skeleton
+import com.faltenreich.skeletonlayout.applySkeleton
+import com.faltenreich.skeletonlayout.createSkeleton
+import kotlinx.android.synthetic.main.pg_search_repo_layout.*
 import kotlinx.android.synthetic.main.userlist_fragment.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.DetailActivity
 import tech.tsdev.github_management.view.main.userlistfragment.adapter.UserListRecyclerAdapter
@@ -19,7 +24,8 @@ import tech.tsdev.github_management.view.main.userlistfragment.presenter.GithubC
 import tech.tsdev.github_management.view.main.userlistfragment.presenter.GithubPresenter
 
 
-class GithubFragment : Fragment(), GithubContract.View {
+class GithubFragment : BaseFragment(), GithubContract.View {
+
     override fun loadDetailUser(userName: String) {
         Intent(context, DetailActivity::class.java).apply {
             putExtra("userName", userName)
@@ -51,7 +57,7 @@ class GithubFragment : Fragment(), GithubContract.View {
         UserListRecyclerAdapter(this@GithubFragment.context)
     }
     private val gitPresenter: GithubPresenter by lazy {
-        GithubPresenter(this@GithubFragment, GithubRepository, userRecyclerAdapter)
+        GithubPresenter(this@GithubFragment, GithubRepository, userRecyclerAdapter, disposable)
     }
 
     private val onScrollListener = object : RecyclerView.OnScrollListener() {
@@ -75,6 +81,10 @@ class GithubFragment : Fragment(), GithubContract.View {
         user_recycler_view.removeOnScrollListener(onScrollListener)
         Log.d("onDestroyView", "프래그먼트 화면 사라짐")
 //        gitPresenter.loadGithubUser()
+        view?.let {
+            val parentViewGroup = it.parent as ViewGroup
+            parentViewGroup.removeAllViews()
+        }
     }
 
 
@@ -83,6 +93,7 @@ class GithubFragment : Fragment(), GithubContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
 
         gitPresenter.loadGithubUser()

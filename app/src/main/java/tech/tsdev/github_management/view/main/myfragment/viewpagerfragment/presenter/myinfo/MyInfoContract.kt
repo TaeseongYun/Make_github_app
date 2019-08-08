@@ -1,6 +1,6 @@
 package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.myinfo
 
-import android.view.View
+
 
 interface MyInfoContract {
     interface View {

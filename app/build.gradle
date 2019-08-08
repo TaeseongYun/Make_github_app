@@ -41,8 +41,9 @@ dependencies {
     //firebase Github Auth
     implementation 'com.google.firebase:firebase-auth:16.0.3'
     //    Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     //    Glide
     implementation('com.github.bumptech.glide:glide:4.9.0') {
         exclude group: "com.android.support"
@@ -72,6 +73,7 @@ dependencies {
 
     //RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 
     //android-material-dialogs
     implementation "com.afollestad.material-dialogs:core:$android_dialog_version"
@@ -79,4 +81,7 @@ dependencies {
 
     //custom-content-android-menu
     implementation "com.github.Yalantis:Context-Menu.Android:$android_content_menu"
+
+//    skeletonLayout
+    implementation "com.faltenreich:skeletonlayout:$skeleton_version"
 }

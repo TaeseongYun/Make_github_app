@@ -9,8 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.faltenreich.skeletonlayout.SkeletonLayout
+import com.faltenreich.skeletonlayout.createSkeleton
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.app_bar_user_detail.*
+import kotlinx.android.synthetic.main.my_info_fragment.*
+import kotlinx.android.synthetic.main.pg_search_repo_layout.view.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
@@ -20,6 +24,7 @@ import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentCon
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentPresenter
 
 class MyFragment : Fragment(), MyFragmentContract.View {
+
 
     private  var userInfoName: String? = ""
 

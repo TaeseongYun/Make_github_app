@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.model.github
 
+import io.reactivex.Single
 import retrofit2.Call
 import tech.tsdev.github_management.model.*
 import tech.tsdev.github_management.network.GithubInterface
@@ -14,7 +15,7 @@ class GithubRemoteData : GithubDataSource {
 
     private val githubUserList = createRetrofit(GithubInterface::class.java, GITHUB_URL)
 
-    override fun loadUserList(since: Int) = githubUserList.userList(since)
+    override fun loadUserList(since: Int): Single<List<UserListData>> = githubUserList.userList(since)
 
     override fun searchUserList(userName: String): Call<SearchUserData> = githubUserList.searchUsers(userName)
 
@@ -26,7 +27,7 @@ class GithubRemoteData : GithubDataSource {
     override fun getSearchRepo(searchQuery: String): Call<SearchRepoData> =
         githubUserList.getSearchRepoResult(searchQuery)
 
-    override fun getUserReceivedResult(userName: String): Call<List<ReceivedEvents>> =
+    override fun getUserReceivedResult(userName: String): Single<List<ReceivedEvents>> =
         githubUserList.getUserReceivedResult(userName)
 
     override fun getUserFollowing(userName: String): Call<List<UserFollowersFollowingList>> =
