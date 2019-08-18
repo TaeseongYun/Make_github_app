@@ -34,11 +34,15 @@ class GithubPresenter(
         isLoading = true
         view.showProgressbar()
 
-        disposable += githubRepository.loadUserList(since).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()).subscribe({ userList ->
+        disposable += githubRepository.loadUserList(since)
+            .subscribeOn(Schedulers.io())
+            .map { userList ->
                 userList.forEach {
                     userRecyclerModel.addItem(it)
                 }
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
                 userRecyclerModel.notifyDataItem()
 
                 view.dissmissProgressbar()

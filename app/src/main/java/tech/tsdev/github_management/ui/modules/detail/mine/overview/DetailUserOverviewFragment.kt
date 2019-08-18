@@ -9,17 +9,19 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.detail_user_overview.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.mine.overview.presenter.DetailUserOverviewContract
 import tech.tsdev.github_management.ui.modules.detail.mine.overview.presenter.DetailUserOverviewPresenter
 import tech.tsdev.github_management.view.main.activity.SearchActivity
 
-class DetailUserOverviewFragment : Fragment(), DetailUserOverviewContract.View {
+class DetailUserOverviewFragment : BaseFragment(), DetailUserOverviewContract.View {
 
     private val detailUserOverviewPresenter: DetailUserOverviewPresenter by lazy {
         DetailUserOverviewPresenter(
             this@DetailUserOverviewFragment,
-            GithubRepository
+            GithubRepository,
+            disposable
         )
     }
 

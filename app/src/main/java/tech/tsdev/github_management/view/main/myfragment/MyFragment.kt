@@ -9,21 +9,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.faltenreich.skeletonlayout.SkeletonLayout
-import com.faltenreich.skeletonlayout.createSkeleton
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.app_bar_user_detail.*
-import kotlinx.android.synthetic.main.my_info_fragment.*
-import kotlinx.android.synthetic.main.pg_search_repo_layout.view.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.MyInfoFragment
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.MyUserStarFragment
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentContract
 import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentPresenter
 
-class MyFragment : Fragment(), MyFragmentContract.View {
+class MyFragment : BaseFragment(), MyFragmentContract.View {
 
 
     private  var userInfoName: String? = ""
@@ -57,7 +54,7 @@ class MyFragment : Fragment(), MyFragmentContract.View {
 
 
     private val myFragmentPresenter: MyFragmentPresenter by lazy {
-        MyFragmentPresenter(this@MyFragment, GithubRepository)
+        MyFragmentPresenter(this@MyFragment, GithubRepository, disposable)
     }
     private fun addTabLayoutItem() {
         user_info_tab_layout.addTab(user_info_tab_layout.newTab().setText(R.string.userInfo))

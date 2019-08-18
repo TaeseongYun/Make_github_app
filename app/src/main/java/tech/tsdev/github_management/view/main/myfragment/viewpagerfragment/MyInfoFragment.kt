@@ -11,6 +11,7 @@ import com.faltenreich.skeletonlayout.createSkeleton
 import kotlinx.android.synthetic.main.fg_user_info_fragment_layout.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.MyFollowersUserActivity
 import tech.tsdev.github_management.view.main.activity.MyFollowingUserActivity
@@ -18,7 +19,7 @@ import tech.tsdev.github_management.view.main.activity.MyRepositoryListActivity
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.myinfo.MyInfoContract
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.myinfo.MyInfoPresenter
 
-class MyInfoFragment : Fragment(), MyInfoContract.View {
+class MyInfoFragment : BaseFragment(), MyInfoContract.View {
 
     @SuppressLint("SetTextI18n")
     override fun getUserManyFollowerFollowing(userFollowers: Int?, userFollowings: Int?) {
@@ -65,7 +66,8 @@ class MyInfoFragment : Fragment(), MyInfoContract.View {
     private val myInfoPresenter: MyInfoPresenter by lazy {
         MyInfoPresenter(
             this@MyInfoFragment,
-            GithubRepository
+            GithubRepository,
+            disposable
         )
     }
 

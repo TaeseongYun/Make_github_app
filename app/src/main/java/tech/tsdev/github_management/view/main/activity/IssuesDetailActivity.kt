@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_issues_detail.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.comments.DetailIssuesCommentsRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.detailissues.DetailIssuesSingleContract
 import tech.tsdev.github_management.view.main.activity.presenter.detailissues.DetailIssuesSinglePresenter
 
-class IssuesDetailActivity : AppCompatActivity(), DetailIssuesSingleContract.View {
+class IssuesDetailActivity : BaseActivity(), DetailIssuesSingleContract.View {
     override fun getSingleIssuesLoadFailMessage() {
         toast("API 문서 오류")
     }
@@ -41,7 +42,7 @@ class IssuesDetailActivity : AppCompatActivity(), DetailIssuesSingleContract.Vie
     }
 
     private val detailIssuesSinglePresenter: DetailIssuesSinglePresenter by lazy {
-        DetailIssuesSinglePresenter(this, GithubRepository, detailIssuesCommentsRecyclerAdapter)
+        DetailIssuesSinglePresenter(this, GithubRepository, detailIssuesCommentsRecyclerAdapter, disposable)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

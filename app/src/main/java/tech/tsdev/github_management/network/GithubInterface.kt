@@ -19,7 +19,7 @@ interface GithubInterface {
     @GET("/search/users")
     fun searchUsers(
         @Query("q") userName: String
-    ): Call<SearchUserData>
+    ): Single<SearchUserData>
 
 
     //깃허브 팔로우수 보이게 하는 retrofit 함수
@@ -35,7 +35,7 @@ interface GithubInterface {
     @GET("/users/{username}")
     fun getSingleUser(
         @Path("username") username: String
-    ): Call<SingleUser>
+    ): Single<SingleUser>
 
 
     //레파지토리 검색 함수
@@ -43,7 +43,7 @@ interface GithubInterface {
     @GET("/search/repositories")
     fun getSearchRepoResult(
         @Query("q") searchRepo: String
-    ): Call<SearchRepoData>
+    ): Single<SearchRepoData>
 
 
     //유저이름에 따른 Received_Event 함수
@@ -105,13 +105,13 @@ interface GithubInterface {
     @GET
     fun getSingleRepoIssuesBasedOnIssuesUrl(
         @Url repoSingleUrl: String
-    ): Call<GetRepoIssuesList>
+    ): Single<GetRepoIssuesList>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
     fun getIssuesCommentsListBasedOnCommentsUrl(
         @Url repoCommentsUrl: String
-    ): Call<List<GetIssuesComments>>
+    ): Single<List<GetIssuesComments>>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET

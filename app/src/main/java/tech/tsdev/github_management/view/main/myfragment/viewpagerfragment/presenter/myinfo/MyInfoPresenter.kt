@@ -1,45 +1,43 @@
 package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.myinfo
 
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tech.tsdev.github_management.model.SingleUser
 import tech.tsdev.github_management.model.UserRepoList
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.util.plusAssign
 
 class MyInfoPresenter(
     private val view: MyInfoContract.View,
-    private val githubRepository: GithubRepository
+    private val githubRepository: GithubRepository,
+    private val disposable: CompositeDisposable
 ) : MyInfoContract.Presenter {
 
     private var userRepos = 0
 
 
     override fun getUserInfoBasedOnUserName(userName: String?) {
-        userName?.let {
-            githubRepository.getSingleUser(it).enqueue(object : Callback<SingleUser> {
-                override fun onFailure(call: Call<SingleUser>, t: Throwable) {
-                    view.showLoadFailMessage()
-                }
-
-                override fun onResponse(call: Call<SingleUser>, response: Response<SingleUser>) {
-                    if(response.isSuccessful) {
-                        response.body()?.let { singleUser ->
-                            view.showGetSingleUserDetailInfo(
-                                singleUser.name,
-                                singleUser.bio,
-                                singleUser.email,
-                                singleUser.blog
-                            )
-                            view.getUserManyFollowerFollowing(
-                                singleUser.followers,
-                                singleUser.following
-                            )
-                        } ?: let { view.showLoadFailMessage(response.errorBody().toString()) }
-                    }
-                }
-
-            })
+        userName?.let { disposable +=
+            githubRepository.getSingleUser(it)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe( { singleUser ->
+                    view.showGetSingleUserDetailInfo(
+                        singleUser.name,
+                        singleUser.bio,
+                        singleUser.email,
+                        singleUser.blog
+                    )
+                    view.getUserManyFollowerFollowing(
+                        singleUser.followers,
+                        singleUser.following
+                    )
+                }, {
+                    it.printStackTrace()
+                })
         }
         userName?.let {
             githubRepository.getUserRepoList(userName).enqueue(object : Callback<List<UserRepoList>> {

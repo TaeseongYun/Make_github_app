@@ -1,45 +1,38 @@
 package tech.tsdev.github_management.view.main.myfragment.presenter
 
 
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import tech.tsdev.github_management.model.SingleUser
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.util.plusAssign
 
 
 class MyFragmentPresenter(
-    val view: MyFragmentContract.View,
-    private val githubRepository: GithubRepository
+    private val view: MyFragmentContract.View,
+    private val githubRepository: GithubRepository,
+    private val disposable: CompositeDisposable
 ) : MyFragmentContract.Presneter {
     override fun inputUserNameLoad(userName: String?) {
         userName?.let { name ->
-            githubRepository.getSingleUser(name).enqueue(object : Callback<SingleUser> {
-                override fun onFailure(call: Call<SingleUser>, t: Throwable) {
-                    view.loadViewToastMessage()
+            disposable += githubRepository.getSingleUser(name)
+                .observeOn(AndroidSchedulers.mainThread())
+                .map { singleUser ->
+                    view.loadUserDetailInfo(
+                        singleUser.avatarUrl,
+                        singleUser.avatarUrl,
+                        singleUser.login,
+                        singleUser.location,
+                        singleUser.joinToGithubDate(singleUser.createdAt)
+                    )
+                }
+                .subscribeOn(Schedulers.io())
+                .subscribe({
                     view.dismissProgressBar()
-                }
-
-                override fun onResponse(call: Call<SingleUser>, response: Response<SingleUser>) {
-                    if (response.isSuccessful) {
-                        response.body()?.let { singUser ->
-                            view.loadUserDetailInfo(
-                                singUser.avatarUrl,
-                                singUser.avatarUrl,
-                                singUser.login,
-                                singUser.location,
-                                singUser.joinToGithubDate(singUser.createdAt)
-                            )
-                        } ?: let {
-                            view.loadFailToastMessage(response.errorBody().toString())
-                        }
-                        view.dismissProgressBar()
-                    }
-                }
-
-            })
+                }, {
+                    it.printStackTrace()
+                    view.loadViewToastMessage()
+                })
         }
     }
-
-
 }

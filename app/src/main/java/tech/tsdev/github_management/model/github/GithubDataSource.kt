@@ -10,15 +10,15 @@ interface GithubDataSource {
     fun loadUserList(since: Int ): Single<List<UserListData>>
 
     //유져 검색하는 함수
-    fun searchUserList(userName: String): Call<SearchUserData>
+    fun searchUserList(userName: String): Single<SearchUserData>
 
 
     //유저 검색, 유저목록의 팔로우 수 함수
     fun getUserFollowers(username: String): Call<List<UserFollowersFollowingList>>
 
-    fun getSingleUser(userName: String): Call<SingleUser>
+    fun getSingleUser(userName: String): Single<SingleUser>
 
-    fun getSearchRepo(searchQuery: String): Call<SearchRepoData>
+    fun getSearchRepo(searchQuery: String): Single<SearchRepoData>
 
     fun getUserReceivedResult(userName: String): Single<List<ReceivedEvents>>
 
@@ -38,10 +38,10 @@ interface GithubDataSource {
     fun getRepoIssuesList(repoIssuesUrl: String, page: Int): Call<List<GetRepoIssuesList>>
 
     //이슈 하나만 가져 오는 함수
-    fun getSingleRepoIssues(repoSingleIssuesUrl: String): Call<GetRepoIssuesList>
+    fun getSingleRepoIssues(repoSingleIssuesUrl: String): Single<GetRepoIssuesList>
 
     // 해당 이슈의 코멘트 가져오는 함수
-    fun getIssuesCommentsList(repoCommentsUrl: String): Call<List<GetIssuesComments>>
+    fun getIssuesCommentsList(repoCommentsUrl: String): Single<List<GetIssuesComments>>
 
     //해당 레포지토리  star준 유저 목록 보여주는 함수
     fun getRepoStarredUserList(repoStarredUserList: String, page: Int): Call<List<GetRepoStarredUserList>>

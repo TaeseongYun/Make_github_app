@@ -17,14 +17,14 @@ class GithubRemoteData : GithubDataSource {
 
     override fun loadUserList(since: Int): Single<List<UserListData>> = githubUserList.userList(since)
 
-    override fun searchUserList(userName: String): Call<SearchUserData> = githubUserList.searchUsers(userName)
+    override fun searchUserList(userName: String): Single<SearchUserData> = githubUserList.searchUsers(userName)
 
     override fun getUserFollowers(username: String): Call<List<UserFollowersFollowingList>> =
         githubUserList.getUserFollowers(username)
 
-    override fun getSingleUser(userName: String): Call<SingleUser> = githubUserList.getSingleUser(userName)
+    override fun getSingleUser(userName: String): Single<SingleUser> = githubUserList.getSingleUser(userName)
 
-    override fun getSearchRepo(searchQuery: String): Call<SearchRepoData> =
+    override fun getSearchRepo(searchQuery: String): Single<SearchRepoData> =
         githubUserList.getSearchRepoResult(searchQuery)
 
     override fun getUserReceivedResult(userName: String): Single<List<ReceivedEvents>> =
@@ -51,10 +51,10 @@ class GithubRemoteData : GithubDataSource {
     override fun getRepoIssuesList(repoIssuesUrl: String, page: Int): Call<List<GetRepoIssuesList>> =
             githubUserList.getRepoIssuesDetailBasedOnIssuesUrl(repoIssuesUrl, page)
 
-    override fun getSingleRepoIssues(repoSingleIssuesUrl: String): Call<GetRepoIssuesList> =
+    override fun getSingleRepoIssues(repoSingleIssuesUrl: String): Single<GetRepoIssuesList> =
             githubUserList.getSingleRepoIssuesBasedOnIssuesUrl(repoSingleIssuesUrl)
 
-    override fun getIssuesCommentsList(repoCommentsUrl: String): Call<List<GetIssuesComments>> =
+    override fun getIssuesCommentsList(repoCommentsUrl: String): Single<List<GetIssuesComments>> =
             githubUserList.getIssuesCommentsListBasedOnCommentsUrl(repoCommentsUrl)
 
     override fun getRepoStarredUserList(repoStarredUserList: String, page: Int): Call<List<GetRepoStarredUserList>> =
