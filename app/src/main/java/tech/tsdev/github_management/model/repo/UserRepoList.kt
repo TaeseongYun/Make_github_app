@@ -1,4 +1,4 @@
-package tech.tsdev.github_management.model
+package tech.tsdev.github_management.model.repo
 
 import android.view.View
 import android.widget.TextView

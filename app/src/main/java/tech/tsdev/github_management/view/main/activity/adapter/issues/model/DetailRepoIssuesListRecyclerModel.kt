@@ -1,6 +1,6 @@
 package tech.tsdev.github_management.view.main.activity.adapter.issues.model
 
-import tech.tsdev.github_management.model.GetRepoIssuesList
+import tech.tsdev.github_management.model.repo.GetRepoIssuesList
 
 interface DetailRepoIssuesListRecyclerModel{
     fun addItems(items: GetRepoIssuesList)

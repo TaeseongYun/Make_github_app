@@ -3,12 +3,6 @@ package tech.tsdev.github_management.view.main.activity.presenter.detailissues
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import tech.tsdev.github_management.model.GetIssuesComments
-import tech.tsdev.github_management.model.GetRepoCommitList
-import tech.tsdev.github_management.model.GetRepoIssuesList
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.util.plusAssign
 import tech.tsdev.github_management.view.main.activity.adapter.comments.model.DetailIssuesCommentsRecyclerModel

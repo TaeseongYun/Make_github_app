@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.detail_repo_issue_items.view.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.model.GetRepoIssuesList
+import tech.tsdev.github_management.model.repo.GetRepoIssuesList
 
 class DetailRepoIssuesListRecyclerHolder(onClick: (Int) -> Unit, context: Context?, parent: ViewGroup): RecyclerView.ViewHolder(
     LayoutInflater.from(context).inflate(R.layout.detail_repo_issue_items, parent, false)

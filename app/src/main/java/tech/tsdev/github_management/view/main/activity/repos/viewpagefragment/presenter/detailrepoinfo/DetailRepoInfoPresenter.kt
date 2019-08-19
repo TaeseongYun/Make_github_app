@@ -1,57 +1,54 @@
 package tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo
 
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import tech.tsdev.github_management.model.GetRepoReadme
-import tech.tsdev.github_management.model.GetSingleRepo
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.util.plusAssign
 
-class DetailRepoInfoPresenter(private val view: DetailRepoInfoContract.View,
-                              private val githubRepository: GithubRepository) : DetailRepoInfoContract.Presenter {
+class DetailRepoInfoPresenter(
+    private val view: DetailRepoInfoContract.View,
+    private val githubRepository: GithubRepository,
+    private val disposable: CompositeDisposable
+) : DetailRepoInfoContract.Presenter {
 
     override fun getLoadRepoInfoBasedRepoUrl(repoUrl: String) {
-        githubRepository.getRepoInfoBasedOnOwnerNameRepoName(repoUrl).enqueue(object : Callback<GetSingleRepo>{
-            override fun onFailure(call: Call<GetSingleRepo>, t: Throwable) {
-                view.loadFailMessage()
+        disposable += githubRepository.getRepoInfoBasedOnOwnerNameRepoName(repoUrl)
+            .subscribeOn(Schedulers.io())
+            .map { singleRepo ->
+                view.showDetailRepoInfo(
+                    singleRepo.fullName,
+                    singleRepo.simpleDateCreateAt(singleRepo.createdAt),
+                    singleRepo.openIssuesCount.toString(),
+                    singleRepo.stargazersCount.toString(),
+                    singleRepo.forksCount.toString(),
+                    singleRepo.subscribersCount.toString()
+                )
+                view.getSendRepoNameRepoUrl(
+                    singleRepo.fullName,
+                    singleRepo.url
+                )
             }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
 
-            override fun onResponse(call: Call<GetSingleRepo>, response: Response<GetSingleRepo>) {
-                if(response.isSuccessful) {
-                    response.body()?.let { singleRepo ->
-                        view.showDetailRepoInfo(
-                            singleRepo.fullName,
-                            singleRepo.simpleDateCreateAt(singleRepo.createdAt),
-                            singleRepo.openIssuesCount.toString(),
-                            singleRepo.stargazersCount.toString(),
-                            singleRepo.forksCount.toString(),
-                            singleRepo.subscribersCount.toString()
-                        )
-                        view.getSendRepoNameRepoUrl(
-                            singleRepo.fullName,
-                            singleRepo.url
-                        )
-                    }
-                }
-            }
-
-        })
+            }, {
+                it.printStackTrace()
+            })
     }
 
     override fun getLoadRepoReadmeBasedRepoUrl(repoUrl: String) {
-        githubRepository.getRepoReadme(repoUrl).enqueue(object : Callback<GetRepoReadme>{
-            override fun onFailure(call: Call<GetRepoReadme>, t: Throwable) {
-                view.loadFailMessage()
+        disposable += githubRepository.getRepoReadme(repoUrl)
+            .subscribeOn(Schedulers.newThread())
+            .map { repoReadme ->
+                view.getOwnerRepoReadme(repoReadme.htmlUrl)
             }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe({
 
-            override fun onResponse(call: Call<GetRepoReadme>, response: Response<GetRepoReadme>) {
-                if(response.isSuccessful) {
-                    response.body()?.let { repoReadme ->
-                        view.getOwnerRepoReadme(repoReadme.htmlUrl)
-                    }
-                }
-            }
-
-        })
+            }, {
+                it.printStackTrace()
+            })
     }
 }

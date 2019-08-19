@@ -1,6 +1,6 @@
 package tech.tsdev.github_management.view.main.activity.adapter.following.model
 
-import tech.tsdev.github_management.model.UserFollowersFollowingList
+import tech.tsdev.github_management.model.user.UserFollowersFollowingList
 
 interface MyFollowingModel {
     fun addItems(items: UserFollowersFollowingList)

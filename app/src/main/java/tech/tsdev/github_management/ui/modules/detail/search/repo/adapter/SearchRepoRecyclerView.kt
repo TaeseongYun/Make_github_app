@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import tech.tsdev.github_management.base.recycler.model.BaseRecyclerModel
-import tech.tsdev.github_management.model.RepoItem
+import tech.tsdev.github_management.model.search.RepoItem
 import tech.tsdev.github_management.ui.modules.detail.search.repo.adapter.holder.SearchRepoHolder
 
 

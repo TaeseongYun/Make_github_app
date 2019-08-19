@@ -1,4 +1,4 @@
-package tech.tsdev.github_management.model
+package tech.tsdev.github_management.model.user
 
 import com.google.gson.annotations.SerializedName
 

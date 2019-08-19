@@ -1,9 +1,9 @@
-package tech.tsdev.github_management.model
+package tech.tsdev.github_management.model.repo
 
 import com.google.gson.annotations.SerializedName
 
-data class UserListData(
-    @SerializedName("avatar_url") val avatarUrl: String,
+data class GetRepoSubscribers(
+    @SerializedName("avatar_url")   val avatarUrl: String,
     val events_url: String,
     val followers_url: String,
     val following_url: String,

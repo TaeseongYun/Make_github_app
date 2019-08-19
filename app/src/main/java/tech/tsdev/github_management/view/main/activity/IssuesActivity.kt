@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_issues.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.issues.DetailRepoIssuesListRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.issues.DetailRepoIssuesContract
 import tech.tsdev.github_management.view.main.activity.presenter.issues.DetailRepoIssuesPresenter
 
-class IssuesActivity : AppCompatActivity(), DetailRepoIssuesContract.View {
+class IssuesActivity : BaseActivity(), DetailRepoIssuesContract.View {
     override fun detailIssuesActivityIncludeComments(detailIssuesUrl: String?, detailCommentsUrl: String?) {
         Intent(this, IssuesDetailActivity::class.java).apply {
             putExtra("issuesUrl", detailIssuesUrl)
@@ -46,7 +47,7 @@ class IssuesActivity : AppCompatActivity(), DetailRepoIssuesContract.View {
     }
 
     private val detailRepoIssuesPresenter: DetailRepoIssuesPresenter by lazy {
-        DetailRepoIssuesPresenter(this, GithubRepository, detailRepoIssuesListRecyclerAdapter)
+        DetailRepoIssuesPresenter(this, GithubRepository, detailRepoIssuesListRecyclerAdapter, disposable)
     }
 
     private val onScrollListener = object : RecyclerView.OnScrollListener() {

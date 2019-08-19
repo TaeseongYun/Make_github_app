@@ -1,6 +1,7 @@
-package tech.tsdev.github_management.model
+package tech.tsdev.github_management.model.starred
 
 import com.google.gson.annotations.SerializedName
+import tech.tsdev.github_management.model.repo.Owner
 
 data class GetUserStarred(
     val archived: Boolean,

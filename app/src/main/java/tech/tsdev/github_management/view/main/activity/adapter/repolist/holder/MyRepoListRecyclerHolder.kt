@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.user_repo_detail_items.view.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.model.UserRepoList
+import tech.tsdev.github_management.model.repo.UserRepoList
 
 class MyRepoListRecyclerHolder(onClick: (Int) -> Unit, context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(context).inflate(R.layout.user_repo_detail_items, parent, false)

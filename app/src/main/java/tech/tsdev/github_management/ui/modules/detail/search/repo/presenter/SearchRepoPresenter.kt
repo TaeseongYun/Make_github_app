@@ -4,7 +4,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import tech.tsdev.github_management.base.recycler.model.BaseRecyclerModel
-import tech.tsdev.github_management.model.RepoItem
+import tech.tsdev.github_management.model.search.RepoItem
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.util.plusAssign
 

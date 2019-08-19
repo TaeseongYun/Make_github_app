@@ -3,7 +3,7 @@ package tech.tsdev.github_management.view.main.activity.adapter.issues
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import tech.tsdev.github_management.model.GetRepoIssuesList
+import tech.tsdev.github_management.model.repo.GetRepoIssuesList
 import tech.tsdev.github_management.view.main.activity.adapter.issues.holder.DetailRepoIssuesListRecyclerHolder
 import tech.tsdev.github_management.view.main.activity.adapter.issues.model.DetailRepoIssuesListRecyclerModel
 

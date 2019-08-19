@@ -1,6 +1,6 @@
 package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.adapter.model
 
-import tech.tsdev.github_management.model.GetUserStarred
+import tech.tsdev.github_management.model.starred.GetUserStarred
 
 interface MyUserStarModel {
     fun additem(item: GetUserStarred)

@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_my_following_user.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.following.MyFollowingRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.following.MyFollowingContract
 import tech.tsdev.github_management.view.main.activity.presenter.following.MyFollowingPresenter
 
-class MyFollowingUserActivity : AppCompatActivity(), MyFollowingContract.View {
+class MyFollowingUserActivity : BaseActivity(), MyFollowingContract.View {
     override fun dismissLottieProgressbar() {
         user_following_view.visibility = View.VISIBLE
         following_lottie_progress_bar.visibility = View.GONE
@@ -32,7 +33,7 @@ class MyFollowingUserActivity : AppCompatActivity(), MyFollowingContract.View {
     }
 
     private val myFollowingPresenter: MyFollowingPresenter by lazy {
-        MyFollowingPresenter(this, GithubRepository, myFollowingRecyclerAdapter)
+        MyFollowingPresenter(this, GithubRepository, myFollowingRecyclerAdapter, disposable)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

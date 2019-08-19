@@ -28,8 +28,10 @@ class StarFragmentPresenter(
     }
 
     override fun getResultReceivedBasedOnUserName(userName: String) {
-        disposable += githubRepository.getUserReceivedResult(userName).observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io()).subscribe({ listReceivedEvent ->
+        disposable += githubRepository.getUserReceivedResult(userName)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe({ listReceivedEvent ->
                 starRecyclerModel.clearItemData()
                 listReceivedEvent.forEach {
                     starRecyclerModel.addItem(it)

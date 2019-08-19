@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import tech.tsdev.github_management.base.recycler.model.BaseRecyclerModel
-import tech.tsdev.github_management.model.UserFollowersFollowingList
+import tech.tsdev.github_management.model.user.UserFollowersFollowingList
 import tech.tsdev.github_management.ui.modules.detail.mine.following.adapter.holder.UserFollowingRecyclerHolder
 
 class UserFollowingRecyclerAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
@@ -29,8 +29,8 @@ class UserFollowingRecyclerAdapter(val context: Context?) : RecyclerView.Adapter
         (holder as UserFollowingRecyclerHolder).onBind(userFollowingList[position])
     }
 
-    override fun addItem(items: UserFollowersFollowingList) {
-        userFollowingList.add(items)
+    override fun addItem(repoItems: UserFollowersFollowingList) {
+        userFollowingList.add(repoItems)
     }
 
 }

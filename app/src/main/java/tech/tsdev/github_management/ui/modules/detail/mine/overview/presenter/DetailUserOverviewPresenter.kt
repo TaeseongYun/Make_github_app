@@ -14,8 +14,8 @@ class DetailUserOverviewPresenter(
 
     override fun loadUserOverView(userName: String) {
         disposable += githubRepository.getSingleUser(userName)
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
             .subscribe({ singleUser ->
                 view.loadUserDetailView(
                     singleUser.login,

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.repo_commit_detail_items.view.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.model.GetRepoCommitList
+import tech.tsdev.github_management.model.repo.GetRepoCommitList
 
 class DetailRepoCommitsRecyclerHolder(context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(context).inflate(R.layout.repo_commit_detail_items, parent, false)

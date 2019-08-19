@@ -22,6 +22,8 @@ interface DetailRepoInfoContract {
             repoName: String?,
             repoUrl: String?
         )
+
+
     }
 
     interface Presenter {

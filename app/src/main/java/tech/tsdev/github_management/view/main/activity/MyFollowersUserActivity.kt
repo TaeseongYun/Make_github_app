@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_my_follwers_user.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.followers.MyFollowersRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.followers.MyFollowersContract
 import tech.tsdev.github_management.view.main.activity.presenter.followers.MyFollowersPresenter
 
-class MyFollowersUserActivity : AppCompatActivity(), MyFollowersContract.View {
+class MyFollowersUserActivity : BaseActivity(), MyFollowersContract.View {
     override fun dismissLottieProgressBar() {
         user_followers_recycler.visibility = View.VISIBLE
         lottie_progress_bar.visibility = View.GONE
@@ -36,7 +37,8 @@ class MyFollowersUserActivity : AppCompatActivity(), MyFollowersContract.View {
         MyFollowersPresenter(
             this,
             GithubRepository,
-            myFollowersRecyclerAdapter
+            myFollowersRecyclerAdapter,
+            disposable
         )
     }
 

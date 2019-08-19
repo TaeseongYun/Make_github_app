@@ -3,7 +3,7 @@ package tech.tsdev.github_management.view.main.activity.adapter.watcher
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import tech.tsdev.github_management.model.GetRepoSubscribers
+import tech.tsdev.github_management.model.repo.GetRepoSubscribers
 import tech.tsdev.github_management.view.main.activity.adapter.watcher.holder.RepoWatcherRecyclerHolder
 import tech.tsdev.github_management.view.main.activity.adapter.watcher.model.RepoWatcherRecyclerModel
 

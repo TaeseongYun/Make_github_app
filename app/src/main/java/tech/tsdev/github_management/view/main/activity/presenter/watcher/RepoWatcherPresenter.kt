@@ -1,16 +1,21 @@
 package tech.tsdev.github_management.view.main.activity.presenter.watcher
 
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tech.tsdev.github_management.model.GetRepoSubscribers
+import tech.tsdev.github_management.model.repo.GetRepoSubscribers
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.util.plusAssign
 import tech.tsdev.github_management.view.main.activity.adapter.watcher.model.RepoWatcherRecyclerModel
 
 class RepoWatcherPresenter(
     private val view: RepoWatcherContract.View,
     private val githubRepository: GithubRepository,
-    private val repoWatcherRecyclerModel: RepoWatcherRecyclerModel
+    private val repoWatcherRecyclerModel: RepoWatcherRecyclerModel,
+    private val disposable: CompositeDisposable
 ) : RepoWatcherContract.Presenter {
 
     private var perPage = 0
@@ -22,42 +27,20 @@ class RepoWatcherPresenter(
 
         if (nextPage) {
             repoUrl?.let {
-                githubRepository.getRepoSubscribeUserList(it, ++perPage).enqueue(object :
-                    Callback<List<GetRepoSubscribers>> {
-                    override fun onFailure(call: Call<List<GetRepoSubscribers>>, t: Throwable) {
-                        view.loadWatcherUserErrorMessage()
-
-                        isLoading = false
-                    }
-
-                    override fun onResponse(
-                        call: Call<List<GetRepoSubscribers>>,
-                        response: Response<List<GetRepoSubscribers>>
-                    ) {
-                        if (response.isSuccessful) {
-                            if (perPage == 1) {
-                                response.body().takeIf { body -> body.isNullOrEmpty() }?.run {
-                                    view.showRepoSubscribeEmptyUser()
-                                }
-                            }
-                            response.body()?.takeIf { body -> body.isNullOrEmpty() }?.run {
-                                nextPage = false
-                            }
-
-                            response.body()?.let { repoSubscriberUserList ->
-                                repoSubscriberUserList.forEach { repoSubscriberUser ->
-                                    repoWatcherRecyclerModel.addItems(repoSubscriberUser)
-                                }
-                                repoWatcherRecyclerModel.notifiedDataItems()
-                            } ?: let {
-                                view.loadWatcherUserErrorMessage(response.errorBody().toString())
-                            }
+                disposable += githubRepository.getRepoSubscribeUserList(it, ++perPage)
+                    .subscribeOn(Schedulers.io())
+                    .map { getRepoSubscriber ->
+                        getRepoSubscriber.forEach { list ->
+                            repoWatcherRecyclerModel.addItems(list)
                         }
                     }
-
-
-                })
-                isLoading = false
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({
+                        repoWatcherRecyclerModel.notifiedDataItems()
+                        isLoading = false
+                    }, {
+                        it.printStackTrace()
+                    })
             }
         }
     }

@@ -1,8 +1,18 @@
 package tech.tsdev.github_management.model.github
 
+import io.reactivex.Maybe
 import io.reactivex.Single
 import retrofit2.Call
 import tech.tsdev.github_management.model.*
+import tech.tsdev.github_management.model.comment.GetIssuesComments
+import tech.tsdev.github_management.model.fork.GetForkUserList
+import tech.tsdev.github_management.model.repo.*
+import tech.tsdev.github_management.model.search.SearchRepoData
+import tech.tsdev.github_management.model.search.SearchUserData
+import tech.tsdev.github_management.model.starred.GetUserStarred
+import tech.tsdev.github_management.model.user.SingleUser
+import tech.tsdev.github_management.model.user.UserFollowersFollowingList
+import tech.tsdev.github_management.model.user.UserListData
 import tech.tsdev.github_management.network.GithubInterface
 import tech.tsdev.github_management.network.createRetrofit
 
@@ -19,7 +29,7 @@ class GithubRemoteData : GithubDataSource {
 
     override fun searchUserList(userName: String): Single<SearchUserData> = githubUserList.searchUsers(userName)
 
-    override fun getUserFollowers(username: String): Call<List<UserFollowersFollowingList>> =
+    override fun getUserFollowers(username: String): Single<List<UserFollowersFollowingList>> =
         githubUserList.getUserFollowers(username)
 
     override fun getSingleUser(userName: String): Single<SingleUser> = githubUserList.getSingleUser(userName)
@@ -30,25 +40,25 @@ class GithubRemoteData : GithubDataSource {
     override fun getUserReceivedResult(userName: String): Single<List<ReceivedEvents>> =
         githubUserList.getUserReceivedResult(userName)
 
-    override fun getUserFollowing(userName: String): Call<List<UserFollowersFollowingList>> =
+    override fun getUserFollowing(userName: String): Single<List<UserFollowersFollowingList>> =
         githubUserList.getFollowingBasedOnUserName(userName)
 
-    override fun getUserRepoList(userName: String): Call<List<UserRepoList>> =
+    override fun getUserRepoList(userName: String): Single<List<UserRepoList>> =
         githubUserList.getRepoListBasedOnUserName(userName)
 
-    override fun getRepoInfoBasedOnOwnerNameRepoName(repoUrl: String): Call<GetSingleRepo> =
+    override fun getRepoInfoBasedOnOwnerNameRepoName(repoUrl: String): Single<GetSingleRepo> =
             githubUserList.getRepoBasedOnOwnerName(repoUrl)
 
     override fun getStarBasedonUserName(userName: String): Call<List<GetUserStarred>> =
             githubUserList.getStarBasedonUserName(userName)
 
-    override fun getRepoReadme(repoUrl: String): Call<GetRepoReadme> =
+    override fun getRepoReadme(repoUrl: String): Single<GetRepoReadme> =
             githubUserList.getRepoReadMeBasedOnRepoUrl(repoUrl)
 
-    override fun getRepoCommitList(repoCommitUrl: String, page: Int): Call<List<GetRepoCommitList>> =
+    override fun getRepoCommitList(repoCommitUrl: String, page: Int): Single<List<GetRepoCommitList>> =
             githubUserList.getRepoCommitsBasedOnRepoUrl(repoCommitUrl, page)
 
-    override fun getRepoIssuesList(repoIssuesUrl: String, page: Int): Call<List<GetRepoIssuesList>> =
+    override fun getRepoIssuesList(repoIssuesUrl: String, page: Int): Maybe<List<GetRepoIssuesList>> =
             githubUserList.getRepoIssuesDetailBasedOnIssuesUrl(repoIssuesUrl, page)
 
     override fun getSingleRepoIssues(repoSingleIssuesUrl: String): Single<GetRepoIssuesList> =
@@ -57,12 +67,12 @@ class GithubRemoteData : GithubDataSource {
     override fun getIssuesCommentsList(repoCommentsUrl: String): Single<List<GetIssuesComments>> =
             githubUserList.getIssuesCommentsListBasedOnCommentsUrl(repoCommentsUrl)
 
-    override fun getRepoStarredUserList(repoStarredUserList: String, page: Int): Call<List<GetRepoStarredUserList>> =
+    override fun getRepoStarredUserList(repoStarredUserList: String, page: Int): Maybe<List<GetRepoStarredUserList>> =
             githubUserList.getRepoStargazerUserList(repoStarredUserList, page)
 
-    override fun getRepoForkedUserList(repoForkedUserList: String, page: Int): Call<List<GetForkUserList>> =
+    override fun getRepoForkedUserList(repoForkedUserList: String, page: Int): Maybe<List<GetForkUserList>> =
             githubUserList.getRepoForkedUserList(repoForkedUserList, page)
 
-    override fun getRepoSubscribeUserList(repoSubscriberUserList: String, page: Int): Call<List<GetRepoSubscribers>> =
+    override fun getRepoSubscribeUserList(repoSubscriberUserList: String, page: Int): Maybe<List<GetRepoSubscribers>> =
             githubUserList.getRepoSubscriberUserList(repoSubscriberUserList, page)
 }

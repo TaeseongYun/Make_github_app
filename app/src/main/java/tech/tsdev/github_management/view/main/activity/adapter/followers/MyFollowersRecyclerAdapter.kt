@@ -3,7 +3,7 @@ package tech.tsdev.github_management.view.main.activity.adapter.followers
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import tech.tsdev.github_management.model.UserFollowersFollowingList
+import tech.tsdev.github_management.model.user.UserFollowersFollowingList
 import tech.tsdev.github_management.view.main.activity.adapter.followers.holder.MyFollowersRecyclerHolder
 import tech.tsdev.github_management.view.main.activity.adapter.followers.model.MyFollowersRecyclerModel
 

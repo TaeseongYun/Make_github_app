@@ -2,14 +2,12 @@ package tech.tsdev.github_management.ui.modules.detail.mine.repo.adapter.holder
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.user_repo_detail_items.view.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.holder.BaseRecyclerViewHolder
-import tech.tsdev.github_management.model.UserRepoList
+import tech.tsdev.github_management.model.repo.UserRepoList
 
 class DetailRepoRecyclerHolder(onClick:(Int) -> Unit, context: Context?, parent: ViewGroup) : BaseRecyclerViewHolder(
     R.layout.user_repo_detail_items, context, parent

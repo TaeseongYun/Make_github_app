@@ -1,14 +1,8 @@
-package tech.tsdev.github_management.model
+package tech.tsdev.github_management.model.fork
 
 import com.google.gson.annotations.SerializedName
 
-data class SearchRepoData(
-    val incomplete_results: Boolean,
-    val items: List<RepoItem>,
-    val total_count: Int
-)
-
-data class RepoItem(
+data class GetForkUserList(
     val archive_url: String,
     val archived: Boolean,
     val assignees_url: String,
@@ -24,7 +18,7 @@ data class RepoItem(
     val created_at: String,
     val default_branch: String,
     val deployments_url: String,
-    val description: String,
+    val description: Any,
     val disabled: Boolean,
     val downloads_url: String,
     val events_url: String,
@@ -32,7 +26,7 @@ data class RepoItem(
     val forks: Int,
     val forks_count: Int,
     val forks_url: String,
-    @SerializedName("full_name") val fullName: String,
+    val full_name: String,
     val git_commits_url: String,
     val git_refs_url: String,
     val git_tags_url: String,
@@ -42,7 +36,7 @@ data class RepoItem(
     val has_pages: Boolean,
     val has_projects: Boolean,
     val has_wiki: Boolean,
-    val homepage: String,
+    val homepage: Any,
     val hooks_url: String,
     val html_url: String,
     val id: Int,
@@ -53,7 +47,7 @@ data class RepoItem(
     val labels_url: String,
     val language: String,
     val languages_url: String,
-    val license: License,
+    val license: Any,
     val merges_url: String,
     val milestones_url: String,
     val mirror_url: Any,
@@ -62,16 +56,14 @@ data class RepoItem(
     val notifications_url: String,
     val open_issues: Int,
     val open_issues_count: Int,
-    val owner: RepoOwner,
-    val permissions: RepoPermissions,
+    val owner: ForkOwner,
     val `private`: Boolean,
     val pulls_url: String,
     val pushed_at: String,
     val releases_url: String,
-    val score: Double,
     val size: Int,
     val ssh_url: String,
-    @SerializedName("stargazers_count") val stargazersCount: Int,
+    val stargazers_count: Int,
     val stargazers_url: String,
     val statuses_url: String,
     val subscribers_url: String,
@@ -86,23 +78,12 @@ data class RepoItem(
     val watchers_count: Int
 )
 
-data class License(
-    val key: String,
-    val name: String,
-    val node_id: String,
-    val spdx_id: String,
-    val url: String
-)
-
-data class RepoOwner(
-    @SerializedName("avatar_url") val avatarUrl: String,
+data class ForkOwner(
+    @SerializedName("avatar_url")  val avatarUrl: String,
     val events_url: String,
     val followers_url: String,
     val following_url: String,
-    val gists_url: String,
-    val gravatar_id: String,
     val html_url: String,
-    val id: Int,
     val login: String,
     val node_id: String,
     val organizations_url: String,
@@ -113,10 +94,4 @@ data class RepoOwner(
     val subscriptions_url: String,
     val type: String,
     val url: String
-)
-
-data class RepoPermissions(
-    val admin: Boolean,
-    val pull: Boolean,
-    val push: Boolean
 )

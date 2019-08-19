@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_image_view.view.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.model.UserListData
+import tech.tsdev.github_management.model.user.UserListData
 
 class UserRecyclerHolder(onClick: (Int) -> Unit, context: Context, parent: ViewGroup) :
     RecyclerView.ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_image_view, parent, false)) {

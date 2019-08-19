@@ -3,7 +3,7 @@ package tech.tsdev.github_management.view.main.activity.adapter.fork
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import tech.tsdev.github_management.model.GetForkUserList
+import tech.tsdev.github_management.model.fork.GetForkUserList
 import tech.tsdev.github_management.view.main.activity.adapter.fork.holder.ForkUserListRecyclerHolder
 import tech.tsdev.github_management.view.main.activity.adapter.fork.model.ForkUserListRecyclerModel
 

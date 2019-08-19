@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.detail_repo_issue_items.view.*
 import tech.tsdev.github_management.R
-import tech.tsdev.github_management.model.GetIssuesComments
+import tech.tsdev.github_management.model.comment.GetIssuesComments
 
 
 class DetailIssuesCommentsRecyclerHolder(context: Context?, parent: ViewGroup) : RecyclerView.ViewHolder(

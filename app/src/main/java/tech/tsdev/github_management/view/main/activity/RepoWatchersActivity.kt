@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_repo_watchers.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.watcher.RepoWatcherRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.watcher.RepoWatcherContract
 import tech.tsdev.github_management.view.main.activity.presenter.watcher.RepoWatcherPresenter
 
-class RepoWatchersActivity : AppCompatActivity(), RepoWatcherContract.View {
+class RepoWatchersActivity : BaseActivity(), RepoWatcherContract.View {
     override fun loadWatcherUserErrorMessage() {
         toast("API 문서 오류")
     }
@@ -33,7 +34,7 @@ class RepoWatchersActivity : AppCompatActivity(), RepoWatcherContract.View {
     }
 
     private val repoWatcherPresenter: RepoWatcherPresenter by lazy {
-        RepoWatcherPresenter(this, GithubRepository, repoWatcherRecyclerAdapter)
+        RepoWatcherPresenter(this, GithubRepository, repoWatcherRecyclerAdapter, disposable)
     }
 
     private val onScrollListener = object : RecyclerView.OnScrollListener() {

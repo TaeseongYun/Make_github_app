@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_my_repository_list.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.repolist.MyRepoListRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.repolist.MyRepoListContract
 import tech.tsdev.github_management.view.main.activity.presenter.repolist.MyRepoListPresenter
 
-class MyRepositoryListActivity : AppCompatActivity(), MyRepoListContract.View {
+class MyRepositoryListActivity : BaseActivity(), MyRepoListContract.View {
     override fun getRepoDetailView(repoName: String?) {
         Intent(this, DetailRepoActivity::class.java).apply {
             putExtra("repoUrl", repoName)
@@ -29,18 +30,11 @@ class MyRepositoryListActivity : AppCompatActivity(), MyRepoListContract.View {
     }
 
     private val myRepoListPresenter: MyRepoListPresenter by lazy {
-        MyRepoListPresenter(this, GithubRepository, myRepoListRecyclerAdapter)
+        MyRepoListPresenter(this, GithubRepository, myRepoListRecyclerAdapter, disposable)
     }
 
     private val myRepoListRecyclerAdapter: MyRepoListRecyclerAdapter by lazy {
         MyRepoListRecyclerAdapter(this)
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -11,6 +11,7 @@ import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_detail_repo.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.repos.presenter.DetailRepoContract
 import tech.tsdev.github_management.view.main.activity.repos.presenter.DetailRepoPresenter
@@ -19,7 +20,7 @@ import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.De
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.DetailRepoFilesFragment
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.DetailRepoInfoFragment
 
-class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
+class DetailRepoActivity : BaseActivity(), DetailRepoContract.View {
 
     // 레포지토리 디테일한 내용을 보기 위한 액티비티
     override fun dismissProgressBar() {
@@ -38,12 +39,12 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
         ownerAvatarImg: String, repoName: String, repoDescription: String?,
         repoToolbarTitle: String
     ) {
-        user_repo_avatar_bg.getProfileImgRepo(ownerAvatarImg)
-        desc.text = repoName
-        repoDescription?.let { user_repo_description.text = it } ?: let {
-            user_repo_description.visibility = View.GONE
+        user_repo_avatar_bg?.getProfileImgRepo(ownerAvatarImg)
+        desc?.text = repoName
+        repoDescription?.let { user_repo_description?.text = it } ?: let {
+            user_repo_description?.visibility = View.GONE
         }
-        toolbar_repo.title = repoToolbarTitle
+        toolbar_repo?.title = repoToolbarTitle
     }
 
     private fun addTabLayoutItem() {
@@ -54,7 +55,7 @@ class DetailRepoActivity : AppCompatActivity(), DetailRepoContract.View {
     }
 
     private val detailRepoPresenter: DetailRepoPresenter by lazy {
-        DetailRepoPresenter(this@DetailRepoActivity, GithubRepository)
+        DetailRepoPresenter(this@DetailRepoActivity, GithubRepository, disposable)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

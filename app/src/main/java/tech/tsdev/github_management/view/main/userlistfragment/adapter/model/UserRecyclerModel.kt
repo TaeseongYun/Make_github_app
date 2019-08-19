@@ -1,6 +1,6 @@
 package tech.tsdev.github_management.view.main.userlistfragment.adapter.model
 
-import tech.tsdev.github_management.model.UserListData
+import tech.tsdev.github_management.model.user.UserListData
 
 interface UserRecyclerModel {
     fun addItem(item: UserListData)

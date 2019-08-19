@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.detail_repo_commit_layout.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.adapter.DetailRepoCommitRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.deailrepocommit.DetailRepoCommitContract
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.deailrepocommit.DetailRepoCommitPresenter
 
-class DetailRepoCommitsFragment : Fragment(), DetailRepoCommitContract.View {
+class DetailRepoCommitsFragment : BaseFragment(), DetailRepoCommitContract.View {
     override fun loadFailCommitMessage() {
         toast("API 호출 오류")
     }
@@ -28,7 +29,8 @@ class DetailRepoCommitsFragment : Fragment(), DetailRepoCommitContract.View {
         DetailRepoCommitRecyclerAdapter(this@DetailRepoCommitsFragment.context)
     }
     private val detailRepoCommitPresenter: DetailRepoCommitPresenter by lazy {
-        DetailRepoCommitPresenter(this@DetailRepoCommitsFragment, GithubRepository, detailRepoCommitRecyclerAdapter)
+        DetailRepoCommitPresenter(this@DetailRepoCommitsFragment, GithubRepository,
+            detailRepoCommitRecyclerAdapter, disposable)
     }
 
     override fun onDestroyView() {

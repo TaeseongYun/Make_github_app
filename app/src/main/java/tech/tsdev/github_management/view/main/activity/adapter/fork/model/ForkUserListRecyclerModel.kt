@@ -1,6 +1,6 @@
 package tech.tsdev.github_management.view.main.activity.adapter.fork.model
 
-import tech.tsdev.github_management.model.GetForkUserList
+import tech.tsdev.github_management.model.fork.GetForkUserList
 
 interface ForkUserListRecyclerModel {
 

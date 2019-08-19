@@ -3,7 +3,7 @@ package tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.adap
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import tech.tsdev.github_management.model.GetUserStarred
+import tech.tsdev.github_management.model.starred.GetUserStarred
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.adapter.holder.MyUserStarRecyclerHolder
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.adapter.model.MyUserStarModel
 

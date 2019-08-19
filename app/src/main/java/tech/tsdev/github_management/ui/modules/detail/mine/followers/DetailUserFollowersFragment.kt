@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.detail_user_followers.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.ui.modules.detail.mine.followers.adapter.FollowersRecyclerAdapter
 import tech.tsdev.github_management.ui.modules.detail.mine.followers.presenter.DetailUserFollowersContract
 import tech.tsdev.github_management.ui.modules.detail.mine.followers.presenter.DetailUserFollowersPresenter
 
-class DetailUserFollowersFragment : Fragment(), DetailUserFollowersContract.View{
+class DetailUserFollowersFragment : BaseFragment(), DetailUserFollowersContract.View {
     override fun justShowToast() {
         toast("BaseRecyclerViewModel 구현")
     }
@@ -28,13 +29,19 @@ class DetailUserFollowersFragment : Fragment(), DetailUserFollowersContract.View
     }
 
     private val detailUserFollowerPresenter: DetailUserFollowersPresenter by lazy {
-        DetailUserFollowersPresenter(this@DetailUserFollowersFragment, GithubRepository, followersRecyclerAdapter)
+        DetailUserFollowersPresenter(
+            this@DetailUserFollowersFragment,
+            GithubRepository,
+            followersRecyclerAdapter,
+            disposable
+        )
     }
     private val followersRecyclerAdapter: FollowersRecyclerAdapter by lazy {
         FollowersRecyclerAdapter(this@DetailUserFollowersFragment.context)
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.detail_user_followers, container, false)
+        inflater.inflate(R.layout.detail_user_followers, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_repo_stargazers.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.stargazers.StarredUserListRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.stargazers.RepoStarredUserListContract
 import tech.tsdev.github_management.view.main.activity.presenter.stargazers.RepoStarredUserListPresenter
 
-class RepoStargazersActivity : AppCompatActivity(), RepoStarredUserListContract.View {
+class RepoStargazersActivity : BaseActivity(), RepoStarredUserListContract.View {
     override fun loadFailGithubApi() {
         toast("API 문서 호출 오류")
     }
@@ -32,7 +33,7 @@ class RepoStargazersActivity : AppCompatActivity(), RepoStarredUserListContract.
         StarredUserListRecyclerAdapter(this)
     }
     private val repoStarredUserListPresenter: RepoStarredUserListPresenter by lazy {
-        RepoStarredUserListPresenter(this, GithubRepository, starredUserListRecyclerAdapter)
+        RepoStarredUserListPresenter(this, GithubRepository, starredUserListRecyclerAdapter, disposable)
     }
 
 

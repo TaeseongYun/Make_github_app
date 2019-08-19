@@ -1,6 +1,6 @@
 package tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.adapter.model
 
-import tech.tsdev.github_management.model.GetRepoCommitList
+import tech.tsdev.github_management.model.repo.GetRepoCommitList
 
 interface DetailRepoCommitRecyclerModel {
     fun addItems(items: GetRepoCommitList)

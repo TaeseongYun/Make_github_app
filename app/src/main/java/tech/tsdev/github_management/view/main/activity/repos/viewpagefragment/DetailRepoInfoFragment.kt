@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.detail_repo_info_layout.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.util.textVisibleGone
 import tech.tsdev.github_management.view.main.activity.IssuesActivity
@@ -18,7 +19,8 @@ import tech.tsdev.github_management.view.main.activity.RepoWatchersActivity
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoContract
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.presenter.detailrepoinfo.DetailRepoInfoPresenter
 
-class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
+class DetailRepoInfoFragment : BaseFragment(), DetailRepoInfoContract.View {
+
     override fun getSendRepoNameRepoUrl(repoName: String?, repoUrl: String?) {
         repoName?.let { detailRepoName ->
             repoUrl?.let { detailRepoUrl ->
@@ -60,7 +62,7 @@ class DetailRepoInfoFragment : Fragment(), DetailRepoInfoContract.View {
     }
 
     private val detailRepoInfoPresenter: DetailRepoInfoPresenter by lazy {
-        DetailRepoInfoPresenter(this@DetailRepoInfoFragment, GithubRepository)
+        DetailRepoInfoPresenter(this@DetailRepoInfoFragment, GithubRepository, disposable)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

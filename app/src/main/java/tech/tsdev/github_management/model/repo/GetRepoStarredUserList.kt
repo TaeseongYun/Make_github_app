@@ -1,21 +1,8 @@
-package tech.tsdev.github_management.model
+package tech.tsdev.github_management.model.repo
 
 import com.google.gson.annotations.SerializedName
 
-data class GetIssuesComments(
-    val author_association: String,
-    val body: String,
-    val created_at: String,
-    val html_url: String,
-    val id: Int,
-    val issue_url: String,
-    val node_id: String,
-    val updated_at: String,
-    val url: String,
-    val user: CommentsUser
-)
-
-data class CommentsUser(
+data class GetRepoStarredUserList(
     @SerializedName("avatar_url")  val avatarUrl: String,
     val events_url: String,
     val followers_url: String,
@@ -25,8 +12,6 @@ data class CommentsUser(
     val html_url: String,
     val id: Int,
     val login: String,
-    val node_id: String,
-    val organizations_url: String,
     val received_events_url: String,
     val repos_url: String,
     val site_admin: Boolean,

@@ -3,7 +3,7 @@ package tech.tsdev.github_management.view.main.activity.adapter.comments
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import tech.tsdev.github_management.model.GetIssuesComments
+import tech.tsdev.github_management.model.comment.GetIssuesComments
 import tech.tsdev.github_management.view.main.activity.adapter.comments.holder.DetailIssuesCommentsRecyclerHolder
 import tech.tsdev.github_management.view.main.activity.adapter.comments.model.DetailIssuesCommentsRecyclerModel
 

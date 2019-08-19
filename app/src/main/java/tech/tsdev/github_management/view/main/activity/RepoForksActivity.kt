@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_repo_forks.*
 import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
+import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.view.main.activity.adapter.fork.ForkUserListRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.fork.ForkUserListContract
 import tech.tsdev.github_management.view.main.activity.presenter.fork.ForkUserListPresenter
 
-class RepoForksActivity : AppCompatActivity(), ForkUserListContract.View {
+class RepoForksActivity : BaseActivity(), ForkUserListContract.View {
     override fun forkUserListLoadFailMessage() {
         toast("API 문서 호출 오류")
     }
@@ -33,7 +34,7 @@ class RepoForksActivity : AppCompatActivity(), ForkUserListContract.View {
     }
 
     private val forkUserListPresenter: ForkUserListPresenter by lazy {
-        ForkUserListPresenter(this, GithubRepository, forkUserListRecyclerAdapter)
+        ForkUserListPresenter(this, GithubRepository, forkUserListRecyclerAdapter, disposable)
     }
 
     override fun onStop() {

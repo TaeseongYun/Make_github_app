@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import tech.tsdev.github_management.base.recycler.model.BaseRecyclerModel
-import tech.tsdev.github_management.model.UserFollowersFollowingList
+import tech.tsdev.github_management.model.user.UserFollowersFollowingList
 import tech.tsdev.github_management.ui.modules.detail.mine.followers.adapter.holder.FollowersRecyclerHolder
 
 
@@ -37,8 +37,8 @@ class FollowersRecyclerAdapter(private val content: Context?) : RecyclerView.Ada
         (holder as FollowersRecyclerHolder).onBind(followersList[position])
     }
 
-    override fun addItem(items: UserFollowersFollowingList) {
-        followersList.add(items)
+    override fun addItem(followersItems: UserFollowersFollowingList) {
+        followersList.add(followersItems)
     }
 
     override fun getItemCount(): Int = followersList.size

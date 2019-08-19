@@ -1,10 +1,20 @@
 package tech.tsdev.github_management.network
 
+import io.reactivex.Maybe
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.*
 import tech.tsdev.github_management.BuildConfig
 import tech.tsdev.github_management.model.*
+import tech.tsdev.github_management.model.comment.GetIssuesComments
+import tech.tsdev.github_management.model.fork.GetForkUserList
+import tech.tsdev.github_management.model.repo.*
+import tech.tsdev.github_management.model.search.SearchRepoData
+import tech.tsdev.github_management.model.search.SearchUserData
+import tech.tsdev.github_management.model.starred.GetUserStarred
+import tech.tsdev.github_management.model.user.SingleUser
+import tech.tsdev.github_management.model.user.UserFollowersFollowingList
+import tech.tsdev.github_management.model.user.UserListData
 
 interface GithubInterface {
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
@@ -27,7 +37,7 @@ interface GithubInterface {
     @GET("/users/{username}/followers")
     fun getUserFollowers(
         @Path("username") username: String
-    ): Call<List<UserFollowersFollowingList>>
+    ): Single<List<UserFollowersFollowingList>>
 
 
     //리사이클러 뷰 선택하면 해당 유저 Info 보여지게 하는 함수
@@ -58,21 +68,21 @@ interface GithubInterface {
     @GET("/users/{username}/following")
     fun getFollowingBasedOnUserName(
         @Path("username") userName: String
-    ): Call<List<UserFollowersFollowingList>>
+    ): Single<List<UserFollowersFollowingList>>
 
     //유저의 레파지토리
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET("/users/{username}/repos")
     fun getRepoListBasedOnUserName(
         @Path("username") userName: String
-    ): Call<List<UserRepoList>>
+    ): Single<List<UserRepoList>>
 
     //유저Name과 repo 이름으로 해당 레파지토리 가져옴
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
     fun getRepoBasedOnOwnerName(
         @Url repoUrl: String
-    ): Call<GetSingleRepo>
+    ): Single<GetSingleRepo>
 
     //    해당 유저 스타 준 레파지토리 목록
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
@@ -85,21 +95,21 @@ interface GithubInterface {
     @GET
     fun getRepoReadMeBasedOnRepoUrl(
         @Url repoUrl: String
-    ): Call<GetRepoReadme>
+    ): Single<GetRepoReadme>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
     fun getRepoCommitsBasedOnRepoUrl(
         @Url repoCommitUrl: String,
         @Query("page") page: Int
-    ): Call<List<GetRepoCommitList>>
+    ): Single<List<GetRepoCommitList>>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
     fun getRepoIssuesDetailBasedOnIssuesUrl(
         @Url repoIssueUrl: String,
         @Query("page") page: Int
-    ): Call<List<GetRepoIssuesList>>
+    ): Maybe<List<GetRepoIssuesList>>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
@@ -118,19 +128,19 @@ interface GithubInterface {
     fun getRepoStargazerUserList(
         @Url repoStarredUserListUrl: String,
         @Query("page") page: Int
-    ): Call<List<GetRepoStarredUserList>>
+    ): Maybe<List<GetRepoStarredUserList>>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
     fun getRepoForkedUserList(
-        @Url repoforkedUserListUrl: String,
+        @Url repoForkedUserListUrl: String,
         @Query("page") page: Int
-    ): Call<List<GetForkUserList>>
+    ): Maybe<List<GetForkUserList>>
 
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
     @GET
     fun getRepoSubscriberUserList(
         @Url repoWatcherUserListUrl: String,
         @Query("page") page: Int
-    ): Call<List<GetRepoSubscribers>>
+    ): Maybe<List<GetRepoSubscribers>>
 }

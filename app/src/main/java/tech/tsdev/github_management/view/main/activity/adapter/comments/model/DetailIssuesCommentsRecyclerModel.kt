@@ -1,6 +1,6 @@
 package tech.tsdev.github_management.view.main.activity.adapter.comments.model
 
-import tech.tsdev.github_management.model.GetIssuesComments
+import tech.tsdev.github_management.model.comment.GetIssuesComments
 
 interface DetailIssuesCommentsRecyclerModel {
     fun addItems(items: GetIssuesComments)
