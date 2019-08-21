@@ -15,16 +15,14 @@ class DetailRepoPresenter(
         disposable +=
             githubRepository.getRepoInfoBasedOnOwnerNameRepoName(repoUrl)
                 .subscribeOn(Schedulers.io())
-                .map { getSingleRepo ->
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ getSingleRepo ->
                     view.updateToolbarImg(
                         getSingleRepo.owner.avatarUrl,
                         getSingleRepo.name,
                         getSingleRepo.description,
                         getSingleRepo.owner.login
                     )
-                }
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
                     view.dismissProgressBar()
                 }, {
                     it.printStackTrace()

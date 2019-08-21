@@ -15,7 +15,8 @@ class DetailRepoInfoPresenter(
     override fun getLoadRepoInfoBasedRepoUrl(repoUrl: String) {
         disposable += githubRepository.getRepoInfoBasedOnOwnerNameRepoName(repoUrl)
             .subscribeOn(Schedulers.io())
-            .map { singleRepo ->
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ singleRepo ->
                 view.showDetailRepoInfo(
                     singleRepo.fullName,
                     singleRepo.simpleDateCreateAt(singleRepo.createdAt),
@@ -28,10 +29,6 @@ class DetailRepoInfoPresenter(
                     singleRepo.fullName,
                     singleRepo.url
                 )
-            }
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-
             }, {
                 it.printStackTrace()
             })
@@ -39,14 +36,10 @@ class DetailRepoInfoPresenter(
 
     override fun getLoadRepoReadmeBasedRepoUrl(repoUrl: String) {
         disposable += githubRepository.getRepoReadme(repoUrl)
-            .subscribeOn(Schedulers.newThread())
-            .map { repoReadme ->
-                view.getOwnerRepoReadme(repoReadme.htmlUrl)
-            }
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-
+                view.getOwnerRepoReadme(it.htmlUrl)
             }, {
                 it.printStackTrace()
             })
