@@ -4,10 +4,7 @@
               android:layout_width="match_parent" android:layout_height="wrap_content">
     <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
                                                   android:layout_height="wrap_content"
-                                                  android:layout_margin="@dimen/spacing_small"
-                                                  android:elevation="@dimen/material_card_view_margin"
-                                                  android:translationZ="@dimen/material_card_view_margin"
-                                                  android:background="@drawable/card_view_shadow">
+                                                  style="@style/MaterialCardView_style">
 
         <LinearLayout
                 android:orientation="horizontal"

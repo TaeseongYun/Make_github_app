@@ -3,17 +3,14 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" tools:ignore="UselessParent">
-        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
-                                                      android:layout_height="wrap_content"
-                                                      android:id="@+id/material_card_view"
-                                                      android:layout_marginEnd="@dimen/material_card_view_margin"
-                                                      android:layout_marginTop="@dimen/material_card_view_margin"
-                                                      android:layout_marginBottom="@dimen/material_card_view_margin"
-                                                      android:background="@drawable/card_view_shadow"
-                                                      android:elevation="@dimen/material_card_view_margin_micro"
-                                                      android:translationZ="@dimen/material_card_view_margin_micro"
-                                                      android:layout_marginStart="@dimen/material_card_view_margin">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  tools:ignore="UselessParent">
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/material_card_view"
+                style="@style/MaterialCardView_style">
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -27,14 +24,12 @@
                                 android:layout_height="wrap_content">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                               tools:text="@string/repository"
-                              android:layout_marginStart="@dimen/spacing_small"
-                              android:layout_marginTop="@dimen/spacing_small"
+                              style="@style/Repo_detail_items"
                               android:id="@+id/tv_user_repo_name"/>
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                               android:layout_below="@+id/tv_user_repo_name"
                               tools:text="@string/repository" android:id="@+id/tv_user_description"
-                              android:layout_marginStart="@dimen/spacing_small"
-                              android:layout_marginTop="@dimen/spacing_small"/>
+                              style="@style/Repo_detail_items"/>
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                               tools:text="@string/language" android:id="@+id/tv_user_repo_language"
@@ -53,11 +48,8 @@
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                               android:layout_toEndOf="@+id/custom_view_star"
-                              android:layout_marginBottom="@dimen/spacing_small"
-                              android:layout_below="@+id/tv_user_description"
-                              tools:text="@string/followingsN" android:id="@+id/tv_user_repo_star"
-                              android:layout_marginTop="@dimen/spacing_small"
-                              android:layout_marginStart="@dimen/spacing_small"/>
+                              android:layout_below="@+id/tv_user_description" android:id="@+id/tv_user_repo_star"
+                              style="@style/Fork_Many_Mount"/>
 
                     <tech.tsdev.github_management.view.main.custom.GlideImageView
                             android:layout_width="15dp"
@@ -71,11 +63,10 @@
                             android:layout_marginStart="@dimen/spacing_xxx_large"/>
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                              tools:text="@string/followingsN" android:layout_below="@+id/tv_user_description"
-                              android:layout_marginStart="@dimen/spacing_small" android:id="@+id/tv_user_fork"
-                              android:layout_marginBottom="@dimen/spacing_small"
+                              android:layout_below="@+id/tv_user_description"
+                              android:id="@+id/tv_user_fork"
                               android:layout_toEndOf="@+id/img_user_repo_fork"
-                              android:layout_marginTop="@dimen/spacing_small"/>
+                              style="@style/Fork_Many_Mount"/>
 
                     <tech.tsdev.github_management.view.main.custom.GlideImageView
                             android:layout_width="15dp"
@@ -90,13 +81,10 @@
 
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                              tools:text="@string/users" android:layout_toEndOf="@+id/img_user_fork"
+                              android:layout_toEndOf="@+id/img_user_fork"
                               android:layout_below="@+id/tv_user_description"
-                              android:layout_marginBottom="@dimen/spacing_small"
                               android:id="@+id/tv_user_login"
-                              android:textSize="@dimen/text_small"
-                              android:layout_marginStart="@dimen/spacing_small"
-                              android:layout_marginTop="@dimen/spacing_small"/>
+                              style="@style/Fork_Many_Mount"/>
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                               android:text="@string/fork"

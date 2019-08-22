@@ -1,5 +1,6 @@
 package tech.tsdev.github_management.view.main.activity
 
+
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
@@ -10,6 +11,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment
 import com.yalantis.contextmenu.lib.MenuGravity
@@ -29,20 +31,12 @@ class MainActivity : AppCompatActivity() {
         GithubFragment()
     }
 
-    private val myGithubFragment: MyFragment by lazy {
-        MyFragment().apply {
-            arguments = Bundle().apply {
-                putString("userName", intent.getStringExtra("inputUserName"))
-            }
-        }
+    private val myGithubFragment: Fragment by lazy {
+        MyFragment.getInstance("userName", intent.getStringExtra("inputUserName"))
     }
 
     private val starFragment: StarFragment by lazy {
-        StarFragment().apply {
-            arguments = Bundle().apply {
-                putString("userName", intent.getStringExtra("inputUserName"))
-            }
-        }
+        StarFragment.getInstance("userName", intent.getStringExtra("inputUserName"))
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -74,7 +68,8 @@ class MainActivity : AppCompatActivity() {
         item?.let {
             when (it.itemId) {
                 R.id.change_user -> {
-
+                    finish()
+                    startActivity(Intent(this, NameInputActivity::class.java))
                 }
                 else -> {
                 }

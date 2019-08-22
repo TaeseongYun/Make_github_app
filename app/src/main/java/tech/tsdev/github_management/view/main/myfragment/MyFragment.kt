@@ -22,6 +22,14 @@ import tech.tsdev.github_management.view.main.myfragment.presenter.MyFragmentPre
 
 class MyFragment : BaseFragment(), MyFragmentContract.View {
 
+    companion object {
+        fun getInstance(key: String = "", value: String = "") =
+            MyFragment().apply {
+                arguments = Bundle().apply {
+                    putString(key, value)
+                }
+            }
+    }
 
     private  var userInfoName: String? = ""
 

@@ -19,6 +19,15 @@ import tech.tsdev.github_management.view.main.starfragment.presenter.StarFragmen
 import tech.tsdev.github_management.view.main.starfragment.presenter.StarFragmentPresenter
 
 class StarFragment : BaseFragment(), StarFragmentContract.View {
+
+    companion object {
+        fun getInstance(key: String = "", value: String = "") =
+                StarFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(key, value)
+                    }
+                }
+    }
     override fun dismissLottieProgressbar() {
         lottie_progress_layout?.visibility = View.GONE
         user_activities_recycler_view?.visibility = View.VISIBLE

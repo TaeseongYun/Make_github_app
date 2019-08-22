@@ -12,9 +12,33 @@
         <!--TextInputEditText-->
         <item name="colorControlNormal">#2196F3</item>
         <item name="colorControlActivated">#ffffff</item>
-
-
     </style>
+
+
+    <style name="Repo_detail_items">
+        <item name="android:layout_marginStart">@dimen/spacing_small</item>
+        <item name="android:layout_marginTop">@dimen/spacing_small</item>
+    </style>
+
+    <style name="Fork_Many_Mount">
+        <item name="android:layout_marginStart">@dimen/spacing_small</item>
+        <item name="android:layout_marginTop">@dimen/spacing_small</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_small</item>
+        <item name="android:text">@string/followerN</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+
+    <style name="MaterialCardView_style">
+        <item name="android:layout_marginStart">@dimen/material_card_view_margin</item>
+        <item name="android:layout_marginTop">@dimen/material_card_view_margin</item>
+        <item name="android:layout_marginBottom">@dimen/material_card_view_margin</item>
+        <item name="android:layout_marginEnd">@dimen/material_card_view_margin</item>
+
+        <item name="android:elevation">@dimen/material_card_view_margin_micro</item>
+        <item name="android:translationZ">@dimen/material_card_view_margin_micro</item>
+        <item name="android:background">@drawable/card_view_shadow</item>
+    </style>
+
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">@dimen/text_normal</item>
