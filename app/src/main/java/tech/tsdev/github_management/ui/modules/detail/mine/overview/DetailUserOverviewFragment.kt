@@ -11,16 +11,25 @@ import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.ui.modules.detail.mine.overview.presenter.DetailUserOverviewContract
 import tech.tsdev.github_management.ui.modules.detail.mine.overview.presenter.DetailUserOverviewPresenter
 import tech.tsdev.github_management.view.main.activity.SearchActivity
 
 class DetailUserOverviewFragment : BaseFragment(), DetailUserOverviewContract.View {
 
+    companion object {
+        fun getInstance(key: String = "", value: String = "") =
+                DetailUserOverviewFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(key, value)
+                    }
+                }
+    }
     private val detailUserOverviewPresenter: DetailUserOverviewPresenter by lazy {
         DetailUserOverviewPresenter(
             this@DetailUserOverviewFragment,
-            GithubRepository,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
             disposable
         )
     }

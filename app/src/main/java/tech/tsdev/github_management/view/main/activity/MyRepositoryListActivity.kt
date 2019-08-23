@@ -9,6 +9,7 @@ import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.view.main.activity.adapter.repolist.MyRepoListRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.repolist.MyRepoListContract
 import tech.tsdev.github_management.view.main.activity.presenter.repolist.MyRepoListPresenter
@@ -30,7 +31,12 @@ class MyRepositoryListActivity : BaseActivity(), MyRepoListContract.View {
     }
 
     private val myRepoListPresenter: MyRepoListPresenter by lazy {
-        MyRepoListPresenter(this, GithubRepository, myRepoListRecyclerAdapter, disposable)
+        MyRepoListPresenter(
+            this,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
+            myRepoListRecyclerAdapter,
+            disposable
+        )
     }
 
     private val myRepoListRecyclerAdapter: MyRepoListRecyclerAdapter by lazy {

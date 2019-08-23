@@ -13,6 +13,7 @@ import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.view.main.activity.DetailRepoActivity
 import tech.tsdev.github_management.view.main.starfragment.adapter.StarRecyclerAdapter
 import tech.tsdev.github_management.view.main.starfragment.presenter.StarFragmentContract
@@ -22,12 +23,13 @@ class StarFragment : BaseFragment(), StarFragmentContract.View {
 
     companion object {
         fun getInstance(key: String = "", value: String = "") =
-                StarFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(key, value)
-                    }
+            StarFragment().apply {
+                arguments = Bundle().apply {
+                    putString(key, value)
                 }
+            }
     }
+
     override fun dismissLottieProgressbar() {
         lottie_progress_layout?.visibility = View.GONE
         user_activities_recycler_view?.visibility = View.VISIBLE
@@ -54,7 +56,12 @@ class StarFragment : BaseFragment(), StarFragmentContract.View {
     }
 
     private val starFragmentPresenter: StarFragmentPresenter by lazy {
-        StarFragmentPresenter(this@StarFragment, GithubRepository, starRecyclerAdapter, disposable)
+        StarFragmentPresenter(
+            this@StarFragment,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
+            starRecyclerAdapter,
+            disposable
+        )
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

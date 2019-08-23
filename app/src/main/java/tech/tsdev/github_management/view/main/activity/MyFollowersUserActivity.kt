@@ -10,6 +10,7 @@ import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.view.main.activity.adapter.followers.MyFollowersRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.followers.MyFollowersContract
 import tech.tsdev.github_management.view.main.activity.presenter.followers.MyFollowersPresenter
@@ -36,7 +37,7 @@ class MyFollowersUserActivity : BaseActivity(), MyFollowersContract.View {
     private val myFollowersPresenter: MyFollowersPresenter by lazy {
         MyFollowersPresenter(
             this,
-            GithubRepository,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
             myFollowersRecyclerAdapter,
             disposable
         )

@@ -15,15 +15,13 @@
             android:layout_marginTop="32dp"
             app:layout_constraintTop_toTopOf="parent"/>
     <TextView
-            android:text="@string/overview"
+            style="@style/UserNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/detail_user_login_name"
-            android:textSize="24sp" android:textColor="@color/black"
-            android:layout_marginTop="40dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/detail_user_img"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.411"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_user_img"/>
+
     <TextView
             android:text="@string/github_user"
             android:layout_width="wrap_content"

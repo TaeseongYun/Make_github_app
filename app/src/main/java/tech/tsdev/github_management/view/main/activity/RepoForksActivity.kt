@@ -11,6 +11,7 @@ import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.view.main.activity.adapter.fork.ForkUserListRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.fork.ForkUserListContract
 import tech.tsdev.github_management.view.main.activity.presenter.fork.ForkUserListPresenter
@@ -34,7 +35,12 @@ class RepoForksActivity : BaseActivity(), ForkUserListContract.View {
     }
 
     private val forkUserListPresenter: ForkUserListPresenter by lazy {
-        ForkUserListPresenter(this, GithubRepository, forkUserListRecyclerAdapter, disposable)
+        ForkUserListPresenter(
+            this,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
+            forkUserListRecyclerAdapter,
+            disposable
+        )
     }
 
     override fun onStop() {
@@ -52,9 +58,9 @@ class RepoForksActivity : BaseActivity(), ForkUserListContract.View {
                 (recyclerView.layoutManager as? GridLayoutManager)?.findFirstVisibleItemPosition() ?: 0
             val visibleItems = repo_fork_user_recycler_view.childCount
 
-            if(!forkUserListPresenter.isLoading && forkUserListPresenter.nextPage &&
-                    totalItemCount - 8 < (firstVisibleItems + visibleItems)
-            ){
+            if (!forkUserListPresenter.isLoading && forkUserListPresenter.nextPage &&
+                totalItemCount - 8 < (firstVisibleItems + visibleItems)
+            ) {
                 forkUserListPresenter.getLoadForkUserListBasedForkUrl(
                     intent.getStringExtra("repoForkUrl") + "/forks"
                 )

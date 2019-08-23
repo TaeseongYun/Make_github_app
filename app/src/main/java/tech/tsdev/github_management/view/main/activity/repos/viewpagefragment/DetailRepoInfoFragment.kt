@@ -11,6 +11,7 @@ import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.util.textVisibleGone
 import tech.tsdev.github_management.view.main.activity.IssuesActivity
 import tech.tsdev.github_management.view.main.activity.RepoForksActivity
@@ -62,7 +63,11 @@ class DetailRepoInfoFragment : BaseFragment(), DetailRepoInfoContract.View {
     }
 
     private val detailRepoInfoPresenter: DetailRepoInfoPresenter by lazy {
-        DetailRepoInfoPresenter(this@DetailRepoInfoFragment, GithubRepository, disposable)
+        DetailRepoInfoPresenter(
+            this@DetailRepoInfoFragment,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
+            disposable
+        )
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -121,7 +126,7 @@ class DetailRepoInfoFragment : BaseFragment(), DetailRepoInfoContract.View {
 
         owner_repo_watcher_layout.setOnClickListener {
             Intent(context, RepoWatchersActivity::class.java).apply {
-                putExtra("repoName",arguments?.getString("repoName"))
+                putExtra("repoName", arguments?.getString("repoName"))
                 putExtra(
                     "repoWatcherUrl",
                     arguments?.getString("detailRepoUrl")

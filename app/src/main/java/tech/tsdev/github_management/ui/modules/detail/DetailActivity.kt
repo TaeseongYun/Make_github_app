@@ -1,13 +1,10 @@
 package tech.tsdev.github_management.ui.modules.detail
 
-import android.content.Context
+
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
 import kotlinx.android.synthetic.main.activity_detail.*
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.ui.modules.detail.mine.followers.DetailUserFollowersFragment
@@ -18,41 +15,23 @@ import tech.tsdev.github_management.util.replace
 
 class DetailActivity : AppCompatActivity() {
 
-
-    private val viewAdapter: DetailViewPagerAdapter by lazy {
-        DetailViewPagerAdapter(supportFragmentManager, this)
-    }
-
     private val detailUserOverviewFragment: DetailUserOverviewFragment by lazy {
-        DetailUserOverviewFragment().apply {
-            arguments = Bundle().apply {
-                putString("fragmentUserName", intent.getStringExtra("userName"))
-            }
-        }
+        DetailUserOverviewFragment
+            .getInstance("fragmentUserName", intent.getStringExtra("userName"))
     }
 
     private val detailUserRepositoryFragment: DetailUserRepoFragment by lazy {
-        DetailUserRepoFragment().apply {
-            arguments = Bundle().apply {
-                putString("fragmentUserName", intent.getStringExtra("userName"))
-            }
-        }
+        DetailUserRepoFragment
+            .getInstance("fragmentUserName", intent.getStringExtra("userName"))
     }
 
     private val detailUserFollowersFragment: DetailUserFollowersFragment by lazy {
-        DetailUserFollowersFragment().apply {
-            arguments = Bundle().apply {
-                putString("fragmentUserName", intent.getStringExtra("userName"))
-            }
-        }
+        DetailUserFollowersFragment
+            .getInstance("fragmentUserName", intent.getStringExtra("userName"))
     }
 
     private val detailUserFollowingFragment: DetailUserFollowingFragment by lazy {
-        DetailUserFollowingFragment().apply {
-            arguments = Bundle().apply {
-                putString("fragmentUserName", intent.getStringExtra("userName"))
-            }
-        }
+        DetailUserFollowingFragment.getInstance("fragmentUserName", intent.getStringExtra("userName"))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +40,8 @@ class DetailActivity : AppCompatActivity() {
 
         setSupportActionBar(detail_user_bar)
 
+
+        Log.d("DetailActivity", "실행됌")
 //        detail_user_bar.replaceMenu(R.menu.bottom_app_bar)
 //        tv_user_name.text = intent.getStringExtra( SearchActivity.USER_NAME )
 
@@ -91,43 +72,5 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.bottom_app_bar, menu)
         return super.onCreateOptionsMenu(menu)
-    }
-
-    inner class DetailViewPagerAdapter(fm: FragmentManager, val context: Context) : FragmentStatePagerAdapter(fm) {
-
-        override fun getItem(position: Int): Fragment? =
-            when (position) {
-                0 -> {
-                    DetailUserOverviewFragment().apply {
-                        arguments = Bundle().apply {
-                            putString("fragmentUserName", intent.getStringExtra("userName"))
-                        }
-                    }
-                }
-                1 -> DetailUserRepoFragment().apply {
-                    arguments = Bundle().apply {
-                        putString("fragmentUserName", intent.getStringExtra("userName"))
-                    }
-                }
-                2 -> DetailUserFollowersFragment().apply {
-                    arguments = Bundle().apply {
-                        putString("fragmentUserName", intent.getStringExtra("userName"))
-                    }
-                }
-                3 -> DetailUserFollowingFragment().apply {
-                    arguments = Bundle().apply {
-                        putString("fragmentUserName", intent.getStringExtra("userName"))
-                    }
-                }
-                else -> null
-            }
-
-
-        override fun getCount(): Int = 4
-
-        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-            super.destroyItem(container, position, `object`)
-        }
-
     }
 }

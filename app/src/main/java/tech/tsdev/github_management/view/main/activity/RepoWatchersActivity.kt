@@ -11,6 +11,7 @@ import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.view.main.activity.adapter.watcher.RepoWatcherRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.watcher.RepoWatcherContract
 import tech.tsdev.github_management.view.main.activity.presenter.watcher.RepoWatcherPresenter
@@ -34,7 +35,12 @@ class RepoWatchersActivity : BaseActivity(), RepoWatcherContract.View {
     }
 
     private val repoWatcherPresenter: RepoWatcherPresenter by lazy {
-        RepoWatcherPresenter(this, GithubRepository, repoWatcherRecyclerAdapter, disposable)
+        RepoWatcherPresenter(
+            this,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
+            repoWatcherRecyclerAdapter,
+            disposable
+        )
     }
 
     private val onScrollListener = object : RecyclerView.OnScrollListener() {
@@ -60,6 +66,7 @@ class RepoWatchersActivity : BaseActivity(), RepoWatcherContract.View {
 
         repo_watcher_recycler_view.removeOnScrollListener(onScrollListener)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_repo_watchers)

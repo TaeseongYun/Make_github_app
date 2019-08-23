@@ -9,6 +9,7 @@ import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.view.main.activity.adapter.comments.DetailIssuesCommentsRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.detailissues.DetailIssuesSingleContract
 import tech.tsdev.github_management.view.main.activity.presenter.detailissues.DetailIssuesSinglePresenter
@@ -42,7 +43,12 @@ class IssuesDetailActivity : BaseActivity(), DetailIssuesSingleContract.View {
     }
 
     private val detailIssuesSinglePresenter: DetailIssuesSinglePresenter by lazy {
-        DetailIssuesSinglePresenter(this, GithubRepository, detailIssuesCommentsRecyclerAdapter, disposable)
+        DetailIssuesSinglePresenter(
+            this,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
+            detailIssuesCommentsRecyclerAdapter,
+            disposable
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

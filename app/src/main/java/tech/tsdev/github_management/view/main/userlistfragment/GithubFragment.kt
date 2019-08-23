@@ -18,6 +18,7 @@ import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.ui.modules.detail.DetailActivity
 import tech.tsdev.github_management.view.main.userlistfragment.adapter.UserListRecyclerAdapter
 import tech.tsdev.github_management.view.main.userlistfragment.presenter.GithubContract
@@ -57,7 +58,12 @@ class GithubFragment : BaseFragment(), GithubContract.View {
         UserListRecyclerAdapter(this@GithubFragment.context)
     }
     private val gitPresenter: GithubPresenter by lazy {
-        GithubPresenter(this@GithubFragment, GithubRepository, userRecyclerAdapter, disposable)
+        GithubPresenter(
+            this@GithubFragment,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
+            userRecyclerAdapter,
+            disposable
+        )
     }
 
     private val onScrollListener = object : RecyclerView.OnScrollListener() {

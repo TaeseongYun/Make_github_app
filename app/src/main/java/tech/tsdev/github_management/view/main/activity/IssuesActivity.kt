@@ -11,6 +11,7 @@ import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.view.main.activity.adapter.issues.DetailRepoIssuesListRecyclerAdapter
 import tech.tsdev.github_management.view.main.activity.presenter.issues.DetailRepoIssuesContract
 import tech.tsdev.github_management.view.main.activity.presenter.issues.DetailRepoIssuesPresenter
@@ -47,7 +48,12 @@ class IssuesActivity : BaseActivity(), DetailRepoIssuesContract.View {
     }
 
     private val detailRepoIssuesPresenter: DetailRepoIssuesPresenter by lazy {
-        DetailRepoIssuesPresenter(this, GithubRepository, detailRepoIssuesListRecyclerAdapter, disposable)
+        DetailRepoIssuesPresenter(
+            this,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
+            detailRepoIssuesListRecyclerAdapter,
+            disposable
+        )
     }
 
     private val onScrollListener = object : RecyclerView.OnScrollListener() {

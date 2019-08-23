@@ -13,6 +13,7 @@ import org.jetbrains.anko.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.view.main.activity.repos.presenter.DetailRepoContract
 import tech.tsdev.github_management.view.main.activity.repos.presenter.DetailRepoPresenter
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.DetailRepoActivityFragment
@@ -55,7 +56,11 @@ class DetailRepoActivity : BaseActivity(), DetailRepoContract.View {
     }
 
     private val detailRepoPresenter: DetailRepoPresenter by lazy {
-        DetailRepoPresenter(this@DetailRepoActivity, GithubRepository, disposable)
+        DetailRepoPresenter(
+            this@DetailRepoActivity,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
+            disposable
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

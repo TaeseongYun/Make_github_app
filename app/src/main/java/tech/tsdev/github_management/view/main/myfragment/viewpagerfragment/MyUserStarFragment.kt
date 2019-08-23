@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.user_starred_repo.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.view.main.activity.DetailRepoActivity
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.adapter.MyUserStarRecyclerAdapter
 import tech.tsdev.github_management.view.main.myfragment.viewpagerfragment.presenter.mystar.MyUserStarContract
@@ -39,7 +40,7 @@ class MyUserStarFragment : Fragment(), MyUserStarContract.View {
     private val myUserStarPresenter: MyUserStarPresenter by lazy {
         MyUserStarPresenter(
             this@MyUserStarFragment,
-            GithubRepository,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
             userRecyclerViewAdapter
         )
     }

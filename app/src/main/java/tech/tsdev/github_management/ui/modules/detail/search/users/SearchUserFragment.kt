@@ -11,6 +11,7 @@ import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.ui.modules.detail.DetailActivity
 import tech.tsdev.github_management.ui.modules.detail.search.users.adapter.SearchUserAdapter
 import tech.tsdev.github_management.ui.modules.detail.search.users.presenter.SearchUserContract
@@ -18,7 +19,7 @@ import tech.tsdev.github_management.ui.modules.detail.search.users.presenter.Sea
 
 class SearchUserFragment : BaseFragment(), SearchUserContract.View {
     override fun loadSearchUserDetail(userLogin: String) {
-       Intent(context, DetailActivity::class.java).apply {
+        Intent(context, DetailActivity::class.java).apply {
             putExtra("userName", userLogin)
             startActivity(this)
         }
@@ -37,11 +38,16 @@ class SearchUserFragment : BaseFragment(), SearchUserContract.View {
     }
 
     private val searchUsePresenter: SearchUserPresenter by lazy {
-        SearchUserPresenter(this@SearchUserFragment, GithubRepository, searchUserAdapter, disposable)
+        SearchUserPresenter(
+            this@SearchUserFragment,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
+            searchUserAdapter,
+            disposable
+        )
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.pg_search_user_layout, container, false)
+        inflater.inflate(R.layout.pg_search_user_layout, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

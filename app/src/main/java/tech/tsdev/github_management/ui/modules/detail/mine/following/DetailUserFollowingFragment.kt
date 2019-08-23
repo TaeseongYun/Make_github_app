@@ -11,12 +11,22 @@ import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.ui.modules.detail.mine.following.adapter.UserFollowingRecyclerAdapter
 import tech.tsdev.github_management.ui.modules.detail.mine.following.presenter.DetailUserFollowingContract
 import tech.tsdev.github_management.ui.modules.detail.mine.following.presenter.DetailUserFollowingPresenter
 
 class DetailUserFollowingFragment : BaseFragment(), DetailUserFollowingContract.View {
 
+
+    companion object {
+        fun getInstance(key: String = "", value: String = "") =
+                DetailUserFollowingFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(key, value)
+                    }
+                }
+    }
     override fun justViewToast() {
         toast("BaseRecyclerModel 적용")
     }
@@ -36,7 +46,7 @@ class DetailUserFollowingFragment : BaseFragment(), DetailUserFollowingContract.
     private val detailUserFollowingPresenter: DetailUserFollowingPresenter by lazy {
         DetailUserFollowingPresenter(
             this@DetailUserFollowingFragment,
-            GithubRepository,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
             userFollowingAdapter,
             disposable
         )

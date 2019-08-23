@@ -14,72 +14,58 @@ import tech.tsdev.github_management.model.user.SingleUser
 import tech.tsdev.github_management.model.user.UserFollowersFollowingList
 import tech.tsdev.github_management.model.user.UserListData
 import tech.tsdev.github_management.network.GithubInterface
+import tech.tsdev.github_management.network.createRetrofit
 
-class GithubRepository(private val githubAPI: GithubInterface) {
+class GithubRemoteDataSource(private val githubAPI: GithubInterface) {
 
+    fun loadUserList(since: Int): Single<List<UserListData>> = githubAPI.userList(since)
 
-    companion object {
-        private var instance: GithubRepository? = null
-
-        fun getInstance(githubAPI: GithubInterface) =
-            instance ?: synchronized(this) {
-                instance ?: GithubRepository(githubAPI = githubAPI).also { instance = it }
-            }
-
-    }
-
-    private val githubRemoteData: GithubRemoteDataSource by lazy {
-        GithubRemoteDataSource(githubAPI)
-    }
-
-    fun loadUserList(since: Int): Single<List<UserListData>> = githubRemoteData.loadUserList(since)
-
-    fun searchUserList(userName: String): Single<SearchUserData> = githubRemoteData.searchUserList(userName)
+    fun searchUserList(userName: String): Single<SearchUserData> = githubAPI.searchUsers(userName)
 
     fun getUserFollowers(username: String): Single<List<UserFollowersFollowingList>> =
-        githubRemoteData.getUserFollowers(username)
+        githubAPI.getUserFollowers(username)
 
-    fun getSingleUser(userName: String): Single<SingleUser> = githubRemoteData.getSingleUser(userName)
+    fun getSingleUser(userName: String): Single<SingleUser> = githubAPI.getSingleUser(userName)
 
     fun getSearchRepo(searchQuery: String): Single<SearchRepoData> =
-        githubRemoteData.getSearchRepo(searchQuery)
+        githubAPI.getSearchRepoResult(searchQuery)
 
     fun getUserReceivedResult(userName: String): Single<List<ReceivedEvents>> =
-        githubRemoteData.getUserReceivedResult(userName)
+        githubAPI.getUserReceivedResult(userName)
 
     fun getUserFollowing(userName: String): Single<List<UserFollowersFollowingList>> =
-        githubRemoteData.getUserFollowing(userName)
+        githubAPI.getFollowingBasedOnUserName(userName)
 
     fun getUserRepoList(userName: String): Single<List<UserRepoList>> =
-        githubRemoteData.getUserRepoList(userName)
+        githubAPI.getRepoListBasedOnUserName(userName)
 
     fun getRepoInfoBasedOnOwnerNameRepoName(repoUrl: String): Single<GetSingleRepo> =
-        githubRemoteData.getRepoInfoBasedOnOwnerNameRepoName(repoUrl)
+        githubAPI.getRepoBasedOnOwnerName(repoUrl)
 
     fun getStarBasedonUserName(userName: String): Call<List<GetUserStarred>> =
-        githubRemoteData.getStarBasedonUserName(userName)
+        githubAPI.getStarBasedonUserName(userName)
 
     fun getRepoReadme(repoUrl: String): Single<GetRepoReadme> =
-        githubRemoteData.getRepoReadme(repoUrl)
+        githubAPI.getRepoReadMeBasedOnRepoUrl(repoUrl)
 
     fun getRepoCommitList(repoCommitUrl: String, page: Int): Single<List<GetRepoCommitList>> =
-        githubRemoteData.getRepoCommitList(repoCommitUrl, page)
+        githubAPI.getRepoCommitsBasedOnRepoUrl(repoCommitUrl, page)
 
     fun getRepoIssuesList(repoIssuesUrl: String, page: Int): Maybe<List<GetRepoIssuesList>> =
-        githubRemoteData.getRepoIssuesList(repoIssuesUrl, page)
+        githubAPI.getRepoIssuesDetailBasedOnIssuesUrl(repoIssuesUrl, page)
 
     fun getSingleRepoIssues(repoSingleIssuesUrl: String): Single<GetRepoIssuesList> =
-        githubRemoteData.getSingleRepoIssues(repoSingleIssuesUrl)
+        githubAPI.getSingleRepoIssuesBasedOnIssuesUrl(repoSingleIssuesUrl)
 
     fun getIssuesCommentsList(repoCommentsUrl: String): Single<List<GetIssuesComments>> =
-        githubRemoteData.getIssuesCommentsList(repoCommentsUrl)
+        githubAPI.getIssuesCommentsListBasedOnCommentsUrl(repoCommentsUrl)
 
     fun getRepoStarredUserList(repoStarredUserList: String, page: Int): Maybe<List<GetRepoStarredUserList>> =
-        githubRemoteData.getRepoStarredUserList(repoStarredUserList, page)
+        githubAPI.getRepoStargazerUserList(repoStarredUserList, page)
 
     fun getRepoForkedUserList(repoForkedUserList: String, page: Int): Maybe<List<GetForkUserList>> =
-        githubRemoteData.getRepoForkedUserList(repoForkedUserList, page)
+        githubAPI.getRepoForkedUserList(repoForkedUserList, page)
 
     fun getRepoSubscribeUserList(repoSubscriberUserList: String, page: Int): Maybe<List<GetRepoSubscribers>> =
-        githubRemoteData.getRepoSubscribeUserList(repoSubscriberUserList, page)
+        githubAPI.getRepoSubscriberUserList(repoSubscriberUserList, page)
 }

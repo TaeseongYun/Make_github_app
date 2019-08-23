@@ -13,6 +13,7 @@ import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
+import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.view.main.activity.MyFollowersUserActivity
 import tech.tsdev.github_management.view.main.activity.MyFollowingUserActivity
 import tech.tsdev.github_management.view.main.activity.MyRepositoryListActivity
@@ -66,7 +67,7 @@ class MyInfoFragment : BaseFragment(), MyInfoContract.View {
     private val myInfoPresenter: MyInfoPresenter by lazy {
         MyInfoPresenter(
             this@MyInfoFragment,
-            GithubRepository,
+            GithubRepository.getInstance(RetrofitObject.githubAPI),
             disposable
         )
     }
