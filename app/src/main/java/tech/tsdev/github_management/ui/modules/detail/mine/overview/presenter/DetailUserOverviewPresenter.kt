@@ -24,7 +24,9 @@ class DetailUserOverviewPresenter(
                     singleUser.email,
                     singleUser.bio,
                     singleUser.followers,
-                    singleUser.following
+                    singleUser.following,
+                    singleUser.public_repos,
+                    singleUser.location
                 )
             }, {
                 it.printStackTrace()

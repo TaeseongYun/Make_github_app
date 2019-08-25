@@ -14,7 +14,9 @@ interface DetailUserOverviewContract {
             userEmail: String? = "Empty Email",
             userDescription: String?,
             userFollowers: Int,
-            userFollowings: Int
+            userFollowings: Int,
+            userRepoCount: Int,
+            userLocation: String?
         )
     }
 

@@ -55,12 +55,13 @@
     <!--UserInfo-->
     <string name="bio">User_BIO</string>
     <string name="view_more">VIEW MORE....</string>
+    <string name="userInformation">User Information</string>
 
 
     <!--UserInfo-->
     <string name="userInfo">Info</string>
     <string name="userStar">Star</string>
-
+    <string name="userRepoSummary">UserRepoSummary</string>
 
     <!--DetailRepo-->
     <string name="repoAbout">About</string>

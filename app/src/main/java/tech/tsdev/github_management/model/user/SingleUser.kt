@@ -21,7 +21,7 @@ data class SingleUser(
     val hireable: Any,
     val html_url: String,
     val id: Int,
-    val location: Any,
+    val location: String,
     val login: String,
     val name: String,
     val node_id: String,

@@ -29,14 +29,12 @@
     </style>
 
     <style name="MaterialCardView_style">
-        <item name="android:layout_marginStart">@dimen/material_card_view_margin</item>
-        <item name="android:layout_marginTop">@dimen/material_card_view_margin</item>
-        <item name="android:layout_marginBottom">@dimen/material_card_view_margin</item>
-        <item name="android:layout_marginEnd">@dimen/material_card_view_margin</item>
-
+        <item name="android:layout_marginTop">@dimen/material_card_view_margin_micro</item>
+        <item name="android:layout_marginStart">@dimen/material_card_view_margin_micro</item>
+        <item name="android:layout_marginEnd">@dimen/material_card_view_margin_micro</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_normal</item>
         <item name="android:elevation">@dimen/material_card_view_margin_micro</item>
         <item name="android:translationZ">@dimen/material_card_view_margin_micro</item>
-        <item name="android:background">@drawable/card_view_shadow</item>
     </style>
 
 
@@ -68,9 +66,51 @@
 
     <style name="UserNameTextView">
         <item name="android:textSize">25sp</item>
-        <item name="android:layout_marginTop">45dp</item>
+        <item name="android:layout_marginTop">35dp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:text">@string/overview</item>
+        <item name="android:layout_marginEnd">100dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">@dimen/spacing_small</item>
     </style>
 
+    <style name="UserSubName">
+        <item name="android:text">@string/users</item>
+        <item name="android:layout_marginEnd">130dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="UserRepositoryImg">
+        <item name="android:src">@drawable/ic_cloud_black_24dp</item>
+        <item name="android:layout_marginStart">@dimen/spacing_normal</item>
+        <item name="android:layout_marginTop">@dimen/spacing_small</item>
+    </style>
+
+
+    <!--UserInformation TextView Style-->
+    <style name="UserInformationTextView">
+        <item name="android:text">@string/userInformation</item>
+        <item name="android:layout_marginStart">@dimen/spacing_normal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="HowManyOfUser">
+        <item name="android:text">@string/followerN</item>
+        <item name="android:layout_marginStart">@dimen/spacing_normal</item>
+        <item name="android:layout_marginTop">@dimen/spacing_small</item>
+    </style>
+
+    <style name="FollowingANDFollowers">
+        <item name="android:text">@string/followerN</item>
+        <item name="android:layout_marginStart">@dimen/spacing_super_huge</item>
+        <item name="android:layout_marginTop">@dimen/spacing_small</item>
+    </style>
+
+    <style name="UserRepoSummary">
+        <item name="android:text">@string/userRepoSummary</item>
+        <item name="android:layout_marginStart">@dimen/spacing_normal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

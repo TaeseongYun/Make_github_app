@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.detail_user_overview.*
+import kotlinx.android.synthetic.main.fg_user_info_fragment_layout.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
@@ -14,6 +15,8 @@ import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.ui.modules.detail.mine.overview.presenter.DetailUserOverviewContract
 import tech.tsdev.github_management.ui.modules.detail.mine.overview.presenter.DetailUserOverviewPresenter
+import tech.tsdev.github_management.util.ifNullDefaultImg
+import tech.tsdev.github_management.util.ifNullGoneView
 import tech.tsdev.github_management.view.main.activity.SearchActivity
 
 class DetailUserOverviewFragment : BaseFragment(), DetailUserOverviewContract.View {
@@ -45,15 +48,17 @@ class DetailUserOverviewFragment : BaseFragment(), DetailUserOverviewContract.Vi
     override fun loadUserDetailView(
         userLogin: String?, userName: String?,
         userAvatar: String?, userEmail: String?, userDescription: String?,
-        userFollowers: Int, userFollowings: Int
+        userFollowers: Int, userFollowings: Int, userRepoCount: Int,
+        userLocation: String?
     ) {
-        detail_user_email.text = userEmail
-        userAvatar?.let { detail_user_img.proflieImageLoad(it) }
-        detail_user_name.text = userName
-        detail_user_login_name.text = userLogin
-        detail_user_description.text = userDescription
-        detail_user_followersN.text = userFollowers.toString()
-        detail_user_followingN.text = userFollowings.toString()
+        userEmail.ifNullGoneView(detail_user_email, user_email_layout)
+        userAvatar?.ifNullDefaultImg(detail_user_img)
+        detail_user_login_name?.text = userLogin
+        userDescription?.ifNullGoneView(detail_user_description)
+        user_followers_many?.text = userFollowers.toString()
+        user_followings_many?.text = userFollowings.toString()
+        user_repo_many?.text = userRepoCount.toString()
+        userLocation?.ifNullGoneView(detail_user_location, detail_user_location_layout)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
