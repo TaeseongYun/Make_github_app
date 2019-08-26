@@ -50,7 +50,7 @@ class GithubRepository(private val githubAPI: GithubInterface) {
     fun getUserFollowing(userName: String): Single<List<UserFollowersFollowingList>> =
         githubRemoteData.getUserFollowing(userName)
 
-    fun getUserRepoList(userName: String): Single<List<UserRepoList>> =
+    fun getUserRepoList(userName: String): Maybe<List<UserRepoList>> =
         githubRemoteData.getUserRepoList(userName)
 
     fun getRepoInfoBasedOnOwnerNameRepoName(repoUrl: String): Single<GetSingleRepo> =

@@ -12,6 +12,7 @@ class DetailUserOverviewPresenter(
     private val disposable: CompositeDisposable
 ) : DetailUserOverviewContract.Presenter {
 
+
     override fun loadUserOverView(userName: String) {
         disposable += githubRepository.getSingleUser(userName)
             .observeOn(AndroidSchedulers.mainThread())
@@ -28,6 +29,22 @@ class DetailUserOverviewPresenter(
                     singleUser.public_repos,
                     singleUser.location
                 )
+            }, {
+                it.printStackTrace()
+            })
+
+        disposable += githubRepository.getUserRepoList(userName)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .filter { userRepoList -> !userRepoList.isNullOrEmpty() }
+            .subscribe({ userRepoList ->
+                if (!userRepoList[0].name.isNullOrBlank()) {
+                    view.loadUserRepoSummary(
+                        userRepoList[0].name,
+                        userRepoList[1].name
+//                        userRepoList[2].name
+                    )
+                }
             }, {
                 it.printStackTrace()
             })

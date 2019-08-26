@@ -52,7 +52,6 @@ class DetailActivity : AppCompatActivity() {
             finish()
         }
 
-
         replace(R.id.detail_user_frame_layout, detailUserOverviewFragment)
 
         detail_user_bar.setOnMenuItemClickListener {

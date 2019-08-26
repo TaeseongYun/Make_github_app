@@ -155,7 +155,7 @@
                       android:orientation="vertical">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       style="@style/UserRepoSummary"/>
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                 <tech.tsdev.github_management.view.main.custom.GlideImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
@@ -164,12 +164,12 @@
                         android:layout_marginStart="16dp"/>
 
                 <TextView android:layout_width="match_parent" android:layout_height="40dp"
-                          android:layout_gravity="center" android:text="@string/location"
+                          android:layout_gravity="center" tools:text="@string/location"
                           android:gravity="start|center"
                           android:layout_marginStart="16dp" android:id="@+id/summaryRepo_one"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
                 <tech.tsdev.github_management.view.main.custom.GlideImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
@@ -178,23 +178,16 @@
                         android:layout_marginStart="16dp"/>
 
                 <TextView android:layout_width="match_parent" android:layout_height="40dp"
-                          android:layout_gravity="center" android:text="@string/location"
+                          android:layout_gravity="center" tools:text="@string/location"
                           android:gravity="start|center"
                           android:layout_marginStart="16dp" android:id="@+id/summaryRepo_two"/>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <tech.tsdev.github_management.view.main.custom.GlideImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_library_repos_black_24dp"
-                        android:layout_marginStart="16dp"/>
-
-                <TextView android:layout_width="match_parent" android:layout_height="40dp"
-                          android:layout_gravity="center" android:text="@string/location"
-                          android:gravity="start|center"
-                          android:layout_marginStart="16dp" android:id="@+id/summaryRepo_three"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="@string/view_more"
+                android:textSize="@dimen/text_large" android:id="@+id/detail_user_repo_view_more"/>
             </LinearLayout>
         </LinearLayout>
 

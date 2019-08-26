@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.detail_user_overview.*
 import kotlinx.android.synthetic.main.fg_user_info_fragment_layout.*
 import org.jetbrains.anko.support.v4.toast
@@ -13,22 +14,32 @@ import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.network.RetrofitObject
+import tech.tsdev.github_management.ui.modules.detail.DetailActivity
 import tech.tsdev.github_management.ui.modules.detail.mine.overview.presenter.DetailUserOverviewContract
 import tech.tsdev.github_management.ui.modules.detail.mine.overview.presenter.DetailUserOverviewPresenter
+import tech.tsdev.github_management.ui.modules.detail.mine.repo.DetailUserRepoFragment
 import tech.tsdev.github_management.util.ifNullDefaultImg
 import tech.tsdev.github_management.util.ifNullGoneView
+import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.activity.SearchActivity
 
 class DetailUserOverviewFragment : BaseFragment(), DetailUserOverviewContract.View {
+    override fun loadUserRepoSummary(
+        userFirstRepo: String?, userSecondRepo: String?
+    ) {
+        userFirstRepo?.let { summaryRepo_one.text = it } ?: let { summaryRepo_one.visibility = View.GONE }
+        userSecondRepo?.let { summaryRepo_two.text = it } ?: let { summaryRepo_two.visibility = View.GONE }
+    }
 
     companion object {
         fun getInstance(key: String = "", value: String = "") =
-                DetailUserOverviewFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(key, value)
-                    }
+            DetailUserOverviewFragment().apply {
+                arguments = Bundle().apply {
+                    putString(key, value)
                 }
+            }
     }
+
     private val detailUserOverviewPresenter: DetailUserOverviewPresenter by lazy {
         DetailUserOverviewPresenter(
             this@DetailUserOverviewFragment,
@@ -78,5 +89,12 @@ class DetailUserOverviewFragment : BaseFragment(), DetailUserOverviewContract.Vi
 
         println("get String 값2 -> ${arguments?.getString("fragmentUserName")}")
         arguments?.getString("fragmentUserName")?.let { detailUserOverviewPresenter.loadUserOverView(it) }
+
+        detail_user_repo_view_more.setOnClickListener {
+            println("click Button!!!")
+            fragmentManager?.beginTransaction()?.replace(R.id.detail_user_frame_layout, DetailUserRepoFragment
+                .getInstance("fragmentUserName", (activity as DetailActivity).intent.getStringExtra("userName")))
+                ?.commit()
+        }
     }
 }

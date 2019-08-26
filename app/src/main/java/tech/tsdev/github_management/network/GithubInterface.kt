@@ -75,7 +75,7 @@ interface GithubInterface {
     @GET("/users/{username}/repos")
     fun getRepoListBasedOnUserName(
         @Path("username") userName: String
-    ): Single<List<UserRepoList>>
+    ): Maybe<List<UserRepoList>>
 
     //유저Name과 repo 이름으로 해당 레파지토리 가져옴
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")

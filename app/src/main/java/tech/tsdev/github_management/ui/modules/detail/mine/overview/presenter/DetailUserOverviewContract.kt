@@ -18,9 +18,15 @@ interface DetailUserOverviewContract {
             userRepoCount: Int,
             userLocation: String?
         )
+
+        fun loadUserRepoSummary(
+            userFirstRepo: String?,
+            userSecondRepo: String?
+        )
     }
 
     interface Presenter {
         fun loadUserOverView(userName: String)
+
     }
 }

@@ -36,7 +36,7 @@ class GithubRemoteDataSource(private val githubAPI: GithubInterface) {
     fun getUserFollowing(userName: String): Single<List<UserFollowersFollowingList>> =
         githubAPI.getFollowingBasedOnUserName(userName)
 
-    fun getUserRepoList(userName: String): Single<List<UserRepoList>> =
+    fun getUserRepoList(userName: String): Maybe<List<UserRepoList>> =
         githubAPI.getRepoListBasedOnUserName(userName)
 
     fun getRepoInfoBasedOnOwnerNameRepoName(repoUrl: String): Single<GetSingleRepo> =
