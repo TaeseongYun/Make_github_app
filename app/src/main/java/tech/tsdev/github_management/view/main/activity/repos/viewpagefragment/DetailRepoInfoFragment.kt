@@ -1,17 +1,16 @@
 package tech.tsdev.github_management.view.main.activity.repos.viewpagefragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.detail_repo_info_layout.*
 import org.jetbrains.anko.support.v4.toast
 import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragment
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.network.RetrofitObject
+import tech.tsdev.github_management.util.getInstance
 import tech.tsdev.github_management.util.textVisibleGone
 import tech.tsdev.github_management.view.main.activity.IssuesActivity
 import tech.tsdev.github_management.view.main.activity.RepoForksActivity
@@ -77,7 +76,7 @@ class DetailRepoInfoFragment : BaseFragment(), DetailRepoInfoContract.View {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val inputDetailRepoUrl = arguments?.getString("detailRepoUrl")
+//        val inputDetailRepoUrl = arguments?.getString("detailRepoUrl")
         println("들어온 detailRepoUrl 값 -> ${arguments?.getString("detailRepoUrl")}")
 
 
@@ -93,46 +92,34 @@ class DetailRepoInfoFragment : BaseFragment(), DetailRepoInfoContract.View {
 
 
         owner_repo_issue_layout.setOnClickListener {
-            Intent(context, IssuesActivity::class.java).apply {
-                putExtra(
-                    "repoIssuesUrl",
-                    arguments?.getString("detailRepoUrl")
-                )
-                startActivity(this)
-            }
+            context?.getInstance<IssuesActivity>("repoIssueUrl", arguments?.getString("detailRepoUrl"))
         }
 
         owner_repo_stargazer_layout.setOnClickListener {
-            Intent(context, RepoStargazersActivity::class.java).apply {
-                putExtra(
-                    "repoStargazersUrl",
-                    arguments?.getString("detailRepoUrl")
-                )
-                putExtra("repoName", arguments?.getString("repoName"))
-                startActivity(this)
-            }
+            context?.getInstance<RepoStargazersActivity>(
+                "repoIssueUrl",
+                arguments?.getString("detailRepoUrl"),
+                "repoName",
+                arguments?.getString("repoName")
+            )
         }
 
         owner_repo_fork_layout.setOnClickListener {
-            Intent(context, RepoForksActivity::class.java).apply {
-                putExtra("repoName", arguments?.getString("repoName"))
-                putExtra(
-                    "repoForkUrl",
-                    arguments?.getString("detailRepoUrl")
-                )
-                startActivity(this)
-            }
+            context?.getInstance<RepoForksActivity>(
+                "repoIssueUrl",
+                arguments?.getString("detailRepoUrl"),
+                "repoForkUrl",
+                arguments?.getString("detailRepoUrl")
+            )
         }
 
         owner_repo_watcher_layout.setOnClickListener {
-            Intent(context, RepoWatchersActivity::class.java).apply {
-                putExtra("repoName", arguments?.getString("repoName"))
-                putExtra(
-                    "repoWatcherUrl",
-                    arguments?.getString("detailRepoUrl")
-                )
-                startActivity(this)
-            }
+            context?.getInstance<RepoWatchersActivity>(
+                "repoIssueUrl",
+                arguments?.getString("detailRepoUrl"),
+                "repoWatcherUrl",
+                arguments?.getString("detailRepoUrl")
+            )
         }
     }
 }

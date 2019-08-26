@@ -14,6 +14,8 @@ import tech.tsdev.github_management.R
 import tech.tsdev.github_management.base.recycler.model.baseactivity.BaseActivity
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.network.RetrofitObject
+import tech.tsdev.github_management.util.getInstance
+import tech.tsdev.github_management.util.tabLayoutListener
 import tech.tsdev.github_management.view.main.activity.repos.presenter.DetailRepoContract
 import tech.tsdev.github_management.view.main.activity.repos.presenter.DetailRepoPresenter
 import tech.tsdev.github_management.view.main.activity.repos.viewpagefragment.DetailRepoActivityFragment
@@ -77,20 +79,9 @@ class DetailRepoActivity : BaseActivity(), DetailRepoContract.View {
 
         addTabLayoutItem()
 
-        detail_repo_tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                view_pager.currentItem = tab.position
-            }
-
-        })
+        detail_repo_tab_layout.addOnTabSelectedListener(
+            tabLayoutListener(view_pager)
+        )
 
         view_pager.run {
             adapter = DetailTabLayoutAdapter(supportFragmentManager)
@@ -102,21 +93,15 @@ class DetailRepoActivity : BaseActivity(), DetailRepoContract.View {
         override fun getItem(position: Int): Fragment? =
             when (position) {
                 0 -> {
-                    DetailRepoInfoFragment().apply {
-                        arguments = Bundle().apply {
-                            putString("detailRepoUrl", intent.getStringExtra("repoUrl"))
-                        }
-                    }
+                    DetailRepoInfoFragment()
+                        .getInstance("detailRepoUrl", intent.getStringExtra("repoUrl"))
                 }
                 1 -> {
                     DetailRepoFilesFragment()
                 }
                 2 -> {
-                    DetailRepoCommitsFragment().apply {
-                        arguments = Bundle().apply {
-                            putString("detailRepoCommitsUrl", intent.getStringExtra("repoUrl"))
-                        }
-                    }
+                    DetailRepoCommitsFragment().
+                            getInstance("detailRepoCommitsUrl", intent.getStringExtra("repoUrl"))
                 }
                 3 -> {
                     DetailRepoActivityFragment()
