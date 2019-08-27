@@ -2,7 +2,6 @@ package tech.tsdev.github_management.ui.modules.detail
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -39,14 +38,6 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         setSupportActionBar(detail_user_bar)
-
-
-        Log.d("DetailActivity", "실행됌")
-//        detail_user_bar.replaceMenu(R.menu.bottom_app_bar)
-//        tv_user_name.text = intent.getStringExtra( SearchActivity.USER_NAME )
-
-
-//        addTabLayoutItem()
 
         fab_home.setOnClickListener {
             finish()

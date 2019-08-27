@@ -1,11 +1,9 @@
 package tech.tsdev.github_management.ui.modules.detail.mine.repo
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.detail_user_repo.*
 import org.jetbrains.anko.support.v4.toast
@@ -16,9 +14,14 @@ import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.ui.modules.detail.mine.repo.adapter.DetailRepoRecyclerAdapter
 import tech.tsdev.github_management.ui.modules.detail.mine.repo.presenter.DetailUserRepoContract
 import tech.tsdev.github_management.ui.modules.detail.mine.repo.presenter.DetailUserRepoPresenter
+import tech.tsdev.github_management.util.getInstance
 import tech.tsdev.github_management.view.main.activity.DetailRepoActivity
 
 class DetailUserRepoFragment : BaseFragment(), DetailUserRepoContract.View {
+    override fun showEmptyRepositoryLottie() {
+        repo_empty_lottieView.visibility = View.VISIBLE
+        user_repo_recycler_view.visibility = View.GONE
+    }
 
     companion object {
         fun getInstance(key: String = "", value: String = "") =
@@ -33,10 +36,9 @@ class DetailUserRepoFragment : BaseFragment(), DetailUserRepoContract.View {
     }
 
     override fun getLoadDetailMyRepository(repoUrl: String) {
-        Intent(activity, DetailRepoActivity::class.java).apply {
-            putExtra("repoUrl", repoUrl)
-            startActivity(this)
-        }
+        context?.getInstance<DetailRepoActivity>(
+            "repoUrl", repoUrl
+        )
     }
 
     override fun loadFailMessage() {

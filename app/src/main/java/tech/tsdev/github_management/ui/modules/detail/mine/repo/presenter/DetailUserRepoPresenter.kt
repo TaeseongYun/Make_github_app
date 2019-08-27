@@ -28,13 +28,15 @@ class DetailUserRepoPresenter(
     override fun getUserRepoBaseUserName(userName: String) {
         disposable += githubRepository.getUserRepoList(userName)
             .subscribeOn(Schedulers.io())
-            .map { userRepoList ->
-                userRepoList.forEach { list ->
-                    detailRepoRecyclerAdapter.addItem(list)
-                }
-            }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
+            .subscribe({ userRepoList ->
+                if(userRepoList.isEmpty())
+                    view.showEmptyRepositoryLottie()
+                else {
+                    userRepoList.forEach { list ->
+                        detailRepoRecyclerAdapter.addItem(list)
+                    }
+                }
                 detailRepoRecyclerAdapter.notifyDataItems()
             }, {
                 it.printStackTrace()

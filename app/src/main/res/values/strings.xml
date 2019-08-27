@@ -68,6 +68,8 @@
     <string name="repoFile">files</string>
     <string name="repoCommits">commits</string>
     <string name="repoactirivy">activity</string>
+    <string name="emptyRepository">EmptyRepository ;(</string>
+    <string name="userEmptyInfo">EmptyUserInformation ;(</string>
 
     <!--tablayout-->
     <string name="overview">OVERVIEW</string>

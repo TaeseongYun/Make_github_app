@@ -1,6 +1,7 @@
 package tech.tsdev.github_management.model.github
 
 import io.reactivex.Maybe
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Call
 import tech.tsdev.github_management.model.*
@@ -36,7 +37,7 @@ class GithubRemoteDataSource(private val githubAPI: GithubInterface) {
     fun getUserFollowing(userName: String): Single<List<UserFollowersFollowingList>> =
         githubAPI.getFollowingBasedOnUserName(userName)
 
-    fun getUserRepoList(userName: String): Maybe<List<UserRepoList>> =
+    fun getUserRepoList(userName: String): Observable<List<UserRepoList>> =
         githubAPI.getRepoListBasedOnUserName(userName)
 
     fun getRepoInfoBasedOnOwnerNameRepoName(repoUrl: String): Single<GetSingleRepo> =

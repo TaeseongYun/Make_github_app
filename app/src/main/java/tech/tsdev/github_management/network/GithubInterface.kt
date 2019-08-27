@@ -1,6 +1,7 @@
 package tech.tsdev.github_management.network
 
 import io.reactivex.Maybe
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.*
@@ -75,7 +76,7 @@ interface GithubInterface {
     @GET("/users/{username}/repos")
     fun getRepoListBasedOnUserName(
         @Path("username") userName: String
-    ): Maybe<List<UserRepoList>>
+    ): Observable<List<UserRepoList>>
 
     //유저Name과 repo 이름으로 해당 레파지토리 가져옴
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")

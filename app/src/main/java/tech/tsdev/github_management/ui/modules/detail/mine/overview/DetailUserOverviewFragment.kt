@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.detail_user_overview.*
 import kotlinx.android.synthetic.main.fg_user_info_fragment_layout.*
@@ -15,6 +17,7 @@ import tech.tsdev.github_management.base.recycler.model.basefragment.BaseFragmen
 import tech.tsdev.github_management.model.github.GithubRepository
 import tech.tsdev.github_management.network.RetrofitObject
 import tech.tsdev.github_management.ui.modules.detail.DetailActivity
+import tech.tsdev.github_management.ui.modules.detail.mine.overview.adapter.RepoRecyclerViewAdapter
 import tech.tsdev.github_management.ui.modules.detail.mine.overview.presenter.DetailUserOverviewContract
 import tech.tsdev.github_management.ui.modules.detail.mine.overview.presenter.DetailUserOverviewPresenter
 import tech.tsdev.github_management.ui.modules.detail.mine.repo.DetailUserRepoFragment
@@ -24,11 +27,12 @@ import tech.tsdev.github_management.util.replace
 import tech.tsdev.github_management.view.main.activity.SearchActivity
 
 class DetailUserOverviewFragment : BaseFragment(), DetailUserOverviewContract.View {
-    override fun loadUserRepoSummary(
-        userFirstRepo: String?, userSecondRepo: String?
-    ) {
-        userFirstRepo?.let { summaryRepo_one.text = it } ?: let { summaryRepo_one.visibility = View.GONE }
-        userSecondRepo?.let { summaryRepo_two.text = it } ?: let { summaryRepo_two.visibility = View.GONE }
+    override fun showUserEmptyInfo() {
+        user_empty_info_layout.visibility = View.VISIBLE
+    }
+
+    override fun showEmptyRepository() {
+        user_empty_repository.visibility = View.VISIBLE
     }
 
     companion object {
@@ -43,9 +47,14 @@ class DetailUserOverviewFragment : BaseFragment(), DetailUserOverviewContract.Vi
     private val detailUserOverviewPresenter: DetailUserOverviewPresenter by lazy {
         DetailUserOverviewPresenter(
             this@DetailUserOverviewFragment,
+            repoRecyclerViewAdapter,
             GithubRepository.getInstance(RetrofitObject.githubAPI),
             disposable
         )
+    }
+
+    private val repoRecyclerViewAdapter: RepoRecyclerViewAdapter by lazy {
+        RepoRecyclerViewAdapter(this.context)
     }
 
     override fun showFailMessage() {
@@ -69,7 +78,7 @@ class DetailUserOverviewFragment : BaseFragment(), DetailUserOverviewContract.Vi
         user_followers_many?.text = userFollowers.toString()
         user_followings_many?.text = userFollowings.toString()
         user_repo_many?.text = userRepoCount.toString()
-        userLocation?.ifNullGoneView(detail_user_location, detail_user_location_layout)
+        userLocation.ifNullGoneView(detail_user_location, detail_user_location_layout)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -91,10 +100,14 @@ class DetailUserOverviewFragment : BaseFragment(), DetailUserOverviewContract.Vi
         arguments?.getString("fragmentUserName")?.let { detailUserOverviewPresenter.loadUserOverView(it) }
 
         detail_user_repo_view_more.setOnClickListener {
-            println("click Button!!!")
             fragmentManager?.beginTransaction()?.replace(R.id.detail_user_frame_layout, DetailUserRepoFragment
                 .getInstance("fragmentUserName", (activity as DetailActivity).intent.getStringExtra("userName")))
                 ?.commit()
+        }
+
+        recycler_repo_list.run {
+            adapter = repoRecyclerViewAdapter
+            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         }
     }
 }

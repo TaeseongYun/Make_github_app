@@ -28,6 +28,14 @@
         <item name="android:textSize">@dimen/text_small</item>
     </style>
 
+    <style name="EmptyRepositoryTextView">
+        <item name="android:text">@string/emptyRepository</item>
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/spacing_x_large</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_x_large</item>
+    </style>
+
     <style name="MaterialCardView_style">
         <item name="android:layout_marginTop">@dimen/material_card_view_margin_micro</item>
         <item name="android:layout_marginStart">@dimen/material_card_view_margin_micro</item>

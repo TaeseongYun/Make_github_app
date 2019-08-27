@@ -9,6 +9,8 @@ interface DetailUserRepoContract {
         fun getLoadDetailMyRepository(repoUrl: String)
 
         fun justViewToast()
+
+        fun showEmptyRepositoryLottie()
     }
 
     interface Presenter {

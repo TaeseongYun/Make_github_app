@@ -19,10 +19,9 @@ interface DetailUserOverviewContract {
             userLocation: String?
         )
 
-        fun loadUserRepoSummary(
-            userFirstRepo: String?,
-            userSecondRepo: String?
-        )
+        fun showEmptyRepository()
+
+        fun showUserEmptyInfo()
     }
 
     interface Presenter {
